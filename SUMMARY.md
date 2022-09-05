@@ -8,19 +8,22 @@
 * [Initializing dApps](guide/initializing-dapps.md)
 * [Accessing Accounts](guide/accessing-accounts.md)
 * [Sending Transactions](guide/sending-transactions.md)
-* [Supported Chains](introduction/supported-chains.md)
+
+## 🔮 Supported Chains
+
+* [ETH](supported-chains/eth/README.md)
+  * [Provider API](supported-chains/eth/provider-api.md)
+  * [RPC API](supported-chains/eth/rpc-api.md)
+  * [Signing Data](supported-chains/eth/signing-data.md)
+* [NEAR](supported-chains/near.md)
 
 ## 📟 Connect to Hardware
 
-* [Page 1](connect-to-hardware/page-1.md)
-
-## 📱 API Reference
-
-* [ETH](connect-to-app/eth.md)
-  * [Provider API](api-reference/eth/provider-api.md)
-  * [RPC API](api-reference/eth/rpc-api.md)
-  * [Signing Data](api-reference/eth/signing-data.md)
-* [NEAR](connect-to-app/near.md)
+* [Hardware SDK](connect-to-hardware/hardware-sdk/README.md)
+  * [Start](connect-to-hardware/hardware-sdk/start.md)
+  * [Event](connect-to-hardware/hardware-sdk/event.md)
+  * [API Reference](connect-to-hardware/hardware-sdk/api-reference.md)
+* [Hardware API](connect-to-hardware/hardware-api.md)
 
 ## ⛳ Best Practice
 
