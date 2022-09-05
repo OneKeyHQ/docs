@@ -2,7 +2,7 @@
 
 ## 👋 GUIDE
 
-* [Introduction](README.md)
+* [👩‍🏫 Introduction](README.md)
 * [Getting Started](guide/getting-started.md)
 * [Common Terms](guide/common-terms.md)
 * [Initializing dApps](guide/initializing-dapps.md)
@@ -24,7 +24,8 @@
   * [Event](connect-to-hardware/hardware-sdk/event.md)
   * [API Reference](connect-to-hardware/hardware-sdk/api-reference/README.md)
     * [Calling instructions](connect-to-hardware/hardware-sdk/api-reference/calling-instructions.md)
-* [Hardware API](connect-to-hardware/hardware-api/README.md)
+* [Hardware API](connect-to-hardware/hardware-api.md)
+  * [Page 1](connect-to-hardware/hardware-api/page-1.md)
   * [Guide](connect-to-hardware/hardware-api/guide/README.md)
     * [Getting Started](connect-to-hardware/hardware-api/guide/getting-started.md)
     * [Handling Events](connect-to-hardware/hardware-api/guide/handling-events.md)
