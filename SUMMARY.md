@@ -16,11 +16,11 @@
 
 ## 📱 API Reference
 
-* [ETH](api-reference/eth/README.md)
+* [ETH](connect-to-app/eth.md)
   * [Provider API](api-reference/eth/provider-api.md)
   * [RPC API](api-reference/eth/rpc-api.md)
   * [Signing Data](api-reference/eth/signing-data.md)
-* [NEAR](api-reference/near.md)
+* [NEAR](connect-to-app/near.md)
 
 ## ⛳ Best Practice
 
