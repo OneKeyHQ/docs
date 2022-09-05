@@ -1,9 +1,9 @@
 # Table of contents
 
-## 👋 INTRODUCTION
+## 👋 GUIDE
 
-* [OneKey Doc Overview](README.md)
-* [Supported Chains](introduction/supported-chains.md)
+* [Introduction](README.md)
+* [Supported Chains](guide/supported-chains.md)
 
 ## 📟 Connect to Hardware
 
