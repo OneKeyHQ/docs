@@ -11,18 +11,19 @@
 
 ## 🔮 Supported Chains
 
-* [ETH](supported-chains/eth/README.md)
+* [ETH](connect-to-app/eth.md)
   * [Provider API](supported-chains/eth/provider-api.md)
   * [RPC API](supported-chains/eth/rpc-api.md)
   * [Signing Data](supported-chains/eth/signing-data.md)
-* [NEAR](supported-chains/near.md)
+* [NEAR](connect-to-app/near.md)
 
 ## 📟 Connect to Hardware
 
-* [Hardware SDK](connect-to-hardware/hardware-sdk/README.md)
+* [Hardware SDK](connect-to-hardware/page-1.md)
   * [Start](connect-to-hardware/hardware-sdk/start.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
-  * [API Reference](connect-to-hardware/hardware-sdk/api-reference.md)
+  * [API Reference](connect-to-hardware/hardware-sdk/api-reference/README.md)
+    * [Calling instructions](connect-to-hardware/hardware-sdk/api-reference/calling-instructions.md)
 * [Hardware API](connect-to-hardware/hardware-api.md)
 
 ## ⛳ Best Practice
