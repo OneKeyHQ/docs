@@ -2,7 +2,7 @@
 
 ## 👋 GUIDE
 
-* [👩‍🏫 Introduction](README.md)
+* [Introduction](README.md)
 * [Getting Started](guide/getting-started.md)
 * [Common Terms](guide/common-terms.md)
 * [Initializing dApps](guide/initializing-dapps.md)
@@ -15,7 +15,23 @@
   * [Provider API](supported-chains/eth/provider-api.md)
   * [RPC API](supported-chains/eth/rpc-api.md)
   * [Signing Data](supported-chains/eth/signing-data.md)
-* [NEAR](connect-to-app/near.md)
+* [NEAR](supported-chains/near/README.md)
+  * [Integrating](supported-chains/near/integrating/README.md)
+    * [Install the Provider SDK](supported-chains/near/integrating/install-the-provider-sdk.md)
+    * [Detecting the Provider](supported-chains/near/integrating/detecting-the-provider.md)
+    * [Establishing a Connection](supported-chains/near/integrating/establishing-a-connection.md)
+    * [Accessing Accounts](supported-chains/near/integrating/accessing-accounts.md)
+    * [Detecting Provider Network](supported-chains/near/integrating/detecting-provider-network.md)
+    * [Watch Accounts & Network Status](supported-chains/near/integrating/watch-accounts-and-network-status.md)
+    * [Sending Transactions](supported-chains/near/integrating/sending-transactions.md)
+    * [Signing Messages](supported-chains/near/integrating/signing-messages.md)
+    * [RPC API Calling](supported-chains/near/integrating/rpc-api-calling.md)
+    * [Debug Logging](supported-chains/near/integrating/debug-logging.md)
+    * [Migrating from Near Web Wallet](supported-chains/near/integrating/migrating-from-near-web-wallet.md)
+  * [Reference](supported-chains/near/reference/README.md)
+    * [API Reference](supported-chains/near/reference/api-reference.md)
+    * [Trouble Shooting](supported-chains/near/reference/trouble-shooting.md)
+  * [Resources](supported-chains/near/resources.md)
 
 ## 📟 Connect to Hardware
 

@@ -1,5 +1,5 @@
 ---
-description: Integrating made easy
+description: Web3 development made easy
 ---
 
 # Introduction
