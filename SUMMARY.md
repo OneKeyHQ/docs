@@ -113,3 +113,9 @@
 * [Registering Tokens with Users](best-practice/registering-tokens-with-users.md)
 * [Defining Your App's Icon](best-practice/defining-your-apps-icon.md)
 * [Migration from MetaMask](best-practice/migration-from-metamask.md)
+
+***
+
+* [Media Kits](https://help.onekey.so/hc/articles/360002200956)
+* [Join Discord](https://discord.com/invite/onekey)
+* [Support](https://help.onekey.so/)
