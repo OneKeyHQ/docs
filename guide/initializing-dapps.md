@@ -2,19 +2,19 @@
 
 ## Initializing dApps
 
-Once you have your basic dev environment [set up](https://docs.onekey.so/en/Extension/Guide/Getting-Started), you are ready to start interacting with some smart contracts. There are some basic things you'll need regardless of what convenience library you're using, when communicating with a smart contract:
+Once you have your basic dev environment [set up](getting-started.md), you are ready to start interacting with some smart contracts. There are some basic things you'll need regardless of what convenience library you're using, when communicating with a smart contract:
 
-### The Contract Network[#](https://docs.onekey.so/en/Extension/Guide/initializing-dapps#the-contract-network) <a href="#the-contract-network" id="the-contract-network"></a>
+### The Contract Network <a href="#the-contract-network" id="the-contract-network"></a>
 
 If you aren't connected to the right network, you aren't going to have any luck sending transactions to your contract, so make sure you have this right!
 
 Many clever dapps will recognize the user's current network, and actually adapt to it! For example, if you detect a test network, you could deliberately connect to a test-network version of your smart contract, which makes it easy for users to "try out" your system without using real money!
 
-### The Contract Address[#](https://docs.onekey.so/en/Extension/Guide/initializing-dapps#the-contract-address) <a href="#the-contract-address" id="the-contract-address"></a>
+### The Contract Address <a href="#the-contract-address" id="the-contract-address"></a>
 
 Every account in Ethereum has an address, whether it's an external key-pair account, or a smart contract. In order for any smart contract library to communicate with your contracts, they'll need to know its exact address.
 
-### The Contract ABI[#](https://docs.onekey.so/en/Extension/Guide/initializing-dapps#the-contract-abi) <a href="#the-contract-abi" id="the-contract-abi"></a>
+### The Contract ABI <a href="#the-contract-abi" id="the-contract-abi"></a>
 
 In Ethereum, [The ABI Specification](https://solidity.readthedocs.io/en/develop/abi-spec.html) is a way to encode the interface of a smart contract in a way that your user interface can make sense of. It is an array of method-describing objects, and when you feed this and the address into a contract-abstraction library, this `ABI` tells those libraries about what methods to provide, and how to compose transactions to call those methods.
 
@@ -26,12 +26,12 @@ Example libraries include:
 * [ethjs](https://www.npmjs.com/package/ethjs)
 * [truffle](https://www.trufflesuite.com/)
 
-### The Contract Bytecode[#](https://docs.onekey.so/en/Extension/Guide/initializing-dapps#the-contract-bytecode) <a href="#the-contract-bytecode" id="the-contract-bytecode"></a>
+### The Contract Bytecode <a href="#the-contract-bytecode" id="the-contract-bytecode"></a>
 
 If your web app is going to publish a new smart contract that is pre-compiled, it may need to include some `bytecode`. In this case, you will not know the contract address in advance, but instead will have to publish, watch for the transaction to be processed, and then extract the final contract's address from the completed transaction.
 
 If publishing a contract from bytecode, you will still want an `ABI` if you want to interact with it! The bytecode does not describe how to interact with the final contract.
 
-### The Contract Source Code[#](https://docs.onekey.so/en/Extension/Guide/initializing-dapps#the-contract-source-code) <a href="#the-contract-source-code" id="the-contract-source-code"></a>
+### The Contract Source Code <a href="#the-contract-source-code" id="the-contract-source-code"></a>
 
 If your website is going to allow users to edit smart contract source code and compile it, like [Remix](http://remix.ethereum.org/), you may import a whole compiler, in which case you're going to derive your bytecode and ABI from that source code, and eventually you will derive the contract's address from the completed transaction publishing that bytecode.
