@@ -7,11 +7,11 @@ Welcome to OneKey’s Developer Documentation. This documentation is for learnin
 * For up to the minute news, follow our [Twitter](https://twitter.com/OneKeyHQ).
 * To learn how to contribute to the OneKey project itself, visit our [Github Repos](https://github.com/OneKeyHQ/app-monorepo).
 
-
-
 ### Why OneKey&#x20;
 
-OneKey was created to meet the needs of secure and usable Ethereum and other chains (e.g. Bitcoin, Solana, Aptos, Starcoin...) based dApps. In particular, it handles account management and connecting the user to the blockchain.
+OneKey is the smartest way to secure, buy, exchange and grow your crypto assets.&#x20;
+
+It is created to meet the needs of secure and usable Ethereum and other chains (e.g. Bitcoin, Solana, Aptos, Starcoin...) based dApps. In particular, it handles account management and connecting the user to the blockchain.
 
 * [Get started here](guide/getting-started.md)
 * Learn more about our [JavaScript Provider API](supported-chains/eth/provider-api.md)
