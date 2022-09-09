@@ -1,8 +1,8 @@
-# Calling instructions
+# Calling Instructions
 
 ## Request
 
-The generic entry for the method is referenced here: [Generic Parameters](broken-reference).
+The generic entry for the method is referenced here: [Generic Parameters](general-parameters.md).
 
 ## Response
 
@@ -60,7 +60,7 @@ HardwareSDK.btcGetAddress('OneKey21042004483', '0B961C0007C7923D5B1D3341', {
 
 ### Error
 
-```
+```javascript
 {
   payload: {
     code: 0,

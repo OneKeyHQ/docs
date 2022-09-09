@@ -9,16 +9,16 @@ In order to send a transaction, the web application must:
 
 For more information about the nature of transactions on Near, it is recommended to review the `near-api-js` [docs](https://docs.near.org/docs/develop/front-end/near-api-js) as well as the official [Near docs](https://docs.near.org/).
 
-{% content-ref url="create-transaction.md" %}
-[create-transaction.md](create-transaction.md)
+{% content-ref url="sending-transactions/create-transaction.md" %}
+[create-transaction.md](sending-transactions/create-transaction.md)
 {% endcontent-ref %}
 
-{% content-ref url="sign-and-send-transaction.md" %}
-[sign-and-send-transaction.md](sign-and-send-transaction.md)
+{% content-ref url="sending-transactions/sign-and-send-transaction.md" %}
+[sign-and-send-transaction.md](sending-transactions/sign-and-send-transaction.md)
 {% endcontent-ref %}
 
 Sometimes you may need signing transactions only but not sending by OneKey, and then sending with your application self.
 
-{% content-ref url="signing-transaction.md" %}
-[signing-transaction.md](signing-transaction.md)
+{% content-ref url="sending-transactions/signing-transaction.md" %}
+[signing-transaction.md](sending-transactions/signing-transaction.md)
 {% endcontent-ref %}
