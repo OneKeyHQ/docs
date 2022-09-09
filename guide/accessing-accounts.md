@@ -9,17 +9,17 @@ User accounts are used in a variety of contexts in Ethereum, including as identi
 * `eth_personalSign`
 * `eth_signTypedData`
 
-Once you've [connected to a user](https://docs.onekey.so/en/Extension/Guide/getting-started.html), you can always re-check the current account by checking `onekey.selectedAddress`.
+Once you've [connected to a user](getting-started.md), you can always re-check the current account by checking `onekey.selectedAddress`.
 
 **Example:**
 
-```
+```javascript
 <ChangeAccount />
 ```
 
 If you'd like to be notified when the address changes, we have an event you can subscribe to:
 
-```
+```javascript
 onekey.on('accountsChanged', function (accounts) {  // Time to reload your interface with accounts[0]!});
 ```
 

@@ -6,11 +6,11 @@ We recommend using `typeof window !== 'undefined' && window.onekey` to detect ou
 
 The Ethereum JavaScript provider API is specified by [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193).
 
-```
+```javascript
 if (typeof window !== 'undefined' && window.onekey) {  // From now on, this should always be true:  startApp(provider); // initialize your app} else {  console.log('Please install OneKey Browser Extension at http://onekey.so/plugin!');}
 ```
 
-### Basic Usage[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#basic-usage) <a href="#basic-usage" id="basic-usage"></a>
+### Basic Usage <a href="#basic-usage" id="basic-usage"></a>
 
 For any non-trivial Ethereum web application — a.k.a. dapp, web3 site etc. — to work, you will have to:
 
@@ -18,15 +18,15 @@ For any non-trivial Ethereum web application — a.k.a. dapp, web3 site etc. —
 * Detect which Ethereum network the user is connected to
 * Get the user's Ethereum account(s)
 
-The snippet at the top of this page is sufficient for detecting the provider. You can learn how to accomplish the other two by reviewing the snippet in the [Using the Provider section](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#using-the-provider).
+The snippet at the top of this page is sufficient for detecting the provider. You can learn how to accomplish the other two by reviewing the snippet in the [Using the Provider section](provider-api.md).
 
 The provider API is all you need to create a full-featured web3 application.
 
 That said, many developers use a convenience library, such as [ethers](https://www.npmjs.com/package/ethers), instead of using the provider directly. If you are in need of higher-level abstractions than those provided by this API, we recommend that you use a convenience library.
 
-### Chain IDs[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#chain-ids) <a href="#chain-ids" id="chain-ids"></a>
+### Chain IDs <a href="#chain-ids" id="chain-ids"></a>
 
-These are the IDs of the Ethereum chains that OneKey supports by default. Consult [chainid.network](https://chainid.network) for more.
+These are the IDs of the Ethereum chains that OneKey supports by default. Visit [chainlist](https://chainlist.onekey.so/) for more.
 
 | Hex  | Decimal | Network                         |
 | ---- | ------- | ------------------------------- |
@@ -41,9 +41,9 @@ These are the IDs of the Ethereum chains that OneKey supports by default. Consul
 | 0x2a | 42      | kovan Testnet                   |
 | 0x4  | 4       | Rinkeby Testnet                 |
 
-### Methods[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#methods) <a href="#methods" id="methods"></a>
+### Methods <a href="#methods" id="methods"></a>
 
-#### onekey.isConnected()[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#onekeyisconnected) <a href="#onekeyisconnected" id="onekeyisconnected"></a>
+#### onekey.isConnected() <a href="#onekeyisconnected" id="onekeyisconnected"></a>
 
 
 
@@ -53,17 +53,17 @@ Note that this method has nothing to do with the user's accounts.
 
 You may often encounter the word "connected" in reference to whether a web3 site can access the user's accounts. In the provider interface, however, "connected" and "disconnected" refer to whether the provider can make RPC requests to the current chain.
 
-```
+```javascript
 onekey.isConnected(): boolean;
 ```
 
 Returns `true` if the provider is connected to the current chain, and `false` otherwise.
 
-If the provider is not connected, the page will have to be reloaded in order for connection to be re-established. Please see the [`connect`](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#connect) and [`disconnect`](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#disconnect) events for more information.
+If the provider is not connected, the page will have to be reloaded in order for connection to be re-established. Please see the [`connect`](provider-api.md) and [`disconnect`](provider-api.md) events for more information.
 
-#### onekey.request(args)[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#onekeyrequestargs) <a href="#onekeyrequestargs" id="onekeyrequestargs"></a>
+#### onekey.request(args) <a href="#onekeyrequestargs" id="onekeyrequestargs"></a>
 
-```
+```javascript
 interface RequestArguments {  method: string;  params?: unknown[] | object;}
 onekey.request(args: RequestArguments): Promise<unknown>;
 ```
@@ -72,20 +72,20 @@ Use `request` to submit RPC requests to Ethereum via OneKey Browser Extension. I
 
 The `params` and return value will vary by RPC method. In practice, if a method has any `params`, they are almost always of type `Array<any>`.
 
-If the request fails for any reason, the Promise will reject with an [Ethereum RPC Error](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#errors).
+If the request fails for any reason, the Promise will reject with an [Ethereum RPC Error](provider-api.md).
 
 OneKey Browser Extension supports most standardized Ethereum RPC methods, in addition to a number of methods that may not be supported by other wallets.
 
 See the OneKey Browser Extension RPC API documentation for details.
 
-**Example**[**#**](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#example)
+**Example**
 
-```
-params: [  {    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',    to: '0xd46e8dd67c5d32be8058bb8eb970870f07244567',    gas: '0x76c0', // 30400    gasPrice: '0x9184e72a000', // 10000000000000    value: '0x9184e72a', // 2441406250    data:      '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675',  },];
+```javascript
+params: [  {    from: '0xb60e8dd61c5d32be8058bb8eb970870f0java7233155',    to: '0xd46e8dd67c5d32be8058bb8eb970870f07244567',    gas: '0x76c0', // 30400    gasPrice: '0x9184e72a000', // 10000000000000    value: '0x9184e72a', // 2441406250    data:      '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675',  },];
 onekey  .request({    method: 'eth_sendTransaction',    params,  })  .then((result) => {    // The result varies by by RPC method.    // For example, this method will return a transaction hash hexadecimal string on success.  })  .catch((error) => {    // If the request fails, the Promise will reject with an error.  });
 ```
 
-### Events[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#events) <a href="#events" id="events"></a>
+### Events <a href="#events" id="events"></a>
 
 The OneKey Browser Extension provider implements the [Node.js `EventEmitter`](https://nodejs.org/api/events.html) API.
 
@@ -93,35 +93,35 @@ This sections details the events emitted via that API.
 
 There are innumerable `EventEmitter` guides elsewhere, but you can listen for events like this:
 
-```
+```javascript
 onekey.on('accountsChanged', (accounts) => {  // Handle the new accounts, or lack thereof.  // "accounts" will always be an array, but it can be empty.});
 onekey.on('chainChanged', (chainId) => {  // Handle the new chain.  // Correctly handling chain changes can be complicated.  // We recommend reloading the page unless you have good reason not to.  window.location.reload();});
 ```
 
-#### connect[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#connect) <a href="#connect" id="connect"></a>
+#### connect <a href="#connect" id="connect"></a>
 
-```
+```javascript
 interface ConnectInfo {  chainId: string;}
 onekey.on('connect', handler: (connectInfo: ConnectInfo) => void);
 ```
 
 The OneKey Browser Extension provider emits this event when it first becomes able to submit RPC requests to a chain.
 
-We recommend using a `connect` event handler and the [`onekey.isConnected()` method](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#onekey-isconnected) in order to determine when/if the provider is connected.
+We recommend using a `connect` event handler and the [`onekey.isConnected()` method](provider-api.md) in order to determine when/if the provider is connected.
 
-#### disconnect[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#disconnect) <a href="#disconnect" id="disconnect"></a>
+#### disconnect <a href="#disconnect" id="disconnect"></a>
 
-```
+```javascript
 onekey.on('disconnect', handler: (error: ProviderRpcError) => void);
 ```
 
 The OneKey provider emits this event if it becomes unable to submit RPC requests to any chain. In general, this will only happen due to network connectivity issues or some unforeseen error.
 
-Once `disconnect` has been emitted, the provider will not accept any new requests until the connection to the chain has been re-restablished, which requires reloading the page. You can also use the [`onekey.isConnected()` method](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#onekey-isconnected) to determine if the provider is disconnected.
+Once `disconnect` has been emitted, the provider will not accept any new requests until the connection to the chain has been re-restablished, which requires reloading the page. You can also use the [`onekey.isConnected()` method](provider-api.md) to determine if the provider is disconnected.
 
-#### accountsChanged[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#accountschanged) <a href="#accountschanged" id="accountschanged"></a>
+#### accountsChanged <a href="#accountschanged" id="accountschanged"></a>
 
-```
+```javascript
 onekey.on('accountsChanged', handler: (accounts: Array<string>) => void);
 ```
 
@@ -135,15 +135,15 @@ This means that `accountsChanged` will be emitted whenever the user's exposed ac
 
 We plan to allow the `eth_accounts` array to be able to contain multiple addresses in the near future.
 
-#### chainChanged[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#chainchanged) <a href="#chainchanged" id="chainchanged"></a>
+#### chainChanged <a href="#chainchanged" id="chainchanged"></a>
 
 
 
 **Tip**
 
-See the [Chain IDs section](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#chain-ids) for OneKey Browser Extension's default chains and their chain IDs.
+See the [Chain IDs section](provider-api.md) for OneKey Browser Extension's default chains and their chain IDs.
 
-```
+```javascript
 onekey.on('chainChanged', handler: (chainId: string) => void);
 ```
 
@@ -151,13 +151,13 @@ The OneKey Browser Extension provider emits this event when the currently connec
 
 All RPC requests are submitted to the currently connected chain. Therefore, it's critical to keep track of the current chain ID by listening for this event.
 
-```
+```javascript
 onekey.on('chainChanged', (_chainId) => window.location.reload());
 ```
 
-#### message[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#message) <a href="#message" id="message"></a>
+#### message <a href="#message" id="message"></a>
 
-```
+```javascript
 interface ProviderMessage {  type: string;  data: unknown;}
 onekey.on('message', handler: (message: ProviderMessage) => void);
 ```
@@ -170,15 +170,15 @@ RPC subscription updates are a common use case for the `message` event.
 
 For example, if you create a subscription using `eth_subscribe`, each subscription update will be emitted as a `message` event with a `type` of `eth_subscription`.
 
-### Errors[#](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#errors) <a href="#errors" id="errors"></a>
+### Errors <a href="#errors" id="errors"></a>
 
 All errors thrown or returned by the OneKey Browser Extension provider follow this interface:
 
-```
+```javascript
 interface ProviderRpcError extends Error {  message: string;  code: number;  data?: unknown;}
 ```
 
-The [`onekey.request(args)` method](https://docs.onekey.so/en/Extension/API%20Reference/onekey-provider#onekey-request-args) throws errors eagerly.
+The [`onekey.request(args)` method](provider-api.md) throws errors eagerly.
 
 You can often use the error `code` property to determine why the request failed.
 
