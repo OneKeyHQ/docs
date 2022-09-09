@@ -1,88 +1,114 @@
 # ethereumGetAddress
 
-import Playground from "@src/components/playground";
+import Playground from '@src/components/playground';
 
-### Ethereum712: sign message
+### Ethereum: Get address
 
-Asks device to sign a message using the private key derived by given BIP32 path.
+Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
 
 ES6
 
 ```javascript
-const result = await OneKeyConnect.ethereumSignMessage(params);
+const result = await OneKeyConnect.ethereumGetAddress(params);
 ```
 
 CommonJS
 
 ```javascript
-OneKeyConnect.ethereumSignMessage(params).then(function(result) {
-
-});
+OneKeyConnect.ethereumGetAddress(params).then(function (result) {});
 ```
 
 #### Params
 
 **Optional common params**
 
-[**flowtype**](https://github.com/OneKeyHQ/connect/blob/onekey/src/js/types/params.js#L64-L67)
+**Exporting single address**
 
-* `path` - _required_ `string | Array<number>` minimum length is `3`. read more
-* `version` - _optional_ `string` `V3` or `V4`, for `sign_typed_data` version, default is V3.
-* `data` - _required_ `object`, message data type. see example for more detail.
+* `path` — _required_ `string | Array<number>` minimum length is `5`. read more
+* `address` — _optional_ `string` address for validation (read `Handle button request` section below)
+* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+
+**Exporting bundle of addresses**
+
+* `bundle` - `Array` of Objects with `path` and `showOnOneKey` fields
+
+**Handle button request**
+
+There is a possibility to handle `UI.ADDRESS_VALIDATION` event which will be triggered once the address is displayed on the device. You can handle this event and display custom UI inside of your application.
+
+If certain conditions are fulfilled popup will not be used at all:
+
+* the user gave permissions to communicate with OneKey
+* device is authenticated by pin/passphrase
+* application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+* parameter `address` is set
+* parameter `showOnOneKey` is set to `true` (or not set at all)
+* application is requesting ONLY ONE address
 
 #### Example
 
+Display address of first ethereum account:
+
 ```javascript
-OneKeyConnect.ethereumSignMessage712({
-    path: "m/44'/60'/0'",
-    data: {
-        domain: {
-            name: 'My amazing dApp',
-            version: '2',
-            chainId: '0x01',
-            verifyingContract: 'xx',
-            salt: 'xx',
-        },
-        message: {
-            amount: 100,
-            bidder: {
-                userId: 323,
-                wallet: '0x3333333333333333333333333333333333333333',
-            },
-        },
-        primaryType: 'Bid',
-        types: {
-            EIP712Domain: [
-                { name: 'name', type: 'string' },
-                { name: 'version', type: 'string' },
-                { name: 'chainId', type: 'uint256' },
-                { name: 'verifyingContract', type: 'address' },
-                { name: 'salt', type: 'bytes32' },
-            ],
-            Bid: [
-                { name: 'amount', type: 'uint256' },
-                { name: 'bidder', type: 'Identity' },
-            ],
-            Identity: [
-                { name: 'userId', type: 'uint256' },
-                { name: 'wallet', type: 'address' },
-            ],
-        },
-    }
+OneKeyConnect.ethereumGetAddress({
+  path: "m/44'/60'/0'/0/0",
 });
+```
+
+Return a bundle of ethereum addresses without displaying them on device:
+
+```javascript
+OneKeyConnect.ethereumGetAddress({
+  bundle: [
+    { path: "m/44'/60'/0'/0/0", showOnOneKey: false }, // account 1
+    { path: "m/44'/60'/1'/0/0", showOnOneKey: false }, // account 2
+    { path: "m/44'/60'/2'/0/0", showOnOneKey: false }, // account 3
+  ],
+});
+```
+
+Validate address using custom UI inside of your application:
+
+```javascript
+import OneKeyConnect, { UI } from '@onekeyfe/connect';
+
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, (data) => {
+  console.log('Handle button request', data.address, data.serializedPath);
+  // here you can display custom UI inside of your app
+});
+
+const result = await OneKeyConnect.ethereumGetAddress({
+  path: "m/44'/60'/0'/0/0",
+  address: '0x73d0385F4d8E00C5e6504C6030F47BF6212736A8',
+});
+// dont forget to hide your custom UI after you get the result!
 ```
 
 #### Result
 
-[**flowtype**](https://github.com/OneKeyHQ/connect/blob/onekey/src/js/types/response.js#L47-L50)
+Result with only one address
 
 ```javascript
 {
     success: true,
     payload: {
-        address: string,
-        signature: string,
+        address: string,     // displayed address
+        path: Array<number>, // hardended path
+        serializedPath: string,
     }
+}
+```
+
+Result with bundle of addresses sorted by FIFO
+
+```javascript
+{
+    success: true,
+    payload: [
+        { address: string, path: Array<number>, serializedPath: string }, // account 1
+        { address: string, path: Array<number>, serializedPath: string }, // account 2
+        { address: string, path: Array<number>, serializedPath: string }  // account 3
+    ]
 }
 ```
 
@@ -97,91 +123,4 @@ Error
 }
 ```
 
-#### Error Detail
-
-1. firmware not support, must upgrade to the latest version.
-
-```json
-{
-  "success": false,
-  "payload": {
-    "error": "Unknown message",
-    "code": "Failure_UnexpectedMessage"
-  }
-}
-```
-
-1. pass an illegal parameter
-
-```json
-{
-  "success": false,
-  "payload": {
-    "error": "Parameter \"domain\" is missing.",
-    "code": "Method_InvalidParameter"
-  }
-}
-
-{
-  "success": false,
-  "payload": {
-    "error": "Parameter \"message\" is missing.",
-    "code": "Method_InvalidParameter"
-  }
-}
-```
-
-1. parameter must be 32 bytes, if it too short or too long
-
-```json
-{
-    {
-        "success": false,
-        "payload": {
-            "error": "data length error",
-            "code": "Failure_ProcessError"
-        }
-    }
-}
-
-{
-  "success": false,
-  "payload": {
-    "error": "Illegal str: Length not a multiple of 2"
-  }
-}
-
-{
-  "success": false,
-  "payload": {
-    "error": "bytes overflow",
-    "code": "Failure_DataError"
-  }
-}
-```
-
-1. not enable EIP712 feature
-
-```json
-{
-  "success": false,
-  "payload": {
-    "error": "EIP712 blind sign is disabled",
-    "code": "Failure_ProcessError"
-  }
-}
-```
-
-1. not support EIP712Domain primary type, your passed data's `primaryType` must not be `EIP712Domain`
-
-```json
-{
-  "success": false,
-  "payload": {
-    "error": "primaryType `EIP712Domain` is not support",
-    "code": "Backend_NotSupported"
-  }
-}
-```
-
-\<Playground initValue={ `OneKeyConnect.ethereumSignMessageEIP712({ path: "m/44'/60'/0'", data: { domain: { name: 'My amazing dApp', version: '2', chainId: '0x01', verifyingContract: '0x1C56346CD2A2Bf3202F771f50d3D14a367B48070', salt: '0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558', }, message: { amount: 100, bidder: { userId: 323, wallet: '0x3333333333333333333333333333333333333333', }, }, primaryType: 'Bid', types: { EIP712Domain: [ { name: 'name', type: 'string' }, { name: 'version', type: 'string' }, { name: 'chainId', type: 'uint256' }, { name: 'verifyingContract', type: 'address' }, { name: 'salt', type: 'bytes32' }, ], Bid: [ { name: 'amount', type: 'uint256' }, { name: 'bidder', type: 'Identity' }, ], Identity: [ { name: 'userId', type: 'uint256' }, { name: 'wallet', type: 'address' }, ], }, } });`} />
+\<Playground initValue={`OneKeyConnect.ethereumGetAddress({ path: "m/44'/60'/0'/0/0" });`} />

@@ -1,7 +1,5 @@
 # Registering Your Contract's Method Names
 
-
-
 OneKey uses the Parity on-chain registry of function signatures to display method names on the confirm screen. For many common method names, like token methods, this allows OneKey to successfully look up the method names by their [method signature](https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html). However, sometimes you're using a method that is not in that on-chain registry, and OneKey will simply display `Contract Interaction` to the user.
 
 To add your contract's function names to this registry so it shows in the OneKey interface, follow the below steps.
@@ -18,7 +16,7 @@ To add your contract's function names to this registry so it shows in the OneKey
 4. Click "write"
 5. Approve the transaction in OneKey (you only pay gas)
 
-### Verify[#](https://docs.onekey.so/en/Extension/Best%20Practices/registering-function-names#verify) <a href="#verify" id="verify"></a>
+### Verify <a href="#verify" id="verify"></a>
 
 `ethers.utils.keccak256('getOwners()') => 0xa0e67e2bdc0a6d8a09ccd6c353c9df590807ad66ff5e6630c4f31a86dfa84821`
 
@@ -26,14 +24,14 @@ To add your contract's function names to this registry so it shows in the OneKey
 * Input them into [this demo app](https://jennypollack.github.io/function\_signature\_registry/) that checks the on-chain registry
   * Mainnet or Rinkeby only
 
-#### Using remix.ethereum.org[#](https://docs.onekey.so/en/Extension/Best%20Practices/registering-function-names#using-remixethereumorg) <a href="#using-remixethereumorg" id="using-remixethereumorg"></a>
+#### Using remix.ethereum.org <a href="#using-remixethereumorg" id="using-remixethereumorg"></a>
 
 * Paste the contract code from [bokky's blog post](https://www.bokconsulting.com.au/blog/a-quick-look-at-paritys-signature-registry-contract/) into [remix](https://remix.ethereum.org).
 * Set the correct compiler version based on the contract.
 * Use remix's write functionality to add to the registry.
 * You can look at the FUNCTIONHASHES section on [remix](https://remix.ethereum.org) by loading the signature registry contract, press the "details" button on the compile tab.
 
-#### Using `eth-method-registry`[#](https://docs.onekey.so/en/Extension/Best%20Practices/registering-function-names#using-eth-method-registry) <a href="#using-eth-method-registry" id="using-eth-method-registry"></a>
+#### Using `eth-method-registry` <a href="#using-eth-method-registry" id="using-eth-method-registry"></a>
 
 * You can also use the [signature registry](https://rinkeby.etherscan.io/address/0x0c0831fb1ec7442485fb41a033ba188389a990b4) deployed on Rinkeby
   * [`eth-method-registry`](https://github.com/OneKey/eth-method-registry) is used to lookup methods in OneKey.

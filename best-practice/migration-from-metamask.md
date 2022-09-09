@@ -4,7 +4,7 @@ If there is already a Dapp Web Application compatible with the latest MetaMask (
 
 The latest MetaMask will inject the `window.ethereum` object to make the page manipulate the user's account in the metamask and obtain configuration information. Similarly, while `window.onekey` maintains a large number of APIs compatible with `window.ethereum`, and OneKey Browser Extension also injects `window.ethereum` to ensure the compatibility of other Dapps. Users can manually turn on "Alternative MetaMask" in OneKey browser Extension v2.0.1 or later to prevent possible conflicts during co-installation with MetaMask.
 
-### Best Practices[#](https://docs.onekey.so/en/Extension/Best%20Practices/migration-from-matamask#best-practices) <a href="#best-practices" id="best-practices"></a>
+### Best Practices <a href="#best-practices" id="best-practices"></a>
 
 It is recommended that Dapp developers completely distinguish the two objects of `window.onekey` and `window.ethereum` when calling internal methods, namely:
 
@@ -15,7 +15,7 @@ It is recommended that Dapp developers completely distinguish the two objects of
 // If you want to operate the methods and logic of MetaMask related providersif (window.ethereum && window.ethereum.switchProvider) {  window.ethereum.switchProvider('metamask');}// After the switchProvider is executed, the subsequent operation window.ethereum must be the metamask injected into the page
 ```
 
-### Other options[#](https://docs.onekey.so/en/Extension/Best%20Practices/migration-from-matamask#other-options) <a href="#other-options" id="other-options"></a>
+### Other options <a href="#other-options" id="other-options"></a>
 
 Of course, in order to be compatible with earlier Dapps that are not compatible with `window.onekey`, the OneKey browser Extension will also add `window.ethereum` to the page to assist in operations.
 
@@ -23,7 +23,7 @@ Use the `window.ethereum.switchProvider` method to switch between the variables 
 
 
 
-**warning**
+### **warning**
 
 `window.ethereum.switchProvider` is the new content of OneKey browser plugin v2.0.1 and later, and it is also a unique method of OneKey browser Extension.
 

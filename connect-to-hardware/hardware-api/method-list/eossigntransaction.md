@@ -2,7 +2,7 @@
 
 import Playground from "@src/components/playground";
 
-### EOS: sign transaction
+### EOS: Sign transaction
 
 Asks device to sign given transaction using the private key derived by given BIP44 path. User is asked to confirm all transaction details on OneKey.
 

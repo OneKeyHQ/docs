@@ -2,7 +2,7 @@
 
 import Playground from "@src/components/playground";
 
-### Cardano: get public key
+### Cardano: Get public key
 
 Retrieves [BIP32-Ed25519](https://cardanolaunch.com/assets/Ed25519\_BIP.pdf) extended public derived by given [BIP32-Ed25519](https://cardanolaunch.com/assets/Ed25519\_BIP.pdf) path. User is presented with a description of the requested key and asked to confirm the export on OneKey.
 

@@ -1,2 +1,156 @@
 # getAccountInfo
 
+import Playground from "@src/components/playground";
+
+### Get Account info
+
+Gets an info of specified account.
+
+**ES6**
+
+```javascript
+const result = await OneKeyConnect.getAccountInfo(params);
+```
+
+**CommonJS**
+
+```javascript
+OneKeyConnect.getAccountInfo(params).then(function(result) {
+
+});
+```
+
+#### Params
+
+**Optional common params**
+
+**Using path**
+
+* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `coin` — _required_ `string` determines network definition specified in [coins.json](https://github.com/OneKeyHQ/connect/blob/onekey/src/data/coins.json) file. Coin `shortcut`, `name` or `label` can be used.
+
+**Using public key**
+
+* `descriptor` — _required_ `string` public key of account
+* `coin` — _required_ `string` determines network definition specified in [coins.json](https://github.com/OneKeyHQ/connect/blob/onekey/src/data/coins.json) file. Coin `shortcut`, `name` or `label` can be used.
+
+**Using discovery**
+
+BIP-0044 account discovery is performed and user is presented with a list of accounts. Result is returned after account selection.
+
+* `coin` — _required_ `string` determines network definition specified in [coins.json](https://github.com/OneKeyHQ/connect/blob/onekey/src/data/coins.json) file. Coin `shortcut`, `name` or `label` can be used.
+
+#### Other optional params
+
+params are forwarded to [BlockBook backend](https://github.com/OneKeyHQ/blockbook/blob/master/docs/api.md#api-v2) using `@onekeyhq/blockchain-link` package
+
+* `details` — specifies level of details returned by request
+  * `basic` (default) return only account balances, without any derived addresses or transaction history
+  * `tokens` - response with derived addresses (Bitcoin-like accounts) and ERC20 tokens (Ethereum-like accounts), subject of `tokens` param
+  * `tokenBalances` - same as `tokens` with balances, subject of `tokens` param
+  * `txs` - `tokenBalances` + complete account transaction history
+* `tokens` — specifies which tokens (xpub addresses) are returned by the request (default nonzero)
+  * `nonzero` - (Default) return only addresses with nonzero balance
+  * `used` - return addresses with at least one transaction
+  * `derived` - return all derived addresses
+* `page` — `number` transaction history page index, subject of `details: txs`
+* `pageSize` — `number` transaction history page size, subject of `details: txs`
+* `from` — `number` transaction history from block filter, subject of `details: txs`
+* `to` — `number` transaction history to block filter, subject of `details: txs`
+* `gap` — `number` address derivation gap size, subject of `details: tokens`
+* `contractFilter` — `string` Ethereum-like accounts only: get ERC20 token info and balance
+* `marker` — `{ ledger: number, seq: number }` XRP accounts only, transaction history page marker
+* `defaultAccountType` — `'normal' | 'segwit' | 'legacy'` Bitcoin-like accounts only: specify which account group is displayed as default in popup, subject of `Using discovery`
+
+#### Example
+
+Get info about first bitcoin account
+
+```javascript
+OneKeyConnect.getAccountInfo({
+    path: "m/49'/0'/0'",
+    coin: "btc",
+});
+```
+
+Get info about account using public key (device is not used)
+
+```javascript
+OneKeyConnect.getAccountInfo({
+    xpub: "xpub6CVKsQYXc9awxgV1tWbG4foDvdcnieK2JkbpPEBKB5WwAPKBZ1mstLbKVB4ov7QzxzjaxNK6EfmNY5Jsk2cG26EVcEkycGW4tchT2dyUhrx",
+    coin: "btc",
+});
+```
+
+Get info about account using BIP-0044 account discovery
+
+```javascript
+OneKeyConnect.getAccountInfo({
+    coin: "btc",
+});
+```
+
+#### Result
+
+```javascript
+{
+    success: true,
+    payload: {
+        id: number,                           // account id
+        path: string,                         // serialized path
+        descriptor: string,                   // account public key
+        legacyXpub?: string,                  // (optional) account public key in legacy format (only for segwit and segwit native accounts)
+        balance: string,                      // account balance (confirmed transactions only)
+        availableBalance: string,             // account balance (including unconfirmed transactions)
+        addresses: {
+            // subject of details:tokens param
+            unused: Array<AccountAddress>, // unused addresses
+            used: Array<AccountAddress>,   // used addresses
+            change: Array<AccountAddress>, // change addresses (internal)
+        }, // list of derived addresses grouped by purpose (Bitcoin-like accounts)
+        history: Array<{
+            total: number,
+            unconfirmed: number,
+            transactions?: Array<AccountTransaction>, // subject of details:txs param
+        }> // account history object
+        utxo?: Array<AccountUtxo>, // account utxos (Bitcoin-like accounts), subject of details:tokens param
+        tokens?: Array<TokenInfo>, // account ERC20 tokens (Ethereum-like accounts), subject of details:tokens param
+        misc?: {
+            // Ethereum-like accounts only
+            nonce: string,
+            erc20Contract?: TokenInfo, // subject of contractFilter param
+            // XRP accounts only
+            sequence?: number,
+            reserve?: string,
+        },
+        page?: {
+            // subject of details:txs param
+            index: number, // current page index
+            size: number,  // current page size
+            total: number, // total pages count
+        },
+        marker?: {
+            // XRP accounts only
+            // subject of details:txs param
+            ledger: number,
+            seq: number,
+        }
+
+    } //
+}
+```
+
+[AccountInfo](https://github.com/OneKeyHQ/connect/blob/onekey/src/js/types/account.js#L108) [AccountAddress](https://github.com/OneKeyHQ/connect/blob/onekey/src/js/types/account.js#L34) [AccountTransaction](https://github.com/OneKeyHQ/connect/blob/onekey/src/js/types/account.js#L83) [AccountUtxo](https://github.com/OneKeyHQ/connect/blob/onekey/src/js/types/account.js#L49) [TokenInfo](https://github.com/OneKeyHQ/connect/blob/onekey/src/js/types/account.js#L24)
+
+Error
+
+```javascript
+{
+    success: false,
+    payload: {
+        error: string // error message
+    }
+}
+```
+
+\<Playground initValue={ `OneKeyConnect.getAccountInfo({ path: "m/49'/0'/0'", coin: "btc", });`} />

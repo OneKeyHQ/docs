@@ -2,7 +2,7 @@
 
 import Playground from "@src/components/playground";
 
-### Ethereum712: sign message
+### Ethereum712: Sign message
 
 Asks device to sign a message using the private key derived by given BIP32 path.
 

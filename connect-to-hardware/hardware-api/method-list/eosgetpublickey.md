@@ -2,7 +2,7 @@
 
 import Playground from "@src/components/playground";
 
-### EOS: get public key
+### EOS: Get public key
 
 Display requested public key derived by given BIP44 path on device and returns it to caller. User is presented with a description of the requested public key and asked to confirm the export.
 

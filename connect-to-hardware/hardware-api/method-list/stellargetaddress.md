@@ -1,21 +1,21 @@
-# liskGetAddress
+# stellarGetAddress
 
 import Playground from "@src/components/playground";
 
-### Lisk: Get address
+### Stellar: Get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
+Display requested address on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export.
 
 ES6
 
 ```javascript
-const result = await OneKeyConnect.liskGetAddress(params);
+const result = await OneKeyConnect.stellarGetAddress(params);
 ```
 
 CommonJS
 
 ```javascript
-OneKeyConnect.liskGetAddress(params).then(function(result) {
+OneKeyConnect.stellarGetAddress(params).then(function(result) {
 
 });
 ```
@@ -49,22 +49,22 @@ If certain conditions are fulfilled popup will not be used at all:
 
 #### Example
 
-Display address of first Lisk account:
+Display address of first stellar account:
 
 ```javascript
-OneKeyConnect.liskGetAddress({
-    path: "m/44'/134'/0'"
+OneKeyConnect.stellarGetAddress({
+    path: "m/44'/148'/0'"
 });
 ```
 
-Return a bundle of Lisk addresses without displaying them on device:
+Return a bundle of stellar addresses without displaying them on device:
 
 ```javascript
-OneKeyConnect.liskGetAddress({
+OneKeyConnect.stellarGetAddress({
     bundle: [
-        { path: "m/44'/134'/0'", showOnOneKey: false }, // account 1
-        { path: "m/44'/134'/1'", showOnOneKey: false }, // account 2
-        { path: "m/44'/134'/2'", showOnOneKey: false }  // account 3
+        { path: "m/44'/148'/0'", showOnOneKey: false }, // account 1
+        { path: "m/44'/148'/1'", showOnOneKey: false }, // account 2
+        { path: "m/44'/148'/2'", showOnOneKey: false }  // account 3
     ]
 });
 ```
@@ -79,9 +79,9 @@ OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     // here you can display custom UI inside of your app
 });
 
-const result = await OneKeyConnect.liskGetAddress({
-    path: "m/44'/134'/0'",
-    address: "3685460048641680438L",
+const result = await OneKeyConnect.stellarGetAddress({
+    path: "m/44'/148'/0'/0/0",
+    address: "GAXSFOOGF4ELO5HT5PTN23T5XE6D5QWL3YBHSVQ2HWOFEJNYYMRJENBV",
 });
 // dont forget to hide your custom UI after you get the result!
 ```
@@ -94,14 +94,14 @@ Result with only one address
 {
     success: true,
     payload: {
-        address: string,     // displayed address
-        path: Array<number>, // hardended path
+        address: string,
+        path: Array<number>,
         serializedPath: string,
     }
 }
 ```
 
-Result with bundle of addresses sorted by FIFO
+Result with bundle of addresses
 
 ```javascript
 {
@@ -109,7 +109,7 @@ Result with bundle of addresses sorted by FIFO
     payload: [
         { address: string, path: Array<number>, serializedPath: string }, // account 1
         { address: string, path: Array<number>, serializedPath: string }, // account 2
-        { address: string, path: Array<number>, serializedPath: string }  // account 3
+        { address: string, path: Array<number>, serializedPath: string }, // account 3
     ]
 }
 ```
@@ -125,4 +125,4 @@ Error
 }
 ```
 
-\<Playground initValue={ `OneKeyConnect.liskGetAddress({ path: "m/44'/134'/0'" });`} />
+\<Playground initValue={ `OneKeyConnect.stellarGetAddress({ path: "m/44'/148'/0'" });`} />
