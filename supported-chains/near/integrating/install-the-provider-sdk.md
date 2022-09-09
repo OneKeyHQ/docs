@@ -1,29 +1,33 @@
 # Install the Provider SDK
 
-[**OneKey**](https://www.onekey.so) is a wallet and browser extension that can be used to manage digital assets and access decentralized applications on the [Near](https://docs.near.org) blockchain.&#x20;
+{% hint style="info" %}
+Provider SDK works with [OneKey Browser Extension](https://www.onekey.so/plugin) ( version >= 2.3.2 ) installed
+{% endhint %}
 
-It works by creating and managing private keys on behalf of its users, allowing them to store funds and sign transactions.&#x20;
+We provide an SDK named [onekey-near-provider](https://www.npmjs.com/package/@onekeyfe/onekey-near-provider) as an npm package, which also requires [near-api-js](https://www.npmjs.com/package/near-api-js) installed.&#x20;
 
-Web applications can interact with the extension wallet, such as asking for permission to perform a transaction.
+You can check the sdk source code at [Github](https://github.com/OneKeyHQ/cross-inpage-provider/tree/master/packages/providers/onekey-near-provider), with full example code [here](https://github.com/OneKeyHQ/cross-inpage-provider/tree/master/packages/example).
 
-## Want to jump right in?
+```bash
+# with npm
+npm install near-api-js @onekeyfe/onekey-near-provider
 
-**Integrating guide step by step:**
+# with yarn
+yarn add near-api-js @onekeyfe/onekey-near-provider
 
-{% content-ref url="install-the-provider-sdk.md" %}
-[install-the-provider-sdk.md](install-the-provider-sdk.md)
-{% endcontent-ref %}
+```
 
-**Example codes and live demo:**&#x20;
+Then you can create the provider instance.
 
-{% content-ref url="../resources/example-and-demo.md" %}
-[example-and-demo.md](../resources/example-and-demo.md)
-{% endcontent-ref %}
+```javascript
+import { OneKeyNearProvider } from '@onekeyfe/onekey-near-provider';
 
-## Want to deep dive?
+const provider = new OneKeyNearProvider();
 
-Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
+```
 
-{% content-ref url="../reference/api-reference.md" %}
-[api-reference.md](../reference/api-reference.md)
-{% endcontent-ref %}
+{% hint style="warning" %}
+**Caution:** The Provider SDK is not compatible with SSR.
+
+If you are using [next.js](https://nextjs.org/) including SSR feature, you can check this document about how to  [dynamic import with no ssr](https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr).
+{% endhint %}

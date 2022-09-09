@@ -16,6 +16,7 @@
   * [RPC API](supported-chains/eth/rpc-api.md)
   * [Signing Data](supported-chains/eth/signing-data.md)
 * [NEAR](connect-to-app/near.md)
+  * [Introduction](supported-chains/near/introduction.md)
   * [Integrating](supported-chains/near/integrating/README.md)
     * [Install the Provider SDK](supported-chains/near/integrating/install-the-provider-sdk.md)
     * [Detecting the Provider](supported-chains/near/integrating/detecting-the-provider.md)
@@ -23,17 +24,19 @@
     * [Accessing Accounts](supported-chains/near/integrating/accessing-accounts.md)
     * [Detecting Provider Network](supported-chains/near/integrating/detecting-provider-network.md)
     * [Watch Accounts & Network Status](supported-chains/near/integrating/watch-accounts-and-network-status.md)
-    * [Sending Transactions](supported-chains/near/integrating/sending-transactions.md)
+    * [Sending Transactions](supported-chains/near/integrating/sending-transactions/README.md)
+      * [Create Transaction](supported-chains/near/integrating/sending-transactions/create-transaction.md)
+      * [Sign and Send Transaction](supported-chains/near/integrating/sending-transactions/sign-and-send-transaction.md)
+      * [Signing Transaction](supported-chains/near/integrating/sending-transactions/signing-transaction.md)
     * [Signing Messages](supported-chains/near/integrating/signing-messages.md)
     * [RPC API Calling](supported-chains/near/integrating/rpc-api-calling.md)
-    * [Debug Log](supported-chains/near/integrating/debug-log.md)
+    * [Debug Logging](supported-chains/near/integrating/debug-logging.md)
     * [Migrate from Near Web Wallet](supported-chains/near/integrating/migrate-from-near-web-wallet.md)
   * [Reference](supported-chains/near/reference/README.md)
     * [API Reference](supported-chains/near/reference/api-reference.md)
     * [Trouble Shooting](supported-chains/near/reference/trouble-shooting.md)
   * [Resources](supported-chains/near/resources/README.md)
     * [Example & Demo](supported-chains/near/resources/example-and-demo.md)
-    * [Media Assets](supported-chains/near/resources/media-assets.md)
     * [FAQ](supported-chains/near/resources/faq.md)
 
 ## 📟 Connect to Hardware
@@ -116,6 +119,6 @@
 
 ***
 
-* [🎨 Media Kits](https://help.onekey.so/hc/articles/360002200956)
+* [🎨 Logo Assets](https://help.onekey.so/hc/articles/360002200956)
 * [👾 Join Discord](https://discord.com/invite/onekey)
 * [🧙 Support](https://help.onekey.so/)
