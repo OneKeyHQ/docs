@@ -4,7 +4,7 @@ Since OneKey makes cryptographic keys available to each user, websites can use t
 
 * [Authenticating websites](https://medium.com/hackernoon/writing-for-blockchain-wallet-signature-request-messages-6ede721160d5)
 
-### Signing Data with OneKey[#](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#signing-data-with-onekey) <a href="#signing-data-with-onekey" id="signing-data-with-onekey"></a>
+### Signing Data with OneKey <a href="#signing-data-with-onekey" id="signing-data-with-onekey"></a>
 
 If you’d like to jump to some working signature examples, [you can visit this repository](https://github.com/danfinlay/js-eth-personal-sign-examples).
 
@@ -12,7 +12,7 @@ If you’d like to read our JavaScript implementations of these methods, they ar
 
 Note that OneKey supports signing transactions with Trezor and Ledger hardware wallets. These hardware wallets currently only support signing data using the `personal_sign` method. If you have trouble logging in to a website or dapp when using a Ledger or Trezor, the site may be requesting you sign data via an unsupported method, in which case we recommend using your standard OneKey account.
 
-### A Brief History[#](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#a-brief-history) <a href="#a-brief-history" id="a-brief-history"></a>
+### A Brief History <a href="#a-brief-history" id="a-brief-history"></a>
 
 There are currently six signing methods in OneKey, and you might wonder the history of these methods. Studying the history of these methods has some lessons in it for the emergent lessons of decentralized standards emergence. Our current five methods are:
 
@@ -41,9 +41,9 @@ In the future, it may help to have method names include a hash of their exact pr
 
 I hope this has been a useful introduction to the history of our signing methods!
 
-### Sign Typed Data v1[#](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#sign-typed-data-v1) <a href="#sign-typed-data-v1" id="sign-typed-data-v1"></a>
+### Sign Typed Data v1 <a href="#sign-typed-data-v1" id="sign-typed-data-v1"></a>
 
-This early version of the spec lacked some later security improvements, and should generally be neglected in favor of [signTypedData\_v3](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#sign-typed-data-v3).
+This early version of the spec lacked some later security improvements, and should generally be neglected in favor of [signTypedData\_v3](signing-data.md).
 
 The `signTypedData` family has a few major design considerations:
 
@@ -53,7 +53,7 @@ The `signTypedData` family has a few major design considerations:
 
 If on-chain verifiability cost is a high priority for you, you might want to consider it.
 
-### Sign Typed Data v3[#](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#sign-typed-data-v3) <a href="#sign-typed-data-v3" id="sign-typed-data-v3"></a>
+### Sign Typed Data v3 <a href="#sign-typed-data-v3" id="sign-typed-data-v3"></a>
 
 The method `signTypedData_v3` currently represents the latest version of the [EIP-712 spec](https://eips.ethereum.org/EIPS/eip-712), making it the most secure method for signing cheap-to-verify data on-chain that we have yet.
 
@@ -61,7 +61,7 @@ This does not mean it is perfect, and we do already have a `v4` in prototype sta
 
 Hopefully soon we will also have good examples for parsing method input into structs for verification on-chain (great contribution opportunity!)
 
-### Sign Typed Data v4[#](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#sign-typed-data-v4) <a href="#sign-typed-data-v4" id="sign-typed-data-v4"></a>
+### Sign Typed Data v4 <a href="#sign-typed-data-v4" id="sign-typed-data-v4"></a>
 
 The method `signTypedData_v4` currently represents the latest version of the [EIP-712 spec](https://eips.ethereum.org/EIPS/eip-712), with added support for arrays and with a breaking fix for the way structs are encoded.
 
@@ -69,7 +69,7 @@ This does not mean it is perfect, and does not mean we will not eventually have 
 
 Hopefully soon we will also have good examples for parsing method input into structs for verification on-chain (great contribution opportunity!)
 
-#### Sign Typed Data Message Parameters[#](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#sign-typed-data-message-parameters) <a href="#sign-typed-data-message-parameters" id="sign-typed-data-message-parameters"></a>
+#### Sign Typed Data Message Parameters <a href="#sign-typed-data-message-parameters" id="sign-typed-data-message-parameters"></a>
 
 `domain`: The Domain or domain signature is important because it:
 
@@ -100,7 +100,7 @@ Hopefully soon we will also have good examples for parsing method input into str
 
 Below is an example of signing typed data with OneKey. Reference [here](https://github.com/danfinlay/js-eth-personal-sign-examples)
 
-#### Example[#](https://docs.onekey.so/en/Extension/API%20Reference/signing-data#example) <a href="#example" id="example"></a>
+#### Example <a href="#example" id="example"></a>
 
 ::::tabs :options="{ useUrlFragment: false }"
 
