@@ -45,6 +45,7 @@
   * [Start](connect-to-hardware/hardware-sdk/start.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
   * [API Reference](connect-to-hardware/hardware-sdk/api-reference/README.md)
+    * [Path](connect-to-hardware/hardware-sdk/api-reference/path.md)
     * [Calling Instructions](connect-to-hardware/hardware-sdk/api-reference/calling-instructions.md)
     * [General Parameters](connect-to-hardware/hardware-sdk/api-reference/general-parameters.md)
     * [Initialization](connect-to-hardware/hardware-sdk/api-reference/initialization.md)
