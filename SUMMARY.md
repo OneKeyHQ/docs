@@ -69,6 +69,7 @@
     * [btcVerifyMessage](connect-to-hardware/hardware-sdk/api-reference/btcverifymessage.md)
     * [btcSignTransaction](connect-to-hardware/hardware-sdk/api-reference/btcsigntransaction.md)
     * [deviceReset](connect-to-hardware/hardware-sdk/api-reference/devicereset.md)
+    * [deviceChangePin](connect-to-hardware/hardware-sdk/api-reference/devicechangepin.md)
 * [Hardware API](connect-to-hardware/hardware-api.md)
   * [Guide](connect-to-hardware/hardware-api/guide/README.md)
     * [Getting Started](connect-to-hardware/hardware-api/guide/getting-started.md)
