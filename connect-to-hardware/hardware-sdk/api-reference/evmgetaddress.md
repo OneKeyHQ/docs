@@ -14,7 +14,7 @@ const response = await HardwareSDK.evmGetAddress(connectId, deviceId, params)
 
 ### Params
 
-****[**Optional common params**](../../hardware-api/method-list/commonparams.md)****
+****[**Optional common params**](common-params.md)****
 
 **Exporting single address**
 
