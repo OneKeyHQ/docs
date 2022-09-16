@@ -2,7 +2,7 @@
 
 ## Request
 
-The generic entry for the method is referenced here: [Generic Parameters](general-parameters.md).
+The generic entry for the method is referenced here: [Generic Parameters](common-params.md).
 
 ## Response
 
