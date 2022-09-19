@@ -17,7 +17,7 @@ const result = await HardwareSDK.deviceChangePin(connectId, params);
 
 ```typescript
 HardwareSDK.deviceChangePin(connectId, {
-	remove: false
+    remove: false
 });
 ```
 
