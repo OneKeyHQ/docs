@@ -40,6 +40,9 @@
     * [FAQ](supported-chains/near/resources/faq.md)
 * [SOLANA](supported-chains/solana/README.md)
   * [Detecting the Provider](supported-chains/solana/detecting-the-provider.md)
+  * [Establishing a Connection](supported-chains/solana/establishing-a-connection.md)
+  * [Sending a Transaction](supported-chains/solana/sending-a-transaction.md)
+  * [Signing a Message](supported-chains/solana/signing-a-message.md)
 
 ## 📟 Connect to Hardware
 
