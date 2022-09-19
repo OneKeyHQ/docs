@@ -10,7 +10,7 @@ const result = await HardwareSDK.verifyMessage(connectId, deviceId, params);
 
 ### Params
 
-****[**Optional common params**](common-params.md)****
+****[**Optional common params**](../common-params.md)****
 
 * `address` - _required_ `string` signer address,
 * `messageHex` - _required_ `string` signed message from hex,

@@ -10,7 +10,7 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 
 ## Params
 
-****[**Optional common params**](common-params.md)****
+****[**Optional common params**](../common-params.md)****
 
 * `coin` - _required_ `string` Determines network definition specified in coins.json file. Coin `shortcut`, `name` or `label` can be used.
 * `inputs` - _required_ `Array` of TransactionInput,

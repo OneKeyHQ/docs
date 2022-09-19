@@ -1,4 +1,4 @@
-# EvmVerifyMessage
+# evmVerifyMessage
 
 ## Ethereum: verify message
 
@@ -12,7 +12,7 @@ const result = await HardwareSDK.evmVerifyMessage(connectId, deviceId, params);
 
 ## Params
 
-****[**Optional common params**](common-params.md)****
+****[**Optional common params**](../common-params.md)****
 
 * `address` - _required_ `string` signer address. "0x" prefix is optional
 * `messageHex` - _required_ `string` signed message in hex text

@@ -10,7 +10,7 @@ const result = await HardwareSDK.getPublicKey(connectId, deviceId, params);
 
 ## Params
 
-****[**Optional common params**](common-params.md)****
+****[**Optional common params**](../common-params.md)****
 
 ### Exporting single public key
 

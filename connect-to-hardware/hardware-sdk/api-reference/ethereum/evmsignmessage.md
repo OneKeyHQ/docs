@@ -1,4 +1,4 @@
-# EvmSignMessage
+# evmSignMessage
 
 ### Ethereum: sign message
 
@@ -10,7 +10,7 @@ const result = await HardwareSDK.evmSignMessage(connectId, deviceId, params);
 
 ### Params
 
-****[**Optional common params**](common-params.md)****
+****[**Optional common params**](../common-params.md)****
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `messageHex` - _required_ `string` message to sign in hex text

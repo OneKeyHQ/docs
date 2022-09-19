@@ -8,7 +8,7 @@ const result = await HardwareSDK.deviceSettings(connectId, params);
 
 ## Params
 
-****[**Optional common params**](common-params.md)\
+****[**Optional common params**](../common-params.md)\
 
 
 * `language` — _optional_ `string` Device language
