@@ -2,7 +2,7 @@
 
 ## RPC API
 
-OneKey uses the `onekey.request(args)` method to wrap an RPC API.
+OneKey uses the `window.$onekey.ethereum.request(args)` method to wrap an RPC API.
 
 The API is based on an interface exposed by all Ethereum clients, along with a growing number of methods that may or may not be supported by other wallets.
 
@@ -10,7 +10,7 @@ The API is based on an interface exposed by all Ethereum clients, along with a g
 
 **Tip**
 
-All RPC method requests can return errors. Make sure to handle errors for every call to `onekey.request(args)`.
+All RPC method requests can return errors. Make sure to handle errors for every call to `window.$onekey.ethereum.request(args)`.
 
 ### Ethereum JSON-RPC Methods <a href="#ethereum-json-rpc-methods" id="ethereum-json-rpc-methods"></a>
 
@@ -33,8 +33,11 @@ Currently, the only permission is `eth_accounts`, which allows you to access the
 Under the hood, permissions are plain, JSON-compatible objects, with a number of fields that are mostly used internally by OneKey. The following interface lists the fields that may be of interest to consumers:
 
 ```javascript
-interface Web3WalletPermission {  // The name of the method corresponding to the permission  parentCapability: string;
-  // The date the permission was granted, in UNIX epoch time  date?: number;}
+interface Web3WalletPermission {  
+  // The name of the method corresponding to the permission  parentCapability: string;
+  // The date the permission was granted, in UNIX epoch time  
+  date?: number;
+}
 ```
 
 The permissions system is implemented in the [`rpc-cap` package](https://github.com/onekeyhq/rpc-cap). If you're interested in learning more about the theory behind this _capability_-inspired permissions system, we encourage you to take a look at [EIP-2255](https://eips.ethereum.org/EIPS/eip-2255).
@@ -65,7 +68,18 @@ If you can't retrieve the user's account(s), you should encourage the user to in
 
 ```javascript
 document.getElementById('connectButton', connect);
-function connect() {  onekey    .request({ method: 'eth_requestAccounts' })    .then(handleAccountsChanged)    .catch((error) => {      if (error.code === 4001) {        // EIP-1193 userRejectedRequest error        console.log('Please connect to OneKey.');      } else {        console.error(error);      }    });}
+function connect() {  
+    window.$onekey.ethereum.request({ method: 'eth_requestAccounts' })
+        .then(handleAccountsChanged)
+        .catch((error) => {      
+            if (error.code === 4001) {        
+                // EIP-1193 userRejectedRequest error        
+                console.log('Please connect to OneKey.');      
+            } else {        
+                console.error(error);      
+            }    
+        });
+}
 ```
 
 #### wallet\_getPermissions <a href="#wallet_getpermissions" id="wallet_getpermissions"></a>
@@ -115,7 +129,28 @@ The request causes a OneKey popup to appear. You should only request permissions
 
 ```javascript
 document.getElementById('requestPermissionsButton', requestPermissions);
-function requestPermissions() {  onekey    .request({      method: 'wallet_requestPermissions',      params: [{ eth_accounts: {} }],    })    .then((permissions) => {      const accountsPermission = permissions.find(        (permission) => permission.parentCapability === 'eth_accounts'      );      if (accountsPermission) {        console.log('eth_accounts permission successfully requested!');      }    })    .catch((error) => {      if (error.code === 4001) {        // EIP-1193 userRejectedRequest error        console.log('Permissions needed to continue.');      } else {        console.error(error);      }    });}
+function requestPermissions() {  
+    window.$onekey.ethereum.request({      
+        method: 'wallet_requestPermissions',      
+        params: [{ eth_accounts: {} }],    
+    })    
+    .then((permissions) => {      
+        const accountsPermission = permissions.find(        
+            (permission) => permission.parentCapability === 'eth_accounts'      
+        );      
+        if (accountsPermission) {        
+            console.log('eth_accounts permission successfully requested!');      
+        }    
+    })    
+    .catch((error) => {      
+        if (error.code === 4001) {        
+            // EIP-1193 userRejectedRequest error        
+            console.log('Permissions needed to continue.');      
+        } else {        
+            console.error(error);      
+        }    
+    });
+}
 ```
 
 ### Other RPC Methods <a href="#other-rpc-methods" id="other-rpc-methods"></a>
@@ -147,7 +182,12 @@ See [`eth_getEncryptionPublicKey`](https://docs.onekey.so/en/Extension/API%20Ref
 **Example**
 
 ```javascript
-onekey  .request({    method: 'eth_decrypt',    params: [encryptedMessage, accounts[0]],  })  .then((decryptedMessage) =>    console.log('The decrypted message is:', decryptedMessage)  )  .catch((error) => console.log(error.message));
+window.$onekey.ethereum.request({    
+    method: 'eth_decrypt',    
+    params: [encryptedMessage, accounts[0]],  
+})
+.then((decryptedMessage) =>    console.log('The decrypted message is:', decryptedMessage)  )
+.catch((error) => console.log(error.message));
 ```
 
 #### eth\_getEncryptionPublicKey <a href="#eth_getencryptionpublickey" id="eth_getencryptionpublickey"></a>
@@ -177,7 +217,20 @@ The public key is computed from entropy associated with the specified user accou
 
 ```javascript
 let encryptionPublicKey;
-onekey  .request({    method: 'eth_getEncryptionPublicKey',    params: [accounts[0]], // you must have access to the specified account  })  .then((result) => {    encryptionPublicKey = result;  })  .catch((error) => {    if (error.code === 4001) {      // EIP-1193 userRejectedRequest error      console.log("We can't encrypt anything without the key.");    } else {      console.error(error);    }  });
+window.$onekey.ethereum.request({    
+    method: 'eth_getEncryptionPublicKey',    
+    params: [accounts[0]], 
+    // you must have access to the specified account  
+})  
+.then((result) => {    encryptionPublicKey = result;  })  
+.catch((error) => {    
+    if (error.code === 4001) {      
+        // EIP-1193 userRejectedRequest error      
+        console.log("We can't encrypt anything without the key.");    
+    } else {      
+        console.error(error);    
+    }  
+});
 ```
 
 **Encrypting**
