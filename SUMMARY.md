@@ -38,6 +38,8 @@
   * [Resources](supported-chains/near/resources/README.md)
     * [Example & Demo](supported-chains/near/resources/example-and-demo.md)
     * [FAQ](supported-chains/near/resources/faq.md)
+* [SOLANA](supported-chains/solana/README.md)
+  * [Detecting the Provider](supported-chains/solana/detecting-the-provider.md)
 
 ## 📟 Connect to Hardware
 
