@@ -9,3 +9,20 @@ To detect if OneKey is installed, an application should check for an additional 
 ```javascript
 const isOneKeyInstalled = window.$onekey?.solana?.isOneKey
 ```
+
+If OneKey is not installed, we recommend you redirect your users to [https://onekey.so/download/?client=browserExtension](https://onekey.so/zh\_CN/download/?client=browserExtension). Altogether, this may look like the following.
+
+```javascript
+const getProvider = () => {
+  if ('$onekey' in window) {
+    const provider = window.$onekey?.solana;
+
+    if (provider?.isOneKey) {
+      return provider;
+    }
+  }
+
+  window.open('https://onekey.so/download/?client=browserExtension', '_blank');
+};
+```
+
