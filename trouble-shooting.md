@@ -1,4 +1,4 @@
-# Trouble Shooting
+# 🕹 Trouble Shooting
 
 You can get in touch with our live developers in a number of ways.
 

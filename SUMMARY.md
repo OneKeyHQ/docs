@@ -151,4 +151,5 @@
 * [🎨 Logo Assets](https://help.onekey.so/hc/articles/360002200956)
 * [👾 Join Discord](https://discord.com/invite/onekey)
 * [🧙 Support](https://help.onekey.so/)
-* [Trouble Shooting](trouble-shooting.md)
+* [🕹 Trouble Shooting](trouble-shooting.md)
+* [❤ Contribute](contribute.md)
