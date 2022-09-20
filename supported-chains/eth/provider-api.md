@@ -1,6 +1,6 @@
 # Provider API
 
-OneKey Browser Extension injects a global API into websites visited by its users at `window.onekey`. This API allows websites to request users' Ethereum accounts, read data from blockchains the user is connected to, and suggest that the user sign messages and transactions. The presence of the provider object indicates an Ethereum user.
+OneKey Browser Extension injects a global API into websites visited by its users at `window.$onekey.ethereum`. This API allows websites to request users' Ethereum accounts, read data from blockchains the user is connected to, and suggest that the user sign messages and transactions. The presence of the provider object indicates an Ethereum user.
 
 We recommend using `typeof window !== 'undefined' && window.$onekey.ethereum` to detect our provider in browser.
 
@@ -19,7 +19,7 @@ if (typeof window !== 'undefined' && window.$onekey?.ethereum) {
 
 For any non-trivial Ethereum web application — a.k.a. dapp, web3 site etc. — to work, you will have to:
 
-* Detect the OneKey provider (`window.onekey`)
+* Detect the OneKey provider (`window.$onekey.ethereum`)
 * Detect which Ethereum network the user is connected to
 * Get the user's Ethereum account(s)
 
