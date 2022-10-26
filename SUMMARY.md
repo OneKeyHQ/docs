@@ -43,6 +43,8 @@
   * [Establishing a Connection](supported-chains/solana/establishing-a-connection.md)
   * [Sending a Transaction](supported-chains/solana/sending-a-transaction.md)
   * [Signing a Message](supported-chains/solana/signing-a-message.md)
+* [APTOS](supported-chains/aptos/README.md)
+  * [Wallet Connect API](supported-chains/aptos/wallet-connect-api.md)
 
 ## 📟 Connect to Hardware
 
