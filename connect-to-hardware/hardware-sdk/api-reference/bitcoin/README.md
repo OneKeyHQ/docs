@@ -1,5 +1,7 @@
 # Bitcoin
 
+### Method List
+
 * [btcGetAddress](btcgetaddress.md)
 * [btcGetPublicKey](btcgetpublickey.md)
 * [btcSignMessage](btcsignmessage.md)
