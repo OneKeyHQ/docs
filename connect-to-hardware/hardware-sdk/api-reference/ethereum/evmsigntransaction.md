@@ -2,7 +2,7 @@
 
 ### Ethereum: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on Trezor.
+Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
 
 ES6
 
@@ -23,9 +23,8 @@ const result = await HardwareSDK.evmSignTransaction(connectId, deviceId, params)
 
 If both parameters `maxFeePerGas` and `maxPriorityFeePerGas` are defined, transaction will be signed as the new type introduced in [EIP1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md).
 
-```typescript
-HardwareSDK.evmSignTransaction(connectId, deviceId, {
-    path: "m/44'/60'/0'",
+<pre class="language-typescript"><code class="lang-typescript"><strong>HardwareSDK.evmSignTransaction(connectId, deviceId, {
+</strong>    path: "m/44'/60'/0'",
     transaction: {
         to: '0xd0d6d6c5fe4a677d343cc433536bb717bae167dd',
         value: '0xf4240',
@@ -37,7 +36,7 @@ HardwareSDK.evmSignTransaction(connectId, deviceId, {
         gasLimit: '0x14',
     }
 });
-```
+</code></pre>
 
 Legacy
 
