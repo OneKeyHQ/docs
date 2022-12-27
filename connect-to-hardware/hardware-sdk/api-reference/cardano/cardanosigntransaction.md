@@ -37,9 +37,9 @@ CardanoSignTransaction type
 * `derivationType` — _optional_ `CardanoDerivationType` enum. Determines used derivation type. Default is set to ICARUS=1.
 * `includeNetworkId` — _optional_ `Boolean`. Determines whether `networkId` should be explicitly serialized into the transaction body. Default is `false`.
 
-#### [CardanoTxSigningMode](https://docs.trezor.io/trezor-suite/packages/connect/methods/cardanoSignTransaction.html#cardanotxsigningmode) <a href="#cardanotxsigningmode" id="cardanotxsigningmode"></a>
+#### CardanoTxSigningMode <a href="#cardanotxsigningmode" id="cardanotxsigningmode"></a>
 
-[**`ORDINARY_TRANSACTION`**](https://docs.trezor.io/trezor-suite/packages/connect/methods/cardanoSignTransaction.html#ordinary\_transaction)
+**`ORDINARY_TRANSACTION`**
 
 Represents an ordinary user transaction transferring funds, delegating stake or withdrawing rewards. The transaction will be witnessed by keys derived from paths included in the `inputs`, `certificates` and `withdrawals`. Additionaly, if token minting is present, transaction will also be witnessed by keys derived from paths included in `additionalWitnessRequests`.
 
@@ -52,7 +52,7 @@ The transaction
 * _may_ contain only 1852 and 1855 paths
 * _must not_ contain 1855 witness requests when transaction is not minting/burning tokens
 
-[**`POOL_REGISTRATION_AS_OWNER`**](https://docs.trezor.io/trezor-suite/packages/connect/methods/cardanoSignTransaction.html#pool\_registration\_as\_owner)
+**`POOL_REGISTRATION_AS_OWNER`**
 
 Represents pool registration from the perspective of pool owner.
 
@@ -68,7 +68,7 @@ The transaction
 
 These restrictions are in place due to a possibility of maliciously signing _another_ part of the transaction with the pool owner path as we are not displaying device-owned paths on the device screen.
 
-[**`MULTISIG_TRANSACTION`**](https://docs.trezor.io/trezor-suite/packages/connect/methods/cardanoSignTransaction.html#multisig\_transaction)
+**`MULTISIG_TRANSACTION`**
 
 Represents a multi-sig transaction using native scripts. The transaction will only be signed by keys derived from paths included in `additionalWitnessRequests`.
 
@@ -82,7 +82,7 @@ The transaction
 * _may_ contain only 1854 and 1855 witness requests
 * _must not_ contain 1855 witness requests when transaction is not minting/burning tokens
 
-[**`PLUTUS_TRANSACTION`**](https://docs.trezor.io/trezor-suite/packages/connect/methods/cardanoSignTransaction.html#plutus\_transaction)
+**`PLUTUS_TRANSACTION`**
 
 Represents a transactions containing Plutus script evaluation. The transaction will be witnessed by keys derived from paths included in the `inputs`, `certificates`, `withdrawals`, `collateralInputs`, `requiredSigners` and `additionalWitnessRequests`.
 
@@ -95,7 +95,7 @@ The transaction
 
 Note: `requiredSigners` are meant for Plutus transactions (from the blockchain point of view), but some applications utilize them for their own purposes, so we allow them in all signing modes (except for pool registration as owner).
 
-#### [Stake pool registration certificate specifics](https://docs.trezor.io/trezor-suite/packages/connect/methods/cardanoSignTransaction.html#stake-pool-registration-certificate-specifics) <a href="#stake-pool-registration-certificate-specifics" id="stake-pool-registration-certificate-specifics"></a>
+#### Stake pool registration certificate specifics <a href="#stake-pool-registration-certificate-specifics" id="stake-pool-registration-certificate-specifics"></a>
 
 OneKey supports signing of stake pool registration certificates as a pool owner. The transaction may contain external inputs (e.g. belonging to the pool operator) and OneKey is not able to verify whether they are actually external or not, so if we allowed signing the transaction with a spending key, there is the risk of losing funds from an input that the user did not intend to spend from. Moreover there is the risk of inadvertedly signing a withdrawal in the transaction if there's any. To mitigate those risks, we introduced special validation rules for stake pool registration transactions which are validated on OneKey as well. The validation rules are the following:
 
@@ -104,7 +104,7 @@ OneKey supports signing of stake pool registration certificates as a pool owner.
 3. The transaction inputs must all be external, i.e. path must be either undefined or null
 4. Exactly one owner should be passed as a staking path and the rest of owners should be passed as bech32-encoded reward addresses
 
-#### [Governance registration (Catalyst and other)](https://docs.trezor.io/trezor-suite/packages/connect/methods/cardanoSignTransaction.html#governance-registration-catalyst-and-other) <a href="#governance-registration-catalyst-and-other" id="governance-registration-catalyst-and-other"></a>
+#### Governance registration (Catalyst and other) <a href="#governance-registration-catalyst-and-other" id="governance-registration-catalyst-and-other"></a>
 
 OneKey supports signing transactions with auxiliary data containing a governance registration. Governance registrations used to follow [CIP-15](https://cips.cardano.org/cips/cip15/), which has been superseded by [CIP-36](https://cips.cardano.org/cips/cip36/). Currently, OneKey supports both CIP-15 and CIP-36 formats, the intended standard can be specified in the `format` field (with CIP-15 being the default). They differ in the following:
 

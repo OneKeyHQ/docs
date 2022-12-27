@@ -43,7 +43,7 @@ const response = await HardwareSDK.cardanoGetAddress(connectId, deviceId, params
 Display byron address of first cardano account:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.BYRON,
         path: "m/44'/1815'/0'/0/0",
@@ -56,7 +56,7 @@ HardwareSDK.cardanoGetAddress({
 Display base address of first cardano account:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.BASE,
         path: "m/1852'/1815'/0'/0/0",
@@ -70,7 +70,7 @@ HardwareSDK.cardanoGetAddress({
 Display base address with script payment part:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.BASE_SCRIPT_KEY,
         paymentScriptHash: '0d5acbf6a1dfb0c8724e60df314987315ccbf78bb6c0f9b6f3d568fe',
@@ -84,7 +84,7 @@ HardwareSDK.cardanoGetAddress({
 Display base address with script staking part:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.BASE_KEY_SCRIPT,
         path: "m/1852'/1815'/0'/0/0",
@@ -98,7 +98,7 @@ HardwareSDK.cardanoGetAddress({
 Display base address with both payment and staking part being a script:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.BASE_SCRIPT_SCRIPT,
         paymentScriptHash: '0d5acbf6a1dfb0c8724e60df314987315ccbf78bb6c0f9b6f3d568fe',
@@ -112,7 +112,7 @@ HardwareSDK.cardanoGetAddress({
 Display pointer address of first cardano account:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.POINTER,
         path: "m/1852'/1815'/0'/0/0",
@@ -130,7 +130,7 @@ HardwareSDK.cardanoGetAddress({
 Display pointer script address:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.POINTER_SCRIPT,
         paymentScriptHash: '0d5acbf6a1dfb0c8724e60df314987315ccbf78bb6c0f9b6f3d568fe',
@@ -148,7 +148,7 @@ HardwareSDK.cardanoGetAddress({
 Display enterprise address of first cardano account:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.ENTERPRISE,
         path: "m/1852'/1815'/0'/0/0",
@@ -161,7 +161,7 @@ HardwareSDK.cardanoGetAddress({
 Display enterprise script address:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.ENTERPRISE_SCRIPT,
         paymentScriptHash: '0d5acbf6a1dfb0c8724e60df314987315ccbf78bb6c0f9b6f3d568fe',
@@ -174,7 +174,7 @@ HardwareSDK.cardanoGetAddress({
 Display reward address of first cardano account:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.REWARD,
         stakingPath: "m/1852'/1815'/0'/0/0",
@@ -187,7 +187,7 @@ HardwareSDK.cardanoGetAddress({
 Display reward script address:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     addressParameters: {
         addressType: CardanoAddressType.REWARD_SCRIPT,
         stakingScriptHash: '8d7bebc7a58f1c7b5fb7c9391071ecd3b51b032695522f8c555343a9',
@@ -200,7 +200,7 @@ HardwareSDK.cardanoGetAddress({
 Return a bundle of cardano addresses without displaying them on device:
 
 ```javascript
-HardwareSDK.cardanoGetAddress({
+HardwareSDK.cardanoGetAddress(connectId, deviceId, {
     bundle: [
         // byron address, account 1, address 1
         {
