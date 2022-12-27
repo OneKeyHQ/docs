@@ -4,13 +4,9 @@
 
 Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
 
-{% tabs %}
-{% tab title="TypeScript" %}
 ```typescript
 const response = await HardwareSDK.algoGetAddress(connectId, deviceId, params)
 ```
-{% endtab %}
-{% endtabs %}
 
 ### Params
 
@@ -30,7 +26,7 @@ const response = await HardwareSDK.algoGetAddress(connectId, deviceId, params)
 Display address of first algorand account:
 
 ```typescript
-HardwareSDK.algoGetAddress({
+HardwareSDK.algoGetAddress(connectId, deviceId, {
     path: "m/44'/283'/0'/0/0"
 });
 ```
@@ -38,7 +34,7 @@ HardwareSDK.algoGetAddress({
 Return a bundle of algorand addresses without displaying them on device:
 
 ```typescript
-HardwareSDK.algoGetAddress({
+HardwareSDK.algoGetAddress(conenctId, deviceId, {
     bundle: [
         { path: "m/44'/283'/0'/0/0", showOnOneKey: false }, // account 1
         { path: "m/44'/283'/1'/0/0", showOnOneKey: false }, // account 2
