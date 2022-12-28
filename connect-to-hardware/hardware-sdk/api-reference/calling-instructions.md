@@ -2,7 +2,7 @@
 
 ## Request
 
-The generic entry for the method is referenced here: [Generic Parameters](common-params.md).
+Most methods need to be called with common params: [Common Params](common-params.md).
 
 ## Response
 
@@ -47,14 +47,11 @@ HardwareSDK.btcGetAddress('OneKey21042004483', '0B961C0007C7923D5B1D3341', {
 
 ```typescript
 {
-  event: "RESPONSE_EVENT",
-  id: 9,
   payload: {
     address: "12rZ8ma1fUaXpDw7Nw5adHSvkfKtqKjJ16",
     path: "m/44'/0'/0'/0/0" 
   },
-  success: true,
-  type: "RESPONSE_EVEN
+  success: true
 }
 ```
 
@@ -63,7 +60,7 @@ HardwareSDK.btcGetAddress('OneKey21042004483', '0B961C0007C7923D5B1D3341', {
 ```javascript
 {
   payload: {
-    code: 0,
+    code: -1,
     error: "Not a valid path"
   },
   success: false

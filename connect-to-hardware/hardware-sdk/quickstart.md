@@ -1,8 +1,6 @@
 # Quickstart
 
-
-
-## Install
+## &#x20;Installation
 
 {% tabs %}
 {% tab title="USB" %}
@@ -39,15 +37,13 @@ HardwareSDK.init({
 })
 ```
 
-## API Methods
+## API Reference
 
 * [Reference](api-reference/)
 
 ## Event
 
 * [Reference](event.md)
-
-
 
 ## Development
 

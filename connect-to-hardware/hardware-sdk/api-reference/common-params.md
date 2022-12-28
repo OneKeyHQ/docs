@@ -1,12 +1,10 @@
-# General Parameters
+# Common Params
 
 In the SDK method calls, there are three generic parameters: `connectId` , `deviceId` , `commonParams`.
 
-```javascript
+```typescript
 function call(connectId: string; deviceId: string; commonParams: CommonParams)
 ```
-
-
 
 The input parameters are obtained as follows:
 
