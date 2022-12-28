@@ -1,77 +1,63 @@
-# Get Device Information
+# getFeatures
 
-Get device details.
+## Get device features
 
-{% tabs %}
-{% tab title="TypeScript" %}
+Get all attributes of the device.
+
 ```typescript
-const result = await HardwareSDK.getFeatures(connectId);
+const response = await HardwareSDK.getFeatures(connectId);
 ```
-{% endtab %}
-{% endtabs %}
 
-## Attributes
+### Params
 
-| Name        | Instruction | Required | Type |
-| ----------- | ----------- | -------- | ---- |
-| `connectId` | Connect ID  | Yes      |      |
+****[**Optional common params**](common-params.md)****
 
-## Respond value
+### Example
 
-| Name                    | Instruction                  | Type      |
-| ----------------------- | ---------------------------- | --------- |
-| `initialized`           | Device initialization status | `Boolean` |
-| `ble_name`              | Bluetooth Name               | `String`  |
-| `ble_ver`               | Bluetooth firmware version   | `String`  |
-| `bootloader_version`    | bootloader version           | `String`  |
-| `deviceId`              | Device ID                    | `String`  |
-| `language`              | Language                     | `String`  |
-| `label`                 | Equipment Name               | `String`  |
-| `major_version`         | Major version number         | `Number`  |
-| `minor_version`         | Middle version number        | `Number`  |
-| `patch_version`         | Patch version number         | `Number`  |
-| `onekey_serial`         | Device Serial Number         | `String`  |
-| `onekey_version`        | Firmware Version             | `String`  |
-| `passphrase_protection` | Whether enable passphrase    | `Boolean` |
+```typescript
+const response = await HardwareSDK.getFeatures(connectId);
+```
 
-
-
-## Example
-
-Respond value example：
+Result
 
 ```typescript
 {
-  "event": "RESPONSE_EVENT",
-  "type": "RESPONSE_EVENT",
-  "id": 5,
-  "success": true,
-  "payload": {
-    "major_version": 1,
-    "minor_version": 99,
-    "patch_version": 99,
-    "bootloader_mode": null,
-    "device_id": "0B961C0007C7723D5E5E3361",
-    "pin_protection": true,
-    "passphrase_protection": false,
-    "language": "zh-CN",
-    "label": "EA2AA",
-    "initialized": true,
-    "model": "1",
-    "safety_checks": "Strict",
-    "auto_lock_delay_ms": null,
-    "display_rotation": null,
-    "experimental_features": null,
-    "offset": null,
-    "ble_name": "K4521",
-    "ble_ver": "1.2.1",
-    "ble_enable": true,
-    "se_enable": false,
-    "se_ver": "1.1.0.3",
-    "backup_only": false,
-    "onekey_version": "2.3.0",
-    "onekey_serial": "OneKey1042003983",
-    "bootloader_version": "1.8.8",
+    success: true,
+    payload: {
+        major_version: number, // major version number
+        minor_version: number, // middle version number
+        patch_version: number, // patch version number
+        bootloader_mode: null,
+        device_id: string,
+        pin_protection: boolean,
+        passphrase_protection: boolean, // enable passphrase
+        language: string,
+        label: string, // device name
+        initialized: boolean, // device initialization status
+        model: string,
+        safety_checks: string,
+        ble_name: string, // bluetooth name
+        ble_ver: string, // bluetooth firmware version
+        ble_enable: string,
+        se_enable: boolean,
+        se_ver: string,
+        backup_only: boolean,
+        onekey_version: string, // firmware Version
+        onekey_serial: string, // device Serial Number
+        bootloader_version: string, // bootloader version
   }
 }
 ```
+
+Error
+
+```typescript
+{
+    success: false,
+    payload: {
+        error: string, // error message
+        code: number // error code
+    }
+}
+```
+

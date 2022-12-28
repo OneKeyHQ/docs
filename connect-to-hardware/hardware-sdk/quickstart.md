@@ -1,4 +1,4 @@
-# Start
+# Quickstart
 
 
 
@@ -10,7 +10,8 @@
 </strong>npm install --save @onekeyfe/hd-web-sdk
 
 # Install via YARN
-yarn add @onekeyfe/hd-web-sdk</code></pre>
+yarn add @onekeyfe/hd-web-sdk
+</code></pre>
 {% endtab %}
 
 {% tab title="Bluetooth" %}
@@ -27,20 +28,16 @@ yarn add @onekeyfe/hd-ble-sdk
 
 ## Initialization
 
-{% tabs %}
-{% tab title="TypeScript" %}
 ```typescript
 import HardwareSDK from '@onekeyfe/hd-web-sdk';
 
 HardwareSDK.init({
   debug: true,
-  connectSrc: 'https://jssdk.onekey.so/0.1.26/' // 部署的 iframe 页面
+  // The official iframe page deployed by OneKey
+  // of course you can also deploy it yourself 
+  connectSrc: 'https://jssdk.onekey.so/0.1.26/'
 })
 ```
-{% endtab %}
-{% endtabs %}
-
-
 
 ## API Methods
 

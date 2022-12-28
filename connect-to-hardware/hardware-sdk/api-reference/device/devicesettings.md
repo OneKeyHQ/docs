@@ -1,5 +1,7 @@
 # deviceSettings
 
+## Device settings
+
 It is recommended to modify only one property when using it, as it needs to be confirmed on the device.
 
 ```typescript
@@ -8,8 +10,7 @@ const result = await HardwareSDK.deviceSettings(connectId, params);
 
 ## Params
 
-****[**Optional common params**](../common-params.md)\
-
+****[**Optional common params**](../common-params.md)
 
 * `language` — _optional_ `string` Device language
 * `label` — _optional_ `string` Device name
@@ -35,7 +36,7 @@ HardwareSDK.deviceSettings(connectId, {
 {
     success: true,
     payload: {
-        message: 'true'
+        message: string
     }
 }
 ```

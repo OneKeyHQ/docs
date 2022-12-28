@@ -1,18 +1,27 @@
 # Subscribe to Events
 
+## Events
+
 Subscribe to the SDK's events.
 
-{% tabs %}
-{% tab title="TypeScript" %}
 ```typescript
 HardwareSDK.on(event, callback);
 ```
-{% endtab %}
-{% endtabs %}
 
-## Attributes
+### Params
 
-| Name     | Instruction                                    | Required | Type       |
-| -------- | ---------------------------------------------- | -------- | ---------- |
-| event    | Event type, refer to [Event](broken-reference) | Yes      | `String`   |
-| callback | Callback functions                             | Yes      | `Function` |
+* `event` - _required `string`_ event type, refer to [Event](broken-reference)
+* `callback` - _required_ `function` callback functions
+
+### Example
+
+```typescript
+import HardwareSDK from '@onekeyfe/hd-web-sdk';
+import { DEVICE_EVENT, DEVICE } from '@onekeyfe/hd-core';
+
+HardwareSDK.on(DEVICE_EVENT, event => {
+  if (event.type === DEVICE.PIN) {
+    // Handle message with the input pin code
+  }
+});
+```

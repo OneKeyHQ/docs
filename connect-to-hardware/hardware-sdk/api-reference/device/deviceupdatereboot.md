@@ -1,5 +1,7 @@
 # deviceUpdateReboot
 
+## Reboot device
+
 Boot the device into bootloader mode
 
 ```typescript
@@ -8,8 +10,7 @@ const result = await HardwareSDK.deviceUpdateReboot(connectId);
 
 ## Params
 
-\
-empty
+* empty
 
 ## Example
 

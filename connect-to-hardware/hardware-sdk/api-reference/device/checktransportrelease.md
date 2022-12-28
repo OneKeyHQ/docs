@@ -1,39 +1,40 @@
-# Check Bridge Updates
+# checkTransportRelease
+
+## Check OneKey bridge release
 
 Check the version update status of the hardware connection tool `Bridge`.
 
-{% tabs %}
-{% tab title="TypeScript" %}
 ```typescript
-const result = await HardwareSDK.checkTransportRelease();
+const response = await HardwareSDK.checkTransportRelease();
 ```
-{% endtab %}
-{% endtabs %}
 
-## Attributes
+### Params
 
-| Name | Instruction | Required | Type |
-| ---- | ----------- | -------- | ---- |
-|      |             |          |      |
+* empty
 
-## Respond value
+### Example
 
-| Name      | Instruction                   | Type                    |
-| --------- | ----------------------------- | ----------------------- |
-| `payload` | Local `Bridge` Version Status | `'valid' \| 'outdated'` |
+```typescript
+const response = await HardwareSDK.checkTransportRelease();
+```
 
-
-
-## Example
-
-Respond value example：
+Result
 
 ```typescript
 {
-  "event": "RESPONSE_EVENT",
-  "type": "RESPONSE_EVENT",
-  "id": 11,
-  "success": true,
-  "payload": "valid"
+  success: true,
+  payload: string, // local bridge version status, 'valid' or 'outdated'
+}
+```
+
+Error
+
+```typescript
+{
+    success: false,
+    payload: {
+        error: string, // error message
+        code: number // error code
+    }
 }
 ```

@@ -1,6 +1,6 @@
 # deviceReset
 
-## reset device
+## Reset device
 
 Perform device setup and generate new seed.
 
@@ -35,7 +35,7 @@ HardwareSDK.resetDevice(connectId, {
 {
     success: true,
     payload: {
-        message: 'Device successfully initialized'
+        message: string
     }
 }
 ```

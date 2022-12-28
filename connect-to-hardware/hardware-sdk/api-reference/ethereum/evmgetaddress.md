@@ -4,13 +4,9 @@
 
 Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
 
-{% tabs %}
-{% tab title="TypeScript" %}
 ```typescript
 const response = await HardwareSDK.evmGetAddress(connectId, deviceId, params)
 ```
-{% endtab %}
-{% endtabs %}
 
 ### Params
 

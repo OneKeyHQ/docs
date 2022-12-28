@@ -1,12 +1,20 @@
 # Device
 
+### Method List
+
+* [checkBLEFirmwareRelease](checkblefirmwarerelease.md)
+* [checkBridgeStatus](checkbridgestatus.md)
+* [checkFirmwareRelease](checkfirmwarerelease.md)
+* [checkTransportRelease](checktransportrelease.md)
 * [deviceChangePin](devicechangepin.md)
 * [deviceReset](devicereset.md)
-* [deviceWipe](devicewipe.md)
+* [deviceSettings](devicesettings.md)
 * [deviceUpdateReboot](deviceupdatereboot.md)
 * [deviceVerify](deviceverify.md)
-* [deviceSettings](devicesettings.md)
+* [deviceWipe](devicewipe.md)
 * [firmwareUpdate](firmwareupdate.md)
-* [checkFirmwareRelease](checkfirmwarerelease.md)
-* [checkBLEFirmwareRelease](checkblefirmwarerelease.md)
+
+
+
+
 

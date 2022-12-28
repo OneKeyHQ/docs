@@ -1,5 +1,7 @@
 # deviceWipe
 
+## Wipe device
+
 Reset device to factory defaults and remove all private data.
 
 ```typescript
@@ -23,7 +25,7 @@ HardwareSDK.wipeDevice(connectId);
 {
     success: true,
     payload: {
-        message: 'Device wiped'
+        message: string
     }
 }
 ```

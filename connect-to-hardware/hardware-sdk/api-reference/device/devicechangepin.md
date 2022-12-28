@@ -1,5 +1,7 @@
 # deviceChangePin
 
+## Change device pin
+
 Change the device pin code.
 
 ```typescript
@@ -8,8 +10,7 @@ const result = await HardwareSDK.deviceChangePin(connectId, params);
 
 ## Params
 
-****[**Optional common params**](../common-params.md)\
-
+****[**Optional common params**](../common-params.md)
 
 * `remove` — _optional_ `boolean` request remove pin.
 
@@ -27,7 +28,7 @@ HardwareSDK.deviceChangePin(connectId, {
 {
     success: true,
     payload: {
-        message: 'true'
+        message: string
     }
 }
 ```

@@ -23,7 +23,7 @@ import HardwareSDK, { DEVICE_EVENT, DEVICE } from '@onekeyfe/hd-ble-sdk';
 
 HardwareSDK.on(DEVICE_EVENT, event => {
   if (event.type === DEVICE.PIN) {
-    // 处理输入 pin 码消息
+    // Handle message with the input pin code
   }
 });
 ```

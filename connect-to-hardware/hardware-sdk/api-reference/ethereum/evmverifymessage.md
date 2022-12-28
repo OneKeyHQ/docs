@@ -4,8 +4,6 @@
 
 Asks device to verify a message using the signer address and signature.
 
-ES6
-
 ```typescript
 const result = await HardwareSDK.evmVerifyMessage(connectId, deviceId, params);
 ```

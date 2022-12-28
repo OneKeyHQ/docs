@@ -1,30 +1,24 @@
-# Cancel Operation
+# cancel
+
+## Cancel command
 
 Cancels the execution of the currently active method and fires the `ui-close_window` event.
 
-{% tabs %}
-{% tab title="TypeScript" %}
 ```typescript
 HardwareSDK.cancel(connectId);
 ```
-{% endtab %}
-{% endtabs %}
 
-## Attributes
+### Params
 
-| Name      | Instruction | Required | Type |
-| --------- | ----------- | -------- | ---- |
-| connectId | Connect ID  | No       |      |
+****[**Optional common params**](common-params.md)****
 
-## Respond value
+### Examples
 
-| Name | Instruction | Type |
-| ---- | ----------- | ---- |
-| ``   | ``          | ``   |
+```typescript
+HardwareSDK.cancel(connectId);
+```
 
-## Example
-
-Respond value example：
+Result
 
 ```typescript
 undefined

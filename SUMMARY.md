@@ -49,7 +49,7 @@
 ## 📟 Connect to Hardware
 
 * [Hardware SDK](connect-to-hardware/page-1.md)
-  * [Start](connect-to-hardware/hardware-sdk/start.md)
+  * [Quickstart](connect-to-hardware/hardware-sdk/quickstart.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
   * [API Reference](connect-to-hardware/hardware-sdk/api-reference/README.md)
     * [Calling Instructions](connect-to-hardware/hardware-sdk/api-reference/calling-instructions.md)
@@ -59,7 +59,6 @@
     * [init](connect-to-hardware/hardware-sdk/api-reference/init.md)
     * [searchDevices](connect-to-hardware/hardware-sdk/api-reference/searchdevices.md)
     * [getFeatures](connect-to-hardware/hardware-sdk/api-reference/getfeatures.md)
-    * [checkBridgeStatus](connect-to-hardware/hardware-sdk/api-reference/checkbridgestatus.md)
     * [cancel](connect-to-hardware/hardware-sdk/api-reference/cancel.md)
     * [Algorand](connect-to-hardware/hardware-sdk/api-reference/algorand/README.md)
       * [algoGetAddress](connect-to-hardware/hardware-sdk/api-reference/algorand/algogetaddress.md)
@@ -91,6 +90,7 @@
       * [cosmosSignTransaction](connect-to-hardware/hardware-sdk/api-reference/cosmos/cosmossigntransaction.md)
     * [Device](connect-to-hardware/hardware-sdk/api-reference/device/README.md)
       * [checkBLEFirmwareRelease](connect-to-hardware/hardware-sdk/api-reference/device/checkblefirmwarerelease.md)
+      * [checkBridgeStatus](connect-to-hardware/hardware-sdk/api-reference/device/checkbridgestatus.md)
       * [checkFirmwareRelease](connect-to-hardware/hardware-sdk/api-reference/device/checkfirmwarerelease.md)
       * [checkTransportRelease](connect-to-hardware/hardware-sdk/api-reference/device/checktransportrelease.md)
       * [deviceChangePin](connect-to-hardware/hardware-sdk/api-reference/device/devicechangepin.md)

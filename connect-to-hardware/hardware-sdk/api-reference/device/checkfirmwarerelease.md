@@ -1,58 +1,49 @@
-# Check for Firmware Updates
+# checkFirmwareRelease
 
-Check the current firmware version status of the device.
+## Check firmware release
 
-{% tabs %}
-{% tab title="TypeScript" %}
+Check the current Bluetooth firmware version status of the device.
+
 ```typescript
-const result = await HardwareSDK.checkFirmwareRelease(connectId);
+const response = await HardwareSDK.checkBLEFirmwareRelease(connectId);
 ```
-{% endtab %}
-{% endtabs %}
 
-## Attributes
+### Params
 
-| Name      | Instruction | Required | Type |
-| --------- | ----------- | -------- | ---- |
-| connectId | Connect ID  | Yes      |      |
+[Optional common params](../common-params.md)
 
-## Respond Value
+### Example
 
-| Name        | Instruction                | Type                                                         |
-| ----------- | -------------------------- | ------------------------------------------------------------ |
-| `status`    | Current Firmware Status    | `'valid' \| 'outdated' \| 'required' \| 'unknown' \| 'none'` |
-| `changelog` | Update Logs                | `Object`                                                     |
-| `release`   | Latest version information | `Object`                                                     |
+```typescript
+const response = await HardwareSDK.checkFirmwareRelease(connectId);
+```
 
+Result
 
-
-## Example
-
-Respond Value Example：
-
-```javascript
+```typescript
 {
-  "event": "RESPONSE_EVENT",
-  "type": "RESPONSE_EVENT",
-  "id": 8,
-  "success": true,
-  "payload": {
-    "status": "valid",
-    "changelog": [],
-    "release": {
-      "required": false,
-      "version": [
-        2,
-        2,
-        0
-      ],
-      "url": "https://onekey-asset.com/onekey/hw/v2.2.0/classic.2.2.0-[Stable-0507-1].bin",
-      "fingerprint": "fbcb149427dd74c3fba48bcbe55799168f252a4e08c053aa2b98c78fba6ef8f7",
-      "changelog": {
-        "zh-CN": "支持 signTypedData 方法",
-        "en-US": "support signTypedData method"
-      }
+    success: true,
+    payload: {
+        status: string, // current firmware status, 'valid' | 'outdated' | 'required' | 'unknown' | 'none'
+        changelog: [], // update logs
+        release: {     // latest version information
+          required: boolean,
+          version: Array<number>,
+          url: string,
+          webUpdate: string,
+          changelog: Record<string, string>
     }
-  }
+}
+```
+
+Error
+
+```typescript
+{
+    success: false,
+    payload: {
+        error: string, // error message
+        code: number // error code
+    }
 }
 ```

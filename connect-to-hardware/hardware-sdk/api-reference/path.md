@@ -1,6 +1,6 @@
 # Path
 
-### Path
+## Path
 
 * `path` - `string | Array<number>` in [BIP44](https://github.com/OneKeyHQ/bixin-firmware/blob/bixin\_dev/docs/misc/coins-bip44-paths.md) path scheme or `Array` of hardended numbers.
 
