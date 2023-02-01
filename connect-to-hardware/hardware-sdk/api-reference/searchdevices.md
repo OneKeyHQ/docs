@@ -9,7 +9,7 @@ In the case of USB connections, the returned data already contains device detail
 In the case of Bluetooth device search, the data returned contains only the device name and device connectId, and the developer selects the device that needs to be paired before getting the device information.
 
 ```typescript
-const response = await HardwareSDK.searchDevice();
+const response = await HardwareSDK.searchDevices();
 ```
 
 ### Params
@@ -19,7 +19,7 @@ const response = await HardwareSDK.searchDevice();
 ### Example
 
 ```typescript
-HardwareSDK.searchDevice().then(result => {
+HardwareSDK.searchDevices().then(result => {
     console.log(`device list: ${result}`)
 });
 ```
