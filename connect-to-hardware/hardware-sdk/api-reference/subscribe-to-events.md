@@ -16,7 +16,7 @@ HardwareSDK.on(event, callback);
 ### Example
 
 ```typescript
-import HardwareSDK from '@onekeyfe/hd-web-sdk';
+import { HardwareWebSdk as HardwareSDK } from '@onekeyfe/hd-web-sdk';
 import { DEVICE_EVENT, DEVICE } from '@onekeyfe/hd-core';
 
 HardwareSDK.on(DEVICE_EVENT, event => {

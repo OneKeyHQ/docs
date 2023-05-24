@@ -27,7 +27,7 @@ yarn add @onekeyfe/hd-ble-sdk
 ## Initialization
 
 ```typescript
-import { HardwareSDK } from '@onekeyfe/hd-web-sdk';
+import { HardwareWebSdk as HardwareSDK } from '@onekeyfe/hd-web-sdk';
 
 HardwareSDK.init({
   debug: true,

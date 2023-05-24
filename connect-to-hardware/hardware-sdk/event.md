@@ -17,7 +17,7 @@ The `event` field is a classification of events, you can distinguish specific ev
 ## Subscribe to the event
 
 ```typescript
-import HardwareSDK, { DEVICE_EVENT, DEVICE } from '@onekeyfe/hd-web-sdk';
+import { HardwareWebSdk as HardwareSDK, DEVICE_EVENT, DEVICE } from '@onekeyfe/hd-web-sdk';
 // or
 import HardwareSDK, { DEVICE_EVENT, DEVICE } from '@onekeyfe/hd-ble-sdk';
 
