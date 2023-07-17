@@ -59,6 +59,7 @@
     * [init](connect-to-hardware/hardware-sdk/api-reference/init.md)
     * [searchDevices](connect-to-hardware/hardware-sdk/api-reference/searchdevices.md)
     * [getFeatures](connect-to-hardware/hardware-sdk/api-reference/getfeatures.md)
+    * [uiResponse](connect-to-hardware/hardware-sdk/api-reference/uiresponse.md)
     * [cancel](connect-to-hardware/hardware-sdk/api-reference/cancel.md)
     * [Algorand](connect-to-hardware/hardware-sdk/api-reference/algorand/README.md)
       * [algoGetAddress](connect-to-hardware/hardware-sdk/api-reference/algorand/algogetaddress.md)
