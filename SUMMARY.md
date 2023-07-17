@@ -89,6 +89,7 @@
       * [cosmosGetPublicKey](connect-to-hardware/hardware-sdk/api-reference/cosmos/cosmosgetpublickey.md)
       * [cosmosSignTransaction](connect-to-hardware/hardware-sdk/api-reference/cosmos/cosmossigntransaction.md)
     * [Device](connect-to-hardware/hardware-sdk/api-reference/device/README.md)
+      * [deviceSupportFeatures](connect-to-hardware/hardware-sdk/api-reference/device/devicesupportfeatures.md)
       * [checkBLEFirmwareRelease](connect-to-hardware/hardware-sdk/api-reference/device/checkblefirmwarerelease.md)
       * [checkBridgeStatus](connect-to-hardware/hardware-sdk/api-reference/device/checkbridgestatus.md)
       * [checkFirmwareRelease](connect-to-hardware/hardware-sdk/api-reference/device/checkfirmwarerelease.md)
