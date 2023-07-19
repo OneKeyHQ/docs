@@ -24,8 +24,8 @@ HardwareSDK.uiResponse({
 
 #### Return the Passphrase result
 
-```
-SDK.uiResponse({
+```typescript
+HardwareSDK.uiResponse({
   type: UI_RESPONSE.RECEIVE_PASSPHRASE,
   payload: {
     value: ${passphrase_value},
