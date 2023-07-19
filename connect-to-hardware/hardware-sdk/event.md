@@ -41,6 +41,8 @@ HardwareSDK.on(DEVICE_EVENT, event => {
 * `UI_EVENT`
   * `ui-request_pin`
   * `ui-receive_pin`
+  * `ui-request_passphrase`
+  * `ui-request_passphrase_on_device`
   * `ui-button`
   * `ui-close_window`
   * `ui-bluetooth_permission`
