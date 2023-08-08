@@ -59,6 +59,7 @@
     * [init](connect-to-hardware/hardware-sdk/api-reference/init.md)
     * [searchDevices](connect-to-hardware/hardware-sdk/api-reference/searchdevices.md)
     * [getFeatures](connect-to-hardware/hardware-sdk/api-reference/getfeatures.md)
+    * [getPassphraseState](connect-to-hardware/hardware-sdk/api-reference/getpassphrasestate.md)
     * [uiResponse](connect-to-hardware/hardware-sdk/api-reference/uiresponse.md)
     * [cancel](connect-to-hardware/hardware-sdk/api-reference/cancel.md)
     * [Algorand](connect-to-hardware/hardware-sdk/api-reference/algorand/README.md)
