@@ -5,12 +5,12 @@
 Asks device to sign a message using the private key derived by given BIP32 path.
 
 ```typescript
-const result = await HardwareSDK.signMessage(connectId, deviceId, params);
+const result = await HardwareSDK.btcSignMessage(connectId, deviceId, params);
 ```
 
 ## Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `messageHex` - _required_ `string` message from hex
@@ -19,7 +19,7 @@ const result = await HardwareSDK.signMessage(connectId, deviceId, params);
 ### Example
 
 ```typescript
-HardwareSDK.signMessage(connectId, deviceId, {
+HardwareSDK.btcSignMessage(connectId, deviceId, {
     path: "m/44'/0'/0'",
     messageHex: "6578616d706c65206d657373616765"
 });

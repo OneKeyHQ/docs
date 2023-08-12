@@ -5,12 +5,12 @@
 Asks device to verify a message using the signer address and signature.
 
 ```typescript
-const result = await HardwareSDK.verifyMessage(connectId, deviceId, params);
+const result = await HardwareSDK.btcVerifyMessage(connectId, deviceId, params);
 ```
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 * `address` - _required_ `string` signer address,
 * `messageHex` - _required_ `string` signed message from hex,
@@ -20,7 +20,7 @@ const result = await HardwareSDK.verifyMessage(connectId, deviceId, params);
 ### Example
 
 ```typescript
-HardwareSDK.verifyMessage(connectId, deviceId, {
+HardwareSDK.btcVerifyMessage(connectId, deviceId, {
     address: "3BD8TL6iShVzizQzvo789SuynEKGpLTms9",
     messageHex: "6578616d706c65206d657373616765"
     signature: "JO7vL3tOB1qQyfSeIVLvdEw9G1tCvL+lNj78XDAVM4t6UptADs3kXDTO2+2ZeEOLFL4/+wm+BBdSpo3kb3Cnsas=",

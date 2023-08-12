@@ -10,7 +10,7 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 
 ## Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 * `coin` - _required_ `string` Determines network definition specified in coins.json file. Coin `shortcut`, `name` or `label` can be used.
 * `inputs` - _required_ `Array` of TransactionInput,
@@ -29,7 +29,7 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 ### PAYTOADDRESS
 
 ```typescript
-HardwareSDK.signTransaction(connectId, deviceId, {
+HardwareSDK.btcSignTransaction(connectId, deviceId, {
     inputs: [
         {
             address_n: [(44 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
@@ -55,7 +55,7 @@ HardwareSDK.signTransaction(connectId, deviceId, {
 ### SPENDP2SHWITNESS
 
 ```typescript
-HardwareSDK.signTransaction({
+HardwareSDK.btcSignTransaction({
     inputs: [
         {
             address_n: [(49 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
@@ -83,7 +83,7 @@ HardwareSDK.signTransaction({
 ### PAYTOADDRESS with refTxs (transaction data provided from custom backend)
 
 ```typescript
-HardwareSDK.signTransaction({
+HardwareSDK.btcSignTransaction({
     inputs: [
         {
             address_n: [(44 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],

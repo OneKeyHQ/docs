@@ -5,12 +5,12 @@
 Display requested address derived by given BIP32 path on device and returns it to caller. User is asked to confirm the export on OneKey.
 
 ```typescript
-const result = await HardwareSDK.getAddress(connectId, deviceId, params);
+const result = await HardwareSDK.btcGetAddress(connectId, deviceId, params);
 ```
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 #### Exporting single address
 
@@ -22,14 +22,14 @@ const result = await HardwareSDK.getAddress(connectId, deviceId, params);
 
 #### Exporting bundle of addresses
 
-* `bundle` - `Array` of Objects with `path`, `showOnTrezor`, `coin` fields
+* `bundle` - `Array` of Objects with `path`, `showOnOneKey`, `coin` fields
 
 #### Example
 
 Display third address of first bitcoin account:
 
 ```typescript
-HardwareSDK.getAddress(connectId, deviceId, {
+HardwareSDK.btcGetAddress(connectId, deviceId, {
     path: "m/49'/0'/0'/0/2",
     coin: "btc"
 });
@@ -38,7 +38,7 @@ HardwareSDK.getAddress(connectId, deviceId, {
 Return a bundle of addresses from first bitcoin account without displaying them on device:
 
 ```typescript
-HardwareSDK.getAddress(connectId, deviceId, {
+HardwareSDK.btcGetAddress(connectId, deviceId, {
     bundle: [
         { path: "m/49'/0'/0'/0/0", showOnOneKey: false }, // address 1
         { path: "m/49'/0'/0'/0/1", showOnOneKey: false }, // address 2

@@ -5,12 +5,12 @@
 Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
 
 ```typescript
-const result = await HardwareSDK.getPublicKey(connectId, deviceId, params);
+const result = await HardwareSDK.btcGetPublicKey(connectId, deviceId, params);
 ```
 
 ## Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 ### Exporting single public key
 
@@ -28,7 +28,7 @@ const result = await HardwareSDK.getPublicKey(connectId, deviceId, params);
 Return public key of fifth bitcoin account:
 
 ```typescript
-HardwareSDK.getPublicKey(connectId, deviceId, {
+HardwareSDK.btcGetPublicKey(connectId, deviceId, {
     path: "m/49'/0'/4'",
     coin: "btc"
 });
@@ -37,7 +37,7 @@ HardwareSDK.getPublicKey(connectId, deviceId, {
 Return a bundle of public keys for multiple bitcoin accounts:
 
 ```typescript
-HardwareSDK.getPublicKey(connectId, deviceId, {
+HardwareSDK.btcGetPublicKey(connectId, deviceId, {
     bundle: [
         { path: "m/49'/0'/0'" }, // account 1
         { path: "m/49'/0'/1'" }, // account 2
