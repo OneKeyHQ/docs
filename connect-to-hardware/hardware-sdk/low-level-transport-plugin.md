@@ -27,3 +27,43 @@ export type LowlevelTransportSharedPlugin = {
 ### Example
 
 Here is an [iOS demo](https://github.com/originalix/Hardware-Lowlevel-Communicate) written in Swift. Bridging native side and SDK through a WebView. Handling connections and data transmission using CoreBluetooth.
+
+```typescript
+import HardwareSDK from '@onekeyfe/hd-common-connect-sdk'
+
+const settings = {
+  env: 'lowlevel', // LowlevelTransport requires the use of a lowlevel environment to be enabled.
+  debug: true 
+}
+
+const plugin = createLowlevelPlugin()
+
+HardwareSDK.init(settings, undefined, plugin)
+
+function createLowlevelPlugin() {
+  const plugin = {
+    enumerate: () => {
+      return Promise.resolve([{id: 'foo', name: 'bar'}])
+    },
+    send: (uuid, data) => {
+      // TODO: send data
+    },
+    receive: () => {
+      return Promise.resolve(result hex string)
+    },
+    connect: (uuid) => {
+      // TODO: connect device
+    },
+    disconnect: (uuid)  => {
+      // TODO: disconnect device
+    },
+
+    init: () => {
+      // TODO: do some init work
+    },
+
+    version: 'OneKey-1.0'
+  }
+  return plugin
+}
+```
