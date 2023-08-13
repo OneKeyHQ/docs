@@ -6,7 +6,7 @@ We provide a new communication method where you can use the LowlevelTransportPlu
 
 Since the Bluetooth data sent by the device is 64 bytes per packet, the receive method needs to externally determine whether a complete data packet has been received. You must return the complete data packet, otherwise the device will not be able to correctly parse the data.
 
-Refer to the Message protocol.
+Refer to the [Message protocol](onekey-message-protocol.md).
 
 ### LowlevelTransportSharedPlugin
 
