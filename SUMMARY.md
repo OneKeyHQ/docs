@@ -138,6 +138,8 @@
     * [Ripple](connect-to-hardware/hardware-sdk/api-reference/ripple/README.md)
       * [xrpGetAddress](connect-to-hardware/hardware-sdk/api-reference/ripple/xrpgetaddress.md)
       * [xrpSignTransaction](connect-to-hardware/hardware-sdk/api-reference/ripple/xrpsigntransaction.md)
+  * [Low-level transport plugin](connect-to-hardware/hardware-sdk/low-level-transport-plugin.md)
+  * [OneKey Message Protocol](connect-to-hardware/hardware-sdk/onekey-message-protocol.md)
 
 ## ⛳ Best Practice
 
