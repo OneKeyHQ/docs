@@ -31,15 +31,6 @@ Here is an [iOS demo](https://github.com/originalix/Hardware-Lowlevel-Communicat
 ```typescript
 import HardwareSDK from '@onekeyfe/hd-common-connect-sdk'
 
-const settings = {
-  env: 'lowlevel', // LowlevelTransport requires the use of a lowlevel environment to be enabled.
-  debug: true 
-}
-
-const plugin = createLowlevelPlugin()
-
-HardwareSDK.init(settings, undefined, plugin)
-
 function createLowlevelPlugin() {
   const plugin = {
     enumerate: () => {
@@ -66,4 +57,13 @@ function createLowlevelPlugin() {
   }
   return plugin
 }
+
+const plugin = createLowlevelPlugin()
+
+const settings = {
+  env: 'lowlevel', // LowlevelTransport requires the use of a lowlevel environment to be enabled.
+  debug: true 
+}
+
+HardwareSDK.init(settings, undefined, plugin)
 ```
