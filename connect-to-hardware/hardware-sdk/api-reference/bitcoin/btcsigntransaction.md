@@ -15,7 +15,7 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 * `coin` - _required_ `string` Determines network definition specified in coins.json file. Coin `shortcut`, `name` or `label` can be used.
 * `inputs` - _required_ `Array` of TransactionInput,
 * `outputs` - _required_ `Array` of TransactionOutput,
-* `refTxs` - _optional_ `Array` of RefTransaction. If you don't want to use build-in `blockbook` backend you can optionally provide those data from your own backend transformed to `Onekey` format. Since Firmware 2.3.0/1.9.0 referenced transactions are required. Zcash and Komodo refTxs should also contains `expiry`, `version_group_id` and `extra_data` fields.
+* `refTxs` - _required_ `Array` of RefTransaction. Zcash and Komodo refTxs should also contains `expiry`, `version_group_id` and `extra_data` fields.
 * `locktime` - _optional_ `number`,
 * `version` - _optional_ `number` transaction version,
 * `expiry` - _optional_ `number`, only for Decred and Zcash,
