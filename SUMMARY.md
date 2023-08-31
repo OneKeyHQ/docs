@@ -104,6 +104,7 @@
       * [deviceWipe](connect-to-hardware/hardware-sdk/api-reference/device/devicewipe.md)
       * [firmwareUpdate](connect-to-hardware/hardware-sdk/api-reference/device/firmwareupdate.md)
     * [Ethereum](connect-to-hardware/hardware-sdk/api-reference/ethereum/README.md)
+      * [evmGetPublicKey](connect-to-hardware/hardware-sdk/api-reference/ethereum/evmgetpublickey.md)
       * [evmGetAddress](connect-to-hardware/hardware-sdk/api-reference/ethereum/evmgetaddress.md)
       * [evmSignTransaction](connect-to-hardware/hardware-sdk/api-reference/ethereum/evmsigntransaction.md)
       * [evmSignTypedData](connect-to-hardware/hardware-sdk/api-reference/ethereum/evmsigntypeddata.md)
