@@ -52,6 +52,7 @@
   * [Quickstart](connect-to-hardware/hardware-sdk/quickstart.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
   * [API Reference](connect-to-hardware/hardware-sdk/api-reference/README.md)
+    * [Error Code](connect-to-hardware/hardware-sdk/api-reference/error-code.md)
     * [Calling Instructions](connect-to-hardware/hardware-sdk/api-reference/calling-instructions.md)
     * [Subscribe to Events](connect-to-hardware/hardware-sdk/api-reference/subscribe-to-events.md)
     * [Path](connect-to-hardware/hardware-sdk/api-reference/path.md)
