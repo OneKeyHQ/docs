@@ -51,6 +51,7 @@
 * [Hardware SDK](connect-to-hardware/page-1.md)
   * [Quickstart](connect-to-hardware/hardware-sdk/quickstart.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
+  * [Passphrase](connect-to-hardware/hardware-sdk/passphrase.md)
   * [API Reference](connect-to-hardware/hardware-sdk/api-reference/README.md)
     * [Error Code](connect-to-hardware/hardware-sdk/api-reference/error-code.md)
     * [Calling Instructions](connect-to-hardware/hardware-sdk/api-reference/calling-instructions.md)
