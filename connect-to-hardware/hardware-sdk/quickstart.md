@@ -33,7 +33,7 @@ HardwareSDK.init({
   debug: true,
   // The official iframe page deployed by OneKey
   // of course you can also deploy it yourself 
-  connectSrc: 'https://jssdk.onekey.so/0.3.2/'
+  connectSrc: 'https://jssdk.onekey.so/0.3.27/'
 })
 ```
 
