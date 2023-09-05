@@ -14,6 +14,7 @@ const result = await HardwareSDK.evmSignTransaction(connectId, deviceId, params)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
 * `transaction` - _required_ `Object` type of `EthereumTransactionEIP1559|EthereumSignTransaction` "0x" prefix for each field is optional
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain.
 
 ### Examples
 
@@ -32,7 +33,8 @@ If both parameters `maxFeePerGas` and `maxPriorityFeePerGas` are defined, transa
         maxFeePerGas: '0x14',
         maxPriorityFeePerGas: '0x0',
         gasLimit: '0x14',
-    }
+    },
+    chainId: 1
 });
 </code></pre>
 
@@ -49,7 +51,8 @@ HardwareSDK.evmSignTransaction(connectId, deviceId, {
         nonce: "0x0",
         gasLimit: "0x5208",
         gasPrice: "0xbebc200"
-    }
+    },
+    chainId: 1
 });
 ```
 

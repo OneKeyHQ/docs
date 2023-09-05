@@ -10,12 +10,13 @@ const response = await HardwareSDK.evmGetAddress(connectId, deviceId, params)
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 **Exporting single address**
 
 * `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain.
 
 **Exporting bundle of addresses**
 
@@ -27,7 +28,8 @@ Display address of first ethereum account:
 
 ```typescript
 HardwareSDK.evmGetAddress({
-    path: "m/44'/60'/0'/0/0"
+    path: "m/44'/60'/0'/0/0",
+    chainId: 1
 });
 ```
 
@@ -36,9 +38,9 @@ Return a bundle of ethereum addresses without displaying them on device:
 ```typescript
 HardwareSDK.evmGetAddress({
     bundle: [
-        { path: "m/44'/60'/0'/0/0", showOnOneKey: false }, // account 1
-        { path: "m/44'/60'/1'/0/0", showOnOneKey: false }, // account 2
-        { path: "m/44'/60'/2'/0/0", showOnOneKey: false }  // account 3
+        { path: "m/44'/60'/0'/0/0", chainId: 1, showOnOneKey: false }, // account 1
+        { path: "m/44'/60'/1'/0/0", chainId: 1, showOnOneKey: false }, // account 2
+        { path: "m/44'/60'/2'/0/0", chainId: 1, showOnOneKey: false }  // account 3
     ]
 });
 ```
