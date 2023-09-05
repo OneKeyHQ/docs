@@ -38,7 +38,7 @@ HardwareSDK.on(UI_EVENT, (message: CoreMessage) => {
       payload: {
         value: '',
         passphraseOnDevice: true,
-        save: true,
+        save: false,
       },
     });
   }
