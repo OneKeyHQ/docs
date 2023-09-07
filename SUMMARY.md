@@ -133,6 +133,7 @@
     * [Sui](connect-to-hardware/hardware-sdk/api-reference/sui/README.md)
       * [suiGetAddress](connect-to-hardware/hardware-sdk/api-reference/sui/suigetaddress.md)
       * [suiGetPublicKey](connect-to-hardware/hardware-sdk/api-reference/sui/suigetpublickey.md)
+      * [suiSignMessage](connect-to-hardware/hardware-sdk/api-reference/sui/suisignmessage.md)
       * [suiSignTransaction](connect-to-hardware/hardware-sdk/api-reference/sui/suisigntransaction.md)
     * [TRON](connect-to-hardware/hardware-sdk/api-reference/tron/README.md)
       * [tronGetAddress](connect-to-hardware/hardware-sdk/api-reference/tron/trongetaddress.md)
