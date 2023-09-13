@@ -42,11 +42,17 @@ import { HardwareWebSdk as HardwareSDK } from '@onekeyfe/hd-web-sdk';
 
 HardwareSDK.init({
   debug: true,
-  // The official iframe page deployed by OneKey
-  // of course you can also deploy it yourself 
-  connectSrc: 'https://jssdk.onekey.so/0.3.27/'
+  connectSrc: 'https://jssdk.onekey.so/0.3.30/'
 })
 ```
+
+**connectSrc**: The official web page deployed by OneKey is used to create an iframe on the page to communicate with OneKey Bridge.&#x20;
+
+The complete link to the web page is [`https://jssdk.onekey.so/0.3.30/iframe.html`](https://jssdk.onekey.so/0.3.30/iframe.html).
+
+Normally, the number after the URL should match the version number of the SDK you installed. For example, “0.3.30” in this case.
+
+If encountering issues with the web page failing to load for the corresponding version number, please try using a different version of the SDK or submit an issue on [GitHub](https://github.com/OneKeyHQ/hardware-js-sdk/issues) for feedback. We will work quickly to resolve the problem.
 
 ## API Reference
 
