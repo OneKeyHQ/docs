@@ -3,7 +3,7 @@
 ## &#x20;Installation
 
 {% tabs %}
-{% tab title="USB" %}
+{% tab title="Web" %}
 <pre class="language-shell"><code class="lang-shell"><strong># Install via NPM
 </strong>npm install --save @onekeyfe/hd-web-sdk
 
@@ -20,6 +20,17 @@ npm install --save @onekeyfe/hd-ble-sdk
 
 # Install via YARN
 yarn add @onekeyfe/hd-ble-sdk
+```
+{% endtab %}
+
+{% tab title="Nodejs / iOS Native / Android Native / Flutter" %}
+```typescript
+
+# Install via NPM
+npm install --save @onekeyfe/hd-common-connect-sdk
+
+# Install via YARN
+yarn add @onekeyfe/hd-common-connect-sdk
 ```
 {% endtab %}
 {% endtabs %}
