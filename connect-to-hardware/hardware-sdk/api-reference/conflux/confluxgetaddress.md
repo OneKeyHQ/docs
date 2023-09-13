@@ -16,7 +16,7 @@ const response = await HardwareSDK.confluxGetAddress(connectId, deviceId, params
 
 * `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
-* `chainId` - _optional  `number` _ of the id of the chain
+* `chainId` - _optional  `number`_ of the id of the chain
 
 **Exporting bundle of addresses**
 

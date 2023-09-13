@@ -46,7 +46,7 @@ walletConnector.sendCustomRequest({ method: "account" })
 ```
 {% endcode %}
 
-****
+
 
 ### **network**
 
@@ -64,7 +64,7 @@ walletConnector.sendCustomRequest({ method: "network" })
 ```
 {% endcode %}
 
-****
+
 
 ### **getChainId**
 
@@ -82,12 +82,12 @@ walletConnector.sendCustomRequest({ method: "getChainId" })
 ```
 {% endcode %}
 
-****
+
 
 ### signAndSubmitTransaction
 
 **Request**\
-****Example Transaction, following an [EntryFunctionPayload](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/typescript/sdk/src/generated/models/EntryFunctionPayload.ts#L8-L21)
+Example Transaction, following an [EntryFunctionPayload](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/typescript/sdk/src/generated/models/EntryFunctionPayload.ts#L8-L21)
 
 {% code overflow="wrap" %}
 ```
@@ -192,13 +192,13 @@ export interface SignMessageResponse {
 ```
 {% endcode %}
 
-****
+
 
 ## **Event**
 
 **Todo**
 
-****
+
 
 ## Example
 
@@ -206,4 +206,3 @@ export interface SignMessageResponse {
 
 
 
-****

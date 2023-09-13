@@ -49,7 +49,7 @@
 ## 📟 Connect to Hardware
 
 * [Hardware SDK](connect-to-hardware/page-1.md)
-  * [Tutorial: Get started with OneKey](connect-to-hardware/hardware-sdk/tutorial-get-started-with-onekey.md)
+  * [Tutorial: Get started with OneKey](connect-to-hardware/hardware-sdk/tutorial.md)
   * [Quickstart](connect-to-hardware/hardware-sdk/quickstart.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
   * [Passphrase](connect-to-hardware/hardware-sdk/passphrase.md)

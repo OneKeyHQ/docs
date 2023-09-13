@@ -49,7 +49,7 @@ Currently there are a few stateful things to consider when interacting with this
 * What is the current network?
 * What is the current account?
 
-Both of these are available synchronously as `onekey.networkVersion` and `onekey.selectedAddress`. You can listen for changes using events too, see ([the API reference](https://app.gitbook.com/s/MLekF6KKtvSaULC7gUFY/)).
+Both of these are available synchronously as `onekey.networkVersion` and `onekey.selectedAddress`. You can listen for changes using events too, see ([the API reference](http://127.0.0.1:5000/s/MLekF6KKtvSaULC7gUFY/)).
 
 #### Connecting to OneKey <a href="#connecting-to-onekey" id="connecting-to-onekey"></a>
 

@@ -10,14 +10,14 @@ const result = await HardwareSDK.aptosSignMessage(connectId, deviceId, params);
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `payload` - `AptosMessagePayload` type
-  * `address` - _optional  `string` _ of __ path Derived address
-  * `chainId` - _optional  `string` _ of the id of the chain
-  * `application` - _optional  `string` _ of DApp web site url
-  * `nonce` - _required  `string` _ of random number
+  * `address` - _optional  `string`_ of path Derived address
+  * `chainId` - _optional  `string`_ of the id of the chain
+  * `application` - _optional  `string`_ of DApp web site url
+  * `nonce` - _required  `string`_ of random number
   * `message` - _required_ `string` message to sign text
 
 ### Example

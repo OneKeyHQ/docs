@@ -36,7 +36,7 @@ HardwareSDK.init({
 })
 ```
 
-* Proceed to the [next step](tutorial-get-started-with-onekey.md#subscribe-ui-event).
+* Proceed to the [next step](tutorial.md#subscribe-ui-event).
 
 #### React Native
 
@@ -56,7 +56,7 @@ HardwareSDK.init({
 })
 ```
 
-* Proceed to the [next step](tutorial-get-started-with-onekey.md#subscribe-ui-event).
+* Proceed to the [next step](tutorial.md#subscribe-ui-event).
 
 #### Node.js
 
@@ -77,7 +77,7 @@ HardwareSDK.init({
 })
 ```
 
-* Proceed to the [next step](tutorial-get-started-with-onekey.md#subscribe-ui-event).
+* Proceed to the [next step](tutorial.md#subscribe-ui-event).
 
 #### iOS Native / Android Native / Flutter / Other platform
 
@@ -177,7 +177,7 @@ const settings = {
 HardwareSDK.init(settings, undefined, plugin)
 ```
 
-* Proceed to the [next step](tutorial-get-started-with-onekey.md#subscribe-ui-event).
+* Proceed to the [next step](tutorial.md#subscribe-ui-event).
 
 ### Subscribe UI event <a href="#subscribe-ui-event" id="subscribe-ui-event"></a>
 
