@@ -73,7 +73,7 @@ import HardwareSDK from '@onekeyfe/hd-common-connect-sdk';
 
 HardwareSDK.init({
   debug: true,
-	env: 'node'
+  env: 'node'
 })
 ```
 
