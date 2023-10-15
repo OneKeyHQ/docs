@@ -54,7 +54,7 @@ console.log('bitcoin address: ', response)
 
 #### Enter the passphrase in the software
 
-You can prompt the user to quickly input the passphrase by popping up an input box after the UI event trigger of passphrase, which can enhance user experience.
+You can prompt the user to quickly input the passphrase by popping up an input box after the UI event trigger of passphrase. Entering the Passphrase in the software is not recommended. While it can improve user input experience, it compromises some security aspects.
 
 You only need to return the result of passphrase through the uiResponse API like this.
 
@@ -63,7 +63,7 @@ HardwareSDK.uiResponse({
   type: UI_RESPONSE.RECEIVE_PASSPHRASE,
     payload: {
     value: '${user's passphrase}',
-    passphraseOnDevice: true,
+    passphraseOnDevice: false,
     save: true,
    },
 });
