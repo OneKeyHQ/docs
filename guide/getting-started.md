@@ -8,7 +8,7 @@ To develop for OneKey Browser Extension or Mobile Apps, Please install it on you
 This guide assumes intermediate knowledge of HTML, CSS, and JavaScript.
 {% endhint %}
 
-Once OneKey is installed and running, you should find that new browser tabs have a `window.onekey` object available in the developer console. This is how your website will interact with OneKey.
+Once OneKey is installed and running, you should find that new browser tabs have a `window.$onekey` object available in the developer console. This is how your website will interact with OneKey.
 
 You can review the full API for that object here.
 
@@ -19,10 +19,10 @@ You can review the full API for that object here.
 To verify if the browser is running OneKey Browser Extension, copy and paste the code snippet below in the developer console of your web browser:
 
 ```javascript
-if (typeof window !== 'undefined' && window.onekey) {  console.log('OneKey is installed!');}
+if (typeof window !== 'undefined' && window.$onekey) {  console.log('OneKey is installed!');}
 ```
 
-You can review the full API for the `window.onekey` object here.
+You can review the full API for the `window.$onekey` object here.
 
 #### Running a Test Network <a href="#running-a-test-network" id="running-a-test-network"></a>
 
@@ -40,7 +40,7 @@ To clear OneKey Browser Extension's transaction queue, and effectively reset its
 
 #### Detecting OneKey <a href="#detecting-onekey" id="detecting-onekey"></a>
 
-If you want to differentiate OneKey Browser Extension from other ethereum-compatible browsers, you can detect OneKey Browser Extension using `window.onekey`.
+If you want to differentiate OneKey Browser Extension from other ethereum-compatible browsers, you can detect OneKey Browser Extension using `window.$onekey`.
 
 #### User State <a href="#user-state" id="user-state"></a>
 
