@@ -17,7 +17,7 @@ const result = await HardwareSDK.evmSignTypedData(connectId, deviceId, params);
 * `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
 * `data` - _required_ `Object` type of `EthereumSignTypedDataMessage`\`. A JSON Schema definition can be found in the EIP-712 spec.
 * `metamaskV4Compat` - _required_ `boolean` set to `true` for compatibility with [MetaMask's signTypedData\_v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4).
-* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain.
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;
 
 ### Blind signing
 
@@ -25,6 +25,13 @@ You may also wish to contruct your own hashes using a different library.
 
 * `domainHash` - _required_ `string` hex-encoded 32-byte hash of the EIP-712 domain.
 * `messageHash` - _optional_ `string` hex-encoded 32-byte hash of the EIP-712 message. This is optional for the domain-only hashes where `primaryType` is `EIP712Domain`.
+
+#### When is the blind signing
+
+* Use Mini or Classic.
+* There are arrays nested in data.
+* Firmware version is less than 4.4.0, and the data size is greater than 1KB.
+* Firmware version is greater than or equal to 4.4.0 and the data size is greater than 1.5KB.
 
 ### Example
 

@@ -1,5 +1,11 @@
 # algoSignTransaction
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 3.0.0
+  * Classic/Mini: 2.6.0
+
 ## Algorand: Sign transaction
 
 Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
@@ -10,7 +16,7 @@ const result = await HardwareSDK.algoSignTransaction(connectId, deviceId, params
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `rawTx` - _required_ `string` type of serialized transaction string.

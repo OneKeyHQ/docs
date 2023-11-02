@@ -1,5 +1,11 @@
 # confluxSignTransaction
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 3.0.0
+  * Classic/Mini: 2.4.0
+
 ### Conflux: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
 
 Asks device to sign given transaction. User is asked to confirm all transaction details on OneKey.

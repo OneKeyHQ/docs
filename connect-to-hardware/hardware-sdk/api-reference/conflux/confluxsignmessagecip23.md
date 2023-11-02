@@ -1,12 +1,18 @@
 # confluxSignMessageCIP23
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 3.0.0
+  * Classic/Mini: 2.4.0
+
 ## Conflux: sign message CIP23 <a href="#ethereum-sign-message" id="ethereum-sign-message"></a>
 
 Asks device to sign a message using the private key derived by given BIP32 path.This method follows the [CIP23](https://github.com/Conflux-Chain/CIPs/blob/master/CIPs/cip-23.md) specification implementation
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `messageHash` - _required_ `string` message to sign in hex text

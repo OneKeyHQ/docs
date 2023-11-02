@@ -14,7 +14,7 @@ const result = await HardwareSDK.evmSignMessage(connectId, deviceId, params);
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
 * `messageHex` - _required_ `string` message to sign in hex text
-* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain.
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;
 
 ### Example
 

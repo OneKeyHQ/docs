@@ -1,5 +1,11 @@
 # cardanoGetPublicKey
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 4.1.0
+  * Classic/Mini: 3.0.0
+
 ## Cardano: get public key
 
 Retrieves BIP32-Ed25529 extended public derived by given BIP32-Ed25519 path. User is presented with a description of the requested key and asked to confirm the export.
@@ -10,7 +16,7 @@ const result = await HardwareSDK.cardanoGetPublicKey(connectId, deviceId, params
 
 ## Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 ### Exporting single public key
 

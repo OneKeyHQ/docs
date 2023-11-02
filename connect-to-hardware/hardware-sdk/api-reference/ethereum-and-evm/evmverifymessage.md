@@ -15,7 +15,7 @@ const result = await HardwareSDK.evmVerifyMessage(connectId, deviceId, params);
 * `address` - _required_ `string` signer address. "0x" prefix is optional
 * `messageHex` - _required_ `string` signed message in hex text
 * `signature` - _required_ `string` signature in hexadecimal format. "0x" prefix is optional
-* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain.
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;
 
 ## Example
 

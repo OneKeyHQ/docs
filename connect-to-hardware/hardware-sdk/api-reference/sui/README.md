@@ -4,4 +4,5 @@
 
 * [suiGetAddress](suigetaddress.md)
 * [suiGetPublicKey](suigetpublickey.md)
+* [suiSignMessage](suisignmessage.md)
 * [suiSignTransaction](suisigntransaction.md)

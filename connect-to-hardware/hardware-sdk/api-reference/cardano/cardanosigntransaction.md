@@ -1,5 +1,11 @@
 # cardanoSignTransaction
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 4.1.0
+  * Classic/Mini: 3.0.0
+
 ### Cardano: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
 
 Asks device to sign given transaction. User is asked to confirm all transaction details on OneKey.

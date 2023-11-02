@@ -4,7 +4,7 @@ Words are Hard
 
 This is a list of terms you might encounter when using the OneKey interface.
 
-
+***
 
 #### Wallet <a href="#wallet" id="wallet"></a>
 

@@ -1,5 +1,11 @@
 # cosmosGetPublicKey
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 4.0.0
+  * Classic/Mini: 2.10.0
+
 ## Cosmos: get public key
 
 Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
@@ -10,7 +16,7 @@ const result = await HardwareSDK.cosmosGetPublicKey(connectId, deviceId, params)
 
 ## Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 ### Exporting single public key
 

@@ -1,5 +1,11 @@
 # confluxGetAddress
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 3.0.0
+  * Classic/Mini: 2.4.0
+
 ## Conflux: get address
 
 Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.

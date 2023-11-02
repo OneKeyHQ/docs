@@ -24,7 +24,18 @@ const result = await HardwareSDK.btcGetAddress(connectId, deviceId, params);
 
 * `bundle` - `Array` of Objects with `path`, `showOnOneKey`, `coin` fields
 
-#### Example
+### Get different types of addresses
+
+获取不同类型的 BTC 地址需要不同的 Path 参数。
+
+| Type                | Path            | Eg.                                                          |
+| ------------------- | --------------- | ------------------------------------------------------------ |
+| Legacy BIP44        | m/44'/0'/x'/x/x | It starts with a "1" and consists of 26 to 35 characters     |
+| Nested SegWit BIP49 | m/49'/0'/x'/x/x | It starts with a "3" and consists of 26 to 35 characters     |
+| Native SegWit BIP84 | m/84'/0'/x'/x/x | Start with "bc1" or "tb1" and consist of 41 to 62 characters |
+| Taproot BIP86       | m/86'/0'/x'/x/x | It starts with "bc1" and consists of 41 to 62 characters     |
+
+## Example
 
 Display third address of first bitcoin account:
 

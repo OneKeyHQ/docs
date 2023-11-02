@@ -1,17 +1,17 @@
-# cosmosSignTransaction
+# polkadotSignTransaction
 
-## Use requirement
+### Use requirement
 
 * Firmware version required
-  * Touch: 4.0.0
-  * Classic/Mini: 2.10.0
+  * Touch: 4.3.0
+  * Classic/Mini: 3.0.0
 
-## Cosmos: Sign transaction
+## Polkadot: Sign transaction
 
 Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
 
 ```typescript
-const result = await HardwareSDK.cosmosSignTransaction(connectId, deviceId, params);
+const result = await HardwareSDK.polkadotSignTransaction(connectId, deviceId, params);
 ```
 
 ### Params
@@ -24,12 +24,12 @@ const result = await HardwareSDK.cosmosSignTransaction(connectId, deviceId, para
 ### Examples
 
 ```typescript
-const response = await HardwareSDK.aptosSignTransaction(
+const response = await HardwareSDK.polkadotSignTransaction(
   connectId,
   deviceId,
   {
-    path: "m/44'/118'/0'/0/0",
-    rawTx: "4301355cc18d85809872bcbd63cb6ea5ac3c2814a1bacf2e50d8ec62367211917b79ecd1f1a98fa0d793d7cb92ebd9a479dc6aba0ae8570253aa87c0da32db5ed2bd401f3bbee52c2bc55761fd8486fae2e28f46499282f4267b8b90fc8c1cc97bb659b6cc927f2ec1701ef2928ddb84759ba5c557f549db"
+    path: "m/44'/354'/0'/0'/0'",
+    rawTx: "040300388671dd546ba19495211c8cdc200600f9798cf078fca0fb4749ebbc0579c12a0700e40b5402350128009a24000012000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee356a704dbe75762aaae87b0f4702aafd09e67eed5d09a3a4b0e7da6c37b6f54"
   }
 );
 ```
@@ -40,8 +40,8 @@ Result
 {
   success: true,
   payload: {
-    path: "m/44'/118'/0'/0/0",
-    signature: string.
+    path: "m/44'/354'/0'/0'/0'",
+    signature: "signed data"
   }
 }
 ```

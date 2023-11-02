@@ -1,5 +1,11 @@
 # cardanoGetAddress
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 4.1.0
+  * Classic/Mini: 3.0.0
+
 ## Cardano: get address
 
 Display requested address derived by given BIP32-Ed25519 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.

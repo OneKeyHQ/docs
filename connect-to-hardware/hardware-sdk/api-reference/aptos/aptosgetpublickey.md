@@ -1,5 +1,11 @@
 # aptosGetPublicKey
 
+## Use requirement
+
+* Firmware version required
+  * Touch: 3.0.0
+  * Classic/Mini: 2.6.0
+
 ## Aptos: get public key
 
 Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
@@ -10,7 +16,7 @@ const result = await HardwareSDK.aptosGetPublicKey(connectId, deviceId, params);
 
 ## Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
 ### Exporting single public key
 
@@ -27,7 +33,7 @@ Return public key of fifth aptos account:
 
 ```typescript
 HardwareSDK.aptosGetPublicKey(connectId, deviceId, {
-    path: "m/637'/0'/0'",
+    path: "m/44'/637'/0'/0'/0'",
     showOnOneKey: true
 });
 ```
@@ -37,9 +43,9 @@ Return a bundle of public keys for multiple aptos accounts:
 ```typescript
 HardwareSDK.aptosGetPublicKey(connectId, deviceId, {
     bundle: [
-        { path: "m/637'/0'/0'" }, // account 1
-        { path: "m/637'/0'/1'" }, // account 2
-        { path: "m/637'/0'/2'" }  // account 3
+        { path: "m/637'/0'/0'/0'/0'" }, // account 1
+        { path: "m/637'/0'/1'/0'/0'" }, // account 2
+        { path: "m/637'/0'/2'/0'/0'" }  // account 3
     ]
 });
 ```
