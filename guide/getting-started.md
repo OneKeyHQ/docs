@@ -60,7 +60,7 @@ You should **only** initiate a connection request in response to direct user act
 We recommend that you provide a button to allow the user to connect OneKey to your dapp. Clicking this button should call the following method:
 
 ```javascript
-onekey.request({ method: 'eth_requestAccounts' });
+window.$onekey.ethereum.request({ method: 'eth_requestAccounts' });
 ```
 
 **Example:**
@@ -81,7 +81,7 @@ Over time, this method is intended to grow to include various additional paramet
 Since it returns a promise, if you're in an `async` function, you may log in like this:
 
 ```javascript
-const accounts = await onekey.request({ method: 'eth_requestAccounts' });const account = accounts[0];// We currently only ever provide a single account,// but the array gives us some room to grow.
+const accounts = await window.$onekey.ethereum.request({ method: 'eth_requestAccounts' });const account = accounts[0];// We currently only ever provide a single account,// but the array gives us some room to grow.
 ```
 
 **Example:**
@@ -93,7 +93,7 @@ const accounts = await onekey.request({ method: 'eth_requestAccounts' });const a
 ```javascript
 const ethereumButton = document.querySelector('.enableEthereumButton');const showAccount = document.querySelector('.showAccount');
 ethereumButton.addEventListener('click', () => {  getAccount();});
-async function getAccount() {  const accounts = await onekey.request({ method: 'eth_requestAccounts' });  const account = accounts[0];  showAccount.innerHTML = account;}
+async function getAccount() {  const accounts = await window.$onekey.ethereum.request({ method: 'eth_requestAccounts' });  const account = accounts[0];  showAccount.innerHTML = account;}
 ```
 
 ### Choosing a Convenience Library <a href="#choosing-a-convenience-library" id="choosing-a-convenience-library"></a>
