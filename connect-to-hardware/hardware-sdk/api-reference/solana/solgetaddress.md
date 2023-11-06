@@ -27,7 +27,7 @@ Display address of first sol account:
 
 ```typescript
 HardwareSDK.solGetAddress(connectId, deviceId, {
-    path: "m/44'/501'/0'/0'/0"
+    path: "m/44'/501'/0'/0'/0'"
 });
 ```
 
@@ -36,9 +36,9 @@ Return a bundle of sol addresses without displaying them on device:
 ```typescript
 HardwareSDK.aptosGetAddress(connectId, deviceId, {
     bundle: [
-        { path: "m/44'/501'/0'/0'/0", showOnOneKey: false }, // account 1
-        { path: "m/44'/501'/1'/0'/0", showOnOneKey: false }, // account 2
-        { path: "m/44'/501'/2'/0'/0", showOnOneKey: false }  // account 3
+        { path: "m/44'/501'/0'/0'/0'", showOnOneKey: false }, // account 1
+        { path: "m/44'/501'/1'/0'/0'", showOnOneKey: false }, // account 2
+        { path: "m/44'/501'/2'/0'/0'", showOnOneKey: false }  // account 3
     ]
 });
 ```
