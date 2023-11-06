@@ -10,9 +10,9 @@ const result = await HardwareSDK.stellarSignTransaction(connectId, deviceId, par
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` — _required_ `string | Array<number>` **length is `3`, Here's a special chain.** read more
 * `networkPassphrase` - _required_ `string` network passphrase
 * `transaction` - _required_ `Object` type of StellarTransaction
 

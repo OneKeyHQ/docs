@@ -14,7 +14,7 @@ const response = await HardwareSDK.stellarGetAddress(connectId, deviceId, params
 
 **Exporting single address**
 
-* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
+* `path` — _required_ `string | Array<number>`  **length is `3`, Here's a special chain.** [more information](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 
 **Exporting bundle of addresses**
@@ -27,7 +27,7 @@ Display address of first stellar account:
 
 ```typescript
 HardwareSDK.stellarGetAddress(connectId, deviceId, {
-    path: "m/44'/148'/0'/0/0"
+    path: "m/44'/148'/0'"
 });
 ```
 
@@ -36,9 +36,9 @@ Return a bundle of stellar addresses without displaying them on device:
 ```typescript
 HardwareSDK.stellarGetAddress(connectId, deviceId, {
     bundle: [
-        { path: "m/44'/148'/0'/0/0", showOnOneKey: false }, // account 1
-        { path: "m/44'/148'/1'/0/0", showOnOneKey: false }, // account 2
-        { path: "m/44'/148'/2'/0/0", showOnOneKey: false }  // account 3
+        { path: "m/44'/148'/0'", showOnOneKey: false }, // account 1
+        { path: "m/44'/148'/1'", showOnOneKey: false }, // account 2
+        { path: "m/44'/148'/2'", showOnOneKey: false }  // account 3
     ]
 });
 ```

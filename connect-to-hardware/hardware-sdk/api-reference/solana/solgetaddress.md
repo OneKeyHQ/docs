@@ -14,7 +14,7 @@ const response = await HardwareSDK.solGetAddress(connectId, deviceId, params)
 
 **Exporting single address**
 
-* `path` — _required_ `string | Array<number>`  **length is 4, Here's a special chain.** [more information](../path.md)
+* `path` — _required_ `string | Array<number>`  **length is `4`, Here's a special chain.** [more information](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 
 **Exporting bundle of addresses**
