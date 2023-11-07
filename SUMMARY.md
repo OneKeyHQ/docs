@@ -46,8 +46,10 @@
     * [Establishing a Connection](connect-to-software/dapp-connect-to-onekey/solana/establishing-a-connection.md)
     * [Sending a Transaction](connect-to-software/dapp-connect-to-onekey/solana/sending-a-transaction.md)
     * [Signing a Message](connect-to-software/dapp-connect-to-onekey/solana/signing-a-message.md)
-  * [APTOS](connect-to-software/dapp-connect-to-onekey/aptos/README.md)
-    * [Wallet Connect API](connect-to-software/dapp-connect-to-onekey/aptos/wallet-connect-api.md)
+* [Using WalletConnect](connect-to-software/using-walletconnect/README.md)
+  * [ETH](connect-to-software/using-walletconnect/eth.md)
+  * [APTOS](connect-to-software/using-walletconnect/aptos/README.md)
+    * [Wallet Connect API](connect-to-software/using-walletconnect/aptos/wallet-connect-api.md)
 
 ## 📟 Connect to Hardware
 

@@ -11,6 +11,10 @@ This is a list of terms you might encounter when using the OneKey interface.
 * The interface / client / wrapper / holder that you use to manage your account(s).
 * Example: OneKey hardware, a Multisig Wallet Contract.
 
+#### Provider API
+
+The Provider API in Ethereum is a collection of JavaScript APIs that allow DApps to interact with users' wallets and Ether nodes for operations like reading data, sending transactions, and handling accounts, ensuring standardized and consistent interfacing for developers.
+
 #### Account <a href="#account" id="account"></a>
 
 * A public and private keypair that "holds" your funds.
