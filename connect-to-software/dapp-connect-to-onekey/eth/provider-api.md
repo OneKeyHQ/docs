@@ -11,7 +11,7 @@ if (typeof window !== 'undefined' && window.$onekey?.ethereum) {
   // From now on, this should always be true:  
   startApp(provider); // initialize your app
 } else {  
-  console.log('Please install OneKey Browser Extension at http://onekey.so/plugin!');
+  console.log('Please install OneKey Browser Extension at https://onekey.so/download!');
 }
 ```
 
@@ -48,9 +48,7 @@ These are the IDs of the Ethereum chains that OneKey supports by default. Visit 
 
 ### Methods <a href="#methods" id="methods"></a>
 
-#### `window.$onekey.ethereum`.isConnected() <a href="#onekeyisconnected" id="onekeyisconnected"></a>
-
-
+#### `window.$onekey.ethereum.isConnected()` <a href="#onekeyisconnected" id="onekeyisconnected"></a>
 
 **Tip**
 
@@ -58,13 +56,14 @@ Note that this method has nothing to do with the user's accounts.
 
 You may often encounter the word "connected" in reference to whether a web3 site can access the user's accounts. In the provider interface, however, "connected" and "disconnected" refer to whether the provider can make RPC requests to the current chain.
 
-<pre class="language-javascript"><code class="lang-javascript"><strong>window.$onekey.ethereum.isConnected(): boolean;</strong></code></pre>
+<pre class="language-javascript"><code class="lang-javascript"><strong>window.$onekey.ethereum.isConnected(): boolean;
+</strong></code></pre>
 
 Returns `true` if the provider is connected to the current chain, and `false` otherwise.
 
 If the provider is not connected, the page will have to be reloaded in order for connection to be re-established. Please see the [`connect`](provider-api.md) and [`disconnect`](provider-api.md) events for more information.
 
-#### onekey.request(args) <a href="#onekeyrequestargs" id="onekeyrequestargs"></a>
+#### `window.$onekey.ethereum.request(args)` <a href="#onekeyrequestargs" id="onekeyrequestargs"></a>
 
 ```javascript
 interface RequestArguments {  method: string;  params?: unknown[] | object;}
@@ -128,7 +127,7 @@ window.$onekey.ethereum.on('connect', handler: (connectInfo: ConnectInfo) => voi
 
 The OneKey Browser Extension provider emits this event when it first becomes able to submit RPC requests to a chain.
 
-We recommend using a `connect` event handler and the [`$onekey.isConnected()` method](provider-api.md) in order to determine when/if the provider is connected.
+We recommend using a `connect` event handler and the `window.$onekey.ethereum.isConnected()` method in order to determine when/if the provider is connected.
 
 #### disconnect <a href="#disconnect" id="disconnect"></a>
 
@@ -138,7 +137,7 @@ window.$onekey.ethereum.on('disconnect', handler: (error: ProviderRpcError) => v
 
 The OneKey provider emits this event if it becomes unable to submit RPC requests to any chain. In general, this will only happen due to network connectivity issues or some unforeseen error.
 
-Once `disconnect` has been emitted, the provider will not accept any new requests until the connection to the chain has been re-restablished, which requires reloading the page. You can also use the [`$onekey.isConnected()` method](provider-api.md) to determine if the provider is disconnected.
+Once `disconnect` has been emitted, the provider will not accept any new requests until the connection to the chain has been re-restablished, which requires reloading the page. You can also use the `window.$onekey.ethereum.isConnected()` method to determine if the provider is disconnected.
 
 #### accountsChanged <a href="#accountschanged" id="accountschanged"></a>
 
@@ -172,7 +171,8 @@ The OneKey Browser Extension provider emits this event when the currently connec
 
 All RPC requests are submitted to the currently connected chain. Therefore, it's critical to keep track of the current chain ID by listening for this event.
 
-<pre class="language-javascript"><code class="lang-javascript"><strong>window.$onekey.ethereum.on('chainChanged', (_chainId) => window.location.reload());</strong></code></pre>
+<pre class="language-javascript"><code class="lang-javascript"><strong>window.$onekey.ethereum.on('chainChanged', (_chainId) => window.location.reload());
+</strong></code></pre>
 
 #### message <a href="#message" id="message"></a>
 
@@ -197,7 +197,7 @@ All errors thrown or returned by the OneKey Browser Extension provider follow th
 interface ProviderRpcError extends Error {  message: string;  code: number;  data?: unknown;}
 ```
 
-The [`onekey.request(args)` method](provider-api.md) throws errors eagerly.
+The `window.$onekey.ethereum.request(args)` method throws errors eagerly.
 
 You can often use the error `code` property to determine why the request failed.
 
