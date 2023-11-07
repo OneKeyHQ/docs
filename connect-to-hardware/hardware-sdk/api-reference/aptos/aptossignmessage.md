@@ -16,7 +16,7 @@ const result = await HardwareSDK.aptosSignMessage(connectId, deviceId, params);
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `payload` - `AptosMessagePayload` type

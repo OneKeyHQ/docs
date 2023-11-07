@@ -10,11 +10,11 @@ const result = await HardwareSDK.btcGetPublicKey(connectId, deviceId, params);
 
 ## Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 ### Exporting single public key
 
-* `path` — _required_ `string | Array<number>` minimum length is `1`. [read more](../../path-params.md)
+* `path` — _required_ `string | Array<number>` minimum length is `1`. [read more](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 * `coin` - _optional_ `string` determines network definition specified in coins.json file. Coin `shortcut`, `name` or `label` can be used. If `coin` is not set API will try to get network definition from `path`.
 * `scriptType` - _optional_ InputScriptType, address script type

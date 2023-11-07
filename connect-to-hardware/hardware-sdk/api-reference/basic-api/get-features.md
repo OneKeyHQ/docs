@@ -1,4 +1,4 @@
-# getFeatures
+# Get Features
 
 ## Get device features
 
@@ -8,9 +8,11 @@ Get all attributes of the device.
 const response = await HardwareSDK.getFeatures(connectId);
 ```
 
+> If the screen is displaying other content, you can also call this method to return to the home page.
+
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 ### Example
 

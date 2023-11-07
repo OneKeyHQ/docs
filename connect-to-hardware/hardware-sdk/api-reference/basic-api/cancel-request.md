@@ -1,4 +1,4 @@
-# cancel
+# Cancel Request
 
 ## Cancel command
 
@@ -10,7 +10,7 @@ HardwareSDK.cancel(connectId);
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 ### Examples
 

@@ -16,7 +16,7 @@ const result = await HardwareSDK.nexaSignTransaction(connectId, deviceId, params
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 * `inputs` - _required_ `Array` transaction inputs
   * `path` — _required_ `string | Array<number>` minimum length is `3`. read more

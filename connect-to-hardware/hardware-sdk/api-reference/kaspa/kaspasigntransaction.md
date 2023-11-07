@@ -16,7 +16,7 @@ const result = await HardwareSDK.kaspaSignTransaction(connectId, deviceId, param
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 * `version` — _required_ `number` transaction version.
 * `inputs` - _required_ `Array` of [KaspaSignInputParams](https://github.com/OneKeyHQ/hardware-js-sdk/blob/269ee367141ae2186a9a63d1d89e9f4c70428623/packages/core/src/types/api/kaspaSignTransaction.ts#L9C1-L19C3).

@@ -1,4 +1,4 @@
-# searchDevices
+# Search Devices
 
 ## Search device
 

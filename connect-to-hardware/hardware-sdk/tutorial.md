@@ -256,4 +256,4 @@ Congratulations! You have mastered the usage of the SDK, as the calling method f
 
 ### Advanced: Passphrase
 
-Our wallet also supports hidden wallets. Once you have learned the basic API calling methods, it is easy for you to use the hidden wallet. You just need to add a parameter in Common Params. Please refer to the documentation related to [Passphrase](passphrase.md) for more information.
+Our wallet also supports hidden wallets. Once you have learned the basic API calling methods, it is easy for you to use the hidden wallet. You just need to add a parameter in Common Params. Please refer to the documentation related to [Passphrase](advanced/passphrase.md) for more information.

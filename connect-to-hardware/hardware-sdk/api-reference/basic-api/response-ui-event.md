@@ -1,4 +1,4 @@
-# uiResponse
+# Response UI Event
 
 ### Transfer data to the device
 
@@ -9,7 +9,7 @@ Transfer data to the device, currently supporting data transfer for PIN and pass
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 #### Return the PIN code result
 

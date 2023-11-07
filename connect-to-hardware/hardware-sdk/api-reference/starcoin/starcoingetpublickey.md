@@ -10,7 +10,7 @@ const result = await HardwareSDK.starcoinGetPublicKey(connectId, deviceId, param
 
 ## Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 ### Exporting single public key
 

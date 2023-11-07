@@ -16,7 +16,7 @@ const response = await HardwareSDK.cardanoGetAddress(connectId, deviceId, params
 
 ### Params
 
-[Optional common params](../../common-params.md)
+[Optional common params](../common-params.md)
 
 **Exporting single address**
 

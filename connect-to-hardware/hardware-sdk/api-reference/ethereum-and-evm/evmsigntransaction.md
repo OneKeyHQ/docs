@@ -10,9 +10,9 @@ const result = await HardwareSDK.evmSignTransaction(connectId, deviceId, params)
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../../path-params.md)
+* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
 * `transaction` - _required_ `Object` type of `EthereumTransactionEIP1559|EthereumSignTransaction` "0x" prefix for each field is optional
 * `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;
 

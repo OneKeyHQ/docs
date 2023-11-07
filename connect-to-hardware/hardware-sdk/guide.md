@@ -23,7 +23,7 @@ For more information, please refer to the [Event Handling Documentation.](event.
 
 Before using the API, ensure:
 
-1. You understand the API call instructions and common parameters. See [API Call Instructions](https://app.gitbook.com/o/xrwuLsQQ99ktq7CL9Sjj/s/iaFYYqdr7FTQYgxCmg5J/\~/changes/127/connect-to-hardware/hardware-sdk/common-params).
+1. You understand the API call instructions and common parameters. See [API Call Instructions](quickstart.md#initialization).
 2. Invoke the API, including the common parameters (Common Params).
 3. Select the appropriate API based on the hardware firmware version. See [API Documentation](api-reference/).
 
@@ -32,7 +32,7 @@ Before using the API, ensure:
 * The response type is `Promise`.
 * A successful method returns the `Success` type; a failure returns the `Unsuccessful` type.
 * Use `response.success` to determine if the method executed successfully.
-* In case of failure, check the error information in `payload` and the error code in `response.payload.code`. For a list of error codes, see [Error Code List](error-code.md).
+* In case of failure, check the error information in `payload` and the error code in `response.payload.code`. For a list of error codes, see [Error Code List](api-reference/error-code.md).
 
 #### **Response Data Structure**
 

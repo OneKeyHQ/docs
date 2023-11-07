@@ -10,11 +10,11 @@ const response = await HardwareSDK.evmGetAddress(connectId, deviceId, params)
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 **Exporting single address**
 
-* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../../path-params.md)
+* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 * `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;
 

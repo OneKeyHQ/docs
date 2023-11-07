@@ -15,7 +15,7 @@ const response = await HardwareSDK.firmwareUpdate(connectId, params);
 
 ### Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 * `updateType` — _required_ `'firmware' | 'ble'` firmware upgrade type
 * `binary` — _optional_ `ArrayBuffer` firmware binary data when you upgrade with a custom file

@@ -12,7 +12,7 @@ const result = await HardwareSDK.starcoinVerifyMessage(connectId, deviceId, para
 
 ## Params
 
-[**Optional common params**](../../common-params.md)
+[**Optional common params**](../common-params.md)
 
 * `publicKey` - _required_ `string` signer publicKey.
 * `messageHex` - _required_ `string` signed message in hex text
