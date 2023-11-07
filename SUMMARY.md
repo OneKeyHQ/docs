@@ -13,6 +13,9 @@
 
 * [DApp Connect To OneKey](connect-to-software/dapp-connect-to-onekey/README.md)
   * [Compatible with Metamask](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/README.md)
+    * [Third party Kit](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-kit/README.md)
+      * [Web3 Onboard](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-kit/web3-onboard.md)
+      * [Rainbowkit](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-kit/rainbowkit.md)
     * [detectEthereumProvider](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/detectethereumprovider.md)
   * [ETH](connect-to-software/dapp-connect-to-onekey/eth/README.md)
     * [Provider API](connect-to-software/dapp-connect-to-onekey/eth/provider-api.md)

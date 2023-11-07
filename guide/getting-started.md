@@ -22,6 +22,7 @@ As a DApp developer, you may choose the following paths:
 2. Connect to the OneKey client via WalletConnect, using OneKey to manage assets. [Refer to the WalletConnect documentation](../connect-to-software/using-walletconnect/).
 3. Use a wallet aggregator SDK that supports OneKey.
    * [Web3 Onboard (EVM)](https://onboard.blocknative.com/docs/overview/introduction)
+   * [Rainbowkit](https://github.com/rainbow-me/rainbowkit) (EVM)
 
 ## Third-Party Wallet and App Developer Guide
 
