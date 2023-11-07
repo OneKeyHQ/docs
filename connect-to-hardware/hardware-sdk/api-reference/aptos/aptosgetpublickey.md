@@ -16,7 +16,7 @@ const result = await HardwareSDK.aptosGetPublicKey(connectId, deviceId, params);
 
 ## Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
 ### Exporting single public key
 

@@ -10,7 +10,7 @@ const result = await HardwareSDK.solSignTransaction(connectId, deviceId, params)
 
 ### Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
 * `path` — _required_ `string | Array<number>` **length is `4`, Here's a special chain.**. read more
 * `rawTx` - _required_ `string` type of serialized transaction string.

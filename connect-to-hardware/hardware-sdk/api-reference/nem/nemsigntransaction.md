@@ -10,7 +10,7 @@ const response = await HardwareSDK.nvmSignTransaction(connectId, deviceId, param
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `transaction` - _required_ `NEMTransaction` type

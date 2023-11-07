@@ -10,7 +10,7 @@ const result = await HardwareSDK.deviceVerify(connectId, params);
 
 ## Params
 
-[**Optional common params**](../common-params.md)\
+[**Optional common params**](../../common-params.md)\
 
 
 * `dataHex` — _optional_ `string` A random string of hex string, such as a timestamp passed in hex string.

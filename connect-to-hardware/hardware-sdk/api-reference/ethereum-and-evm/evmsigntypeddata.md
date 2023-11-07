@@ -12,9 +12,9 @@ const result = await HardwareSDK.evmSignTypedData(connectId, deviceId, params);
 
 ### Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
+* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../../path-params.md)
 * `data` - _required_ `Object` type of `EthereumSignTypedDataMessage`\`. A JSON Schema definition can be found in the EIP-712 spec.
 * `metamaskV4Compat` - _required_ `boolean` set to `true` for compatibility with [MetaMask's signTypedData\_v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4).
 * `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;

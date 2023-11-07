@@ -16,11 +16,11 @@ const result = await HardwareSDK.polkadotGetAddress(connectId, deviceId, params)
 
 ## Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
 ### Exporting single public key
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
+* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../../path-params.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 * `prefix` - _optional_ `string` Address prefix. Default is set to `nexatest`
 * `scheme` - _optional_ `string` Encryption algorithm mode. Default is set to `schnorr`

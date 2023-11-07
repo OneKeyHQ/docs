@@ -1,6 +1,6 @@
 # Passphrase
 
-If the hidden wallet is enabled, the `passphraseState` parameter needs to be passed in API calls as a [common parameter](api-reference/common-params.md). `passphraseState` is the identifier for the hidden wallet, which can be got by calling the [`getPassphraseState`](api-reference/getpassphrasestate.md) API.
+If the hidden wallet is enabled, the `passphraseState` parameter needs to be passed in API calls as a [common parameter](common-params.md). `passphraseState` is the identifier for the hidden wallet, which can be got by calling the [`getPassphraseState`](api-reference/basic-api/getpassphrasestate.md) API.
 
 
 

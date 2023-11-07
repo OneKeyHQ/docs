@@ -1,4 +1,4 @@
-# init
+# Init SDK
 
 ## initialization
 
@@ -19,6 +19,6 @@ HardwareSDK.init(params);
 ```typescript
 HardwareSDK.init({
     debug: false,
-    connectSrc: 'https://jssdk.onekey.so/0.3.27/', // if use web sdk
+    connectSrc: 'https://jssdk.onekey.so/0.3.30/', // if use web sdk
 });
 ```

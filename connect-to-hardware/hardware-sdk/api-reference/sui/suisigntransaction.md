@@ -10,7 +10,7 @@ const result = await HardwareSDK.suiSignTransaction(connectId, deviceId, params)
 
 ### Params
 
-****[**Optional common params**](../common-params.md)****
+[**Optional common params**](../../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `rawTx` - _required_ `string` type of serialized transaction string.

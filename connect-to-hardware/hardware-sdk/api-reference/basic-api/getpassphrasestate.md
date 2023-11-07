@@ -10,7 +10,7 @@ const response = await HardwareSDK.getPassphraseState(connectId);
 
 ### Params
 
-[**Optional common params**](common-params.md)
+[**Optional common params**](../../common-params.md)
 
 ### Example
 

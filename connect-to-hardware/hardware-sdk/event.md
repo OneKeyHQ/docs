@@ -2,9 +2,24 @@
 
 Once the user has completed initialization, HardwareSDK sends out events regarding device information, UI requests, device requests, etc.
 
-Event objects are usually of the following types.
+## Events
+
+Subscribe to the SDK's events.
 
 ```typescript
+HardwareSDK.on(event, callback);
+```
+
+### Params
+
+* `event` - _required `string`_ event type, refer to [Event](event.md#list-of-events-that-support-subscription)
+* `callback` - _required_ `function` callback functions
+
+### Result
+
+Event objects are usually of the following types.
+
+```
 {
   event: string;
   type: string;

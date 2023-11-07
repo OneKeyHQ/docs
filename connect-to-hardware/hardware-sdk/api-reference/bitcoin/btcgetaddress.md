@@ -10,11 +10,11 @@ const result = await HardwareSDK.btcGetAddress(connectId, deviceId, params);
 
 ### Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
 #### Exporting single address
 
-* `path` — _required_ `string | Array<number>` minimum length is `5`. [read more](../path.md)
+* `path` — _required_ `string | Array<number>` minimum length is `5`. [read more](../../path-params.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 * `coin` - _optional_ `string` determines network definition specified in coins.json file. Coin `shortcut`, `name` or `label` can be used. If `coin` is not set API will try to get network definition from `path`.
 * `multisig` - _optional_ MultisigRedeemScriptType, redeem script information (multisig addresses only)

@@ -8,7 +8,7 @@ const response = await HardwareSDK.deviceSupportFeatures(connectId);
 
 ### Params
 
-[Optional common params](../common-params.md)
+[Optional common params](../../common-params.md)
 
 ### Example
 

@@ -2,6 +2,12 @@
 
 ## &#x20;Installation
 
+This is the platform we support.
+
+<table><thead><tr><th width="324.3333333333333"></th><th>蓝牙</th><th>USB</th></tr></thead><tbody><tr><td>TypeScript、JavaScript（Web environment）</td><td>X</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-web-sdk">@onekeyfe/hd-web-sdk</a></td></tr><tr><td>React Native</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-ble-sdk">@onekeyfe/hd-ble-sdk</a></td><td>X</td></tr><tr><td>Android（Java、Kotlin）</td><td>Comingg soon</td><td>Coming soon</td></tr><tr><td>iOS（Swift、Objective-C）</td><td>Coming soon</td><td>Coming soon</td></tr><tr><td>Flutter</td><td>Coming soon</td><td>Coming soon</td></tr></tbody></table>
+
+
+
 {% tabs %}
 {% tab title="Web" %}
 <pre class="language-shell"><code class="lang-shell"><strong># Install via NPM
@@ -14,7 +20,6 @@ yarn add @onekeyfe/hd-web-sdk
 
 {% tab title="Bluetooth" %}
 ```shell
-
 # Install via NPM
 npm install --save @onekeyfe/hd-ble-sdk
 
@@ -24,9 +29,8 @@ yarn add @onekeyfe/hd-ble-sdk
 {% endtab %}
 
 {% tab title="Nodejs / iOS Native / Android Native / Flutter" %}
-```typescript
-
-# Install via NPM
+```bash
+bash# Install via NPM
 npm install --save @onekeyfe/hd-common-connect-sdk
 
 # Install via YARN

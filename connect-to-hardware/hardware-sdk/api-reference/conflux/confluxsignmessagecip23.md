@@ -12,7 +12,7 @@ Asks device to sign a message using the private key derived by given BIP32 path.
 
 ### Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `messageHash` - _required_ `string` message to sign in hex text

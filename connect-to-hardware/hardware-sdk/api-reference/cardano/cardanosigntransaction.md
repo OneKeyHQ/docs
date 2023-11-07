@@ -16,7 +16,7 @@ const response = await HardwareSDK.cardanoSignTransaction(connectId, deviceId, p
 
 ### Params <a href="#params" id="params"></a>
 
-[Optional common params](../common-params.md)
+[Optional common params](../../common-params.md)
 
 CardanoSignTransaction type
 

@@ -10,7 +10,7 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 
 ## Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
 * `coin` - _required_ `string` Determines network definition specified in [bitcoin.json](https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/core/src/data/coins/bitcoin.json) file. Coin `shortcut`, `name` or `label` can be used.
 * `inputs` - _required_ `Array` of [TxInputType](https://github.com/OneKeyHQ/hardware-js-sdk/blob/728279dc70c5bde56c5d72d86598815f977b0c7f/packages/hd-transport/src/types/messages.ts#L363),

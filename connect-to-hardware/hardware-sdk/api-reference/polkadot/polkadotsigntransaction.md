@@ -16,7 +16,7 @@ const result = await HardwareSDK.polkadotSignTransaction(connectId, deviceId, pa
 
 ### Params
 
-[**Optional common params**](../common-params.md)
+[**Optional common params**](../../common-params.md)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `rawTx` - _required_ `string` type of serialized transaction string.

@@ -16,11 +16,11 @@ const response = await HardwareSDK.nemGetAddress(connectId, deviceId, params)
 
 ### Params
 
-[Optional common params](../common-params.md)
+[Optional common params](../../common-params.md)
 
 **Exporting single address**
 
-* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
+* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../../path-params.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 
 **Exporting bundle of addresses**
