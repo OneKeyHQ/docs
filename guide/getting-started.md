@@ -45,9 +45,13 @@ Provide a hardware SDK to link your App to OneKey hardware.
 * Offer a hardware SDK to support various applications connecting to OneKey hardware. Supports multiple programming languages.
 * OneKey Classic and OneKey Touch support USB and Bluetooth connections; OneKey Mini only supports USB.
 
+[Read more >>>](../connect-to-hardware/hardware-sdk/guide.md)
+
 ### How DApps Connect to OneKey
 
-OneKey supports cross-chain DApp access, ensuring full compatibility across different platforms. For details, [please refer to](../connect-to-software/dapp-connect-to-onekey/).
+OneKey supports cross-chain DApp access, ensuring full compatibility across different platforms. For details.
+
+[Read more >>>](../connect-to-software/dapp-connect-to-onekey/)
 
 | Client                              | DApp support                                                                    |
 | ----------------------------------- | ------------------------------------------------------------------------------- |
