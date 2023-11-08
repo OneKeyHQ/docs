@@ -21,8 +21,8 @@ As a DApp developer, you may choose the following paths:
 1. Connect to OneKey through the OneKey Provider API. [Please read the API Access Guide for details.](../connect-to-software/dapp-connect-to-onekey/)
 2. Connect to the OneKey client via WalletConnect, using OneKey to manage assets. [Refer to the WalletConnect documentation](../connect-to-software/using-walletconnect/).
 3. Use a wallet aggregator SDK that supports OneKey.
-   * [Web3 Onboard (EVM)](https://onboard.blocknative.com/docs/overview/introduction)
-   * [Rainbowkit](https://github.com/rainbow-me/rainbowkit) (EVM)
+   * [Web3 Onboard (EVM)](../connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
+   * [Rainbowkit (EVM)](../connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
 
 ## Third-Party Wallet and App Developer Guide
 
@@ -50,7 +50,7 @@ OneKey supports cross-chain DApp access, ensuring full compatibility across diff
 | Client                              | DApp support                                                                    |
 | ----------------------------------- | ------------------------------------------------------------------------------- |
 | OneKey Chrome plugin                | You can use DApp to connect to OneKey in Chrome.                                |
-| OneKey Edge 插plugin                 | You can use DApp to connect to OneKey in Edge.                                  |
+| OneKey Edge plugin                  | You can use DApp to connect to OneKey in Edge.                                  |
 | OneKey Desktop（Windows、macOS、Linux） | You can use DApp to connect to OneKey in Built-in Browser on the Desktop.       |
 | OneKey Mobile client（iOS、Android）   | You can use DApp to connect to OneKey in Built-in Browser on the Mobile client. |
 

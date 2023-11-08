@@ -1,5 +1,9 @@
 # Web3 Onboard
 
+## Docs <a href="#install" id="install"></a>
+
+{% embed url="https://onboard.blocknative.com/docs/overview/introduction" %}
+
 ## Install <a href="#install" id="install"></a>
 
 {% tabs %}

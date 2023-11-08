@@ -1,5 +1,9 @@
 # Rainbowkit
 
+## Docs <a href="#install" id="install"></a>
+
+{% embed url="https://www.rainbowkit.com/zh-CN/docs/introduction" %}
+
 ## Install <a href="#install" id="install"></a>
 
 {% tabs %}

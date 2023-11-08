@@ -14,8 +14,6 @@ OneKey is the smartest way to secure, buy, exchange and grow your crypto assets.
 It is created to meet the needs of secure and usable Ethereum and other chains (e.g. Bitcoin, Solana, Aptos, Starcoin...) based dApps. In particular, it handles account management and connecting the user to the blockchain.
 
 * [Get started here](guide/getting-started.md)
-* Learn more about our [JavaScript Provider API](connect-to-software/dapp-connect-to-onekey/eth/provider-api.md)
-* Learn more about our [RPC API](connect-to-software/dapp-connect-to-onekey/eth/rpc-api.md)
 
 
 
