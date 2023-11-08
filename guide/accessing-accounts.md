@@ -15,7 +15,7 @@ User accounts are used in a variety of contexts in Ethereum, including as identi
 
 ```javascript
 async function getAccount() {
-  const provider = window.$onekey.ethereum || window.ethereum;
+  const provider = (window.$onekey && window.$onekey.ethereum) || window.ethereum;
   const accounts = await provider.request({ method: 'eth_requestAccounts' })
     .catch((err) => {
       if (err.code === 4001) {

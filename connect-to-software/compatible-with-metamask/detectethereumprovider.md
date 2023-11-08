@@ -52,8 +52,7 @@ function detectEthereumProvider<T = EthereumProvider>({
       handled = true;
 
       window.removeEventListener('ethereum#initialized', handleEthereum);
-
-      const ethereum = (window as Window).$onekey?.ethereum || (window as Window).ethereum;
+      const ethereum = ((window as Window).$onekey && (window as Window).$onekey.ethereum) || (window as Window).ethereum;
 
       if (ethereum && (!mustBeOneKey || ethereum.isOneKey)) {
         resolve(ethereum as T);

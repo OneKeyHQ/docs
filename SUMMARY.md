@@ -4,16 +4,18 @@
 
 * [Introduction](README.md)
 * [Getting Started](guide/getting-started.md)
-* [Hardware SDK](connect-to-hardware/hardware-sdk/guide.md)
-* [Compatible with Metamask](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/README.md)
-  * [Third party Wallet Kit](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/README.md)
-    * [Web3 Onboard](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
-    * [Rainbowkit](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
-  * [detectEthereumProvider](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/detectethereumprovider.md)
+* [DApp Developer](guide/dapp-developer.md)
+* [App Developer](guide/app-developer.md)
+* [Blockchain Developer](guide/blockchain-developer.md)
 * [Common Terms](guide/common-terms.md)
 
 ## 🔮 Connect To Software
 
+* [Compatible with Metamask](connect-to-software/compatible-with-metamask/README.md)
+  * [Third party Wallet Kit](connect-to-software/compatible-with-metamask/third-party-wallet-kit/README.md)
+    * [Web3 Onboard](connect-to-software/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
+    * [Rainbowkit](connect-to-software/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
+  * [detectEthereumProvider](connect-to-software/compatible-with-metamask/detectethereumprovider.md)
 * [DApp Connect To OneKey](connect-to-software/dapp-connect-to-onekey/README.md)
   * [ETH](connect-to-software/dapp-connect-to-onekey/eth/README.md)
     * [Provider API](connect-to-software/dapp-connect-to-onekey/eth/provider-api.md)
@@ -57,6 +59,7 @@
 ## 📟 Connect to Hardware
 
 * [Hardware SDK](connect-to-hardware/page-1.md)
+  * [Started](connect-to-hardware/hardware-sdk/started.md)
   * [Quickstart](connect-to-hardware/hardware-sdk/quickstart.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
   * [Common Params](connect-to-hardware/hardware-sdk/api-reference/common-params.md)

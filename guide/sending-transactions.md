@@ -20,7 +20,7 @@ const transactionParameters = {
 
 // txHash is a hex string
 // As with any RPC call, it may throw an error
-const provider = window.$onekey.ethereum || window.ethereum;
+const provider = (window.$onekey && window.$onekey.ethereum) || window.ethereum;
 const txHash = await provider.request({
     method: 'eth_sendTransaction',
     params: [transactionParameters],

@@ -14,7 +14,7 @@ To address this issue, we provide the following solutions: Users can manually di
 
 OneKey provides the Provider API through window.ethereum and window.$onekey.ethereum. Developers should call `window.$onekey.ethereum` preferentially, and if OneKey is not installed, then use other wallets' API.
 
-<pre class="language-javascript"><code class="lang-javascript">const provider = window.$onekey.ethereum || window.ethereum
+<pre class="language-javascript"><code class="lang-javascript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.ethereum) || window.ethereum;
 // Connect to Wallet
 <strong>await provider.enable()
 </strong></code></pre>
@@ -25,7 +25,7 @@ If OneKey is installed, `window.ethereum` may point to OneKey API, which could l
 
 To resolve this issue, OneKey has launched the Wallet Switch feature. This feature, by turning off MetaMask's compatibility mode, ensures that OneKey only injects its exclusive `window.$onekey.ethereum` Provider API, avoiding potential conflicts and thus optimizing the user experience. If users prefer OneKey and want to avoid frequent wallet switching, it is recommended to enable the Wallet Switch feature.
 
-<table data-header-hidden><thead><tr><th width="349"></th><th></th></tr></thead><tbody><tr><td><img src="../../../.gitbook/assets/image (1).png" alt=""></td><td><img src="../../../.gitbook/assets/image.png" alt=""></td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="349"></th><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (1).png" alt=""></td><td><img src="../../.gitbook/assets/image.png" alt=""></td></tr></tbody></table>
 
 ## Using Wallet Kit
 
