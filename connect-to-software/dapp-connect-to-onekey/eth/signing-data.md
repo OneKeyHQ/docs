@@ -16,7 +16,7 @@ Note that OneKey supports signing transactions with Trezor and Ledger hardware w
 
 There are currently six signing methods in OneKey, and you might wonder the history of these methods. Studying the history of these methods has some lessons in it for the emergent lessons of decentralized standards emergence. Our current five methods are:
 
-* `eth_sign`
+* `eth_sign` (**Deprecated,** unsafety)
 * `personal_sign`
 * `signTypedData` (currently identical to `signTypedData_v1`)
 * `signTypedData_v1`
@@ -103,7 +103,10 @@ Below is an example of signing typed data with OneKey. Reference [here](https://
 #### Example <a href="#example" id="example"></a>
 
 ```html
-<div>  <h3>Sign Typed Data V4</h3>  <button type="button" id="signTypedDataV4Button">sign typed data v4</button></div>
+<div>
+    <h3>Sign Typed Data V4</h3>
+    <button type="button" id="signTypedDataV4Button">sign typed data v4</button>
+</div>
 ```
 
 ```javascript
@@ -155,10 +158,11 @@ signTypedDataV4Button.addEventListener("click", function (event) {
       ],
     },
   });
-  var from = web3.eth.accounts[0];
+  
+  var from = // account address;
   var params = [from, msgParams];
   var method = "eth_signTypedData_v4";
-  web3.currentProvider.sendAsync(
+  provider.sendAsync(
     { method, params, from },
     function (err, result) {
       if (err) return console.dir(err);

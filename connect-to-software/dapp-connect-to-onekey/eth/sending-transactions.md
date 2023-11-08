@@ -7,22 +7,56 @@ Transactions are a formal action on a blockchain. They are always initiated in O
 In OneKey Browser Extension, using the `onekey.request` method directly, sending a transaction will involve composing an options object like this:
 
 ```javascript
-const transactionParameters = {  nonce: '0x00', // ignored by OneKey Browser Extension  gasPrice: '0x09184e72a000', // customizable by user during OneKey Browser Extension confirmation.  gas: '0x2710', // customizable by user during OneKey Browser Extension confirmation.  to: '0x0000000000000000000000000000000000000000', // Required except during contract publications.  from: onekey.selectedAddress, // must match user's active address.  value: '0x00', // Only required to send ether to the recipient from the initiating external account.  data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057', // Optional, but used for defining smart contract creation and interaction.  chainId: '0x3', // Used to prevent transaction reuse across blockchains. Auto-filled by OneKey Browser Extension.};
-// txHash is a hex string// As with any RPC call, it may throw an errorconst txHash = await onekey.request({  method: 'eth_sendTransaction',  params: [transactionParameters],});
+const transactionParameters = {  
+    nonce: '0x00', // ignored by OneKey Browser Extension  
+    gasPrice: '0x09184e72a000', // customizable by user during OneKey Browser Extension confirmation.  
+    gas: '0x2710', // customizable by user during OneKey Browser Extension confirmation.  
+    to: '0x0000000000000000000000000000000000000000', // Required except during contract publications.  
+    from: connectedAddress, // must match user's active address.  
+    value: '0x00', // Only required to send ether to the recipient from the initiating external account.  
+    data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057', // Optional, but used for defining smart contract creation and interaction.  
+    chainId: '0x3', // Used to prevent transaction reuse across blockchains. Auto-filled by OneKey Browser Extension.
+};
+
+// txHash is a hex string
+// As with any RPC call, it may throw an error
+const provider = window.$onekey.ethereum || window.ethereum;
+const txHash = await provider.request({
+    method: 'eth_sendTransaction',
+    params: [transactionParameters],
+});
 ```
 
 ### Example[#](https://docs.onekey.so/en/Extension/Guide/sending-transactions#example) <a href="#example" id="example"></a>
 
 ```javascript
-<button class="enableEthereumButton btn">  Enable Ethereum</button><button class="sendEthButton btn">Send Eth</button>
+<button class="enableEthereumButton btn">Enable Ethereum</button>
+<button class="sendEthButton btn">Send Eth</button>
 ```
 
 ```javascript
-const ethereumButton = document.querySelector('.enableEthereumButton');const sendEthButton = document.querySelector('.sendEthButton');
+const ethereumButton = document.querySelector('.enableEthereumButton');
+const sendEthButton = document.querySelector('.sendEthButton');
 let accounts = [];
-//Sending Ethereum to an addresssendEthButton.addEventListener('click', () => {  onekey    .request({      method: 'eth_sendTransaction',      params: [        {          from: accounts[0],          to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',          value: '0x29a2241af62c0000',          gasPrice: '0x09184e72a000',          gas: '0x2710',        },      ],    })    .then((txHash) => console.log(txHash))    .catch((error) => console.error);});
+//Sending Ethereum to an address
+sendEthButton.addEventListener('click', () => {  
+    provider.request({
+      method: 'eth_sendTransaction',
+      params: [{
+        from: accounts[0],
+        to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
+        value: '0x29a2241af62c0000',
+        gasPrice: '0x09184e72a000',
+        gas: '0x2710'
+      }],
+    })
+    .then((txHash) => console.log(txHash))    
+    .catch((error) => console.error);});
+    
 ethereumButton.addEventListener('click', () => {  getAccount();});
-async function getAccount() {  accounts = await onekey.request({ method: 'eth_requestAccounts' });}
+async function getAccount() {  
+  accounts = await provider.request({ method: 'eth_requestAccounts' });
+}
 ```
 
 ### Transaction Parameters <a href="#transaction-parameters" id="transaction-parameters"></a>

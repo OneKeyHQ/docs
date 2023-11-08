@@ -21,12 +21,12 @@ As a DApp developer, you may choose the following paths:
 1. Connect to OneKey through the OneKey Provider API. [Please read the API Access Guide for details.](../connect-to-software/dapp-connect-to-onekey/)
 2. Connect to the OneKey client via WalletConnect, using OneKey to manage assets. [Refer to the WalletConnect documentation](../connect-to-software/using-walletconnect/).
 3. Use a wallet aggregator SDK that supports OneKey.
-   * [Web3 Onboard (EVM)](../connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
-   * [Rainbowkit (EVM)](../connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
+   * [Web3 Onboard (EVM)](compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
+   * [Rainbowkit (EVM)](compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
 
 ## Third-Party Wallet and App Developer Guide
 
-he SDK access method is recommended, [see the SDK Access Details for more information](../connect-to-hardware/hardware-sdk/guide.md). You can also connect to OneKey via WalletConnect DeepLink, which requires the user to have the OneKey client installed. For details, [refer to the WalletConnect DeepLink documentation](https://docs.walletconnect.com/web3wallet/mobileLinking).
+he SDK access method is recommended, [see the SDK Access Details for more information](hardware-sdk.md). You can also connect to OneKey via WalletConnect DeepLink, which requires the user to have the OneKey client installed. For details, [refer to the WalletConnect DeepLink documentation](https://docs.walletconnect.com/web3wallet/mobileLinking).
 
 ## Blockchain Developer Guide
 
@@ -45,7 +45,7 @@ Provide a hardware SDK to link your App to OneKey hardware.
 * Offer a hardware SDK to support various applications connecting to OneKey hardware. Supports multiple programming languages.
 * OneKey Classic and OneKey Touch support USB and Bluetooth connections; OneKey Mini only supports USB.
 
-[Read more >>>](../connect-to-hardware/hardware-sdk/guide.md)
+[Read more >>>](hardware-sdk.md)
 
 ### How DApps Connect to OneKey
 

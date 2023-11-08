@@ -4,22 +4,22 @@
 
 * [Introduction](README.md)
 * [Getting Started](guide/getting-started.md)
+* [Hardware SDK](guide/hardware-sdk.md)
+* [Compatible with Metamask](guide/compatible-with-metamask/README.md)
+  * [Third party Wallet Kit](guide/compatible-with-metamask/third-party-wallet-kit/README.md)
+    * [Web3 Onboard](guide/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
+    * [Rainbowkit](guide/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
+  * [detectEthereumProvider](guide/compatible-with-metamask/detectethereumprovider.md)
 * [Common Terms](guide/common-terms.md)
-* [Initializing dApps](guide/initializing-dapps.md)
-* [Accessing Accounts](guide/accessing-accounts.md)
-* [Sending Transactions](guide/sending-transactions.md)
 
 ## 🔮 Connect To Software
 
 * [DApp Connect To OneKey](connect-to-software/dapp-connect-to-onekey/README.md)
-  * [Compatible with Metamask](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/README.md)
-    * [Third party Wallet Kit](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/README.md)
-      * [Web3 Onboard](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
-      * [Rainbowkit](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
-    * [detectEthereumProvider](connect-to-software/dapp-connect-to-onekey/compatible-with-metamask/detectethereumprovider.md)
   * [ETH](connect-to-software/dapp-connect-to-onekey/eth/README.md)
     * [Provider API](connect-to-software/dapp-connect-to-onekey/eth/provider-api.md)
     * [RPC API](connect-to-software/dapp-connect-to-onekey/eth/rpc-api.md)
+    * [Accessing Accounts](connect-to-software/dapp-connect-to-onekey/eth/accessing-accounts.md)
+    * [Sending Transactions](connect-to-software/dapp-connect-to-onekey/eth/sending-transactions.md)
     * [Signing Data](connect-to-software/dapp-connect-to-onekey/eth/signing-data.md)
   * [NEAR](connect-to-software/dapp-connect-to-onekey/near/README.md)
     * [Introduction](connect-to-software/dapp-connect-to-onekey/near/introduction.md)
@@ -57,7 +57,6 @@
 ## 📟 Connect to Hardware
 
 * [Hardware SDK](connect-to-hardware/page-1.md)
-  * [Guide](connect-to-hardware/hardware-sdk/guide.md)
   * [Quickstart](connect-to-hardware/hardware-sdk/quickstart.md)
   * [Event](connect-to-hardware/hardware-sdk/event.md)
   * [Common Params](connect-to-hardware/hardware-sdk/api-reference/common-params.md)

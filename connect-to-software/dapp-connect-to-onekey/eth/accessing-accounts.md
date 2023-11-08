@@ -9,18 +9,40 @@ User accounts are used in a variety of contexts in Ethereum, including as identi
 * `eth_personalSign`
 * `eth_signTypedData`
 
-Once you've [connected to a user](getting-started.md), you can always re-check the current account by checking `onekey.selectedAddress`.
 
-**Example:**
+
+**Connect Account Example:**
 
 ```javascript
-<ChangeAccount />
+async function getAccount() {
+  const provider = window.$onekey.ethereum || window.ethereum;
+  const accounts = await provider.request({ method: 'eth_requestAccounts' })
+    .catch((err) => {
+      if (err.code === 4001) {
+        // EIP-1193 userRejectedRequest error
+        // If this happens, the user rejected the connection request.
+        console.log('Please connect to OneKey.');
+      } else {
+        console.error(err);
+      }
+    });
+  const account = accounts[0];
+}
 ```
 
 If you'd like to be notified when the address changes, we have an event you can subscribe to:
 
 ```javascript
-onekey.on('accountsChanged', function (accounts) {  // Time to reload your interface with accounts[0]!});
+provider.on('accountsChanged', function (accounts) {  
+    // Time to reload your interface with accounts[0]!
+  if (accounts.length === 0) {
+    // OneKey is locked or the user has not connected any accounts.
+    console.log('Please connect to OneKey.');
+  } else if (accounts[0] !== currentAccount) {
+    // Reload your interface with accounts[0].
+    currentAccount = accounts[0];
+  }
+});
 ```
 
 If the first account in the returned array isn't the account you expected, you should notify the user! In the future, the accounts array may contain more than one account. However, the first account in the array will continue to be considered as the user's "selected" account.
