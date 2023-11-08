@@ -4,7 +4,7 @@
 
 This is the platform we support.
 
-<table><thead><tr><th width="324.3333333333333">Platform</th><th>Bluetooth</th><th>USB</th></tr></thead><tbody><tr><td>TypeScript、JavaScript（Web environment）</td><td>X</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-web-sdk">@onekeyfe/hd-web-sdk</a></td></tr><tr><td>React Native</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-ble-sdk">@onekeyfe/hd-ble-sdk</a></td><td>X</td></tr><tr><td>Android（Java、Kotlin）</td><td>Comingg soon</td><td>Coming soon</td></tr><tr><td>iOS（Swift、Objective-C）</td><td>Coming soon</td><td>Coming soon</td></tr><tr><td>Flutter</td><td>Coming soon</td><td>Coming soon</td></tr></tbody></table>
+<table><thead><tr><th width="324.3333333333333">Platform</th><th>Bluetooth</th><th>USB</th></tr></thead><tbody><tr><td>TypeScript、JavaScript（Web environment）</td><td>X</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-web-sdk">@onekeyfe/hd-web-sdk</a></td></tr><tr><td>React Native</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-ble-sdk">@onekeyfe/hd-ble-sdk</a></td><td>X</td></tr><tr><td>Android</td><td>Coming soon</td><td>Coming soon</td></tr><tr><td>iOS</td><td>Coming soon</td><td>Coming soon</td></tr><tr><td>Flutter</td><td>Coming soon</td><td>Coming soon</td></tr></tbody></table>
 
 {% tabs %}
 {% tab title="Web" %}

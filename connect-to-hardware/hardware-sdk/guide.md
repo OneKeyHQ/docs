@@ -4,7 +4,7 @@ This guide provides clear and concise steps to seamlessly integrate and fully ut
 
 ## **Step 1: Access and Initialize the SDK**
 
-1. Select the appropriate version of the SDK for your platform. [See SDK Platform Selection Guide](../connect-to-hardware/hardware-sdk/quickstart.md).
+1. Select the appropriate version of the SDK for your platform. [See SDK Platform Selection Guide](quickstart.md).
 2. Download and install the latest version of the SDK for timely technical support.
 
 ## **Step 2: Event Configuration**
@@ -17,22 +17,22 @@ After the hardware is successfully connected:
    * Entering the hardware unlock PIN code in the software is implemented through the corresponding `EVENT`.
    * Requests requiring hardware confirmation will also inform the client through `EVENT`, like opening or closing confirmation windows.
 
-For more information, please refer to the [Event Handling Documentation.](../connect-to-hardware/hardware-sdk/event.md)
+For more information, please refer to the [Event Handling Documentation.](event.md)
 
 ## **Step 3: API Invocation**
 
 Before using the API, ensure:
 
-1. You understand the API call instructions and common parameters. See [API Call Instructions](../connect-to-hardware/hardware-sdk/quickstart.md#initialization).
+1. You understand the API call instructions and common parameters. See [API Call Instructions](quickstart.md#initialization).
 2. Invoke the API, including the common parameters (Common Params).
-3. Select the appropriate API based on the hardware firmware version. See [API Documentation](../connect-to-hardware/hardware-sdk/api-reference/).
+3. Select the appropriate API based on the hardware firmware version. See [API Documentation](api-reference/).
 
 #### **Response and Error Handling**
 
 * The response type is `Promise`.
 * A successful method returns the `Success` type; a failure returns the `Unsuccessful` type.
 * Use `response.success` to determine if the method executed successfully.
-* In case of failure, check the error information in `payload` and the error code in `response.payload.code`. For a list of error codes, see [Error Code List](../connect-to-hardware/hardware-sdk/api-reference/error-code.md).
+* In case of failure, check the error information in `payload` and the error code in `response.payload.code`. For a list of error codes, see [Error Code List](api-reference/error-code.md).
 
 #### **Response Data Structure**
 
