@@ -38,6 +38,8 @@ he SDK access method is recommended, [see the SDK Access Details for more inform
 
 We currently support the following ways to connect to OneKey:
 
+### How Connect OneKey hardware
+
 Provide a hardware SDK to link your App to OneKey hardware.
 
 * Offer a hardware SDK to support various applications connecting to OneKey hardware. Supports multiple programming languages.
