@@ -1,10 +1,10 @@
-# Hardware SDK
+# Started
 
 This guide provides clear and concise steps to seamlessly integrate and fully utilize our hardware SDK.
 
 ## **Step 1: Access and Initialize the SDK**
 
-1. Select the appropriate version of the SDK for your platform. [See SDK Platform Selection Guide](quickstart.md).
+1. Select the appropriate version of the SDK for your platform. [See SDK Platform Selection Guide](install-sdk.md).
 2. Download and install the latest version of the SDK for timely technical support.
 
 ## **Step 2: Event Configuration**
@@ -17,14 +17,14 @@ After the hardware is successfully connected:
    * Entering the hardware unlock PIN code in the software is implemented through the corresponding `EVENT`.
    * Requests requiring hardware confirmation will also inform the client through `EVENT`, like opening or closing confirmation windows.
 
-For more information, please refer to the [Event Handling Documentation.](event.md)
+To ensure that you can fully understand and correctly handle these events, we recommend that you thoroughly refer to our [Event documentation](config-event.md).
 
 ## **Step 3: API Invocation**
 
 Before using the API, ensure:
 
-1. You understand the API call instructions and common parameters. See [API Call Instructions](quickstart.md#initialization).
-2. Invoke the API, including the common parameters (Common Params).
+1. You understand the API call instructions and common parameters. See [API Call Instructions](install-sdk.md#initialization).
+2. Invoke the API, including the common parameters ([Common Params](api-reference/common-params.md)).
 3. Select the appropriate API based on the hardware firmware version. See [API Documentation](api-reference/).
 
 #### **Response and Error Handling**
@@ -93,3 +93,25 @@ HardwareSDK.btcGetAddress('OneKey21042004483', '0B961C0007C7923D5B1D3341', {
 }
 ```
 
+## **Step 4:** How to Start the Business
+
+First, you need to understand [Common Params](api-reference/common-params.md) and be clear about ConnectId and DeviceId, as almost every method in subsequent business will require them. Therefore, you need to call the [getFeatures API](api-reference/basic-api/get-features.md) method to save the relevant information.
+
+Thus, the normal process for adding a new device is:
+
+1. Use [searchDevice](api-reference/basic-api/search-devices.md) to find nearby devices.
+2. Then choose a device to connect to.
+3. Use [getFeatures](api-reference/basic-api/get-features.md) to obtain relevant information and persistently save it. Later, for other business operations, you only need to call the relevant APIs and pass in the ConnectId and DeviceId.
+
+## Development
+
+<pre class="language-bash"><code class="lang-bash"><strong>git clone https://github.com/OneKeyHQ/hardware-js-sdk.git
+</strong><strong>cd hardware-js-sdk
+</strong>yarn &#x26;&#x26; yarn bootstrap
+
+# build
+yarn build
+<strong>
+</strong># start hd-web-sdk
+cd packages/hd-web-sdk &#x26;&#x26; yarn dev
+</code></pre>

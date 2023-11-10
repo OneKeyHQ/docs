@@ -60,8 +60,8 @@
 
 * [Hardware SDK](connect-to-hardware/page-1.md)
   * [Started](connect-to-hardware/hardware-sdk/started.md)
-  * [Quickstart](connect-to-hardware/hardware-sdk/quickstart.md)
-  * [Event](connect-to-hardware/hardware-sdk/event.md)
+  * [Install SDK](connect-to-hardware/hardware-sdk/install-sdk.md)
+  * [Config Event](connect-to-hardware/hardware-sdk/config-event.md)
   * [Common Params](connect-to-hardware/hardware-sdk/api-reference/common-params.md)
   * [Path Params](connect-to-hardware/hardware-sdk/api-reference/path.md)
   * [Error Code](connect-to-hardware/hardware-sdk/api-reference/error-code.md)
@@ -165,6 +165,7 @@
       * [tronSignTransaction](connect-to-hardware/hardware-sdk/api-reference/tron/tronsigntransaction.md)
   * [Advanced](connect-to-hardware/hardware-sdk/advanced/README.md)
     * [Passphrase](connect-to-hardware/hardware-sdk/advanced/passphrase.md)
+    * [Common SDK Guide](connect-to-hardware/hardware-sdk/advanced/common-sdk-guide.md)
     * [Low-level transport plugin](connect-to-hardware/hardware-sdk/advanced/low-level-transport-plugin.md)
     * [OneKey Message Protocol](connect-to-hardware/hardware-sdk/advanced/onekey-message-protocol.md)
   * [Tutorial: Get started with OneKey](connect-to-hardware/hardware-sdk/tutorial.md)
