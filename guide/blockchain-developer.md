@@ -1,9 +1,9 @@
 # Blockchain Developer
 
-If you wish to integrate your network with OneKey, please choose one of the following methods:
+If you wish to integrate your chain with OneKey, please choose one of the following methods:
 
 * Write code for OneKey software and hardware.
-* Contact the OneKey business team to discuss cooperation matters.
+* Contact the [OneKey business team](https://discord.com/invite/onekey) to discuss cooperation matters.
 
 ## How to Develop and Submit Application Code
 

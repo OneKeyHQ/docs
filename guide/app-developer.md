@@ -9,20 +9,11 @@ description: Third-Party Wallet and App Developer
 * If you want to connect hardware, please use our SDK.
 * If you want to connect to the software, we support WalletConnect Deeplink method to connect.
 
+
+
 ## Connect OneKey hardware
 
-* A hardware SDK is available to connect your app with OneKey hardware.
-* It supports various programming languages and can work with different OneKey hardware models.
-* OneKey Classic and OneKey Touch models support both USB and Bluetooth connections, while the OneKey Mini is limited to USB.
-
-Provide a hardware SDK to link your App to OneKey hardware.
-
-* Offer a hardware SDK to support various applications connecting to OneKey hardware. Supports multiple programming languages.
-* OneKey Classic and OneKey Touch support USB and Bluetooth connections; OneKey Mini only supports USB.
-
-[Read more >>>](../connect-to-hardware/hardware-sdk/started.md)
-
-### Headware Online debugging tool
+### Online debugging tool
 
 #### Step 1: Install bridge
 
@@ -32,11 +23,21 @@ The web terminal can communicate with hardware only after a hardware bridge is i
 
 #### Setp 2: Debug
 
+You can use a USB connection to the device for debugging APIs.
+
 [Online Debugging Tool](https://hardware-example.onekeytest.com/)
 
 
 
-## Support for WalletConnect DeepLink to Link to OneKey
+### Integrated Hardware SDK
+
+Offer a hardware SDK to support various applications connecting to OneKey hardware. Supports multiple programming languages.
+
+The specific steps for integrating the SDK. [Read more >>>](../connect-to-hardware/hardware-sdk/started.md)
+
+## WalletConnect Integration
+
+We support WalletConnect Deeplink, enabling you to directly connect to OneKey via a deeplink, and then communicate with the blockchain through OneKey.
 
 * The OneKey mobile client (iOS, Android) supports the WalletConnect DeepLink connection method.
 * The premise is that the OneKey client is installed on the user's mobile phone,

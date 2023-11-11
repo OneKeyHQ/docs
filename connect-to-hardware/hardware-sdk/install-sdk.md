@@ -2,6 +2,16 @@
 
 ## &#x20;Installation
 
+The support status for Bluetooth and USB on different devices.
+
+| Device         | Bluetooth            | USB                  |
+| -------------- | -------------------- | -------------------- |
+| OneKey Classic | :white\_check\_mark: | :white\_check\_mark: |
+| OneKey Mini    | :x:                  | :white\_check\_mark: |
+| OneKey Touch   | :white\_check\_mark: | :white\_check\_mark: |
+
+
+
 This is the platform we support.
 
 <table><thead><tr><th width="324.3333333333333">Platform</th><th>Bluetooth</th><th>USB</th></tr></thead><tbody><tr><td>TypeScript、JavaScript（Web environment）</td><td>X</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-web-sdk">@onekeyfe/hd-web-sdk</a></td></tr><tr><td>React Native</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-ble-sdk">@onekeyfe/hd-ble-sdk</a></td><td>X</td></tr><tr><td>Android</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr><tr><td>iOS</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr><tr><td>Flutter</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr></tbody></table>
