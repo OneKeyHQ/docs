@@ -2,6 +2,22 @@
 
 This guide provides clear and concise steps to seamlessly integrate and fully utilize our hardware SDK.
 
+## **Step 0: Try** Online debugging tool
+
+#### Step 1: Install bridge
+
+The web terminal can communicate with hardware only after a hardware bridge is installed.
+
+[Install Hardware Bridge](https://onekey.so/download?client=bridge)
+
+#### Setp 2: Debug
+
+You can use a USB connection to the device for debugging APIs.
+
+[Online Debugging Tool](https://hardware-example.onekeytest.com/)
+
+
+
 ## **Step 1: Selector and Initialize the SDK**
 
 1. Select the appropriate version of the SDK for your platform. [See SDK Platform Selection Guide](install-sdk.md).
