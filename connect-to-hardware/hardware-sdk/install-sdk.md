@@ -32,9 +32,12 @@ import { HardwareWebSdk as HardwareSDK } from '@onekeyfe/hd-web-sdk';
 
 HardwareSDK.init({
   debug: true,
+  fetchConfig: true,
   connectSrc: 'https://jssdk.onekey.so/0.3.30/'
 })
 ```
+
+**fetchConfig:** Allows querying for updated device version information over the network, used for prompting device updates and informing which version is needed for older hardware to use new features.
 
 **connectSrc**: The official web page deployed by OneKey is used to create an iframe on the page to communicate with OneKey Bridge.&#x20;
 
@@ -46,9 +49,7 @@ If encountering issues with the web page failing to load for the corresponding v
 {% endtab %}
 
 {% tab title="React Native" %}
-
-
-```javascript
+```bash
 # Install via NPM
 npm install --save @onekeyfe/hd-ble-sdk
 
@@ -78,7 +79,7 @@ Because our SDK is developed using the RN (React Native) and JS (JavaScript) tec
 * First, you need a container that can run JavaScript and communicate with it.&#x20;
 * Prepare the JavaScript part of the code, and install @onekeyfe/hd-common-connect-sdk.
 
-<pre><code><strong># Install via NPM
+<pre class="language-bash"><code class="lang-bash"><strong># Install via NPM
 </strong>npm install --save @onekeyfe/hd-common-connect-sdk
 
 # Install via YARN

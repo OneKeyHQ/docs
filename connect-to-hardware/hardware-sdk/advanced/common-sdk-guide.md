@@ -73,7 +73,22 @@ These steps will help set up the JavaScript environment and integrate the necess
 
 Next, configure the LowlevelPlugin. There is a document you can refer to for more information [Read more>>>](low-level-transport-plugin.md)
 
-This step involves implementing the functionalities described in the aforementioned document. These logics are called on the Native side and return relevant results. If unclear, you can refer to the related demos for guidance.
+
+
+To forward `LowlevelPlugin` functionality to the Native side and return related results, follow these steps:
+
+1. **Define Interface**: Define an interface in `LowlevelPlugin` for calling Native functionality.
+2. **Implement Forwarding Mechanism**:
+   * Capture the calls in `LowlevelPlugin` that need to be forwarded.
+   * Forward the details of the call (such as method name, parameters, etc.) to the Native side.
+3. **Native Side Processing**:
+   * On the Native side, receive the request, parse the method name and parameters.
+   * Execute the corresponding Native functionality.
+4. **Return Results**:
+   * Once the Native side has completed execution, return the results or error information back to `LowlevelPlugin`.
+   * `LowlevelPlugin` then returns this information to the caller.
+
+If unclear, you can refer to the related demos for guidance.
 
 ## Connection Device
 
@@ -88,10 +103,6 @@ The provided pseudocode outlines the steps for handling Bluetooth communication 
 * `notifyCharacteristic`: 00000003-0000-1000-8000-00805f9b34fb
 
 **Handling Bluetooth Scanning**
-
-* The `enumerate` handler in WebView is responsible for scanning Bluetooth devices.
-* It filters devices using the `serviceUuid`.
-* The scanned devices' MacAddress and name are returned to the WebView.
 
 ```
 webview.addHandler("enumerate", (data: String?, function: CallBackFunction?) {

@@ -2,7 +2,7 @@
 
 This guide provides clear and concise steps to seamlessly integrate and fully utilize our hardware SDK.
 
-## **Step 1: Access and Initialize the SDK**
+## **Step 1: Selector and Initialize the SDK**
 
 1. Select the appropriate version of the SDK for your platform. [See SDK Platform Selection Guide](install-sdk.md).
 2. Download and install the latest version of the SDK for timely technical support.
@@ -16,6 +16,8 @@ After the hardware is successfully connected:
    * `FIRMWARE_EVENT` is pushed when there is a firmware update.
    * Entering the hardware unlock PIN code in the software is implemented through the corresponding `EVENT`.
    * Requests requiring hardware confirmation will also inform the client through `EVENT`, like opening or closing confirmation windows.
+
+By default, the device's PIN code input is handled by the software. if you need the hardware to handle related EVENTs, additional steps are required.
 
 To ensure that you can fully understand and correctly handle these events, we recommend that you thoroughly refer to our [Event documentation](config-event.md).
 
@@ -100,10 +102,11 @@ First, you need to understand [Common Params](api-reference/common-params.md) an
 Thus, the normal process for adding a new device is:
 
 1. Use [searchDevice](api-reference/basic-api/search-devices.md) to find nearby devices.
-2. Then choose a device to connect to.
-3. Use [getFeatures](api-reference/basic-api/get-features.md) to obtain relevant information and persistently save it. Later, for other business operations, you only need to call the relevant APIs and pass in the ConnectId and DeviceId.
+   1. In the returned results, there will be information such as `connectId`, `deviceType`, and `name` that you need to save. For USB devices, there will also be a `DeviceId`.
+   2. If it is a Bluetooth device, you will need to additionally use the [getFeatures](api-reference/basic-api/get-features.md) to obtain `DeviceId` relevant information and persistently save it.&#x20;
+2. Later, for other business operations, you only need to call the relevant APIs and pass in the ConnectId and DeviceId.
 
-## Development
+## Development SDK
 
 <pre class="language-bash"><code class="lang-bash"><strong>git clone https://github.com/OneKeyHQ/hardware-js-sdk.git
 </strong><strong>cd hardware-js-sdk
