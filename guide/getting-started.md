@@ -16,7 +16,9 @@ If you are a third-party wallet or App developer interested in understanding how
 
 [Read more >>>](app-developer.md)
 
-### Blockchain Developer Guide
+### **Developer's Guide**
 
-[Read more >>>](blockchain-developer.md)
+If you wish to contribute to OneKey by developing new chain support or fixing issues, you can refer to the following documentation.
+
+[Read more >>>](developers-guide.md)
 
