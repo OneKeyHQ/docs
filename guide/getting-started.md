@@ -6,9 +6,13 @@ OneKey aims to provide a convenient way to help you connect and manage digital a
 
 ### DApp Developer Guide
 
+If you are a dApp developer looking to connect and use OneKey, we provide relevant documentation and guides.
+
 [Read more >>>](dapp-developer.md)
 
 ### Third-Party Wallet and App Developer Guide
+
+If you are a third-party wallet or App developer interested in understanding how to connect to OneKey's software and hardware, you can refer to the following documentation and guides.
 
 [Read more >>>](app-developer.md)
 

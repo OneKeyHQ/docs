@@ -7,4 +7,24 @@ If you wish to integrate your chain with OneKey, please choose one of the follow
 
 ## How to Develop and Submit Application Code
 
-As a developer, you can contribute code to OneKey. Please refer to the Guide for Developing and Submitting Code.
+As a developer, you can contribute code to OneKey.&#x20;
+
+
+
+For OneKey software development, please look here.
+
+> development guides are coming soon.
+
+{% embed url="https://github.com/OneKeyHQ/app-monorepo" %}
+
+For OneKey hardware development, please look here.
+
+> development guides are coming soon.
+
+{% embed url="https://github.com/OneKeyHQ/firmware" %}
+
+For OneKey hardware SDK development, please look here.
+
+> development guides are coming soon.
+
+{% embed url="https://github.com/OneKeyHQ/hardware-js-sdk" %}
