@@ -3,7 +3,6 @@
 ## 👋 GUIDE
 
 * [Introduction](README.md)
-* [Getting Started](guide/getting-started.md)
 * [DApp Developer](guide/dapp-developer.md)
 * [App Developer](guide/app-developer.md)
 * [Developer's Guide](guide/developers-guide.md)

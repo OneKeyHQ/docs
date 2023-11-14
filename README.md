@@ -1,34 +1,33 @@
 # Introduction
 
-Welcome to OneKey’s Developer Documentation. This documentation is for learning to develop applications for OneKey.
+Welcome to the OneKey Developer Documentation. This documentation is designed to help you learn how to connect and use OneKey hardware, as well as how to develop DApps for OneKey.&#x20;
 
-* You can find the latest version of OneKey on our [Official Website](https://onekey.so).
-* For help using OneKey, visit our [User Support Site](https://help.onekey.so/).
-* For up to the minute news, follow our [Twitter](https://twitter.com/OneKeyHQ).
-* To learn how to contribute to the OneKey project itself, visit our [Github Repos](https://github.com/OneKeyHQ/app-monorepo).
+* You can find the latest version of OneKey on our [official website](https://onekey.so/).&#x20;
+* If you need help using OneKey, please visit our [User Support Site.](https://help.onekey.so/)&#x20;
+* To get the latest updates, please follow our [Twitter](https://twitter.com/OneKeyHQ).
 
-### Why OneKey&#x20;
+## Why OneKey
 
-OneKey is the smartest way to secure, buy, exchange and grow your crypto assets.&#x20;
+OneKey is a 100% open-source hardware wallet, which communicates securely via Bluetooth or USB. It also comes with a 100% open-source software wallet. The software wallet can operate independently without hardware, allowing users to choose according to their required security levels, thus ensuring account security.
 
-It is created to meet the needs of secure and usable Ethereum and other chains (e.g. Bitcoin, Solana, Aptos, Starcoin...) based dApps. In particular, it handles account management and connecting the user to the blockchain.
+## Guide
 
-* [Get started here](guide/getting-started.md)
+Whether you are a DApp developer, a third-party wallet developer, or a blockchain professional, OneKey offers an easy access method. This guide will quickly introduce you to how to access OneKey, utilize its features, and develop applications.
 
+### DApp Developer Guide
 
+If you are a dApp developer looking to connect and use OneKey, we provide relevant documentation and guides.
 
-### Account Management
+[Read more >>>](guide/dapp-developer.md)
 
-OneKey Browser Extension allows users to manage accounts and their keys in a variety of ways, including hardware wallets, while isolating them from the site context. This is a great security improvement over storing the user keys on a single central server, or even in local storage, which can allow for [mass account thefts](https://www.ccn.com/cryptocurrency-exchange-etherdelta-hacked-in-dns-hijacking-scheme/).
+### Third-Party Wallet and App Developer Guide
 
-This security feature also comes with developer convenience: For developers, you simply interact with the globally available `ethereum` API that identifies the users of web3-compatible browsers (like OneKey users), and whenever you request a transaction signature (like `eth_sendTransaction`, `eth_signTypedData`, or others), OneKey will prompt the user in as comprehensible a way as possible.
+If you are a third-party wallet or App developer interested in understanding how to connect to OneKey's software and hardware, you can refer to the following documentation and guides.
 
-###
+[Read more >>>](guide/app-developer.md)
 
-### Blockchain Connection
+### **Developer's Guide**
 
-OneKey comes pre-loaded with fast connections to the Ethereum blockchain and several other networks. This allows you to get started without synchronizing a full node, while still providing the option to upgrade your security and use the blockchain provider of your choice.
+If you wish to contribute to OneKey by developing new chain support or fixing issues, you can refer to the following documentation.
 
-Today, OneKey is compatible with any blockchain that exposes an [Ethereum-compatible JSON RPC API](https://eth.wiki/json-rpc/API), including custom and private blockchains. For development, we recommend running a test blockchain like [Ganache](https://www.trufflesuite.com/ganache).
-
-We’re aware that there are constantly new private blockchains that people are interested in connecting OneKey to, and we are building towards easier integration with these many options.
+[Read more >>>](guide/developers-guide.md)
