@@ -12,6 +12,8 @@ Below are the links to the relevant demos.
 
 [Android Demo Link](low-level-transport-plugin.md)
 
+[Flutter Demo Link](https://github.com/ByteZhang1024/OneKeyFlutterHardwareExample)
+
 
 
 ## JavaScript Runtime Environment
@@ -40,7 +42,12 @@ After determining the runtime environment, we also need a communication solution
 {% endtab %}
 
 {% tab title="Flutter" %}
-Coming soon
+For Flutter, there are two options for the JavaScript runtime environment:
+
+* [Javascript engine](https://pub.dev/packages/flutter\_js) to use with flutter.
+* The WebView approach.
+
+Here, for consistency with other demos, the method of loading JavaScript using WebView was still chosen. You can try selecting others.
 {% endtab %}
 {% endtabs %}
 
@@ -66,6 +73,7 @@ For detailed configuration, you can refer to the web settings in the demo.
 
 * [iOS web Demo Link](https://github.com/originalix/Hardware-Lowlevel-Communicate/tree/main/web)
 * [Android web Demo Link](https://github.com/ByteZhang1024/OneKeyHardwareExample/tree/main/web)
+* [Flutter Demo Link](https://github.com/ByteZhang1024/OneKeyFlutterHardwareExample)
 
 These steps will help set up the JavaScript environment and integrate the necessary SDK and dependencies for the OneKey integration on iOS and Android platforms.
 
