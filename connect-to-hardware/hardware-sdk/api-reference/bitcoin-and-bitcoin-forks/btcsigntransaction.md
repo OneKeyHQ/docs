@@ -24,6 +24,83 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 * `timestamp` - _optional_ `number` only for Capricoin, transaction timestamp,
 * `branchId` - _optional_ `number`, only for Zcash, BRANCH\_ID when overwintered is set
 
+## Help tool
+
+### build input
+
+```
+private buildHardwareInput = async (
+  input: TxInput,
+  path: string,
+): Promise<Messages.TxInputType> => {
+  const { getHDPath, getScriptType } = await CoreSDKLoader();
+  const addressN = getHDPath(path);
+  const scriptType = getScriptType(addressN);
+  const utxo = input.utxo as UTXO;
+
+  // @ts-expect-error
+  return {
+    prev_index: utxo.vout,
+    prev_hash: utxo.txid,
+    amount: utxo.value.integerValue().toString(),
+    address_n: addressN,
+    script_type: scriptType,
+  };
+};
+```
+
+### build Output
+
+```
+private buildHardwareOutput = async (
+  output: TxOutput,
+): Promise<Messages.TxOutputType> => {
+  const { isCharge, bip44Path } = output.payload || {};
+
+  if (isCharge && bip44Path) {
+    const { getHDPath, getOutputScriptType } = await CoreSDKLoader();
+    const addressN = getHDPath(bip44Path);
+    const scriptType = getOutputScriptType(addressN);
+    return {
+      script_type: scriptType,
+      address_n: addressN,
+      amount: output.value.integerValue().toString(),
+    };
+  }
+
+  return {
+    script_type: 'PAYTOADDRESS',
+    address: output.address,
+    amount: output.value.integerValue().toString(),
+  };
+};
+```
+
+### buildPrevTx
+
+```
+import * as BitcoinJS from 'bitcoinjs-lib';
+private buildPrevTx = (rawTx: string): RefTransaction => {
+    const tx = BitcoinJS.Transaction.fromHex(rawTx);
+
+    return {
+      hash: tx.getId(),
+      version: tx.version,
+      inputs: tx.ins.map((i) => ({
+        prev_hash: i.hash.reverse().toString('hex'),
+        prev_index: i.index,
+        script_sig: i.script.toString('hex'),
+        sequence: i.sequence,
+      })),
+      bin_outputs: tx.outs.map((o) => ({
+        amount: o.value,
+        script_pubkey: o.script.toString('hex'),
+      })),
+      lock_time: tx.locktime,
+    };
+  };
+```
+
 ## Example
 
 ### PAYTOADDRESS

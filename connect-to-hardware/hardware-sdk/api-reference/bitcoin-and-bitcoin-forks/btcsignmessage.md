@@ -15,6 +15,7 @@ const result = await HardwareSDK.btcSignMessage(connectId, deviceId, params);
 * `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
 * `messageHex` - _required_ `string` message from hex
 * `coin` - _optional_ `string` Determines network definition specified in coins.json file. Coin `shortcut`, `name` or `label` can be used. If `coin` is not set API will try to get network definition from `path`.
+* `noScriptType`- _optional `boolean`_ For signatures without script types.
 
 ### Example
 

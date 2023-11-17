@@ -21,7 +21,7 @@ const result = await HardwareSDK.nexaSignTransaction(connectId, deviceId, params
 * `inputs` - _required_ `Array` transaction inputs
   * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
   * `message` - _required_ `string` type of serialized transaction string.
-  * `prefix` - _optional_ `string` Address prefix. Default is set to `nexatest`
+  * `prefix` - _required_ `string` Address prefix. Default is set to `nexatest`
   * `scheme` - _optional_ `string` Encryption algorithm mode. Default is set to `schnorr`
 * `outputs` - _required_ `Array` transaction outputs
   * `satoshis` - _required_ `number | string` transaction amount

@@ -20,8 +20,8 @@ const result = await HardwareSDK.cardanoSignMessage(connectId, deviceId, params)
 
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `message` - _required_ `string` message to sign in hex text
-* `derivationType` — _optional_ `CardanoDerivationType` enum. determines used derivation type. Default is set to ICARUS=1
 * `networkId` - _required_ `Integer` 1 for Mainnet, 0 for Testnet
+* `derivationType` — _optional_ `CardanoDerivationType` enum. determines used derivation type. Default is set to ICARUS=1
 
 ### Example
 

@@ -11,6 +11,9 @@ Transfer data to the device, currently supporting data transfer for PIN and pass
 
 [**Optional common params**](../common-params.md)
 
+* `type` — _required_ `string`. type to respond to `ui-receive_pin` or `ui-receive_passphrase`
+* `payload` — _required_ `object`
+
 #### Return the PIN code result
 
 ```typescript

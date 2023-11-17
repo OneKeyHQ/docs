@@ -21,6 +21,7 @@ const response = await HardwareSDK.nemGetAddress(connectId, deviceId, params)
 **Exporting single address**
 
 * `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
+* `network`— _optional_ `number` Network id. The default value is `MAINNET(104)`
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 
 **Exporting bundle of addresses**

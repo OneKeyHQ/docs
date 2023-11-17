@@ -22,7 +22,14 @@ const result = await HardwareSDK.kaspaSignTransaction(connectId, deviceId, param
 * `inputs` - _required_ `Array` of [KaspaSignInputParams](https://github.com/OneKeyHQ/hardware-js-sdk/blob/269ee367141ae2186a9a63d1d89e9f4c70428623/packages/core/src/types/api/kaspaSignTransaction.ts#L9C1-L19C3).
 * `outputs` - _required_ `Array` of [KaspaSignOutputParams](https://github.com/OneKeyHQ/hardware-js-sdk/blob/269ee367141ae2186a9a63d1d89e9f4c70428623/packages/core/src/types/api/kaspaSignTransaction.ts#L21C1-L26C1).
 * `lockTime` - _required_ `number`&#x20;
-* `sigHashType` - _optional_ `number`&#x20;
+* `sigHashType` - _required_ `number`&#x20;
+  * ```
+    SIGHASH_ALL = 0x01,
+    SIGHASH_NONE = 0x02,
+    SIGHASH_SINGLE = 0x03,
+    SIGHASH_FORKID = 0x40,
+    SIGHASH_ANYONECANPAY = 0x80,
+    ```
 * `sigOpCount` - _optional_ `number`&#x20;
 * `subNetworkID` - _optional_ `string`&#x20;
 * `prefix` - _optional_ `string` Address prefix. Default is set to `kaspa`

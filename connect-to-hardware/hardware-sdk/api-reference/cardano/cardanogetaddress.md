@@ -21,9 +21,9 @@ const response = await HardwareSDK.cardanoGetAddress(connectId, deviceId, params
 **Exporting single address**
 
 * `addressParameters` — _required_ see description below
-* `address` — _optional_ `string` address for validation (read `Handle button request` section below)
 * `protocolMagic` - _required_ `Integer` 764824073 for Mainnet, 1 for Preprod Testnet, 2 for Preview Testnet
 * `networkId` - _required_ `Integer` 1 for Mainnet, 0 for Testnet
+* `address` — _optional_ `string` address for validation (read `Handle button request` section below)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 * `derivationType` — _optional_ `CardanoDerivationType` enum. determines used derivation type. Default is set to ICARUS=1
 * `isCheck` — _optional_ `boolean` checks only the base address
