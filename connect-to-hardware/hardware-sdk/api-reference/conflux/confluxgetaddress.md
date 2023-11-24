@@ -22,7 +22,7 @@ const response = await HardwareSDK.confluxGetAddress(connectId, deviceId, params
 
 * `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
-* `chainId` - _optional  `number`_ of the id of the chain
+* `chainId` - _optional  `number`_ of the id of the chain, default is `1029` .
 
 **Exporting bundle of addresses**
 
@@ -34,7 +34,8 @@ Display address of first conflux account:
 
 ```typescript
 HardwareSDK.confluxGetAddress({
-    path: "m/44'/503'/0'/0/0"
+    path: "m/44'/503'/0'/0/0",
+    chainId: 1029
 });
 ```
 
@@ -43,9 +44,9 @@ Return a bundle of conflux addresses without displaying them on device:
 ```typescript
 HardwareSDK.confluxGetAddress(connectId, deviceId, {
     bundle: [
-        { path: "m/44'/503'/0'/0/0", showOnOneKey: false }, // account 1
-        { path: "m/44'/503'/1'/0/0", showOnOneKey: false }, // account 2
-        { path: "m/44'/503'/2'/0/0", showOnOneKey: false }  // account 3
+        { path: "m/44'/503'/0'/0/0", chainId: 1029, showOnOneKey: false }, // account 1
+        { path: "m/44'/503'/1'/0/0", chainId: 1029, showOnOneKey: false }, // account 2
+        { path: "m/44'/503'/2'/0/0", chainId: 1029, showOnOneKey: false }  // account 3
     ]
 });
 ```
