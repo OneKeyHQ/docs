@@ -1,15 +1,17 @@
 # Guide
 
-### Overview
+## Overview
 
 This guide helps users understand how to build Bitcoin Lightning Network applications using the OneKey Lightning Network Provider API.
+
+
 
 ### Building Web Apps **Use Cases**
 
 * Accepting Lightning Network payments
 * decentralized identity applications
 
-### API
+## Install
 
 #### 1. Download OneKey Wallet
 
@@ -23,7 +25,21 @@ Download the [OneKey Wallet](https://onekey.so/download?client=browserExtension)
 
 > Both APIs have the same functionality, just different names.
 
-3. **Clarify Needs**: Identify required functionalities, call relevant interfaces
+### Detecting Provider API support
+
+Before you start using WebLN you need to check for browser support by checking if the variable `window.webln` is defined:
+
+```javascript
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
+if (!provider) {
+  alert("No Provider available.");
+}
+```
+
+## API
+
+**Clarify Needs**: Identify required functionalities, call relevant interfaces
 
 * Get user's Bitcoin Lightning node information: [`provider.getInfo`](api-reference/getinfo.md)
 * Send a payment: [`provider.sendPayment`](api-reference/sendpayment.md)
@@ -32,7 +48,7 @@ Download the [OneKey Wallet](https://onekey.so/download?client=browserExtension)
 
 **More Interfaces**: [View Details](../btc-webln/api-reference/)
 
-### Event
+## Event
 
 * **Key Operations**: Such as account switching
 * **More Information**: [View More](event.md)
