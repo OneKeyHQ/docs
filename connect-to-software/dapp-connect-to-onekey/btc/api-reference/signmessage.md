@@ -5,10 +5,7 @@ Sign message
 ### Method
 
 ```typescript
-async function signMessage(
-    message: string, 
-    type: string,
-): string
+async function signMessage(message: string, type: string): string
 ```
 
 ### Params

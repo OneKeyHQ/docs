@@ -5,16 +5,14 @@
 <pre><code><strong>async function nip04.decrypt(pubkey, message): string 
 </strong></code></pre>
 
+### Params
+
+* `pubkey` — _required_ `string`  the publick key
+* `message` — _required_ `string` a string to sign
+
 ### Response
 
 returns ciphertext and iv as specified in nip-04
-
-### Params
-
-```typescript
-pubkey: string
-message: string
-```
 
 ### Example
 

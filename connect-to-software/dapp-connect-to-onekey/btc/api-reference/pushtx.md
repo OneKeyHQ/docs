@@ -5,9 +5,7 @@ Push Transaction
 ### Method
 
 ```typescript
-async function pushTx(
-    rawtx: string, 
-): string
+async function pushTx(rawtx: string): string
 ```
 
 ### Params

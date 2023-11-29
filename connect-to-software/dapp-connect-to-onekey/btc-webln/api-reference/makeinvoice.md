@@ -16,6 +16,13 @@ async function makeInvoice(args: RequestInvoiceArgs): RequestInvoiceResponse
 
 ### Params
 
+* `event` — _required_ `object`
+  * `amount` — _optional_ `string|number`  the satoshis to send
+  * `defaultAmount` — _optional_ `string|number`
+  * `minimumAmount` — _optional_ `string|number`
+  * `maximumAmount` — _optional_ `string|number`
+  * `defaultMemo` — _optional_ `string`
+
 ```typescript
 export interface RequestInvoiceArgs {
   amount?: string | number; // unit is sats

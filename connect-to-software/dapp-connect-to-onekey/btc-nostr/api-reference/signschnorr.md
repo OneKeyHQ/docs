@@ -6,6 +6,10 @@
 async function signSchnorr(sigHash: string) : string;
 ```
 
+### Params
+
+* `sigHash` — _required_ `string`  a hash to sign
+
 ### Response
 
 Signature of arbitrary text signed with the private key of the active nostr account

@@ -11,10 +11,8 @@ returns ciphertext and iv as specified in nip-04
 
 ### Params
 
-```typescript
-pubkey: string
-plaintext: string
-```
+* `pubkey` — _required_ `string`  the publick key
+* `message` — _required_ `string` a string to sign
 
 ### Example
 

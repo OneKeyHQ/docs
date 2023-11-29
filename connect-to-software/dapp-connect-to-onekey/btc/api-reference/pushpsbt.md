@@ -5,9 +5,7 @@ Push Transaction
 ### Method
 
 ```typescript
-async function pushPsbt(
-    psbtHex: string, 
-): string
+async function pushPsbt(psbtHex: string): string
 ```
 
 ### Params

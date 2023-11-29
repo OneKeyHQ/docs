@@ -6,11 +6,13 @@
 async function signEvent(event: UnsignedEvent): Event 
 ```
 
-### Response
-
-takes an event object, adds `id`, `pubkey` and `sig` and returns it
-
 ### Params
+
+* `event` — _required_ `object`
+  * `kind` — _required_ `number`
+  * `content`— _required_ `string`
+  * `tags` — _required_ `Array<Array<string>>`
+  * `created_at` — _required_ `number`
 
 ```typescript
 export type UnsignedEvent = {
@@ -29,6 +31,10 @@ export enum EventKind {
   Deleted = 5,
 }
 ```
+
+### Response
+
+takes an event object, adds `id`, `pubkey` and `sig` and returns it
 
 ### Result
 
