@@ -34,7 +34,7 @@ if (!provider) {
 
 ### Connecting to OneKey
 
-Before using the following API, you first need to use the provider.requestAccounts method to request the user to access the relevant BTC account.&#x20;
+Before using the following API, you first need to use the `provider.requestAccounts` method to request the user to access the relevant BTC account.&#x20;
 
 ```
 provider.requestAccounts()

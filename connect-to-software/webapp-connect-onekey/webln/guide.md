@@ -37,6 +37,16 @@ if (!provider) {
 }
 ```
 
+### Connecting to OneKey
+
+Before using the following API, you first need to use the `provider.enable` method to request the user to access the relevant account.&#x20;
+
+```
+provider.enable()
+```
+
+Other APIs can be called only after user authorization.
+
 ## API
 
 **Clarify Needs**: Identify required functionalities, call relevant interfaces
