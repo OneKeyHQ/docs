@@ -12,7 +12,7 @@ async function enable(): void
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>async window.$onekey?.webln.enable()
+<pre class="language-typescript"><code class="lang-typescript"><strong>async window.webln.enable()
 </strong></code></pre>
 
 

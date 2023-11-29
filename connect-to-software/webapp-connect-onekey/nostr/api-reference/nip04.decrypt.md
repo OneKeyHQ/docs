@@ -16,8 +16,10 @@ returns ciphertext and iv as specified in nip-04
 
 ### Example
 
-```
-const decrypted = async window.$onekey?.nostr.nip04.decrypt(pubkey, "010203")
+```javascript
+const message = "Data to be encrypted";
+const encrypted = await window.nostr.nip04.encrypt(pubkey, message);
+const decrypted = await window.nostr.nip04.decrypt(pubkey, encrypted); // Data to be encrypted
 ```
 
 ### Demo

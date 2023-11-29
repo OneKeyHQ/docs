@@ -59,7 +59,7 @@ const event = {
   content: "OneKey 🚀",
   tags: [],
 };
-const signedEvent = await window.$onekey?.nostr.signEvent(event);
+const signedEvent = await window.nostr.signEvent(event);
 ```
 
 ### Demo

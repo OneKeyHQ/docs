@@ -21,12 +21,41 @@ type LNURLResponse =
   | { status: "ERROR"; reason: string };
 ```
 
+### LNURL-pay Response&#x20;
 
+```typescript
+type LNURLPayResponse =
+  | {
+      status: "OK";
+      data: { 
+        preimage: string, 
+        paymentHash: string, 
+        paymentRequest: string
+      }
+    }
+  | { status: "ERROR"; reason: string };
+```
+
+### LNURL-auth Response&#x20;
+
+```typescript
+type LNURLAuthResponse =
+  | {
+      status: "OK";
+      data: { 
+        message: string, 
+        signature: string
+      }
+    }
+  | { status: "ERROR"; reason: string };
+```
 
 ### Example
 
 ```typescript
-const lnurl = "xxxx";
-await window.$onekey?.webln.enable();
-await window.$onekey?.webln.lnurl(lnurl);
+const lnurl = // Your LNURL
+if (!webln.lnurl) { throw new Error('not supported lnurl method'); }
+
+await window.webln.enable();
+const result = await window.webln.lnurl(lnurl); // promise resolves once the LNURL process is finished (e.g. a payment is sent or the login is complete)
 ```

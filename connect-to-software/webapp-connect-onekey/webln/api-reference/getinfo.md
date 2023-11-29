@@ -11,21 +11,23 @@ async function getInfo(): GetInfoResponse
 ### Response
 
 ```typescript
-export interface GetInfoResponse {
-    node: {
-        alias: string;
-        pubkey: string;
-        color?: string;
-    };
-    methods: string[];
+interface GetInfoResponse {
+  node: {
+    alias: string;
+    pubkey: string;
+    color?: string;
+  };
+  // "request.*" methods are not supported by all connectors
+  // (see webln.request for more info)
+  methods: string[]; // e.g. "makeInvoice", "sendPayment", "request.openchannel", ...
 }
 ```
 
 ### Example
 
 ```typescript
-await window.$onekey?.webln.enable();
-const info = await window.$onekey?.webln.getInfo();
+await window.webln.enable();
+const info = await window.webln.getInfo();
 ```
 
 ### Demo

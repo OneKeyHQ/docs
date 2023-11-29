@@ -12,7 +12,7 @@ returns a public key as hex
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const pubkey = async window.$onekey?.nostr.getPublicKey()
+<pre class="language-typescript"><code class="lang-typescript"><strong>const pubkey = async window.nostr.getPublicKey()
 </strong></code></pre>
 
 ### Demo

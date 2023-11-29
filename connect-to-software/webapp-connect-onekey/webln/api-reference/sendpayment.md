@@ -8,6 +8,8 @@ Request that the user sends a payment for an invoice. The application needs to p
 async function sendPayment(paymentRequest: string): SendPaymentResponse
 ```
 
+* `paymentRequest`:  The invoice you'd like the user to pay (lnbc...)
+
 ### Response
 
 ```typescript
@@ -19,11 +21,11 @@ interface SendPaymentResponse {
 ### Example
 
 ```typescript
-const invoice = "xxxx";
-await window.$onekey?.webln.enable();
-const info = await window.$onekey?.webln.sendPayment(invoice);
+const invoice = "lnbc100xxxx";
+await window.webln.enable();
+const info = await window.webln.sendPayment(invoice);
 ```
 
-\##Demo
+### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/OJdomvO" %}

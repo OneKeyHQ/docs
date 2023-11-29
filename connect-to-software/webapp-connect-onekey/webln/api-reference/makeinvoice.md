@@ -24,7 +24,7 @@ async function makeInvoice(args: RequestInvoiceArgs): RequestInvoiceResponse
   * `defaultMemo` — _optional_ `string`
 
 ```typescript
-export interface RequestInvoiceArgs {
+interface RequestInvoiceArgs {
   amount?: string | number; // unit is sats
   defaultAmount?: string | number; // unit is sats
   minimumAmount?: string | number; // unit is sats
@@ -36,7 +36,7 @@ export interface RequestInvoiceArgs {
 ### Response
 
 ```typescript
-export interface RequestInvoiceResponse {
+interface RequestInvoiceResponse {
   paymentRequest: string;
   paymentHash: string;
   rHash: string;
@@ -46,8 +46,8 @@ export interface RequestInvoiceResponse {
 ### Example
 
 ```typescript
-await window.$onekey?.webln.enable();
-const invoice = await window.$onekey?.webln.makeInvoice({
+await window.webln.enable();
+const invoice = await window.webln.makeInvoice({
   amount: 1000,
 });
 ```

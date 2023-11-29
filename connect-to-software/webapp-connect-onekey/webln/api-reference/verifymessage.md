@@ -11,10 +11,10 @@ async function verifyMessage(signature: string, message: string): void
 ### Example
 
 ```typescript
-const message = "xxxx";
-const signature = "xxxx";
-await window.$onekey?.webln.enable();
-await window.$onekey?.webln.verifyMessage(signature, message);
+const message = "Plain Message";
+await window.webln.enable();
+const signature = window.webln.signMessage(message)
+await window.webln.verifyMessage(signature, message);
 ```
 
 ### Demo

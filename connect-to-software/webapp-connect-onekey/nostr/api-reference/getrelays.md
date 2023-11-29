@@ -11,7 +11,7 @@ returns a basic map of relay urls to relay policies
 
 ### Example
 
-<pre><code><strong>const event = async window.$onekey?.nostr.getRelays()
+<pre><code><strong>const event = async window.nostr.getRelays()
 </strong></code></pre>
 
 ### Demo
