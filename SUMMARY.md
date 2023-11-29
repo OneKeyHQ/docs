@@ -58,7 +58,7 @@
       * [signPsbt](connect-to-software/dapp-connect-to-onekey/btc-unisat/api-reference/signpsbt.md)
       * [signPsbts](connect-to-software/dapp-connect-to-onekey/btc-unisat/api-reference/signpsbts.md)
       * [pushPsbt](connect-to-software/dapp-connect-to-onekey/btc-unisat/api-reference/pushpsbt.md)
-      * [inscribeTransfer (Not Support)](connect-to-software/dapp-connect-to-onekey/btc-unisat/api-reference/inscribetransfer-not-support.md)
+      * [inscribeTransfer (Deprecated)](connect-to-software/dapp-connect-to-onekey/btc-unisat/api-reference/inscribetransfer-deprecated.md)
     * [Event](connect-to-software/dapp-connect-to-onekey/btc-unisat/event.md)
   * [NEAR](connect-to-software/dapp-connect-to-onekey/near/README.md)
     * [Introduction](connect-to-software/dapp-connect-to-onekey/near/introduction.md)
