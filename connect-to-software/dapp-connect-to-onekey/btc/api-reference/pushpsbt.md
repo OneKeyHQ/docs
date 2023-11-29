@@ -24,6 +24,8 @@ async function pushPsbt(
 </strong><strong>const txid = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.pushPsbt(psbtHex);
 </strong></code></pre>
 
+### Demo
 
+{% embed url="https://codepen.io/OneKeyHQ/pen/dyaqzgE" %}
 
 [^1]: 

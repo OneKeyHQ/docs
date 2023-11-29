@@ -26,6 +26,8 @@ async function signMessage(
 </strong><strong>const signature = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.signMessage(message);
 </strong></code></pre>
 
+### Demo
 
+{% embed url="https://codepen.io/OneKeyHQ/pen/OJdojZM" %}
 
 [^1]: 

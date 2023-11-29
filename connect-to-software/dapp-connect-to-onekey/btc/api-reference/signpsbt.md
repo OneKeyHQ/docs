@@ -27,6 +27,8 @@ async function signPsbt(
 </strong><strong>const signed = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.signPsbt(psbtHex);
 </strong></code></pre>
 
+### Demo
 
+{% embed url="https://codepen.io/OneKeyHQ/pen/GRzXvXJ" %}
 
 [^1]: 

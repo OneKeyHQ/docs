@@ -29,4 +29,8 @@ async function sendBitcoin(
 </strong><strong>const txid = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.sendBitcoin(address, 1000);
 </strong></code></pre>
 
+### Demo
+
+{% embed url="https://codepen.io/OneKeyHQ/pen/RwvYZjX" %}
+
 [^1]: 

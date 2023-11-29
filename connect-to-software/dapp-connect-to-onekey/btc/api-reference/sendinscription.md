@@ -30,4 +30,8 @@ async function sendInscription(
 <strong>const txid = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.sendInscription(address, inscription);
 </strong></code></pre>
 
+### Demo
+
+{% embed url="https://codepen.io/OneKeyHQ/pen/MWLqvVE" %}
+
 [^1]: 

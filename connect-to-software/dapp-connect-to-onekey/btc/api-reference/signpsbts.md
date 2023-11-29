@@ -23,10 +23,12 @@ async function signPsbts(
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const psbtHex = ["010203", "010203"]
-</strong><strong>const signeds = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.signPsbts(psbtHex);
+<pre class="language-typescript"><code class="lang-typescript"><strong>const psbtHexs = ["010203", "010203"]
+</strong><strong>const signeds = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.signPsbts(psbtHexs);
 </strong></code></pre>
 
+### Demo
 
+{% embed url="https://codepen.io/OneKeyHQ/pen/XWOPaPY" %}
 
 [^1]: 
