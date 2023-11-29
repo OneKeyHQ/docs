@@ -14,19 +14,19 @@ OneKey is a 100% open-source hardware wallet, which communicates securely via Bl
 
 Whether you are a DApp developer, a third-party wallet developer, or a blockchain professional, OneKey offers an easy access method. This guide will quickly introduce you to how to access OneKey, utilize its features, and develop applications.
 
-### DApp Developer Guide
+### For Web Apps
 
 If you are a dApp developer looking to connect and use OneKey, we provide relevant documentation and guides.
 
 [Read more >>>](guide/dapp-developer.md)
 
-### Third-Party Wallet and App Developer Guide
+### For Web and Mobile Apps
 
 If you are a third-party wallet or App developer interested in understanding how to connect to OneKey's software and hardware, you can refer to the following documentation and guides.
 
 [Read more >>>](guide/app-developer.md)
 
-### **Developer's Guide**
+### **For Developer's**
 
 If you wish to contribute to OneKey by developing new chain support or fixing issues, you can refer to the following documentation.
 

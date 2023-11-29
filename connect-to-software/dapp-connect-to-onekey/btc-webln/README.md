@@ -1,4 +1,4 @@
-# BTC Webln
+# WebLN
 
 OneKey Browser Extension injects a global API into websites visited by its users at `window.$onekey.webln`.  Using WebLN API is straightforward. WebLN offers a comprehensive set of APIs designed for building Bitcoin Lightning-driven web applications using the WebLN standard and requires just a few lines of code.
 
