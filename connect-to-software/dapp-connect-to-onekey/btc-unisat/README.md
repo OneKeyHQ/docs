@@ -4,8 +4,6 @@ OneKey Browser Extension injects a global API into websites visited by its users
 
 We recommend using `typeof window !== 'undefined' && window.$onekey.btc` to detect our provider in browser.
 
-The JavaScript provider API is specified by [NIPS-07](https://github.com/nostr-protocol/nips/blob/master/07.md).
-
 ```javascript
 if (typeof window !== 'undefined' && window.$onekey?.btc) {  
   // From now on, this should always be true:  
