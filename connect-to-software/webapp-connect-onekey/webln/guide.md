@@ -46,7 +46,7 @@ if (!provider) {
 * Request an invoice to receive payment: [`provider.makeInvoice`](api-reference/makeinvoice.md)
 * Request signature for any message: [`provider.signMessage`](api-reference/signmessage.md)
 
-**More Interfaces**: [View Details](../btc-webln/api-reference/)
+**More Interfaces**: [View Details](api-reference/)
 
 ## Event
 
