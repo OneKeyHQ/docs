@@ -13,11 +13,11 @@ There are innumerable `EventEmitter` guides elsewhere, but you can listen for ev
 When switching accounts.
 
 ```
-window.$onekey.nostr.on('accountsChanged', (accounts) => {  
+window.$onekey.webln.on('accountsChanged', (accounts) => {  
     // Handle the new accounts, or lack thereof.
     // "accounts" will always be an array, but it can be empty.
 });
-window.$onekey.nostr.off('accountsChanged');
+window.$onekey.webln.off('accountsChanged');
 ```
 
 ## chainChanged **(Deprecated)**
@@ -25,10 +25,10 @@ window.$onekey.nostr.off('accountsChanged');
 When the chain changes.
 
 ```
-window.$onekey.nostr.on('chainChanged', (chainId) => {  
+window.$onekey.webln.on('chainChanged', (chainId) => {  
     // Handle the new chain.  
     // Correctly handling chain changes can be complicated.  
     // We recommend reloading the page unless you have good reason not to.  window.location.reload();
 });
-window.$onekey.nostr.off('chainChanged');
+window.$onekey.webln.off('chainChanged');
 ```
