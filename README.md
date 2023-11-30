@@ -5,6 +5,7 @@ Welcome to the OneKey Developer Documentation. This documentation is designed to
 * You can find the latest version of OneKey on our [official website](https://onekey.so/).&#x20;
 * If you need help using OneKey, please visit our [User Support Site.](https://help.onekey.so/)&#x20;
 * To get the latest updates, please follow our [Twitter](https://twitter.com/OneKeyHQ).
+* [Developer community (Discord) ](https://discord.com/channels/868309113942196295/912695369656316014)
 
 ## Why OneKey
 
@@ -31,3 +32,14 @@ If you are a third-party wallet or App developer interested in understanding how
 If you wish to contribute to OneKey by developing new chain support or fixing issues, you can refer to the following documentation.
 
 [Read more >>>](guide/developers-guide.md)
+
+
+
+## Something is missing? Contact us!
+
+\
+If you can't find what you need here:
+
+* [Visit our community Discord](https://discord.com/channels/868309113942196295/912695369656316014), we will respond in real time.
+* [Ask an issue on Github](https://github.com/OneKeyHQ/app-monorepo/issues)
+* Check our [GitHub profile](https://github.com/OneKeyHQ/app-monorepo)
