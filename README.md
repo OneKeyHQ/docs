@@ -1,39 +1,51 @@
 # Introduction
 
-Welcome to the OneKey Developer Documentation. This documentation is designed to help you learn how to connect and use OneKey hardware, as well as how to develop DApps for OneKey.&#x20;
+Welcome to the OneKey Developer Documentation. If there are any imperfections, feel free to join our community and provide feedback at [#stack-overflow (Discord)](https://discord.com/channels/868309113942196295/912695369656316014).
 
-* You can find the latest version of OneKey on our [official website](https://onekey.so/).&#x20;
-* If you need help using OneKey, please visit our [User Support Site.](https://help.onekey.so/)&#x20;
-* To get the latest updates, please follow our [Twitter](https://twitter.com/OneKeyHQ).
-* [Developer community #stack-overflow (Discord) ](https://discord.com/channels/868309113942196295/912695369656316014)
+## For users
 
-## Why OneKey
+This documentation is primarily for developers. If you encounter any issues while using our products, please consult our help documentation or submit a ticket for customer service assistance.
 
-OneKey is a 100% open-source hardware wallet, which communicates securely via Bluetooth or USB. It also comes with a 100% open-source software wallet. The software wallet can operate independently without hardware, allowing users to choose according to their required security levels, thus ensuring account security.
+### For users Useful links
 
-## Guide
+* [OneKey Official Website](https://onekey.so/)
+* [Help Center](https://help.onekey.so/hc)
+* [Submit a ticket for customer service](https://help.onekey.so/hc/requests/new)
+* [Official Twitter](https://twitter.com/OneKeyHQ)
 
-Whether you are a DApp developer, a third-party wallet developer, or a blockchain professional, OneKey offers an easy access method. This guide will quickly introduce you to how to access OneKey, utilize its features, and develop applications.
+## For Web Apps
 
-### For Web Apps
+If you are developing a dApp or a Web application and wish to use decentralized capabilities for on-chain interactions, OneKey injects many JavaScript objects into browsers. These objects facilitate interactions with mainstream chains and protocols like BTC, ETH, Lightning Network, Nostr, Cosmos, Polkadot, Sui, Aptos, and Solana.
 
-If you are a dApp developer looking to connect and use OneKey, we provide relevant documentation and guides.
+We also support Wallet Connect. If your Web App is compatible with the Wallet Connect protocol, you can directly connect with OneKey.
 
-[Read more >>>](guide/dapp-developer.md)
+{% content-ref url="guide/web-app-developer.md" %}
+[web-app-developer.md](guide/web-app-developer.md)
+{% endcontent-ref %}
 
-### For Web and Mobile Apps
+## **For Web and Mobile App Developers**
 
-If you are a third-party wallet or App developer interested in understanding how to connect to OneKey's software and hardware, you can refer to the following documentation and guides.
+If you are developing software and wish to connect and use OneKey hardware for asset storage and management, we provide an SDK for easy interaction with the hardware.
 
-[Read more >>>](guide/app-developer.md)
+Our software also accepts Wallet Connect connections. If you want to use and access features provided by OneKey software, you are welcome to do so.
 
-### **For Developer's**
+{% content-ref url="guide/web-app-developer.md" %}
+[web-app-developer.md](guide/web-app-developer.md)
+{% endcontent-ref %}
+
+## **For Developer's**
 
 If you wish to contribute to OneKey by developing new chain support or fixing issues, you can refer to the following documentation.
 
-[Read more >>>](guide/developers-guide.md)
+{% content-ref url="guide/developers-guide.md" %}
+[developers-guide.md](guide/developers-guide.md)
+{% endcontent-ref %}
 
+### **For Developer's** Useful links
 
+* [Developer guide](https://developer.onekey.so/)
+* [OneKey Github ](https://github.com/OneKeyHQ)
+* [Logo Assets](https://help.onekey.so/hc/articles/360002200956)
 
 ## Something is missing? Contact us!
 

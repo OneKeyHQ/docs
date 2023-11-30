@@ -33,7 +33,11 @@ You can use a USB connection to the device for debugging APIs.
 
 Offer a hardware SDK to support various applications connecting to OneKey hardware. Supports multiple programming languages.
 
-The specific steps for integrating the SDK. [Read more >>>](../connect-to-hardware/hardware-sdk/started.md)
+The specific steps for integrating the SDK.
+
+{% content-ref url="../connect-to-hardware/hardware-sdk/started.md" %}
+[started.md](../connect-to-hardware/hardware-sdk/started.md)
+{% endcontent-ref %}
 
 ## WalletConnect Integration
 

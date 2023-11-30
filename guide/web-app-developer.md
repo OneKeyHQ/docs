@@ -1,4 +1,4 @@
-# DApp Developer
+# Web App Developer
 
 ## &#x20;Started
 
@@ -18,7 +18,11 @@ As a DApp developer, you have the following options for connecting to OneKey:
 
 OneKey injects the Provider API into websites visited by users, allowing these websites to request relevant APIs to interact with blockchains through OneKey. e.g [Ethereum Provider API](../connect-to-software/webapp-connect-onekey/eth/provider-api.md).
 
-OneKey provides Provider APIs for many blockchains. [Read more >>>](../connect-to-software/webapp-connect-onekey/)
+OneKey provides Provider APIs for many blockchains.
+
+{% content-ref url="../connect-to-software/webapp-connect-onekey/" %}
+[webapp-connect-onekey](../connect-to-software/webapp-connect-onekey/)
+{% endcontent-ref %}
 
 
 
