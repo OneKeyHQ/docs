@@ -22,7 +22,7 @@ Download the [OneKey Wallet](https://onekey.so/download?client=browserExtension)
 
 ### Detecting Provider API support
 
-Before you start using Nostr protocol you need to check for browser support by checking if the variable `window.nostr` is defined:
+Before you start using Provider Api you need to check for browser support by checking if the variable `window.unisat` is defined:
 
 ```javascript
 const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
