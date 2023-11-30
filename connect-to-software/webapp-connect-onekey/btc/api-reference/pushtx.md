@@ -18,12 +18,12 @@ async function pushTx(rawtx: string): string
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const rawtx = "010203"
-</strong><strong>const txid = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.pushTx(rawtx);
+<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+
+<strong>const rawtx = "010203"
+</strong><strong>const txid = async provider.pushTx(rawtx);
 </strong></code></pre>
 
 ### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/VwgGzxO" %}
-
-[^1]: 

@@ -41,7 +41,9 @@ if (!provider) {
 
 Before using the following API, you first need to use the `provider.enable` method to request the user to access the relevant account.&#x20;
 
-```
+```typescript
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
 provider.enable()
 ```
 

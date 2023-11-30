@@ -17,7 +17,9 @@ returns ciphertext and iv as specified in nip-04
 ### Example
 
 ```javascript
-const encrypted = async window.nostr.nip04.encrypt(pubkey, "Data to be encrypted")
+const provider = (window.$onekey && window.$onekey.nostr) || window.nostr;
+
+const encrypted = async provider.nip04.encrypt(pubkey, "Data to be encrypted")
 ```
 
 ### Demo

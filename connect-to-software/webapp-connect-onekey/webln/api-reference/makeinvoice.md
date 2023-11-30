@@ -46,8 +46,10 @@ interface RequestInvoiceResponse {
 ### Example
 
 ```typescript
-await window.webln.enable();
-const invoice = await window.webln.makeInvoice({
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
+await provider.enable();
+const invoice = await provider.makeInvoice({
   amount: 1000,
 });
 ```

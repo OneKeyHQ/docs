@@ -20,9 +20,11 @@ interface SignMessageResponse {
 ### Example
 
 ```typescript
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
 const message = "Plain Message";
-await window.webln.enable();
-const signature = await window.webln.signMessage(message);
+await provider.enable();
+const signature = await provider.signMessage(message);
 ```
 
 ### Demo

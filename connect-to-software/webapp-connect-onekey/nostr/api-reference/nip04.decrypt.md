@@ -17,9 +17,11 @@ returns ciphertext and iv as specified in nip-04
 ### Example
 
 ```javascript
+const provider = (window.$onekey && window.$onekey.nostr) || window.nostr;
+
 const message = "Data to be encrypted";
-const encrypted = await window.nostr.nip04.encrypt(pubkey, message);
-const decrypted = await window.nostr.nip04.decrypt(pubkey, encrypted); // Data to be encrypted
+const encrypted = await provider.nip04.encrypt(pubkey, message);
+const decrypted = await provider.nip04.decrypt(pubkey, encrypted); // Data to be encrypted
 ```
 
 ### Demo

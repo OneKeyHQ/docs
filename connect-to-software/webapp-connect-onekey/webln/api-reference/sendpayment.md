@@ -21,9 +21,11 @@ interface SendPaymentResponse {
 ### Example
 
 ```typescript
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
 const invoice = "lnbc100xxxx";
-await window.webln.enable();
-const info = await window.webln.sendPayment(invoice);
+await provider.enable();
+const info = await provider.sendPayment(invoice);
 ```
 
 ### Demo

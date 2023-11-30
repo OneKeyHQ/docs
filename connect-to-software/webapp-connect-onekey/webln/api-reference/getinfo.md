@@ -26,8 +26,10 @@ interface GetInfoResponse {
 ### Example
 
 ```typescript
-await window.webln.enable();
-const info = await window.webln.getInfo();
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
+await provider.enable();
+const info = await provider.getInfo();
 ```
 
 ### Demo

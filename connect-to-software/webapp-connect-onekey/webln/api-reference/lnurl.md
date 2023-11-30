@@ -56,6 +56,8 @@ type LNURLAuthResponse =
 const lnurl = // Your LNURL
 if (!webln.lnurl) { throw new Error('not supported lnurl method'); }
 
-await window.webln.enable();
-const result = await window.webln.lnurl(lnurl); // promise resolves once the LNURL process is finished (e.g. a payment is sent or the login is complete)
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
+await provider.enable();
+const result = await provider.lnurl(lnurl); // promise resolves once the LNURL process is finished (e.g. a payment is sent or the login is complete)
 ```

@@ -25,13 +25,13 @@ async function sendInscription(
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const address = "010203"
+<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+
+<strong>const address = "010203"
 </strong>const inscription = "010203"
-<strong>const txid = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.sendInscription(address, inscription);
+<strong>const txid = async provider.sendInscription(address, inscription);
 </strong></code></pre>
 
 ### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/MWLqvVE" %}
-
-[^1]: 

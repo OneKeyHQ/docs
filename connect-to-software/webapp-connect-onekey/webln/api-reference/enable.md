@@ -12,7 +12,9 @@ async function enable(): void
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>async window.webln.enable()
+<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.webln) || window.webln;
+
+<strong>async provider.enable()
 </strong></code></pre>
 
 

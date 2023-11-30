@@ -17,7 +17,9 @@ Signature of arbitrary text signed with the private key of the active nostr acco
 ### Example
 
 ```typescript
-const signature = async window.nostr.signSchnorr("010203")
+const provider = (window.$onekey && window.$onekey.nostr) || window.nostr;
+
+const signature = async provider.signSchnorr("010203")
 ```
 
 ### Demo

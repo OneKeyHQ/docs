@@ -10,11 +10,11 @@ async function requestAccounts(): string[]
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const accounts = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.requestAccounts()
+<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+
+<strong>const accounts = async provider.requestAccounts()
 </strong></code></pre>
 
 ### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/mdvGwga" %}
-
-[^1]: 

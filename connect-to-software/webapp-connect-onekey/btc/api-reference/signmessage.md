@@ -19,12 +19,12 @@ async function signMessage(message: string, type: string): string
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const message = "010203"
-</strong><strong>const signature = async window.$onekey?.<a data-footnote-ref href="#user-content-fn-1">btc</a>.signMessage(message);
+<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+
+<strong>const message = "010203"
+</strong><strong>const signature = async provider.signMessage(message);
 </strong></code></pre>
 
 ### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/OJdojZM" %}
-
-[^1]: 

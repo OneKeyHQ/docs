@@ -20,8 +20,10 @@ interface BalanceResponse {
 ### Example
 
 ```typescript
-await window.webln.enable();
-const balance = await window.webln.getBalance();
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
+
+await provider.enable();
+const balance = await provider.getBalance();
 ```
 
 ### Demo
