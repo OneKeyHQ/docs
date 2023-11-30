@@ -11,7 +11,7 @@ This documentation is primarily for developers. If you encounter any issues whil
 * [OneKey Official Website](https://onekey.so/)
 * [Help Center](https://help.onekey.so/hc)
 * [Submit a ticket for customer service](https://help.onekey.so/hc/requests/new)
-* [Official Twitter](https://twitter.com/OneKeyHQ)
+* [Official Twitter - X](https://twitter.com/OneKeyHQ)
 
 ## For Web Apps
 
@@ -19,8 +19,8 @@ If you are developing a dApp or a Web application and wish to use decentralized 
 
 We also support Wallet Connect. If your Web App is compatible with the Wallet Connect protocol, you can directly connect with OneKey.
 
-{% content-ref url="guide/web-app-developer.md" %}
-[web-app-developer.md](guide/web-app-developer.md)
+{% content-ref url="guide/dapp-developer.md" %}
+[dapp-developer.md](guide/dapp-developer.md)
 {% endcontent-ref %}
 
 ## **For Web and Mobile App Developers**
@@ -29,8 +29,8 @@ If you are developing software and wish to connect and use OneKey hardware for a
 
 Our software also accepts Wallet Connect connections. If you want to use and access features provided by OneKey software, you are welcome to do so.
 
-{% content-ref url="guide/web-app-developer.md" %}
-[web-app-developer.md](guide/web-app-developer.md)
+{% content-ref url="guide/dapp-developer.md" %}
+[dapp-developer.md](guide/dapp-developer.md)
 {% endcontent-ref %}
 
 ## **For Developer's**

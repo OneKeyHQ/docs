@@ -3,7 +3,7 @@
 ## 👋 GUIDE
 
 * [Introduction](README.md)
-* [Web App Developer](guide/web-app-developer.md)
+* [Web App Developer](guide/dapp-developer.md)
 * [App Developer](guide/app-developer.md)
 * [Developer's Guide](guide/developers-guide.md)
 * [Common Terms](guide/common-terms.md)
