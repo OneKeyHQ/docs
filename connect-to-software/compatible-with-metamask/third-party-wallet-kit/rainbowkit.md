@@ -2,7 +2,7 @@
 
 ## Docs <a href="#install" id="install"></a>
 
-{% embed url="https://www.rainbowkit.com/zh-CN/docs/introduction" %}
+{% embed url="https://www.rainbowkit.com/docs/introduction" %}
 
 ## Install <a href="#install" id="install"></a>
 
