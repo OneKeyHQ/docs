@@ -21,6 +21,6 @@ HardwareSDK.init(params);
 HardwareSDK.init({
     debug: false,
     fetchConfig: ,
-    connectSrc: 'https://jssdk.onekey.so/0.3.30/', // if use web sdk
+    connectSrc: 'https://jssdk.onekey.so/0.3.34/', // if use web sdk
 });
 ```
