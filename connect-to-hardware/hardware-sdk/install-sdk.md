@@ -14,7 +14,7 @@ The support status for Bluetooth and USB on different devices.
 
 This is the platform we support.
 
-<table><thead><tr><th width="324.3333333333333">Platform</th><th>Bluetooth</th><th>USB</th></tr></thead><tbody><tr><td>TypeScript、JavaScript（Web environment）</td><td>X</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-web-sdk">@onekeyfe/hd-web-sdk</a></td></tr><tr><td>React Native</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-ble-sdk">@onekeyfe/hd-ble-sdk</a></td><td>X</td></tr><tr><td>Android</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr><tr><td>iOS</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr><tr><td>Flutter</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr></tbody></table>
+<table><thead><tr><th width="324.3333333333333">Platform</th><th>Bluetooth</th><th>USB</th></tr></thead><tbody><tr><td>TypeScript、JavaScript（Web environment）</td><td><span data-gb-custom-inline data-tag="emoji" data-code="274c">❌</span></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-web-sdk">@onekeyfe/hd-web-sdk</a></td></tr><tr><td>React Native</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/hd-ble-sdk">@onekeyfe/hd-ble-sdk</a></td><td><span data-gb-custom-inline data-tag="emoji" data-code="274c">❌</span></td></tr><tr><td>Android</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr><tr><td>iOS</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><span data-gb-custom-inline data-tag="emoji" data-code="274c">❌</span></td></tr><tr><td>Flutter</td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td><td><a href="https://github.com/OneKeyHQ/hardware-js-sdk/tree/onekey/packages/hd-common-connect-sdk">@onekeyfe/hd-common-connect-sdk</a></td></tr></tbody></table>
 
 {% tabs %}
 {% tab title="Web" %}
@@ -33,7 +33,7 @@ import { HardwareWebSdk as HardwareSDK } from '@onekeyfe/hd-web-sdk';
 HardwareSDK.init({
   debug: true,
   fetchConfig: true,
-  connectSrc: 'https://jssdk.onekey.so/0.3.30/'
+  connectSrc: 'https://jssdk.onekey.so/0.3.34/'
 })
 ```
 
@@ -41,7 +41,7 @@ HardwareSDK.init({
 
 **connectSrc**: The official web page deployed by OneKey is used to create an iframe on the page to communicate with OneKey Bridge.&#x20;
 
-The complete link to the web page is [`https://jssdk.onekey.so/0.3.30/iframe.html`](https://jssdk.onekey.so/0.3.30/iframe.html).
+The complete link to the web page is `https://jssdk.onekey.so/0.3.34/iframe.html`.
 
 Normally, the number after the URL should match the version number of the SDK you installed. For example, “0.3.30” in this case.
 
