@@ -14,6 +14,8 @@
   * [Third party Wallet Kit](connect-to-software/compatible-with-metamask/third-party-wallet-kit/README.md)
     * [Web3 Onboard](connect-to-software/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
     * [Rainbowkit](connect-to-software/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
+    * [Aptos Wallet Adapter](connect-to-software/compatible-with-metamask/third-party-wallet-kit/aptos-wallet-adapter.md)
+    * [Web3Modal](connect-to-software/compatible-with-metamask/third-party-wallet-kit/web3modal.md)
   * [detectEthereumProvider](connect-to-software/compatible-with-metamask/detectethereumprovider.md)
 * [WebApp Connect OneKey](connect-to-software/webapp-connect-onekey/README.md)
   * [ETH](connect-to-software/webapp-connect-onekey/eth/README.md)
