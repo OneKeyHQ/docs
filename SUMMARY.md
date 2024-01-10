@@ -11,12 +11,12 @@
 ## 🔮 Connect To Software
 
 * [Compatible with Metamask](connect-to-software/compatible-with-metamask/README.md)
-  * [Third party Wallet Kit](connect-to-software/compatible-with-metamask/third-party-wallet-kit/README.md)
-    * [Web3 Onboard](connect-to-software/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
-    * [Rainbowkit](connect-to-software/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
-    * [Aptos Wallet Adapter](connect-to-software/compatible-with-metamask/third-party-wallet-kit/aptos-wallet-adapter.md)
-    * [Web3Modal](connect-to-software/compatible-with-metamask/third-party-wallet-kit/web3modal.md)
   * [detectEthereumProvider](connect-to-software/compatible-with-metamask/detectethereumprovider.md)
+* [Support Wallet Kit](connect-to-software/support-wallet-kit/README.md)
+  * [Web3 Onboard](connect-to-software/support-wallet-kit/web3-onboard.md)
+  * [Rainbowkit](connect-to-software/support-wallet-kit/rainbowkit.md)
+  * [Aptos Wallet Adapter](connect-to-software/support-wallet-kit/aptos-wallet-adapter.md)
+  * [Web3Modal](connect-to-software/support-wallet-kit/web3modal.md)
 * [WebApp Connect OneKey](connect-to-software/webapp-connect-onekey/README.md)
   * [ETH](connect-to-software/webapp-connect-onekey/eth/README.md)
     * [Provider API](connect-to-software/webapp-connect-onekey/eth/provider-api.md)

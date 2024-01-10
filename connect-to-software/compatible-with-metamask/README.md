@@ -31,8 +31,8 @@ To resolve this issue, OneKey has launched the Wallet Switch feature. This featu
 
 There are also some wallet Kits that support the OneKey API that can be used directly.
 
-* [Web3 Onboard >>>](third-party-wallet-kit/web3-onboard.md)
-* [Rainbow Kit >>>](third-party-wallet-kit/rainbowkit.md)
+* [Web3 Onboard >>>](../support-wallet-kit/web3-onboard.md)
+* [Rainbow Kit >>>](../support-wallet-kit/rainbowkit.md)
 
 > With wallet kit, you don't have to worry about and consider the above adaptation problems with Metamask, which is handled in the kits.
 

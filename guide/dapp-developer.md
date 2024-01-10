@@ -42,8 +42,8 @@ Below are scenarios for different clients using the Provider API.
 Below are the wallet aggregator GUIs and SDKs that already support OneKey. If you are looking for a GUI or SDK, consider using one of the following aggregators that support OneKey. If you have already integrated with one of these aggregators, you can also refer to the documentation for better integration with OneKey.
 
 * Metamask SDK  [Read more >>>](../connect-to-software/compatible-with-metamask/)
-* Web3 Onboard [Read more >>>](../connect-to-software/compatible-with-metamask/third-party-wallet-kit/web3-onboard.md)
-* Rainbowkit [Read more >>>](../connect-to-software/compatible-with-metamask/third-party-wallet-kit/rainbowkit.md)
+* Web3 Onboard [Read more >>>](../connect-to-software/support-wallet-kit/web3-onboard.md)
+* Rainbowkit [Read more >>>](../connect-to-software/support-wallet-kit/rainbowkit.md)
 
 ## WalletConnect Integration
 
