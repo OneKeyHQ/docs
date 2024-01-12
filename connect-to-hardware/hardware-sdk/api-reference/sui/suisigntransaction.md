@@ -15,6 +15,15 @@ const result = await HardwareSDK.suiSignTransaction(connectId, deviceId, params)
 * `path` — _required_ `string | Array<number>` minimum length is `3`. read more
 * `rawTx` - _required_ `string` type of serialized transaction string.
 
+
+
+#### rawTx Size limit
+
+* Classic、Mini Firmware version is less than 3.6.0, and the data size is greater than 4KB.
+* Classic、Mini Firmware version is greater than or equal to 3.6.0 and the data size is greater than 6KB.
+
+
+
 ### Examples
 
 ```typescript
