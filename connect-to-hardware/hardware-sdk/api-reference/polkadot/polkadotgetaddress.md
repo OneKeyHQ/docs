@@ -5,6 +5,12 @@
 * Firmware version required
   * Touch: 4.3.0
   * Classic/Mini: 3.0.0
+* Joystream Chain Firmware version required
+  * Touch: 4.7.0
+  * Classic/Mini: 3.6.0
+* Manta Chain Firmware version required
+  * Touch: 4.9.0
+  * Classic/Mini: 3.7.0
 
 ## Polkadot: get address
 
