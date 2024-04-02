@@ -10,9 +10,9 @@ This is an instruction provided by the OneKey hardware, which includes the publi
 * `isPrivateKey`: Whether it is a private key.
 * `key`: The key data.
 * `chainCode`: The chain code.
-* `useInfo`: Usage information, of type `CryptoCoinInfo`.
-* `origin`: The origin path, of type `CryptoKeypath`.
-* `children`: The children path, of type `CryptoKeypath`.
+* `useInfo`: Usage information, of type [`CryptoCoinInfo`](cryptocoininfo.md).
+* `origin`: The origin path, of type [`CryptoKeypath`](cryptokeypath.md).
+* `children`: The children path, of type [`CryptoKeypath`](cryptokeypath.md).
 * `parentFingerprint`: The parent fingerprint.
 * `name`: The name.
 * `note`: The note.
@@ -32,7 +32,7 @@ UR:CRYPTO-HDKEY/PDAXHDCLAOZTRDKBTKFPRFKBCWVEWYBGDPNTCPVLEOENJSWMBKFTLTRESNWTNLTL
 ## Example
 
 ```javascript
-import { URRegistryDecoder } from '@onekeyfe/ur-registry'
+import { URRegistryDecoder } from '@onekeyfe/hd-air-gap-sdk'
 
 const decoder = new URRegistryDecoder();
 

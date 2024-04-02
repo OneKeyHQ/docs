@@ -31,7 +31,7 @@ import {
     ETHSignature,
     URDecoder,
     RegistryTypes,
-} from '@onekeyfe/ur-registry';
+} from '@onekeyfe/hd-air-gap-sdk';
 
 const decoder = new URDecoder();
 

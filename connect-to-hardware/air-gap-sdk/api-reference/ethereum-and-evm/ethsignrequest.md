@@ -21,7 +21,7 @@ enum DataType {
 * `signData`: `Buffer` The data to be signed.
 * `dataType`: `DataType` The type of signing data.
 * `chainId`: `number` The chain ID. optional
-* `derivationPath`: `CryptoKeypath` The derivation path.
+* `derivationPath`: [`CryptoKeypath`](../basic-api/cryptokeypath.md) The derivation path.
 * `address`: `Buffer` The address for request this signing. optional
 * `origin`: `string` Source of the request. optional
 
@@ -46,7 +46,7 @@ import {
     EthSignRequest,
     DataType,
     ETHSignature,
-} from '@onekeyfe/ur-registry';
+} from '@onekeyfe/hd-air-gap-sdk';
 
 const common = Common.forCustomChain('mainnet', { chainId: this._networkId }, Hardfork.London);
 const eip1559Tx = FeeMarketEIP1559Transaction.fromTxData(txParams, { common });
@@ -88,7 +88,7 @@ import {
     EthSignRequest,
     DataType,
     ETHSignature,
-} from '@onekeyfe/ur-registry';
+} from '@onekeyfe/hd-air-gap-sdk';
 
 const _txParams = {
     to: "0x0102030405", 
@@ -140,7 +140,7 @@ import {
     EthSignRequest,
     DataType,
     ETHSignature,
-} from '@onekeyfe/ur-registry';
+} from '@onekeyfe/hd-air-gap-sdk';
 
 const typeData = "{}"
 const dataHex = Buffer.from(typedData, 'utf-8');
@@ -178,7 +178,7 @@ import {
     EthSignRequest,
     DataType,
     ETHSignature,
-} from '@onekeyfe/ur-registry';
+} from '@onekeyfe/hd-air-gap-sdk';
 
 const message = "0102030405"
 const dataHex = Buffer.from(message, 'hex');

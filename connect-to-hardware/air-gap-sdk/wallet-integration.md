@@ -3,10 +3,10 @@
 ## &#x20;Install SDK
 
 <pre class="language-shell"><code class="lang-shell"><strong># Install via NPM
-</strong>npm install --save @onekeyfe/ur-register
+</strong>npm install --save @onekeyfe/hd-air-gap-sdk
 
 # Install via YARN
-yarn add @onekeyfe/ur-register
+yarn add @onekeyfe/hd-air-gap-sdk
 </code></pre>
 
 
