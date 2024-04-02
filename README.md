@@ -19,26 +19,32 @@ If you are developing a dApp or a Web application and wish to use decentralized 
 
 We also support Wallet Connect. If your Web App is compatible with the Wallet Connect protocol, you can directly connect with OneKey.
 
-{% content-ref url="guide/dapp-developer.md" %}
-[dapp-developer.md](guide/dapp-developer.md)
+{% content-ref url="guide/web-app-integration-developer.md" %}
+[web-app-integration-developer.md](guide/web-app-integration-developer.md)
 {% endcontent-ref %}
 
 ## **For Web and Mobile App Developers**
 
-If you are developing software and wish to connect and use OneKey hardware for asset storage and management, we provide an SDK for easy interaction with the hardware.
+If you are developing software and wish to connect and use OneKey hardware for asset storage and management, we provide an SDK for easy interaction with the hardware
+
+{% content-ref url="guide/hardware-integration-developer.md" %}
+[hardware-integration-developer.md](guide/hardware-integration-developer.md)
+{% endcontent-ref %}
+
+
 
 Our software also accepts Wallet Connect connections. If you want to use and access features provided by OneKey software, you are welcome to do so.
 
-{% content-ref url="guide/dapp-developer.md" %}
-[dapp-developer.md](guide/dapp-developer.md)
+{% content-ref url="guide/web-app-integration-developer.md" %}
+[web-app-integration-developer.md](guide/web-app-integration-developer.md)
 {% endcontent-ref %}
 
-## **For Developer's**
+## **For** External Contribution
 
 If you wish to contribute to OneKey by developing new chain support or fixing issues, you can refer to the following documentation.
 
-{% content-ref url="guide/developers-guide.md" %}
-[developers-guide.md](guide/developers-guide.md)
+{% content-ref url="guide/external-contribution-guide.md" %}
+[external-contribution-guide.md](guide/external-contribution-guide.md)
 {% endcontent-ref %}
 
 ### **For Developer's** Useful links

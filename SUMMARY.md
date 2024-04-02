@@ -3,9 +3,9 @@
 ## 👋 GUIDE
 
 * [Introduction](README.md)
-* [Web App Developer](guide/dapp-developer.md)
-* [App Developer](guide/app-developer.md)
-* [Developer's Guide](guide/developers-guide.md)
+* [Web App Integration Developer](guide/web-app-integration-developer.md)
+* [Hardware Integration Developer](guide/hardware-integration-developer.md)
+* [External Contribution Guide](guide/external-contribution-guide.md)
 * [Common Terms](guide/common-terms.md)
 
 ## 🔮 Connect To Software
@@ -217,6 +217,17 @@
     * [Low-level transport plugin](connect-to-hardware/hardware-sdk/advanced/low-level-transport-plugin.md)
     * [OneKey Message Protocol](connect-to-hardware/hardware-sdk/advanced/onekey-message-protocol.md)
   * [Tutorial: Get started with OneKey](connect-to-hardware/hardware-sdk/tutorial.md)
+* [Air Gap SDK](connect-to-hardware/air-gap-sdk/README.md)
+  * [Started](connect-to-hardware/air-gap-sdk/started.md)
+  * [Wallet Integration](connect-to-hardware/air-gap-sdk/wallet-integration.md)
+  * [API Reference](connect-to-hardware/air-gap-sdk/api-reference/README.md)
+    * [Basic API](connect-to-hardware/air-gap-sdk/api-reference/basic-api/README.md)
+      * [CryptoHDkey](connect-to-hardware/air-gap-sdk/api-reference/basic-api/cryptohdkey.md)
+      * [CryptoCoinInfo](connect-to-hardware/air-gap-sdk/api-reference/basic-api/cryptocoininfo.md)
+      * [CryptoKeypath](connect-to-hardware/air-gap-sdk/api-reference/basic-api/cryptokeypath.md)
+    * [Ethereum & EVM](connect-to-hardware/air-gap-sdk/api-reference/ethereum-and-evm/README.md)
+      * [EthSignRequest](connect-to-hardware/air-gap-sdk/api-reference/ethereum-and-evm/ethsignrequest.md)
+      * [EthSignature](connect-to-hardware/air-gap-sdk/api-reference/ethereum-and-evm/ethsignature.md)
 
 ## ⛳ Best Practice
 
@@ -230,5 +241,5 @@
 * [🎨 Logo Assets](https://help.onekey.so/hc/articles/360002200956)
 * [👾 Join Discord](https://discord.com/invite/onekey)
 * [🧙 Support](https://help.onekey.so/)
-* [🕹 Trouble Shooting](trouble-shooting.md)
-* [❤ Contribute](contribute.md)
+* [🕹️ Trouble Shooting](trouble-shooting.md)
+* [❤️ Contribute](contribute.md)

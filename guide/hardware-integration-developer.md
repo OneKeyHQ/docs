@@ -2,7 +2,7 @@
 description: Third-Party Wallet and App Developer
 ---
 
-# App Developer
+# Hardware Integration Developer
 
 ## Intro
 
@@ -11,7 +11,9 @@ description: Third-Party Wallet and App Developer
 
 
 
-## Connect OneKey hardware
+## Integrated via USB or Bluetooth
+
+Connect OneKey hardware via Bluetooth or usb.
 
 ### Online debugging tool
 
@@ -38,6 +40,18 @@ The specific steps for integrating the SDK.
 {% content-ref url="../connect-to-hardware/hardware-sdk/started.md" %}
 [started.md](../connect-to-hardware/hardware-sdk/started.md)
 {% endcontent-ref %}
+
+
+
+## Integrated via Air Gap
+
+Air Gap is a communication model based on QR codes that ensures an air-gapped transaction.&#x20;
+
+{% content-ref url="../connect-to-hardware/air-gap-sdk/started.md" %}
+[started.md](../connect-to-hardware/air-gap-sdk/started.md)
+{% endcontent-ref %}
+
+
 
 ## WalletConnect Integration
 
