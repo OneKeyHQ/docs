@@ -2,20 +2,20 @@
 
 The `CryptoHDKey` class represents hierarchical deterministic key information
 
-This is an instruction provided by the OneKey hardware, which includes the public key information.
+This is an instruction provided by the OneKey hardware, which includes the extened public key information.
 
 ### Parameters
 
-* `isMaster`: Whether it is a master key.
-* `isPrivateKey`: Whether it is a private key.
-* `key`: The key data.
-* `chainCode`: The chain code.
-* `useInfo`: Usage information, of type [`CryptoCoinInfo`](cryptocoininfo.md).
-* `origin`: The origin path, of type [`CryptoKeypath`](cryptokeypath.md).
-* `children`: The children path, of type [`CryptoKeypath`](cryptokeypath.md).
-* `parentFingerprint`: The parent fingerprint.
-* `name`: The name.
-* `note`: The note.
+* `isMaster`: `boolean` Whether it is a master key.
+* `isPrivateKey`: `boolean`  Whether it is a private key.
+* `key`: `Buffer`  The key data.
+* `chainCode`: `Buffer` The chain code.
+* `useInfo`:[`CryptoCoinInfo`](cryptocoininfo.md)  Usage information.
+* `origin`: [`CryptoKeypath`](cryptokeypath.md) The origin path.
+* `children`:[`CryptoKeypath`](cryptokeypath.md)  The children path.
+* `parentFingerprint`:`Buffer`  The parent fingerprint.
+* `name`: `string`  The name. optional
+* `note`:`string`  The note. optional
 
 
 

@@ -24,7 +24,7 @@ To use it with OneKey, follow these steps:
 
 ### Add Wallet
 
-The OneKey device displays a connection QR code. The wallet decodes the QR code to obtain the corresponding xpub, which can then be used to derive the respective addresses.&#x20;
+The OneKey device displays a connection QR code. The wallet decodes the QR code to obtain the corresponding extened public key, which can then be used to derive the respective addresses.&#x20;
 
 For the parsing method and format. Please refer to the documentation.
 
