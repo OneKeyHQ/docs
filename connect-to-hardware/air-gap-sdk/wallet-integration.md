@@ -34,15 +34,23 @@ For the parsing method and format. Please refer to the documentation.
 
 <table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (3).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (4).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (7).png" alt=""></td></tr></tbody></table>
 
-### Signature #Example.ETH
+### Signature
+
+> For example, with ETH.
 
 * The first step requires the wallet to generate the transaction that needs to be signed.
 * The unsigned transaction needs to be converted into a QR code for the OneKey device to scan.
 * After signing, the OneKey device displays a QR code. The wallet scans the QR code on the device to obtain the signed result.
 
+
+
+The wallet assemble the request to sign a QR code.
+
 {% content-ref url="api-reference/ethereum-and-evm/ethsignrequest.md" %}
 [ethsignrequest.md](api-reference/ethereum-and-evm/ethsignrequest.md)
 {% endcontent-ref %}
+
+The Wallet parse the signature result from the hardware.
 
 {% content-ref url="api-reference/ethereum-and-evm/ethsignature.md" %}
 [ethsignature.md](api-reference/ethereum-and-evm/ethsignature.md)
