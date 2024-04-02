@@ -15,7 +15,10 @@ This is an instruction provided by the OneKey hardware, which includes the exten
 * `children`:[`CryptoKeypath`](cryptokeypath.md)  The children path.
 * `parentFingerprint`:`Buffer`  The parent fingerprint.
 * `name`: `string`  The name. optional
-* `note`:`string`  The note. optional
+* `note`:`Note(string)`  The note. optional
+  * 'account.standard' : BIP44 Standard account
+  * "account.ledger\_live" : Ledger Live account
+  * "account.ledger\_legacy" : Ledger Legacy account
 
 
 
@@ -44,9 +47,30 @@ while (!decoder.isSuccess()){
 
 if(decoder.isSuccess()) {
     const cryptoHDkey = decoder.resultRegistryType();
-    const path = cryptoHDkey.getOrigin().getPath()); // m/44'/60'/0'
-    const extenedPubKey = cryptoHDKey.getBip32Key(); // xpub
-    return
+    
+    const name = cryptoHDKey.getName();
+    const note = cryptoHDKey.getNote();
+    
+    const extendPubKey = hdKey.getKey();
+    const chainCode = hdKey.getChainCode();
+    
+    const xpub = hdKey.getBip32Key();
+    const childrenPath = hdKey.getChildren()?.getPath() ?? DEFAULT_CHILDREN_PATH;
+    const hdPath = `m/${cryptoHDKey.getOrigin().getPath()}`;
+    // This parameter is required for subsequent eth sign request assembly.
+    const xfp = cryptoHDKey.getOrigin().getSourceFingerprint()?.toString("hex");
+    
+    // derive child
+    const accountIndex = 0
+    const derivePath = childrenPath
+            .replace("*", String(accountIndex))
+            .replace(/\*/g, "0");
+    
+    const hdk = HDKey.fromExtendedKey(xpub);
+    const dkey = hdk.derive(`m/${derivePath}`);
+    const address =
+            "0x" + publicToAddress(dkey.publicKey, true).toString("hex");
+    const addressWithChecksum = toChecksumAddress(address);
 } else if(decoder.isError()){
     // logic for error handling
     throw new Error() 

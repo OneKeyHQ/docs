@@ -219,7 +219,7 @@
   * [Tutorial: Get started with OneKey](connect-to-hardware/hardware-sdk/tutorial.md)
 * [Air Gap SDK](connect-to-hardware/air-gap-sdk/README.md)
   * [Started](connect-to-hardware/air-gap-sdk/started.md)
-  * [Wallet Integration](connect-to-hardware/air-gap-sdk/wallet-integration.md)
+  * [Tutorial: Wallet Integration](connect-to-hardware/air-gap-sdk/tutorial-wallet-integration.md)
   * [API Reference](connect-to-hardware/air-gap-sdk/api-reference/README.md)
     * [Basic API](connect-to-hardware/air-gap-sdk/api-reference/basic-api/README.md)
       * [CryptoHDkey](connect-to-hardware/air-gap-sdk/api-reference/basic-api/cryptohdkey.md)

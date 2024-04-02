@@ -7,7 +7,17 @@ Air Gap is a communication model based on QR codes that ensures an air-gapped tr
 
 
 
-## Supported chains:
+## Example
+
+The specific integration steps can be referenced; here is an example for ETH.
+
+{% content-ref url="tutorial-wallet-integration.md" %}
+[tutorial-wallet-integration.md](tutorial-wallet-integration.md)
+{% endcontent-ref %}
+
+
+
+## Supported Chains
 
 * [EVM (Ethereum)](api-reference/ethereum-and-evm/)
 

@@ -38,7 +38,7 @@ UR:ETH-SIGN-REQUEST/ONADTPDAGDSWNNYAHGTOKPFPIAPANNROLNSAVYDTHHAOHDECAOWFLYLDLFAA
 ### **EIP1559 Transaction**
 
 ```javascript
-import { Transaction } from '@ethereumjs/tx';
+import { Transaction, FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import Common, { Hardfork } from '@ethereumjs/common';
 import { BN } from 'ethereumjs-util';
 import {
