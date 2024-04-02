@@ -24,15 +24,15 @@ To use it with OneKey, follow these steps:
 
 ### Add Wallet
 
-The OneKey device displays a connection QR code. The wallet decodes the QR code to obtain the corresponding xpub, which can then be used to derive the respective addresses. For the parsing method and format.
+The OneKey device displays a connection QR code. The wallet decodes the QR code to obtain the corresponding xpub, which can then be used to derive the respective addresses.&#x20;
 
-Please refer to the documentation.
+For the parsing method and format. Please refer to the documentation.
 
 {% content-ref url="api-reference/basic-api/cryptohdkey.md" %}
 [cryptohdkey.md](api-reference/basic-api/cryptohdkey.md)
 {% endcontent-ref %}
 
-
+<table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (3).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (4).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (7).png" alt=""></td></tr></tbody></table>
 
 ### Signature #Example.ETH
 
@@ -47,3 +47,6 @@ Please refer to the documentation.
 {% content-ref url="api-reference/ethereum-and-evm/ethsignature.md" %}
 [ethsignature.md](api-reference/ethereum-and-evm/ethsignature.md)
 {% endcontent-ref %}
+
+<table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (6).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Scan.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Tx-Sign.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Export Signed Transaction.png" alt="" data-size="original"></td></tr></tbody></table>
+
