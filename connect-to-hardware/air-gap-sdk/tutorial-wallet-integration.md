@@ -118,6 +118,8 @@ const dkey = hdk.derive(`m/${derivePath}`);
 const address =
         "0x" + publicToAddress(dkey.publicKey, true).toString("hex");
 const addressWithChecksum = toChecksumAddress(address);
+
+console.log("address:", addressWithChecksum);
 ```
 
 
@@ -206,7 +208,7 @@ Decode QR Code See [#scan-qr-code](tutorial-wallet-integration.md#scan-qr-code "
 
 ```typescript
 import { CryptoHDKey, RegistryTypes } from '@onekeyfe/hd-air-gap-sdk';
-
+import { Transaction } from '@ethereumjs/tx';
 
 // pseudo-code
 const result = urDecoder.resultUR();
@@ -216,12 +218,39 @@ if (result.type !== RegistryTypes.ETH_SIGNATURE.getType()) {
 }
 
 const ethSignature = ETHSignature.fromCBOR(result.cbor);
+
+// Extract the request ID, signature
 const requestIdBuffer = ethSignature.getRequestId();
 const signature = ethSignature.getSignature();
 
+// its components (r, s, v) from the decoded signature
 const r = signature.slice(0, 32);
 const s = signature.slice(32, 64);
-const v = signature.slice(64, 65);
+const v = signature.slice(64);
+
+
+// Assuming you have the transaction details and the signature components
+const txData = {
+    nonce: '0x00',
+    gasPrice: '0x09184e72a000',
+    gasLimit: '0x2710',
+    to: '0x0000000000000000000000000000000000000000',
+    value: '0x00',
+    data: '0x00',
+    // Add the signature components to the transaction data
+    v: v,
+    r: r,
+    s: s
+};
+
+// Create a new transaction object with the provided data
+const transaction = Transaction.fromTxData(txData);
+
+// Serialize the transaction to get the raw transaction
+const rawTx = transaction.serialize();
+
+// The raw transaction can now be submitted to the blockchain network
+console.log("Raw transaction:", rawTx.toString('hex'));
 ```
 
 For more details, you can refer to the documentation below.
