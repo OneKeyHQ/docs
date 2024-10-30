@@ -43,7 +43,7 @@ Before using the API, ensure:
 
 1. You understand the API call instructions and common parameters. See [API Call Instructions](install-sdk.md#initialization).
 2. Invoke the API, including the common parameters ([Common Params](api-reference/common-params.md)).
-3. Select the appropriate API based on the hardware firmware version. See [API Documentation](api-reference/).
+3. Select the appropriate API based on the hardware firmware version. See [API Documentation](../air-gap-sdk/api-reference/).
 
 #### **Response and Error Handling**
 
