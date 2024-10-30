@@ -10,11 +10,11 @@ const response = await HardwareSDK.tronGetAddress(connectId, deviceId, params)
 
 ### Params
 
-[Optional common params](../../../hardware-sdk/api-reference/common-params.md)
+[Optional common params](../common-params.md)
 
 **Exporting single address**
 
-* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../../../hardware-sdk/api-reference/path.md)
+* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
 * `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
 
 **Exporting bundle of addresses**
