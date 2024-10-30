@@ -1,34 +1,70 @@
-# tonSignMessage
+# tronSignTransaction
 
-### TON: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
+### TRON: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
 
 Asks device to sign given transaction. User is asked to confirm all transaction details on OneKey.
 
 ```typescript
-const response = await HardwareSDK.tonSignMessage(connectId, deviceId, params)
+const response = await HardwareSDK.tronSignTransaction(connectId, deviceId, params)
 ```
 
 ### Params
 
 [**Optional common params**](../../../hardware-sdk/api-reference/common-params.md)
 
-* `path` - _required_ `string | Array<number>` minimum length is `3`. read more
-* `destination` - _required_ `TronTransaction` type
-* `tonAmount` - _required_ `number`&#x20;
-* `seqno` -  _required_ `number`&#x20;
-* `expireAt` -  _required_ `number`&#x20;
+* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `transaction` - _required_ `TronTransaction` type
 
+#### TronTransaction Type
 
+```typescript
+type TronTransaction = {
+  refBlockBytes: string;
+  refBlockHash: string;
+  expiration: number;
+  data?: string;
+  contract: TronTransactionContract;
+  timestamp: number;
+  feeLimit?: number;
+};
+
+type TronTransactionContract = {
+  transferContract?: TronTransferContract;
+  triggerSmartContract?: TronTriggerSmartContract;
+};
+
+type TronTransferContract = {
+  toAddress?: string;
+  amount?: UintType;
+};
+
+type TronTriggerSmartContract = {
+  contractAddress?: string;
+  callValue?: number;
+  data?: string;
+  callTokenValue?: number;
+  assetId?: number;
+};
+
+```
 
 ### Example
 
 ```typescript
-HardwareSDK.tonSignMessage(connectId, deviceId, {
-    path: "m/44'/607'/0'",
-    destination: "UQBYkuShkZzRYAWX_HrK3kFpeAixiRKd-K7QBXYxl9OBXM0_",
-    tonAmount: 100,
-    seqno: 0,
-    expireAt: 1728713831896,
+HardwareSDK.tronSignTransaction(connectId, deviceId, {
+    path: "m/44'/195'/0'/0'/0",
+    transaction: {
+        refBlockBytes: 'ddf1',
+        refBlockHash: 'd04764f22469a0b8',
+        timestamp: 1655692083406,
+        expiration: 1655692140000,
+        contract: {
+            transferContract: {
+                toAddress: 'TXrs7yxQLNzig7J9EbKhoEiUp6kWpdWKnD',
+                amount: 100,
+            },
+        }
+    }
 });
 ```
 
@@ -39,8 +75,7 @@ Result
     success: true,
     payload: {
         signature: string;
-        signning_message: string
-        skip_validate: boolean; // Used to skip validation in [classic, classic 1s, mini, touch]
+        serialized_tx: string;
     }
 }
 ```

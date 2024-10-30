@@ -1,28 +1,26 @@
-# tonSignProof
+# tronSignMessage
 
-## TON: sign message <a href="#ethereum-sign-message" id="ethereum-sign-message"></a>
+## TRON: sign message <a href="#ethereum-sign-message" id="ethereum-sign-message"></a>
 
 Asks device to sign a message using the private key derived by given BIP32 path.
 
 ```typescript
-const result = await HardwareSDK.tonSignMessage(connectId, deviceId, params);
+const result = await HardwareSDK.tronSignMessage(connectId, deviceId, params);
 ```
 
 ### Params
 
 [**Optional common params**](../../../hardware-sdk/api-reference/common-params.md)
 
-* `address_n` - _required_ `Array<number>`  BIP-32 path to derive the key from master node
-* `appdomain` - _required_ `string` dapp address
-* expireAt - _required_ `number` message expiration time
+* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `messageHex` - _required_ `string` message to sign in hex text
 
 ### Example
 
 ```typescript
 HardwareSDK.tronSignMessage(connectId, deviceId, {
-    path: "m/44'/607'/0'",
-    appdomain: "onekey.so",
-    expireAt: 1728713831896,
+    path: "m/44'/195'/0'/0/0",
+    message: "0x6578616d706c65206d657373616765"
 });
 ```
 
@@ -33,6 +31,7 @@ Result
     success: true,
     payload: {
         signature: string;
+        address: string;
     }
 }
 ```
