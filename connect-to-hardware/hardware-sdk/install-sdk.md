@@ -4,11 +4,13 @@
 
 The support status for Bluetooth and USB on different devices.
 
-| Device         | Bluetooth            | USB                  |
-| -------------- | -------------------- | -------------------- |
-| OneKey Classic | :white\_check\_mark: | :white\_check\_mark: |
-| OneKey Mini    | :x:                  | :white\_check\_mark: |
-| OneKey Touch   | :white\_check\_mark: | :white\_check\_mark: |
+| Device            | Bluetooth            | USB                  |
+| ----------------- | -------------------- | -------------------- |
+| OneKey Classic    | :white\_check\_mark: | :white\_check\_mark: |
+| OneKey Classic 1s | :white\_check\_mark: | :white\_check\_mark: |
+| OneKey Mini       | :x:                  | :white\_check\_mark: |
+| OneKey Touch      | :white\_check\_mark: | :white\_check\_mark: |
+| Onekey Pro        | :white\_check\_mark: | :white\_check\_mark: |
 
 
 
