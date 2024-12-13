@@ -1,23 +1,103 @@
-# Common Params
+# Common Parameters
 
-In the SDK method calls, there are three generic parameters: `connectId` , `deviceId` , `commonParams`.
+All SDK method calls accept three common parameters: `connectId`, `deviceId`, and `commonParams`.
 
 ```typescript
-function call(connectId: string; deviceId: string; commonParams: CommonParams)
+function methodName(
+  connectId: string,
+  deviceId: string,
+  commonParams: CommonParams
+): Promise<Response>
 ```
 
-The input parameters are obtained as follows:
+## Parameter Details
 
-* `connectId`: Obtained from the `connectId` field of the device returned in the `searchDevice` interface.&#x20;
-  * The connect id of the device is never changed.
-* `deviceId`: The deviceId field returned by the `getFeatures` interface.&#x20;
-  * The device id changes when the hardware is reset. Like wipe the device.
-* `commonParams`: common parameters&#x20;
-  * `retryCount`: optional `number` type. The number of retries when the device is connected, default is 6.&#x20;
-  * `pollIntervalTime`: optional `number` type. The interval time for polling when the device is connected, default is 1000 ms, each polling will increase the time by 1.5 times.&#x20;
-  * `timeout`: optional `number` type. The timeout of the connection polling.
-  * `keepSession`: optional `boolean` type. The Session persists after executing the API method.
-  * `passphraseState`: optional `string` type. If you want to use a passphrase wallet, please pass that parameter. We will validate and cache the passphrase to optimize the user experience of entering the passphrase and reduce the number of input attempts. To retrieve that parameter, please call the `getPassphraseState` method.
-  * `useEmptyPassphrase`: optional `boolean` type. Allow the creation of a passphrase wallet with an empty value.
-  * `initSession` : optional `boolean` type. Cache the passphraseState parameter.
-  * `deriveCardano`: optional `boolean` type. default is set to `true` for all cardano related methods, otherwise it is set to `false`. This parameter determines whether device should derive cardano seed for current session. Derivation of cardano seed takes longer then it does for other coins.
+### Connection Parameters
+
+* `connectId`: string
+  - Persistent device connection identifier
+  - Obtained from `searchDevice` response
+  - Remains constant across device sessions
+  - Required for all API calls
+
+* `deviceId`: string
+  - Device-specific identifier
+  - Obtained from `getFeatures` response
+  - Changes when device is reset/wiped
+  - Required for all API calls
+
+### Common Parameters Object
+
+```typescript
+interface CommonParams {
+  // Connection Settings
+  retryCount?: number;        // Default: 6
+  pollIntervalTime?: number;  // Default: 1000ms
+  timeout?: number;           // Connection timeout
+
+  // Session Management
+  keepSession?: boolean;      // Persist session after API call
+  initSession?: boolean;      // Cache passphraseState
+
+  // Security Features
+  passphraseState?: string;   // For passphrase wallet access
+  useEmptyPassphrase?: boolean; // Allow empty passphrase
+
+  // Blockchain Specific
+  deriveCardano?: boolean;    // Default: true for Cardano methods
+}
+```
+
+### Usage Examples
+
+1. Basic API Call
+```typescript
+const response = await HardwareSDK.btcGetAddress(
+  device.connectId,
+  device.deviceId,
+  {
+    retryCount: 3,
+    timeout: 5000
+  }
+);
+```
+
+2. Passphrase Wallet Access
+```typescript
+const state = await HardwareSDK.getPassphraseState();
+const response = await HardwareSDK.btcGetAddress(
+  device.connectId,
+  device.deviceId,
+  {
+    passphraseState: state,
+    keepSession: true
+  }
+);
+```
+
+3. Cardano Operation
+```typescript
+const response = await HardwareSDK.cardanoGetAddress(
+  device.connectId,
+  device.deviceId,
+  {
+    deriveCardano: true,
+    timeout: 10000  // Longer timeout for Cardano derivation
+  }
+);
+```
+
+### Important Notes
+
+1. Connection Management
+   - Increase `retryCount` for unstable connections
+   - `pollIntervalTime` increases by 1.5x each retry
+   - Set appropriate `timeout` for complex operations
+
+2. Session Handling
+   - Use `keepSession` for multiple sequential operations
+   - `initSession` caches passphrase state for better UX
+
+3. Blockchain Specific
+   - `deriveCardano` affects performance
+   - Set to `false` for non-Cardano operations
