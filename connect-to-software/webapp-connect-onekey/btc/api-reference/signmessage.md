@@ -6,7 +6,7 @@
 | -------------- | ------------------------- | ------------------------- |
 | ECDSA          | Software & Hardware       | P2PKH, P2SH, P2WPKH, P2TR |
 | BIP322-Simple  | Software                  | P2WPKH, P2TR              |
-| BIP322-Simple  | Hardware (Pro, Classic1S) | P2WPKH, P2TR              |
+| BIP322-Simple  | Hardware (Pro, Classic1S) | P2TR                      |
 
 Sign a message using either ECDSA or BIP322-Simple signing method.
 
