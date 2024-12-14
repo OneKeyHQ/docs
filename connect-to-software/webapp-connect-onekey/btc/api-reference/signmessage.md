@@ -1,5 +1,13 @@
 # signMessage
 
+## Wallet & Address Type Support Matrix
+
+| Signing Method | Wallet Type | Supported Address Types |
+|---------------|-------------|------------------------|
+| ECDSA | Software & Hardware | P2PKH, P2SH, P2WPKH, P2TR |
+| BIP322-Simple | Software | P2WPKH, P2TR |
+| BIP322-Simple | Hardware (Pro, Classic1S) | P2WPKH, P2TR |
+
 Sign a message using either ECDSA or BIP322-Simple signing method.
 
 ### Method
@@ -15,22 +23,6 @@ async function signMessage(
 
 * `message` — _required_ `string` A string to sign
 * `type` — _optional_ `string` Signing method type, either "ecdsa" or "bip322-simple". Default is "ecdsa"
-
-### Wallet & Address Type Support
-
-#### ECDSA Signing
-All wallet types (software and hardware) support ECDSA signing for all address types:
-- P2PKH (Legacy)
-- P2SH (Script Hash)
-- P2WPKH (Native Segwit)
-- P2TR (Taproot)
-
-#### BIP322-Simple Signing
-- Software Wallet:
-  - P2WPKH (Native Segwit)
-  - P2TR (Taproot)
-- Hardware Wallet:
-  - Pro and Classic1S models support BIP322-Simple signing
 
 ### Returns
 
