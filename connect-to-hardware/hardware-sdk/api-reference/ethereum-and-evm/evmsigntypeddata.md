@@ -1,10 +1,15 @@
 # evmSignTypedData
 
-## Ethereum: Sign Typed Data
+### Ethereum: Sign Typed Data
 
 Asks device to sign an [EIP-712](https://eips.ethereum.org/EIPS/eip-712) typed data message using the private key derived by given BIP32 path.
 
 User is asked to confirm all signing details on OneKey device.
+
+* **Supports EIP-712 (v3 and v4)**
+* **Use `evmSignTypedData` for signing typed structured data**
+* **Not for EIP-191 typed data signing**
+* **Use** [evmSignMessage](evmsignmessage.md) **to signing EIP-191(**&#x70;ersonal\_sign)
 
 ```typescript
 const result = await HardwareSDK.evmSignTypedData(connectId, deviceId, params);
@@ -17,7 +22,7 @@ const result = await HardwareSDK.evmSignTypedData(connectId, deviceId, params);
 * `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
 * `data` - _required_ `Object` type of `EthereumSignTypedDataMessage`\`. A JSON Schema definition can be found in the EIP-712 spec.
 * `metamaskV4Compat` - _required_ `boolean` set to `true` for compatibility with [MetaMask's signTypedData\_v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4).
-* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/_data/chains).&#x20;
 
 ### Blind signing
 

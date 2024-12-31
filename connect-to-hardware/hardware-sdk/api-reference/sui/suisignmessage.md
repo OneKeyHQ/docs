@@ -24,9 +24,15 @@ const result = await HardwareSDK.suiSignMessage(connectId, deviceId, params);
 ### Example
 
 ```typescript
+// Original message
+const message = "Hello World";
+
+// Convert to hex
+const messageHex = Buffer.from(message).toString('hex');
+
 HardwareSDK.suiSignMessage(connectId, deviceId, {
     path: "m/44'/784'/0'/0'/0'",
-    messageHex: "010203", // or Buffer.from('hello').toString('hex')
+    messageHex,
 });
 ```
 

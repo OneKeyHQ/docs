@@ -10,9 +10,15 @@
 Signs a message using the private key derived by given BIP32 path.
 
 ```typescript
+// Original message
+const message = "Hello World";
+
+// Convert to hex
+const messageHex = Buffer.from(message).toString('hex');
+
 const response = await HardwareSDK.scdoSignMessage(connectId, deviceId, {
     path: "m/44'/541'/0'/0/0",
-    messageHex: "68656c6c6f" // "Hello" in hex
+    messageHex: messageHex
 });
 ```
 
@@ -26,9 +32,15 @@ Optional common params
 **Example**
 
 ```typescript
+// Original message
+const message = "Hello World";
+
+// Convert to hex
+const messageHex = Buffer.from(message).toString('hex');
+
 const response = await HardwareSDK.scdoSignMessage(connectId, deviceId, {
     path: "m/44'/541'/0'/0/0",
-    messageHex: "68656c6c6f"
+    messageHex,
 });
 ```
 

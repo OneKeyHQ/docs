@@ -18,9 +18,15 @@ const result = await HardwareSDK.tronSignMessage(connectId, deviceId, params);
 ### Example
 
 ```typescript
+// Original message
+const message = "Hello World";
+
+// Convert to hex
+const messageHex = Buffer.from(message).toString('hex');
+
 HardwareSDK.tronSignMessage(connectId, deviceId, {
     path: "m/44'/195'/0'/0/0",
-    message: "0x6578616d706c65206d657373616765"
+    message: messageHex
 });
 ```
 

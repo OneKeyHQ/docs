@@ -91,3 +91,49 @@ Error
     }
 }
 ```
+
+
+
+### Transaction Signing and Broadcasting
+
+```typescript
+// Create the original transaction via TronWeb
+const tronWeb = new TronWeb({
+    fullHost: 'https://api.trongrid.io'
+});
+const toAddress = 'TXrs7yxQLNzig7J9EbKhoEiUp6kWpdWKnD'
+
+const encodedTx = await tronWeb.transactionBuilder.sendTrx(
+    toAddress,
+    1000000
+);
+
+//  txid
+const txid = encodedTx.txID;
+
+const result = await HardwareSDK.tronSignTransaction(connectId, deviceId, {
+    path: "m/44'/195'/0'/0/0",
+    transaction: {
+        refBlockBytes: encodedTx.raw_data.ref_block_bytes,
+        refBlockHash: encodedTx.raw_data.ref_block_hash,
+        expiration: encodedTx.raw_data.expiration,
+        timestamp: encodedTx.raw_data.timestamp,
+        feeLimit: encodedTx.raw_data.fee_limit,
+        contract: {
+            transferContract: {
+                toAddress: toAddress,
+                amount: 1000000
+            }
+        }
+    }
+});
+
+// rawTx
+const rawTx = JSON.stringify({
+    txID: txid,
+    raw_data: encodedTx.raw_data,
+    raw_data_hex: result.payload.serialized_tx,
+    signature: [result.payload.signature]
+});
+```
+

@@ -25,6 +25,10 @@ Result
     success: true,
     payload: {
         status: string, // current firmware status, 'valid' | 'outdated' | 'required' | 'unknown' | 'none'
+        // 'valid' means update is not required
+        // 'outdated' means updates are available
+        // 'required' means updates are required. 
+        // 'unknown' and 'none' means there's no way to get the version number
         changelog: [], // update logs
         release: {     // latest version information
           required: boolean,

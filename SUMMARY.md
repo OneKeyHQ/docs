@@ -221,7 +221,7 @@
       * [suiGetPublicKey](connect-to-hardware/hardware-sdk/api-reference/sui/suigetpublickey.md)
       * [suiSignMessage](connect-to-hardware/hardware-sdk/api-reference/sui/suisignmessage.md)
       * [suiSignTransaction](connect-to-hardware/hardware-sdk/api-reference/sui/suisigntransaction.md)
-    * [TRON](connect-to-hardware/hardware-sdk/api-reference/tron/README.md)
+    * [Tron](connect-to-hardware/hardware-sdk/api-reference/tron/README.md)
       * [tronGetAddress](connect-to-hardware/hardware-sdk/api-reference/tron/trongetaddress.md)
       * [tronSignMessage](connect-to-hardware/hardware-sdk/api-reference/tron/tronsignmessage.md)
       * [tronSignTransaction](connect-to-hardware/hardware-sdk/api-reference/tron/tronsigntransaction.md)

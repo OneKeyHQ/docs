@@ -10,9 +10,15 @@
 Sign a message using the private key derived by given BIP32 path. User needs to confirm the action on OneKey device.
 
 ```typescript
+// Original message
+const message = "Hello Alephium";
+
+// Convert to hex
+const messageHex = Buffer.from(message).toString('hex');
+
 const result = await HardwareSDK.alephiumSignMessage(connectId, deviceId, {
     path: "m/44'/1234'/0'/0/0",
-    messageHex: "68656c6c6f",  // "Hello Alephium" in hex
+    messageHex,  // "Hello Alephium" in hex
     messageType: "alephium"
 });
 ```
@@ -28,9 +34,15 @@ const result = await HardwareSDK.alephiumSignMessage(connectId, deviceId, {
 #### Example
 
 ```typescript
+// Original message
+const message = "Hello Alephium";
+
+// Convert to hex
+const messageHex = Buffer.from(message).toString('hex');
+
 const response = await HardwareSDK.alephiumSignMessage(connectId, deviceId, {
     path: "m/44'/1234'/0'/0/0",
-    messageHex: "68656c6c6f",
+    messageHex,
     messageType: "alephium"
 });
 ```

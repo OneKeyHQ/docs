@@ -18,9 +18,15 @@ const result = await HardwareSDK.starcoinSignMessage(connectId, deviceId, params
 ### Example
 
 ```typescript
+// Original message
+const message = "Hello World";
+
+// Convert to hex
+const messageHex = Buffer.from(message).toString('hex');
+
 HardwareSDK.starcoinSignMessage(connectId, deviceId, {
     path: "m/44'/101010'/0'/0/0",
-    message: "68656c6c6f776f726c64"
+    message: messageHex
 });
 ```
 
