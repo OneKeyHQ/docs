@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to the OneKey Developer Documentation. If there are any imperfections, feel free to join our community and provide feedback at [#stack-overflow (Discord)](https://discord.com/channels/868309113942196295/912695369656316014).
+Welcome to the OneKey Developer Documentation. If there are any imperfections, feel free to provide feedback at [https://github.com/OneKeyHQ/hardware-js-sdk/issues](https://github.com/OneKeyHQ/hardware-js-sdk/issues)
 
 ## For users
 
