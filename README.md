@@ -58,6 +58,5 @@ If you wish to contribute to OneKey by developing new chain support or fixing is
 \
 If you can't find what you need here:
 
-* [Visit our community Discord](https://discord.com/channels/868309113942196295/912695369656316014) [#stack-overflow](https://discord.com/channels/868309113942196295/912695369656316014), we will respond in real time.
 * [Ask an issue on Github](https://github.com/OneKeyHQ/app-monorepo/issues)
 * Check our [GitHub profile](https://github.com/OneKeyHQ/app-monorepo)
