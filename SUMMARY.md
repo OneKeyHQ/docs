@@ -239,6 +239,7 @@
     * [Common SDK Guide](connect-to-hardware/hardware-sdk/advanced/common-sdk-guide.md)
     * [Low-level transport plugin](connect-to-hardware/hardware-sdk/advanced/low-level-transport-plugin.md)
     * [OneKey Message Protocol](connect-to-hardware/hardware-sdk/advanced/onekey-message-protocol.md)
+    * [Pin](connect-to-hardware/page-1/advanced/pin.md)
   * [Tutorial: Get started with OneKey](connect-to-hardware/hardware-sdk/tutorial.md)
 * [Air Gap SDK](connect-to-hardware/air-gap-sdk/README.md)
   * [Started](connect-to-hardware/air-gap-sdk/started.md)
