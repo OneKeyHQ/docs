@@ -26,7 +26,7 @@ yarn add @onekeyfe/hd-air-gap-sdk
 
 Then, we need to add the hardware account to the software.
 
-<table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (3).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (4).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (7).png" alt=""></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (3) (1).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (4) (1).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (7) (1).png" alt=""></td></tr></tbody></table>
 
 
 
@@ -198,7 +198,7 @@ For more details, you can refer to the documentation below.
 
 ### Hardware processing signature
 
-<table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (6).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Scan.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Tx-Sign.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Export Signed Transaction.png" alt="" data-size="original"></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (6) (1).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Scan.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Tx-Sign.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Export Signed Transaction.png" alt="" data-size="original"></td></tr></tbody></table>
 
 
 
