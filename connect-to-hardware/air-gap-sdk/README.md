@@ -1,2 +1,0 @@
-# Air Gap SDK
-
