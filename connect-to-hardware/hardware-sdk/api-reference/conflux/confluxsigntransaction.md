@@ -1,14 +1,14 @@
 # confluxSignTransaction
 
-## Use requirement
+## Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 3.0.0
   * Classic/Mini: 2.4.0
 
 ### Conflux: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
 
-Asks device to sign given transaction. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature. The user reviews and confirms the request on the device.
 
 ```typescript
 const response = await HardwareSDK.confluxSignTransaction(connectId, deviceId, params)
@@ -18,28 +18,28 @@ const response = await HardwareSDK.confluxSignTransaction(connectId, deviceId, p
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
 * `transaction` - _required_ `ConfluxTransaction` type
-  * `to` - _required  `string`_ of address hex string
-  * `value` - _required  `string`_ of amount convert to BigInt hex string
-  * `gasLimit` - _required  `string`_ of gas limit convert to BigInt hex string
-  * `gasPrice` - _required  `string`_ of gas price convert to BigInt hex string
-  * `nonce` - _required  `string`_ of nonce convert to BigInt hex string
-  * `epochHeight` - _required  `string`_ of epoch height convert to BigInt hex string
-  * `storageLimit` - _required  `string`_ of storage limit convert to BigInt hex string
-  * `chainId` - _required  `number`_ of the id of the chain
-  * `data` - _optional  `string`_ of hex data
+  * `to` - _required `string`_ of address hex string
+  * `value` - _required `string`_ of amount convert to BigInt hex string
+  * `gasLimit` - _required `string`_ of gas limit convert to BigInt hex string
+  * `gasPrice` - _required `string`_ of gas price convert to BigInt hex string
+  * `nonce` - _required `string`_ of nonce convert to BigInt hex string
+  * `epochHeight` - _required `string`_ of epoch height convert to BigInt hex string
+  * `storageLimit` - _required `string`_ of storage limit convert to BigInt hex string
+  * `chainId` - _optional `number`_ of the id of the chain
+  * `data` - _optional `string`_ of hex data
 
 ### Example
 
 ```typescript
-HardwareSDK.confluxSignMessage(connectId, deviceId, {
-    path: "m/44'/503'/0'/0'/0",
+HardwareSDK.confluxSignTransaction(connectId, deviceId, {
+    path: "m/44'/503'/0'/0/0",
     transaction: {
-        to: "0x7314e0f1c0e28474bdb6be3e2c3e0453255188f8",
+        to: "0x1386b4185a223ef49592233b69291bbe5a80c527",
         value: "0xf4240",
         data: "0x01",
-        chainId: "1",
+        chainId: 1,
         nonce: "0x00",
         epochHeight: "0x00",
         gasPrice: "0xbebc200",
@@ -69,7 +69,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

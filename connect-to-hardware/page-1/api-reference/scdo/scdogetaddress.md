@@ -1,13 +1,13 @@
 # scdoGetAddress
 
-#### Use requirement
+#### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 #### SCDO: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const response = await HardwareSDK.scdoGetAddress(connectId, deviceId, {
@@ -20,14 +20,14 @@ const response = await HardwareSDK.scdoGetAddress(connectId, deviceId, {
 
 Optional common params
 
-**Exporting single address**
+**Single address**
 
-* `path` — _required_ `string | Array<number>` minimum length is 3. read more
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../../../hardware-sdk/api-reference/path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 
-**Exporting bundle of addresses**
+**Multiple addresses**
 
-* `bundle` - `Array` of Objects with `path` and `showOnOneKey` fields
+* `bundle` - array of objects with `path` and `showOnOneKey` fields
 
 **Example**
 
@@ -65,7 +65,7 @@ Result with single address
 }
 ```
 
-Result with bundle of addresses
+Batch address response
 
 ```typescript
 {
@@ -84,7 +84,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number  // error code
+        code?: string | number  // error code
     }
 }
 ```

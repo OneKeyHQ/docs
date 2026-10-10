@@ -2,15 +2,15 @@
 
 List inscriptions of current account.
 
-### Method
+## Method
 
 ```typescript
-async function getInscriptions(cursor: number, size: number): InscriptionResponse
+declare function getInscriptions(cursor?: number, size?: number): Promise<InscriptionResponse>;
 ```
 
 ### Params
 
-* `cursor` — _optional_ `number`  Initial index, Default is `0`
+* `cursor` — _optional_ `number` Initial index, Default is `0`
 * `size` — _optional_ `number` Query quantity, Default is `20`
 
 ### Response
@@ -40,10 +40,11 @@ export type InscriptionInfo = {
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>const inscriptions = async provider.getInscriptions();
-</strong></code></pre>
+const inscriptions = await provider.getInscriptions();
+```
 
 ### Demo
 

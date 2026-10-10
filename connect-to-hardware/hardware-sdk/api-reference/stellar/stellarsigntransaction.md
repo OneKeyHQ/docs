@@ -2,7 +2,7 @@
 
 ## Stellar: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature using the key derived from the specified path. The user reviews and confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.stellarSignTransaction(connectId, deviceId, params);
@@ -12,7 +12,7 @@ const result = await HardwareSDK.stellarSignTransaction(connectId, deviceId, par
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` **length is `3`, Here's a special chain.** read more
+* `path` — _required_ `string | Array<number>` A fully hardened Stellar account path, such as `m/44'/148'/0'`. read more
 * `networkPassphrase` - _required_ `string` network passphrase
 * `transaction` - _required_ `Object` type of StellarTransaction
 
@@ -40,7 +40,7 @@ export type StellarTransaction = {
 ### Examples
 
 ```typescript
-const response = await HardwareSDK.aptosSignTransaction(
+const response = await HardwareSDK.stellarSignTransaction(
   connectId,
   deviceId,
   {
@@ -73,7 +73,7 @@ Result
   success: true,
   payload: {
     public_key: string,
-    signature: string.
+    signature: string,
   }
 }
 ```
@@ -85,7 +85,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

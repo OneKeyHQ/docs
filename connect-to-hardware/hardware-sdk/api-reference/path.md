@@ -1,37 +1,31 @@
-# Path Params
+# Path Parameters
 
-## Path
+A derivation path identifies a key within a wallet. The SDK accepts a string such as `m/44'/0'/0'/0/0` or an array of unsigned 32-bit integers.
 
-* `path` - `string | Array<number>` in [BIP44](https://github.com/OneKeyHQ/bixin-firmware/blob/bixin\_dev/docs/misc/coins-bip44-paths.md) path scheme or `Array` of hardended numbers.
+An apostrophe marks a hardened component. In an integer array, add `0x80000000` to that component. Non-hardened components keep their original index.
 
-> If the chain is ed25519, it must be fully hardened.
->
-> e.g m/49'/0/'0'/'0'/'0'
+## Bitcoin examples
 
-#### Examples
+BIP44 account 0:
 
-Bitcoin account 1 using BIP44 derivation path
-
-```javascript
-"m/49'/0/'0'"
+```typescript
+const accountPath = "m/44'/0'/0'";
+const accountPathArray = [0x8000002c, 0x80000000, 0x80000000];
 ```
 
-Bitcoin account 1 using hardended path
+The first receiving address in that account:
 
-```javascript
-[(49 | 0x80000000) >>> 0, (0 | 0x80000000 >>> 0), (0 | 0x80000000) >>> 0]
+```typescript
+const addressPath = "m/44'/0'/0'/0/0";
+const addressPathArray = [0x8000002c, 0x80000000, 0x80000000, 0, 0];
 ```
 
-Bitcoin first address address of account 1 using BIP44 derivation path
+For Bitcoin, use purpose `49'` for nested SegWit, `84'` for native SegWit, or `86'` for Taproot. Account and address indexes start at zero.
 
-```javascript
-"m/49'/0/'0'/0/0"
-```
+## Chain-specific paths
 
-Bitcoin first address address of account 1 using hardended path
+Use the path format documented for the chain and the wallet account being imported. For example, Solana commonly uses the fully hardened path `m/44'/501'/0'/0'`.
 
-```javascript
-[(49 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, 0, 0]
-```
+Do not harden or unharden a component merely to satisfy a length check: doing so changes the derived key. Cardano uses BIP32-Ed25519 and has its own payment and staking path rules; it is not covered by a blanket rule that every Ed25519 path must be fully hardened.
 
-[See more examples](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki#examples)
+See the [BIP44 specification](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) and the individual API's path requirements.

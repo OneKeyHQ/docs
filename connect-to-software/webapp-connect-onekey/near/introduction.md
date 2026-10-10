@@ -1,8 +1,8 @@
 # Introduction
 
-[**OneKey**](https://www.onekey.so) is a wallet and browser extension that can be used to manage digital assets and access decentralized applications on the [Near](https://docs.near.org) blockchain.&#x20;
+[**OneKey**](https://www.onekey.so) is a wallet and browser extension that can be used to manage digital assets and access decentralized applications on the [Near](https://docs.near.org) blockchain.
 
-It works by creating and managing private keys on behalf of its users, allowing them to store funds and sign transactions.&#x20;
+It works by creating and managing private keys on behalf of its users, allowing them to store funds and sign transactions.
 
 Web applications can interact with the extension wallet, such as asking for permission to perform a transaction.
 
@@ -10,11 +10,11 @@ Web applications can interact with the extension wallet, such as asking for perm
 
 **Integrating guide step by step:**
 
-{% content-ref url="introduction.md" %}
-[introduction.md](introduction.md)
+{% content-ref url="integrating/" %}
+[integrating](integrating/)
 {% endcontent-ref %}
 
-**Example codes and live demo:**&#x20;
+**Example codes and live demo:**
 
 {% content-ref url="resources/example-and-demo.md" %}
 [example-and-demo.md](resources/example-and-demo.md)

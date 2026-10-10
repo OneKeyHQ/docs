@@ -1,8 +1,10 @@
 # OneKey Message Protocol
 
-Messages are sent in packets of 64 bytes.
+This page describes legacy Protocol V1 framing. It is not the Protocol V2 frame format. Detect the protocol through the SDK transport; do not infer it from the USB descriptor or device name.
 
-First packet has the following structure:
+In this V1 framing, messages are split into 64-byte packets.
+
+The first packet has the following structure:
 
 | offset | length | type          | contents                                                                                               |
 | ------ | ------ | ------------- | ------------------------------------------------------------------------------------------------------ |
@@ -11,7 +13,7 @@ First packet has the following structure:
 | 5      | 4      | BE uint32\_t  | message size                                                                                           |
 | 9      | 55     | uint8\_t\[55] | first 55 bytes of message encoded in Protocol Buffers (padded with zeroes if shorter)                  |
 
-Following packets has the following structure:
+Subsequent packets have the following structure:
 
 | offset | length | type          | contents                                                                               |
 | ------ | ------ | ------------- | -------------------------------------------------------------------------------------- |

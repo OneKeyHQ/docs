@@ -8,7 +8,7 @@ OneKey provider API is specified by [NIP-07](https://github.com/nostr-protocol/n
 
 ## Install
 
-#### 1. Download OneKey Wallet
+### 1. Download OneKey Wallet
 
 Download the [OneKey Wallet](https://onekey.so/download?client=browserExtension). Install the OneKey browser extension.
 
@@ -18,23 +18,23 @@ Download the [OneKey Wallet](https://onekey.so/download?client=browserExtension)
 * Two types of APIs are provided: `window.nostr` and `window.$onekey.nostr`.
 * It is recommended to use `window.$onekey.nostr`.
 
-> Both APIs have the same functionality, just different names.
+> Prefer `window.$onekey.nostr` to select OneKey specifically. The global `window.nostr` may belong to another wallet when multiple extensions are installed.
 
 ### Detecting Provider API support
 
-Before you start using Nostr protocol you need to check for browser support by checking if the variable `window.nostr` is defined:
+Check that a provider is available before making requests:
 
 ```javascript
 const provider = (window.$onekey && window.$onekey.nostr) || window.nostr;
 
 if (!provider) {
-  alert("No Provider available.");
+  throw new Error("No provider is available.");
 }
 ```
 
 ## API
 
-Identify required functionalities, call relevant interfaces
+Choose an API for the operation your application needs.
 
 **More Interfaces**: [View Details](api-reference/)
 
@@ -42,3 +42,7 @@ Identify required functionalities, call relevant interfaces
 
 * **Key Operations**: Such as account switching
 * **More Information**: [View More](event.md)
+
+## Handling requests
+
+Run wallet requests from an async function or an ES module. Catch rejected promises and show the error in your application. Request connections, signatures, and payments from a user action, and disable the triggering button while a request is pending.

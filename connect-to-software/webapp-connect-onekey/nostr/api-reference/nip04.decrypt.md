@@ -1,18 +1,20 @@
 # nip04.decrypt
 
-### Method
+## Method
 
-<pre><code><strong>async function nip04.decrypt(pubkey, message): string 
-</strong></code></pre>
+```typescript
+// provider.nip04.decrypt
+(pubkey: string, ciphertext: string) => Promise<string>
+```
 
 ### Params
 
-* `pubkey` — _required_ `string`  the publick key
-* `message` — _required_ `string` a string to sign
+* `pubkey` — _required_ `string` the sender public key
+* `ciphertext` — _required_ `string` the encrypted payload
 
 ### Response
 
-returns ciphertext and iv as specified in nip-04
+Returns the decrypted plaintext.
 
 ### Example
 
@@ -27,3 +29,5 @@ const decrypted = await provider.nip04.decrypt(pubkey, encrypted); // Data to be
 ### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/rNPZwaa" %}
+
+[NIP-04](https://github.com/nostr-protocol/nips/blob/master/04.md) is deprecated by the Nostr specification. These methods remain documented for existing integrations; their presence does not establish support for newer NIPs.

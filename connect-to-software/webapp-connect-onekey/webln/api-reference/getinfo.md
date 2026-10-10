@@ -2,10 +2,10 @@
 
 Obtain node information and which methods are supported.
 
-### Method
+## Method
 
 ```typescript
-async function getInfo(): GetInfoResponse
+declare function getInfo(): Promise<GetInfoResponse>;
 ```
 
 ### Response

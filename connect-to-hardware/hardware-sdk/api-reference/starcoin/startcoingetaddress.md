@@ -1,8 +1,8 @@
-# startcoinGetAddress
+# starcoinGetAddress
 
 ## Starcoin: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const response = await HardwareSDK.starcoinGetAddress(connectId, deviceId, params)
@@ -12,60 +12,60 @@ const response = await HardwareSDK.starcoinGetAddress(connectId, deviceId, param
 
 [Optional common params](../common-params.md)
 
-**Exporting single address**
+**Single address**
 
-* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [more information](../path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 
-**Exporting bundle of addresses**
+**Multiple addresses**
 
-* `bundle` - `Array` of Objects with `path` and `showOnOneKey` fields
+* `bundle` - array of objects with `path` and `showOnOneKey` fields
 
 #### Example
 
-Display address of first starcoin account:
+Display the address for the first starcoin account:
 
 ```typescript
 HardwareSDK.starcoinGetAddress(connectId, deviceId, {
-    path: "m/44'/101010'/0'/0/0"
+    path: "m/44'/101010'/0'/0'/0'"
 });
 ```
 
-Return a bundle of starcoin addresses without displaying them on device:
+Return a bundle of starcoin addresses without displaying them on the device:
 
 ```typescript
 HardwareSDK.starcoinGetAddress(connectId, deviceId, {
     bundle: [
-        { path: "m/44'/101010'/0'/0/0", showOnOneKey: false }, // account 1
-        { path: "m/44'/101010'/1'/0/0", showOnOneKey: false }, // account 2
-        { path: "m/44'/101010'/2'/0/0", showOnOneKey: false }  // account 3
+        { path: "m/44'/101010'/0'/0'/0'", showOnOneKey: false }, // account 1
+        { path: "m/44'/101010'/1'/0'/0'", showOnOneKey: false }, // account 2
+        { path: "m/44'/101010'/2'/0'/0'", showOnOneKey: false }  // account 3
     ]
 });
 ```
 
 #### Result
 
-Result with only one address
+Single-address response
 
 ```typescript
 {
     success: true,
     payload: {
         address: string,     // displayed address
-        path: Array<number> // hardended path
+        path: string // serialized BIP32 path
     }
 }
 ```
 
-Result with bundle of addresses sorted by FIFO
+Batch response, in the same order as the request
 
 ```typescript
 {
     success: true,
     payload: [
-        { address: string, path: Array<number> }, // account 1
-        { address: string, path: Array<number> }, // account 2
-        { address: string, path: Array<number> }  // account 3
+        { address: string, path: string }, // account 1
+        { address: string, path: string }, // account 2
+        { address: string, path: string }  // account 3
     ]
 }
 ```
@@ -77,7 +77,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

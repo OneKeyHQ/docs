@@ -1,11 +1,11 @@
 # signMessage
 
-Request that the user signs an string message.&#x20;
+Request that the user signs a string message.
 
-### Method
+## Method
 
 ```typescript
-async function signMessage(message: string): SignMessageResponse
+declare function signMessage(message: string): Promise<SignMessageResponse>;
 ```
 
 ### Response

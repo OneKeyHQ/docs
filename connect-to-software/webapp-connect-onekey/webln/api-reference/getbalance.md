@@ -2,10 +2,10 @@
 
 Check account balance
 
-### Method
+## Method
 
 ```typescript
-async function getBalance(): BalanceResponse
+declare function getBalance(): Promise<BalanceResponse>;
 ```
 
 ### Response

@@ -1,25 +1,25 @@
 # signSchnorr
 
-### Method
+## Method
 
 ```typescript
-async function signSchnorr(sigHash: string) : string;
+declare function signSchnorr(sigHash: string): Promise<string>;;
 ```
 
 ### Params
 
-* `sigHash` — _required_ `string`  a hash to sign
+* `sigHash` — _required_ `string` a hash to sign
 
 ### Response
 
-Signature of arbitrary text signed with the private key of the active nostr account
+A Schnorr signature for the supplied hash, using the active Nostr account. This is a OneKey extension, not a NIP-07 method.
 
 ### Example
 
 ```typescript
 const provider = (window.$onekey && window.$onekey.nostr) || window.nostr;
 
-const signature = async provider.signSchnorr("010203")
+const signature = await provider.signSchnorr("<SIGNATURE_HASH_HEX>")
 ```
 
 ### Demo

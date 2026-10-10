@@ -2,7 +2,7 @@
 
 ## Sui: get public key
 
-Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
+Returns the public key derived from the specified path. Use `showOnOneKey` to request confirmation on the device.
 
 ```typescript
 const result = await HardwareSDK.suiGetPublicKey(connectId, deviceId, params);
@@ -12,18 +12,18 @@ const result = await HardwareSDK.suiGetPublicKey(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-### Exporting single public key
+### Single public key
 
-* `path` — _required_ `string | Array<number>` minimum length is `1`. read more
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the public key on the device. Defaults to `true`.
 
-#### Exporting bundle of public keys
+#### Multiple public keys
 
-* `bundle` - `Array` of Objects with `path`, `showOnOneKey` fields
+* `bundle` - array of objects with `path`, `showOnOneKey` fields
 
 ### Example
 
-Return public key of fifth sui account:
+Return the public key for first Sui account:
 
 ```typescript
 HardwareSDK.suiGetPublicKey(connectId, deviceId, {
@@ -32,7 +32,7 @@ HardwareSDK.suiGetPublicKey(connectId, deviceId, {
 });
 ```
 
-Return a bundle of public keys for multiple aptos accounts:
+Return a bundle of public keys for multiple Sui accounts:
 
 ```typescript
 HardwareSDK.suiGetPublicKey(connectId, deviceId, {
@@ -46,29 +46,27 @@ HardwareSDK.suiGetPublicKey(connectId, deviceId, {
 
 ### Result
 
-Result with only one public key
+Single-public-key response
 
 ```typescript
 {
     success: true,
     payload: {
-        path: string, // hardended path
-        publicKey: string
+        path: string, // serialized BIP32 path
+        pub: string
     }
 }
 ```
 
-[Read more about BIP32 serialization format](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization\_format)
-
-Result with bundle of public keys
+Batch public-key response
 
 ```typescript
 {
     success: true,
     payload: [
-        { path: serializedPath, publicKey }, // account 1
-        { path: serializedPath, publicKey }, // account 2
-        { path: serializedPath, publicKey }, // account 3
+        { path: serializedPath, pub }, // account 1
+        { path: serializedPath, pub }, // account 2
+        { path: serializedPath, pub }, // account 3
     ]
 }
 ```
@@ -80,7 +78,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

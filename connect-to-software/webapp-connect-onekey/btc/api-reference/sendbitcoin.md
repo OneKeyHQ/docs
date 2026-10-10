@@ -2,22 +2,22 @@
 
 Send BTC
 
-### Method
+## Method
 
 ```typescript
-async function sendBitcoin(
-    toAddress: string, 
-    satoshis: number, 
-    options?: { feeRate: number }
-): string
+declare function sendBitcoin(
+    toAddress: string,
+    satoshis: number,
+    options?: { feeRate?: number; memo?: string; memos?: string[] }
+): Promise<string>;
 ```
 
 ### Params
 
-* `toAddress` — _required_ `string`  the address to send
+* `toAddress` — _required_ `string` the address to send
 * `satoshis` — _required_ `number` the satoshis to send
-* `options` — _optional_&#x20;
-  * `feeRate`  — _required_ `number` the network fee rate
+* `options` — _optional_
+  * `feeRate` — _optional_ `number` the network fee rate
 
 ### Response
 
@@ -25,11 +25,12 @@ async function sendBitcoin(
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>const address = "010203"
-</strong><strong>const txid = async provider.sendBitcoin(address, 1000);
-</strong></code></pre>
+const address = "<RECIPIENT_BITCOIN_ADDRESS>"; // Replace with a valid address
+const txid = await provider.sendBitcoin(address, 1000);
+```
 
 ### Demo
 

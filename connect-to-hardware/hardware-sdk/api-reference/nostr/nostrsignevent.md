@@ -1,15 +1,12 @@
 # nostrSignEvent
 
-### Use requirement
+### Requirements
 
-* Firmware version required
-  * Touch: 4.6.0
-  * Classic/Mini: 3.5.0
-  * Classic1s: 3.6.0
+The current SDK declares these firmware guards: `model_touch` ≥ 4.7.0 and `model_mini` ≥ 3.6.0. These are SDK range keys; confirm device-model mapping and released firmware support for your integration.
 
 ## Nostr: Sign nostr event
 
-Asks device to sign given nostr event using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a signature over a Nostr event using the key at the specified path. The user confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.nostrSignEvent(connectId, deviceId, params);
@@ -19,7 +16,7 @@ const result = await HardwareSDK.nostrSignEvent(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
+* `path` — _required_ `string | Array<number>` SDK minimum length is `5`. [read more](../path.md)
 * `event` — _required_ `NostrEvent` nostr event.
 
 ```
@@ -59,8 +56,6 @@ type NostrEvent = {
 };
 ```
 
-
-
 ### Examples
 
 ```typescript
@@ -68,7 +63,7 @@ const response = await HardwareSDK.nostrSignEvent(
   connectId,
   deviceId,
   {
-    path: string,
+    path: "m/44'/1237'/0'/0/0",
     event: {
       kind: 1,
       content: 'Hello world',
@@ -85,12 +80,13 @@ Result
 {
   success: true,
   payload: {
+    path: string,
     event: {
       kind: 1,
       content: 'Hello world',
       tags: [],
       created_at: 1702268010,
-      sig: '',
+      sig: 'signature returned by the device',
     },
   }
 }
@@ -103,7 +99,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

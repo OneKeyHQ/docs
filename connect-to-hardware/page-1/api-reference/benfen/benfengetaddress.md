@@ -2,12 +2,12 @@
 
 ### Benfen: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
-**Use requirement**
+**Requirements**
 
-* Firmware version required
-  * pro: 4.12.0
+* Minimum firmware versions
+  * Pro: 4.12.0
 
 ```typescript
 const result = await HardwareSDK.benfenGetAddress(connectId, deviceId, params);
@@ -17,7 +17,7 @@ const result = await HardwareSDK.benfenGetAddress(connectId, deviceId, params);
 
 **Optional common params**
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../../../hardware-sdk/api-reference/path.md)
 * `showOnOneKey` - _optional_ `boolean` whether to display address on device
 
 #### Returns
@@ -57,28 +57,28 @@ const batchResponse = await HardwareSDK.benfenGetAddress(connectId, deviceId, ba
 
 **Result**
 
-Result with only one address
+Single-address response
 
 ```typescript
 {
     success: true,
     payload: {
         address: string,     // displayed address
-        pub: string,
-        path: Array<number> // hardended path
+        pub?: string,
+        path: string // serialized BIP32 path
     }
 }
 ```
 
-Result with bundle of addresses sorted by FIFO
+Batch response, in the same order as the request
 
 ```typescript
 {
     success: true,
     payload: [
-        { address: string, pub: string, path: Array<number> }, // account 1
-        { address: string, pub: string, path: Array<number> }, // account 2
-        { address: string, pub: string, path: Array<number> }  // account 3
+        { address: string, pub?: string, path: string }, // account 1
+        { address: string, pub?: string, path: string }, // account 2
+        { address: string, pub?: string, path: string }  // account 3
     ]
 }
 ```
@@ -90,7 +90,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

@@ -2,30 +2,31 @@
 
 Get balance of current account.
 
-### Method
+## Method
 
 ```typescript
-async function getBalance(): BalanceInfo
+declare function getBalance(): Promise<BalanceInfo | number>;
 ```
 
 ### Response
 
-the balance.
+Returns the account balance. The provider type also permits a numeric result for compatibility; check the result shape before accessing fields.
 
 ```typescript
-type BalanceInfo = { 
-    confirmed: number; 
-    unconfirmed: number; 
-    total: number 
+type BalanceInfo = {
+    confirmed: number;
+    unconfirmed: number;
+    total: number
 };
 ```
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>const balance = async provider.getBalance();
-</strong></code></pre>
+const balance = await provider.getBalance();
+```
 
 ### Demo
 

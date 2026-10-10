@@ -5,7 +5,7 @@
 Reset device to factory defaults and remove all private data.
 
 ```typescript
-const result = await HardwareSDK.wipeDevice(connectId);
+const result = await HardwareSDK.deviceWipe(connectId);
 ```
 
 ## Params
@@ -16,7 +16,7 @@ empty
 ## Example
 
 ```typescript
-HardwareSDK.wipeDevice(connectId);
+HardwareSDK.deviceWipe(connectId);
 ```
 
 ## Result
@@ -37,7 +37,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

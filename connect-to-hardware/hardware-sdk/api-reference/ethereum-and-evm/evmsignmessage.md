@@ -2,11 +2,11 @@
 
 ### Ethereum: sign message
 
-Asks device to sign a message using the private key derived by given BIP32 path.
+Requests a message signature using the key derived from the specified path.
 
 * **Follows EIP-191 personal\_sign standard**
 * **Not for EIP-712 typed data signing.**
-* **Use** [**evmSignTypedData**](evmsigntypeddata.md) **to signing EIP-712 (v3 and v4)**
+* **Use** [**evmSignTypedData**](evmsigntypeddata.md) **to sign EIP-712 (v3 and v4)**
 
 ```typescript
 const result = await HardwareSDK.evmSignMessage(connectId, deviceId, params);
@@ -16,9 +16,9 @@ const result = await HardwareSDK.evmSignMessage(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `messageHex` - _required_ `string` message to sign in hex text
-* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/_data/chains).&#x20;
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [read more](../path.md)
+* `messageHex` - _required_ `string` Message to sign, encoded as a hexadecimal string.
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/_data/chains).
 
 ### Example
 
@@ -55,7 +55,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

@@ -1,19 +1,20 @@
 # getAccounts
 
-Get address of current account
+Read the addresses currently exposed to this site. To request access, use [requestAccounts](requestaccounts.md).
 
-### Method
+## Method
 
 ```typescript
-async function getAccounts(): string[]
+declare function getAccounts(): Promise<string[]>;
 ```
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>const accounts = async provider.getAccounts()
-</strong></code></pre>
+const accounts = await provider.getAccounts()
+```
 
 ### Demo
 

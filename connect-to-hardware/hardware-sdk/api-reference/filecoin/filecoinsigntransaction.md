@@ -1,14 +1,14 @@
 # filecoinSignTransaction
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 3.5.0
   * Classic/Mini: 2.10.0
 
 ## Filecoin: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature using the key derived from the specified path. The user reviews and confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.filecoinSignTransaction(connectId, deviceId, params);
@@ -18,9 +18,9 @@ const result = await HardwareSDK.filecoinSignTransaction(connectId, deviceId, pa
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `rawTx` - _required_ `string` type of serialized transaction string.
-* `isTestnet` - _optional_ `boolean` Whether test net.
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `rawTx` - _required_ `string` Serialized transaction encoded as a hexadecimal string.
+* `isTestnet` - _optional_ `boolean` Whether to use the testnet.
 
 ### Examples
 
@@ -54,7 +54,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

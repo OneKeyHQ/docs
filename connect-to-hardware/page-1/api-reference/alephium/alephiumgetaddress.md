@@ -1,13 +1,13 @@
 # alephiumGetAddress
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 ### Alephium: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const result = await HardwareSDK.alephiumGetAddress(connectId, deviceId, {
@@ -22,19 +22,16 @@ const result = await HardwareSDK.alephiumGetAddress(connectId, deviceId, {
 
 [Optional common params](../../../hardware-sdk/api-reference/common-params.md)
 
-**Exporting single address**
+**Single address**
 
-* `path` — _required_ `string | Array<number>` minimum length is 3
-* `group` — _optional_ `number | undefined | null` &#x20;
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`
+* `group` - _required_ `number | undefined | null`. Pass `undefined` for group 0, or `null` to omit the target group.
+* `includePublicKey` - _optional_ `boolean` Return `pub` and its `publicKey` alias; default `false`.
+* `showOnOneKey` - _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 
+**Multiple addresses**
 
-
-**Exporting bundle of addresses**
-
-* `bundle` - `Array` of Objects with `path` and `showOnOneKey` and  `group` fields
-
-
+* `bundle` - array of objects with `path` and `showOnOneKey` and `group` fields
 
 #### Example
 
@@ -42,7 +39,8 @@ const result = await HardwareSDK.alephiumGetAddress(connectId, deviceId, {
 // Get single address
 const response = await HardwareSDK.alephiumGetAddress(connectId, deviceId, {
     path: "m/44'/1234'/0'/0/0",
-    showOnOneKey: true
+    showOnOneKey: true,
+    group: undefined
 });
 
 // Get multiple addresses
@@ -50,11 +48,13 @@ const batchResponse = await HardwareSDK.alephiumGetAddress(connectId, deviceId, 
     bundle: [
         {
             path: "m/44'/1234'/0'/0/0",
-            showOnOneKey: false
+            showOnOneKey: false,
+            group: undefined
         },
         {
             path: "m/44'/1234'/1'/0/0",
-            showOnOneKey: false
+            showOnOneKey: false,
+            group: undefined
         }
     ]
 });
@@ -62,7 +62,7 @@ const batchResponse = await HardwareSDK.alephiumGetAddress(connectId, deviceId, 
 
 **Result**
 
-Result with only one address
+Single-address response
 
 ```typescript
 {
@@ -70,21 +70,22 @@ Result with only one address
     payload: {
         address: string,     // displayed address
         derivedPath: string,
-        publicKey: string,
-        path: Array<number> // hardended path
+        pub?: string,
+        publicKey?: string,
+        path: string // serialized BIP32 path
     }
 }
 ```
 
-Result with bundle of addresses sorted by FIFO
+Batch response, in the same order as the request
 
 ```typescript
 {
     success: true,
     payload: [
-        { address: string, derivedPath: string, publicKey: string, path: Array<number> }, // account 1
-        { address: string, derivedPath: string, publicKey: string, path: Array<number> }, // account 2
-        { address: string, derivedPath: string, publicKey: string, path: Array<number> }  // account 3
+        { address: string, derivedPath: string, pub?: string, publicKey?: string, path: string }, // account 1
+        { address: string, derivedPath: string, pub?: string, publicKey?: string, path: string }, // account 2
+        { address: string, derivedPath: string, pub?: string, publicKey?: string, path: string }  // account 3
     ]
 }
 ```
@@ -96,7 +97,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

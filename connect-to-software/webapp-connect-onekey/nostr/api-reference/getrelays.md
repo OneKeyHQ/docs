@@ -1,9 +1,10 @@
 # getRelays
 
-### Method
+## Method
 
-<pre><code><strong>async function getRelays(): { [url: string]: {read: boolean, write: boolean} } 
-</strong></code></pre>
+```typescript
+declare function getRelays(): Promise<Record<string, { read: boolean; write: boolean }>>;
+```
 
 ### Response
 
@@ -11,10 +12,11 @@ returns a basic map of relay urls to relay policies
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.nostr) || window.nostr;
-<strong>
-</strong><strong>const event = async provider.getRelays()
-</strong></code></pre>
+```typescript
+const provider = (window.$onekey && window.$onekey.nostr) || window.nostr;
+
+const relays = await provider.getRelays();
+```
 
 ### Demo
 

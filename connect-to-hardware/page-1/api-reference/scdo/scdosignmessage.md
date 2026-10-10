@@ -1,13 +1,13 @@
 # scdoSignMessage
 
-#### Use requirement
+#### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 #### SCDO: sign message
 
-Signs a message using the private key derived by given BIP32 path.
+Signs a message using the private key derived from the specified BIP32 path.
 
 ```typescript
 // Original message
@@ -26,7 +26,7 @@ const response = await HardwareSDK.scdoSignMessage(connectId, deviceId, {
 
 Optional common params
 
-* `path` — _required_ `string | Array<number>` minimum length is 3. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../../../hardware-sdk/api-reference/path.md)
 * `messageHex` — _required_ `string` message to sign in hex format
 
 **Example**
@@ -63,7 +63,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number  // error code
+        code?: string | number  // error code
     }
 }
 ```

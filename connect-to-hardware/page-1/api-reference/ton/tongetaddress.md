@@ -1,13 +1,13 @@
 # tonGetAddress
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 ### TON: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const response = await HardwareSDK.tonGetAddress(connectId, deviceId, {
@@ -23,17 +23,17 @@ const response = await HardwareSDK.tonGetAddress(connectId, deviceId, {
 
 [Optional common params](../../../hardware-sdk/api-reference/common-params.md)
 
-**Exporting single address**
+**Single address**
 
-* `path` — _required_ `string | Array<number>` minimum length is 3. read more
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../../../hardware-sdk/api-reference/path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 * `walletVersion` — _optional_ `TonWalletVersion` TON wallet version (default: 3)
 * `isBounceable` — _optional_ `boolean` whether address is bounceable (default: false)
 * `isTestnetOnly` — _optional_ `boolean` whether to use testnet (default: false)
 
-**Exporting bundle of addresses**
+**Multiple addresses**
 
-* `bundle` - `Array` of Objects with `path` and `showOnOneKey` fields
+* `bundle` - array of objects with `path` and `showOnOneKey` fields
 
 #### Example
 
@@ -64,7 +64,7 @@ const batchResponse = await HardwareSDK.tonGetAddress(connectId, deviceId, {
 
 **Result**
 
-Result with only one address
+Single-address response
 
 ```typescript
 {
@@ -72,20 +72,20 @@ Result with only one address
     payload: {
         address: string,     // displayed address
         publicKey: string,
-        path: Array<number> // hardended path
+        path: string // serialized BIP32 path
     }
 }
 ```
 
-Result with bundle of addresses sorted by FIFO
+Batch response, in the same order as the request
 
 ```typescript
 {
     success: true,
     payload: [
-        { address: string, publicKey: string, path: Array<number> }, // account 1
-        { address: string, publicKey: string, path: Array<number> }, // account 2
-        { address: string, publicKey: string, path: Array<number> }  // account 3
+        { address: string, publicKey: string, path: string }, // account 1
+        { address: string, publicKey: string, path: string }, // account 2
+        { address: string, publicKey: string, path: string }  // account 3
     ]
 }
 ```
@@ -97,7 +97,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

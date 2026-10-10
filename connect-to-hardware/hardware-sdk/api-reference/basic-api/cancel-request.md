@@ -10,7 +10,7 @@ HardwareSDK.cancel(connectId);
 
 ### Params
 
-[**Optional common params**](../common-params.md)
+* `connectId` — optional `string`. Cancels a request for the specified connection. Consult the selected SDK entry point before omitting it.
 
 ### Examples
 

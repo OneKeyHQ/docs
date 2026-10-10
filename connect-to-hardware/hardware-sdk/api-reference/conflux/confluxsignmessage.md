@@ -1,14 +1,14 @@
 # confluxSignMessage
 
-## Use requirement
+## Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 3.0.0
   * Classic/Mini: 2.4.0
 
 ## Conflux: sign message <a href="#ethereum-sign-message" id="ethereum-sign-message"></a>
 
-Asks device to sign a message using the private key derived by given BIP32 path.
+Requests a message signature using the key derived from the specified path.
 
 ```typescript
 const result = await HardwareSDK.confluxSignMessage(connectId, deviceId, params);
@@ -18,8 +18,8 @@ const result = await HardwareSDK.confluxSignMessage(connectId, deviceId, params)
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `messageHex` - _required_ `string` message to sign in hex text
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `messageHex` - _required_ `string` Message to sign, encoded as a hexadecimal string.
 
 ### Example
 
@@ -32,7 +32,7 @@ const messageHex = Buffer.from(message).toString('hex');
 
 HardwareSDK.confluxSignMessage(connectId, deviceId, {
     path: "m/44'/503'/0'/0/0",
-    message: messageHex
+    messageHex
 });
 ```
 
@@ -55,7 +55,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

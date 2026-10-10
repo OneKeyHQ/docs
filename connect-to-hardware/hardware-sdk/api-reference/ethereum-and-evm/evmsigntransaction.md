@@ -3,9 +3,9 @@
 ### Ethereum: Sign transaction
 
 * Use `evmSignTransaction` for signing transactions
-* Supports both EIP-1559 and Legacy transactions. (But make sure that the RPC node you are using supports the type you are using)
+* This page covers Legacy and EIP-1559 (Type 2) transactions. Make sure your RPC node supports the transaction type you use.
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Asks device to sign given transaction using the private key derived from the specified BIP32 path. The device asks the user to confirm the transaction; decoded detail depends on the firmware and calldata.
 
 ```typescript
 const result = await HardwareSDK.evmSignTransaction(connectId, deviceId, params);
@@ -15,47 +15,58 @@ const result = await HardwareSDK.evmSignTransaction(connectId, deviceId, params)
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `transaction` - _required_ `Object` type of `EthereumTransactionEIP1559|EthereumSignTransaction` "0x" prefix for each field is optional
-* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/_data/chains).&#x20;
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`. [read more](../path.md)
+* `transaction` - _required_ `Object`. The types covered on this page are `EVMTransaction` (Legacy) and `EVMTransactionEIP1559`. Numeric transaction quantities are hex strings; `transaction.chainId` is a number
+* `transaction.chainId` - _required_ `number`. Must match the network used to construct and broadcast the transaction. It is not a top-level parameter.
+* `transaction.data` - _optional_ `string`. Full hex-encoded calldata; use `0x` for an empty payload.
+
+EIP-1559 requires both fee fields; Legacy uses `gasPrice`. Do not pass `type: 2` to the SDK; select the type when serializing the signed transaction.
+
+### Clear Signing
+
+Use this same method for native transfers, ERC-20 transfers, approvals/revocations, and contract calls. For ERC-20 calls, `to` is the token contract and `value` is zero; calldata carries the recipient/spender and token amount. Supporting firmware decodes recognized formats automatically. There is no `clearSigning`, token-metadata, or contract-label parameter.
+
+See the [Clear Signing guide](https://developer.onekey.so/en/hardware-sdk/signers/evm#clear-signing) for the input/display matrix and unknown-contract behavior. For EIP-712 and Safe owner signatures, use [evmSignTypedData](evmsigntypeddata.md).
 
 ### Examples
 
+The fragments below assume an initialized SDK and selected wallet. Replace the sample recipient and fetch nonce, gas, and fees from the target network before signing.
+
 #### EIP1559 ([after The London Upgrade](https://ethereum.org/en/developers/docs/gas/#post-london))
 
-If both parameters `maxFeePerGas` and `maxPriorityFeePerGas` are defined, transaction will be signed as the new type introduced in [EIP1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md).
+If both parameters `maxFeePerGas` and `maxPriorityFeePerGas` are defined, transaction will be signed as the new type introduced in [EIP1559](https://eips.ethereum.org/EIPS/eip-1559).
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>HardwareSDK.evmSignTransaction(connectId, deviceId, {
-</strong>    path: "m/44'/60'/0'",
+```typescript
+HardwareSDK.evmSignTransaction(connectId, deviceId, {
+    path: "m/44'/60'/0'/0/0",
     transaction: {
         to: '0xd0d6d6c5fe4a677d343cc433536bb717bae167dd',
         value: '0xf4240',
-        data: '0xa',
+        data: '0x',
         chainId: 1,
         nonce: '0x0',
-        maxFeePerGas: '0x14',
-        maxPriorityFeePerGas: '0x0',
-        gasLimit: '0x14',
+        maxFeePerGas: '0x77359400',
+        maxPriorityFeePerGas: '0x3b9aca00',
+        gasLimit: '0x5208',
     },
-    chainId: 1
 });
-</code></pre>
+
+```
 
 Legacy
 
 ```typescript
 HardwareSDK.evmSignTransaction(connectId, deviceId, {
-    path: "m/44'/60'/0'",
+    path: "m/44'/60'/0'/0/0",
     transaction: {
         to: "0x7314e0f1c0e28474bdb6be3e2c3e0453255188f8",
         value: "0xf4240",
-        data: "0x01",
+        data: "0x",
         chainId: 1,
         nonce: "0x0",
         gasLimit: "0x5208",
         gasPrice: "0xbebc200"
     },
-    chainId: 1
 });
 ```
 
@@ -79,106 +90,52 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
 
+### Serialize the signed transaction
 
-
-### Transaction Signing and Broadcasting example
+The SDK returns a signature; your application assembles and broadcasts the transaction. This example uses ethers v5 packages. Keep the original transaction fields unchanged after the user signs.
 
 ```typescript
 import type { UnsignedTransaction } from '@ethersproject/transactions';
 import { TransactionTypes, serialize } from '@ethersproject/transactions';
+import { splitSignature } from '@ethersproject/bytes';
 import { keccak256 } from '@ethersproject/keccak256';
-function buildSignedTxFromSignatureEvm({
-  tx,
-  signature,
-}: {
-  tx: UnsignedTransaction;
-  signature: {
-    v: string | number; // '0x11' , '17', 17
-    r: string; // prefix 0x
-    s: string; // prefix 0x
-  };
-}) {
-  const { r, s, v } = signature;
-  /**
-   * sdk legacy return {v,r,s}; eip1559 return {recoveryParam,r,s}
-   * splitSignature auto convert v to recoveryParam
-   */
-  const sig = splitSignature({
-    v: Number(v),
-    r,
-    s,
-  });
-  const rawTx = serialize(tx, sig);
-  const txid = keccak256(rawTx);
-  return {
-    rawTx,
-    txid,
-  };
-}
 
-// 1. Create transaction parameters
-const txParams = {
-    to: '0x7314e0f1c0e28474bdb6be3e2c3e0453255188f8',
-    value: '0x0', // Default to 0 if no value
-    data: '0x', // Empty data
-    chainId: 1,
-    nonce: '0x0',
-    // For EIP-1559 transaction
-    maxFeePerGas: '0x14', // 20
-    maxPriorityFeePerGas: '0x0', // 0
-    gasLimit: '0x5208', // 21000
-    // For legacy transaction
-    // gasPrice: '0x14', // 
+// Illustrative fee values: populate nonce, gas, and fees from your network.
+const transaction = {
+  to: '0x7314e0f1c0e28474bdb6be3e2c3e0453255188f8',
+  value: '0x0',
+  data: '0x',
+  chainId: 1,
+  nonce: '0x0',
+  maxFeePerGas: '0x14',
+  maxPriorityFeePerGas: '0x0',
+  gasLimit: '0x5208',
 };
 
-// 2. Sign the transaction
 const result = await HardwareSDK.evmSignTransaction(connectId, deviceId, {
-    path: "m/44'/60'/0'",
-    transaction: txParams,
-    ...deviceCommonParams
+  path: "m/44'/60'/0'/0/0",
+  transaction,
 });
+if (result.success === false) throw new Error(result.payload.error);
 
-// 3. Build signed transaction
-const baseTx = {
-    to: txParams.to,
-    nonce: parseInt(txParams.nonce, 16),
-    gasLimit: txParams.gasLimit
-    data: txParams.data,
-    value: txParams.value,
-    chainId: txParams.chainId,
+const unsignedTx: UnsignedTransaction = {
+  ...transaction,
+  nonce: Number.parseInt(transaction.nonce, 16),
+  type: TransactionTypes.eip1559,
 };
-
-// Add EIP-1559 specific fields
-const isEIP1559 = txParams?.maxFeePerGas || txParams?.maxPriorityFeePerGas;
-if (isEIP1559) {
-    Object.assign(baseTx, {
-      type: TransactionTypes.eip1559,
-      maxFeePerGas: txParams?.maxFeePerGas
-      maxPriorityFeePerGas: txParams?.maxPriorityFeePerGas
-    });
-} else {
-    Object.assign(baseTx, {
-      gasPrice: txParams.gasPrice,
-    });
-}
-
-// 4. Build final transaction with signature
-const { rawTx, txid } = buildSignedTxFromSignatureEvm({
-    tx: baseTx,
-    signature: result.payload
+const signature = splitSignature({
+  v: Number(result.payload.v),
+  r: result.payload.r,
+  s: result.payload.s,
 });
-
-// 5. Broadcast the transaction
-// const provider = new ethers.providers.JsonRpcProvider();
-// const broadcastedTx = await provider.sendTransaction(rawTx);
-
-// 6. Wait for confirmation
-// const receipt = await broadcastedTx.wait();
-// console.log('Transaction confirmed:', receipt);
+const rawTx = serialize(unsignedTx, signature);
+const txid = keccak256(rawTx);
+// Submit rawTx using your Ethereum provider after verifying the signed result.
 ```
 
+For a legacy transaction, use `gasPrice` instead of the two EIP-1559 fee fields, and serialize it as a legacy transaction.

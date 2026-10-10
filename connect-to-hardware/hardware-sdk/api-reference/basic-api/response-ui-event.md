@@ -1,41 +1,39 @@
-# Response UI Event
+# uiResponse
 
-### Transfer data to the device
+Responds to a pending SDK UI request. This method does not take `connectId`, `deviceId`, or common parameters as positional arguments.
 
-Transfer data to the device, currently supporting data transfer for PIN and passphrase.
+```typescript
+import { UI_RESPONSE } from '@onekeyfe/hd-core';
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const response = await HardwareSDK.uiResponse(response);
-</strong></code></pre>
+HardwareSDK.uiResponse({ type, payload });
+```
 
-### Params
+## PIN input
 
-[**Optional common params**](../common-params.md)
-
-* `type` — _required_ `string`. type to respond to `ui-receive_pin` or `ui-receive_passphrase`
-* `payload` — _required_ `object`
-
-#### Return the PIN code result
+For supported device entry:
 
 ```typescript
 HardwareSDK.uiResponse({
   type: UI_RESPONSE.RECEIVE_PIN,
-  payload: ${pin_value},
+  payload: '@@ONEKEY_INPUT_PIN_IN_DEVICE',
 });
 ```
 
-* If entering the PIN on the software side, replace the content of `pin_value`. If the PIN needs to be entered on the hardware side, set `pin_value` as `@@ONEKEY_INPUT_PIN_IN_DEVICE`.
+For software PIN entry, `payload` is the string of keypad positions selected by the user, according to the matrix displayed on the device. Do not collect or log the literal PIN.
 
-#### Return the Passphrase result
+## Passphrase input
 
 ```typescript
 HardwareSDK.uiResponse({
   type: UI_RESPONSE.RECEIVE_PASSPHRASE,
   payload: {
-    value: ${passphrase_value},
+    value: userEnteredPassphrase,
     passphraseOnDevice: false,
     save: false,
   },
 });
 ```
 
-* If the passphrase needs to be entered on the device, set value to '' and set passphraseOnDevice to true.
+`userEnteredPassphrase` is provided by your application's input UI. For supported on-device entry, use an empty `value` and set `passphraseOnDevice: true`.
+
+Respond once to each request. In SDK versions that supply `interactionId` and `deviceId` correlation fields, echo those fields in the response. See [Handle SDK Events](../../config-event.md) and [Passphrase](../../advanced/passphrase.md).

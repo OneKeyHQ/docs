@@ -1,4 +1,6 @@
-# Wallet Connect API
+# Aptos WalletConnect API (Legacy)
+
+This page describes the historical WalletConnect v1 custom-method API. Its `@1` URI, bridge URL, and `sendCustomRequest` examples are not compatible with current WalletConnect SDKs. Use the [Aptos Wallet Adapter](../../support-wallet-kit/aptos-wallet-adapter.md) for a new browser integration.
 
 ## Basic Usage <a href="#basic-usage" id="basic-usage"></a>
 
@@ -14,8 +16,6 @@ wc:00e46b69-d0cc-4b3e-b6a2-cee442f97188@1?bridge=https%3A%2F%2Fbridge.walletconn
 {% endcode %}
 
 If you have a OneKey wallet installed, it will connect to OneKey's current Aptos wallet.
-
-
 
 > For more questions about connecting with WalletConnect, please refer to the [documentation](https://docs.walletconnect.com/client-api)
 
@@ -42,11 +42,9 @@ walletConnector.sendCustomRequest({ method: "account" })
 {
     "publicKey": "0xf7768b9884081c0a781b3bff6dd896acfdc2728a29fbe9b711ee4f39040d5afb",
     "address":"0xc046a096af4602ef60766ffd88033d178e5658cf31827049f3709c62a28a2680"
-} 
+}
 ```
 {% endcode %}
-
-
 
 ### **network**
 
@@ -64,8 +62,6 @@ walletConnector.sendCustomRequest({ method: "network" })
 ```
 {% endcode %}
 
-
-
 ### **getChainId**
 
 **Request**
@@ -78,16 +74,14 @@ walletConnector.sendCustomRequest({ method: "getChainId" })
 
 {% code overflow="wrap" %}
 ```json
-{ "chainId": 1 } 
+{ "chainId": 1 }
 ```
 {% endcode %}
-
-
 
 ### signAndSubmitTransaction
 
 **Request**\
-Example Transaction, following an [EntryFunctionPayload](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/typescript/sdk/src/generated/models/EntryFunctionPayload.ts#L8-L21)
+Example Transaction, using an [EntryFunctionPayload](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/typescript/sdk/src/generated/models/EntryFunctionPayload.ts#L8-L21)
 
 {% code overflow="wrap" %}
 ```
@@ -98,10 +92,10 @@ const transaction = {
     type_arguments: ['0x1::aptos_coin::AptosCoin'],
 };
 
-walletConnector.sendCustomRequest({ 
+walletConnector.sendCustomRequest({
     method: "signAndSubmitTransaction",
     params: [transaction]
-}})
+});
 ```
 {% endcode %}
 
@@ -129,14 +123,12 @@ walletConnector.sendCustomRequest({
     "signature": {
         "public_key": "0xc35b5938c4d1524641e5732430bd101a22dc9551d8e554366aa61e07f497a4fb",
         "signature": "0x901a2c404e7d6f6427228bc0f1498217ac2429c198583f2a693390d5d28f5cc6313505886accb8673eb1e80e9c85ca91adc13dc32eb7542a50c3318fc3e6f906",
-        "type": "ed25519_signature"    
+        "type": "ed25519_signature"
     },
 }
 ```
 
 follow [PendingTransaction](https://github.com/aptos-labs/aptos-core/blob/30b385bf38/ecosystem/typescript/sdk/src/generated/models/PendingTransaction.ts#L14)
-
-
 
 ### signMessage
 
@@ -156,19 +148,19 @@ const signMessagePayload = {
     application: true,
     chainId: true,
     message: "This is a sample message",
-    nonce: 12345,
+    nonce: "12345",
 }
 
-walletConnector.sendCustomRequest({ 
+walletConnector.sendCustomRequest({
     method: "signMessage",
     params: [signMessagePayload]
-}})
+});
 ```
 
 **Response**
 
 {% code overflow="wrap" %}
-```json
+```typescript
 export interface SignMessageResponse {
   address: string;
   application: string;
@@ -179,30 +171,27 @@ export interface SignMessageResponse {
   prefix: string, // Should always be APTOS
   signature: string; // The signed full message
 }
+```
+{% endcode %}
 
+Example response (signature abbreviated):
+
+```json
 {
     "message": "This is a sample message",
-    "nonce": 12345,
+    "nonce": "12345",
     "prefix": "APTOS",
-    "signature": "0x8995a00d31ff10f4d6d7cc4a8485fbe8aa04fb265b0f0629cf0184b9d37925e4bda001928a59f5c287f07dca9d9147b2b2ba004633cd4980ae0839fa1b34b70a",
+    "signature": "0x...",
     "fullMessage": "APTOS\napplication: localhost:3000\nchainId: 1\nmessage: This is a sample message\nnonce: 12345",
     "application": "http://localhost:3000",
     "chainId": 1
 }
 ```
-{% endcode %}
-
-
 
 ## **Event**
 
-**Todo**
-
-
+No event contract is documented for this legacy integration. Do not assume it uses Ethereum event names.
 
 ## Example
 
-[Onekey Aptos WalletConnect Example](https://github.com/OneKeyHQ/cross-inpage-provider/blob/master/packages/example/components/aptosWalletConnect/AptosExample.tsx)
-
-
-
+[OneKey Aptos WalletConnect Example](https://github.com/OneKeyHQ/cross-inpage-provider/blob/master/packages/example/components/aptosWalletConnect/AptosExample.tsx)

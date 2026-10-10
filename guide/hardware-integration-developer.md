@@ -2,61 +2,36 @@
 description: Third-Party Wallet and App Developer
 ---
 
-# Hardware Integration Developer
+# Connect hardware
 
-## Intro
+Use the Hardware SDK when your wallet or application needs to communicate directly with a OneKey device. Your application prepares requests, manages connection state, and handles SDK UI events; the user reviews sensitive operations on the device.
 
-* If you want to connect hardware, please use our SDK.
-* If you want to connect to the software, we support WalletConnect Deeplink method to connect.
+For current platform setup and device support, use the [Hardware SDK quickstart](https://developer.onekey.so/en/hardware-sdk/getting-started/).
 
+## Choose a transport
 
+| Runtime                         | Integration guide                                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------- |
+| Browser with WebUSB support     | [WebUSB](https://developer.onekey.so/en/hardware-sdk/transport/web-usb/)                    |
+| React Native with Bluetooth     | [React Native BLE](https://developer.onekey.so/en/hardware-sdk/transport/react-native-ble/) |
+| Native Android, iOS, or Flutter | [Native mobile](https://developer.onekey.so/en/hardware-sdk/transport/native-ble/)          |
 
-## Integrated via USB or Bluetooth
+Bridge-based setups are a separate integration path. A hardware bridge is not a prerequisite for every browser integration; follow the requirements of the transport you select.
 
-Connect OneKey hardware via Bluetooth or usb.
+## Make your first call
 
-### Online debugging tool
+1. Install the SDK for your runtime and initialize it once.
+2. Register UI handlers before starting a device call.
+3. Discover devices, handle an empty result, and let the user select the intended device.
+4. Read device features and retrieve an address.
+5. Add signing only after you handle rejection, cancellation, and disconnects.
 
-#### Step 1: Install bridge
+Use the [hardware playground](https://hardware-example.onekey.so/) to explore APIs, then validate with the device and firmware your application supports. Consult [device and chain support](https://developer.onekey.so/en/hardware-sdk/concepts/chain-support/) before selecting a method.
 
-The web terminal can communicate with hardware only after a hardware bridge is installed.
+## QR signing
 
-[Install Hardware Bridge](https://onekey.so/download?client=bridge)
+For QR-capable devices, use the [Air-Gap SDK](../connect-to-hardware/air-gap-sdk/) to exchange requests and responses. This path does not use a USB or Bluetooth connection.
 
-#### Setp 2: Debug
+## Connecting to the OneKey app instead
 
-You can use a USB connection to the device for debugging APIs.
-
-[Expo Example Demo](https://hardware-example.onekeytest.com/expo-playground/)
-
-
-
-### Integrated Hardware SDK
-
-Offer a hardware SDK to support various applications connecting to OneKey hardware. Supports multiple programming languages.
-
-The specific steps for integrating the SDK.
-
-{% content-ref url="../connect-to-hardware/hardware-sdk/started.md" %}
-[started.md](../connect-to-hardware/hardware-sdk/started.md)
-{% endcontent-ref %}
-
-
-
-## Integrated via Air Gap
-
-Air Gap is a communication model based on QR codes that ensures an air-gapped transaction.&#x20;
-
-{% content-ref url="../connect-to-hardware/air-gap-sdk/started.md" %}
-[started.md](../connect-to-hardware/air-gap-sdk/started.md)
-{% endcontent-ref %}
-
-
-
-## WalletConnect Integration
-
-We support WalletConnect Deeplink, enabling you to directly connect to OneKey via a deeplink, and then communicate with the blockchain through OneKey.
-
-* The OneKey mobile client (iOS, Android) supports the WalletConnect DeepLink connection method.
-* The premise is that the OneKey client is installed on the user's mobile phone,
-* Your App can connect to the OneKey mobile client through WalletConnect's DeepLink, for details refer to the Demo and [related WalletConnect DeepLink documentation](https://docs.walletconnect.com/web3wallet/mobileLinking).
+If you want the OneKey wallet app to manage accounts and signing, use the [dApp integration guide](web-app-integration-developer.md), including its mobile and WalletConnect paths.

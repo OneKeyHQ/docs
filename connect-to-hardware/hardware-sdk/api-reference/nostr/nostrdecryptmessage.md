@@ -1,15 +1,15 @@
 # nostrDecryptMessage
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.6.0
   * Classic/Mini: 3.5.0
   * Classic1s: 3.6.0
 
 ## Nostr: Decrypt Message
 
-Asks device to decrypt message using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests message decryption using the key at the specified path and the other participant's public key.
 
 ```typescript
 const result = await HardwareSDK.nostrDecryptMessage(connectId, deviceId, params);
@@ -19,12 +19,10 @@ const result = await HardwareSDK.nostrDecryptMessage(connectId, deviceId, params
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `pubkey` — _required_ `string` public key .
+* `path` — _required_ `string | Array<number>` SDK minimum length is `5`. [read more](../path.md)
+* `pubkey` — _required_ `string`. The other participant's public key.
 * `ciphertext` — _required_ `string` encrypted message.
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true` .
-
-
+* `showOnOneKey` — _optional_ `boolean` Whether to display the request on the device. Defaults to `true`.
 
 ### Examples
 
@@ -35,7 +33,7 @@ const response = await HardwareSDK.nostrDecryptMessage(
   {
      path: "m/44'/1237'/0'/0/0",
      pubkey: '2118c65161c7d68b4bdbe1374f658532670057ab1bb0c99937d0ff7cff45cb5e',
-     ciphertext: 'VpWFJ7JDFv16jL7pBZ1shw==?iv=$1tPpwGD3Ic1RTVXJx1ZG7Q==',
+     ciphertext: encryptedMessage,
      showOnOneKey: true,
   }
 );
@@ -62,7 +60,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

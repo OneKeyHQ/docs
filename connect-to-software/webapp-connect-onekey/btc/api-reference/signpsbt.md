@@ -2,17 +2,17 @@
 
 This method will traverse all inputs that match the current address to sign.
 
-#### Wallet & Address Type Compatibility
+## Wallet & Address Type Compatibility
 
 | Wallet Type     | Model          | Address Types Supported                |
 | --------------- | -------------- | -------------------------------------- |
 | Software Wallet | -              | p2wpkh (Native Segwit), p2tr (Taproot) |
 | Hardware Wallet | Pro, Classic1S | p2tr (Taproot)                         |
 
-#### Method
+### Method
 
 ```typescript
-async function signPsbt(
+declare function signPsbt(
     psbtHex: string,
     options?: {
         autoFinalized?: boolean;
@@ -87,3 +87,9 @@ try {
 #### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/GRzXvXJ" %}
+
+{% hint style="info" %}
+Wallet and address compatibility depends on the wallet and firmware version. Confirm support for the target account before relying on the compatibility table.
+{% endhint %}
+
+The abbreviated PSBTs, addresses, and public keys above are placeholders. Replace them with complete values. The published provider interface exposes `autoFinalized`; additional `toSignInputs` options depend on the wallet implementation and should be verified with your target version. Signing does not broadcast a transaction.

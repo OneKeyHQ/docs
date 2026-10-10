@@ -2,7 +2,7 @@
 
 ## Starcoin: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature using the key derived from the specified path. The user reviews and confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.starcoinSignTransaction(connectId, deviceId, params);
@@ -12,8 +12,8 @@ const result = await HardwareSDK.starcoinSignTransaction(connectId, deviceId, pa
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `rawTx` - _required_ `string` type of serialized transaction string.
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `rawTx` - _required_ `string` Serialized transaction encoded as a hexadecimal string.
 
 ### Examples
 
@@ -22,7 +22,7 @@ const response = await HardwareSDK.starcoinSignTransaction(
   connectId,
   deviceId,
   {
-    path: "m/44'/101010'/0'/0'",
+    path: "m/44'/101010'/0'/0'/0'",
     rawTx: "4301355cc18d85809872bcbd63cb6ea5ac3c2814a1bacf2e50d8ec62367211917b79ecd1f1a98fa0d793d7cb92ebd9a479dc6aba0ae8570253aa87c0da32db5ed2bd401f3bbee52c2bc55761fd8486fae2e28f46499282f4267b8b90fc8c1cc97bb659b6cc927f2ec1701ef2928ddb84759ba5c557f549db"
   }
 );
@@ -34,9 +34,8 @@ Result
 {
   success: true,
   payload: {
-    path: "m/44'/101010'/0'/0'/0'",
     public_key: string,
-    signature: string.
+    signature: string,
   }
 }
 ```
@@ -48,7 +47,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

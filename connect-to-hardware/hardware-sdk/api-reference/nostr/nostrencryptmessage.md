@@ -1,15 +1,15 @@
 # nostrEncryptMessage
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.6.0
   * Classic/Mini: 3.5.0
   * Classic1s: 3.6.0
 
 ## Nostr: Encrypt Message
 
-Asks device to encrypt message using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests message encryption using the key at the specified path and the other participant's public key.
 
 ```typescript
 const result = await HardwareSDK.nostrEncryptMessage(connectId, deviceId, params);
@@ -19,10 +19,10 @@ const result = await HardwareSDK.nostrEncryptMessage(connectId, deviceId, params
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `pubkey` — _required_ `string` public key .
-* `plaintext` — _required_ `string` messages that need to be encrypted.
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true` .
+* `path` — _required_ `string | Array<number>` SDK minimum length is `5`. [read more](../path.md)
+* `pubkey` — _required_ `string`. The other participant's public key.
+* `plaintext` — _required_ `string`. The plaintext message to encrypt.
+* `showOnOneKey` — _optional_ `boolean` Whether to display the request on the device. Defaults to `true`.
 
 ### Examples
 
@@ -60,7 +60,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

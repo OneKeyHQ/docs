@@ -1,14 +1,14 @@
 # cosmosSignTransaction
 
-## Use requirement
+## Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.0.0
   * Classic/Mini: 2.10.0
 
 ## Cosmos: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature using the key derived from the specified path. The user reviews and confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.cosmosSignTransaction(connectId, deviceId, params);
@@ -18,13 +18,13 @@ const result = await HardwareSDK.cosmosSignTransaction(connectId, deviceId, para
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `rawTx` - _required_ `string` type of serialized transaction string.
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `rawTx` - _required_ `string` Serialized transaction encoded as a hexadecimal string.
 
 ### Examples
 
 ```typescript
-const response = await HardwareSDK.aptosSignTransaction(
+const response = await HardwareSDK.cosmosSignTransaction(
   connectId,
   deviceId,
   {
@@ -41,7 +41,7 @@ Result
   success: true,
   payload: {
     path: "m/44'/118'/0'/0/0",
-    signature: string.
+    signature: string,
   }
 }
 ```
@@ -53,7 +53,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

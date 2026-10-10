@@ -1,14 +1,14 @@
 # aptosSignMessage
 
-## Use requirement
+## Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 3.0.0
   * Classic/Mini: 2.6.0
 
 ## Aptos: sign message <a href="#ethereum-sign-message" id="ethereum-sign-message"></a>
 
-Asks device to sign a message using the private key derived by given BIP32 path.
+Requests a message signature using the key derived from the specified path.
 
 ```typescript
 const result = await HardwareSDK.aptosSignMessage(connectId, deviceId, params);
@@ -18,12 +18,12 @@ const result = await HardwareSDK.aptosSignMessage(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
 * `payload` - `AptosMessagePayload` type
-  * `address` - _optional  `string`_ of path Derived address
-  * `chainId` - _optional  `string`_ of the id of the chain
-  * `application` - _optional  `string`_ of DApp web site url
-  * `nonce` - _required  `string`_ of random number
+  * `address` - _optional `string`_ of path Derived address
+  * `chainId` - _optional `string`_ of the id of the chain
+  * `application` - _optional `string`_ of DApp web site url
+  * `nonce` - _required `string`_ of random number
   * `message` - _required_ `string` message to sign text
 
 ### Example
@@ -59,7 +59,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

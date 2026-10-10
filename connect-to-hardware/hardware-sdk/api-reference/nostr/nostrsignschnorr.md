@@ -1,15 +1,12 @@
 # nostrSignSchnorr
 
-### Use requirement
+### Requirements
 
-* Firmware version required
-  * Touch: 4.6.0
-  * Classic/Mini: 3.5.0
-  * Classic1s: 3.6.0
+The current SDK declares these firmware guards: `model_touch` ≥ 4.7.0 and `model_mini` ≥ 3.6.0. These are SDK range keys; confirm device-model mapping and released firmware support for your integration.
 
 ## Nostr: Sign Schnorr
 
-Asks device to sign given schnorr transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a Schnorr signature over the supplied hash using the key at the specified path. The user confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.nostrSignSchnorr(connectId, deviceId, params);
@@ -19,10 +16,8 @@ const result = await HardwareSDK.nostrSignSchnorr(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `hash` — _required_ `string` schnorr hash.
-
-
+* `path` — _required_ `string | Array<number>` SDK minimum length is `5`. [read more](../path.md)
+* `hash` — _required_ `string`. A 32-byte hash encoded as hexadecimal.
 
 ### Examples
 
@@ -57,7 +52,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

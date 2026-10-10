@@ -1,8 +1,8 @@
 # xrpSignTransaction
 
-### Ripple: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
+### Ripple: sign transaction
 
-Asks device to sign given transaction. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature. The user reviews and confirms the request on the device.
 
 ```typescript
 const response = await HardwareSDK.xrpSignTransaction(connectId, deviceId, params)
@@ -12,7 +12,7 @@ const response = await HardwareSDK.xrpSignTransaction(connectId, deviceId, param
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` - _required_ `string | Array<number>` SDK minimum length is `5`. [Path format](../path.md)
 * `transaction` - _required_ `XrpTransaction` type
 
 #### XrpTransaction Type
@@ -23,23 +23,25 @@ type XrpTransaction = {
     flags?: number;
     sequence: number;
     maxLedgerVersion?: number; // Proto: "last_ledger_sequence"
-    payment: RipplePayment;
+    payment: XrpPayment;
 }
 
 type XrpPayment = {
-    amount: string;
+    amount: number;
     destination: string;
     destinationTag?: number;
 }
 ```
 
+The current SDK runtime expects `{ path, transaction }` and validates `transaction.payment.amount` as a number. Its exported TypeScript declaration is inconsistent with that runtime shape. The example below follows the runtime contract; check the declaration in your installed SDK version before compiling the integration. Amounts are in drops.
+
 ### Example
 
 ```typescript
 HardwareSDK.xrpSignTransaction(connectId, deviceId, {
-    path: "m/44'/144'/0'/0'/0",
+    path: "m/44'/144'/0'/0/0",
     transaction: {
-        fee: 12,
+        fee: '12',
         flags: 0,
         sequence: 32841006,
         maxLedgerVersion: 32841630,
@@ -70,7 +72,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

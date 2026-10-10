@@ -2,17 +2,17 @@
 
 ### NEM: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
 
-Asks device to sign given transaction. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature. The user reviews and confirms the request on the device.
 
 ```typescript
-const response = await HardwareSDK.nvmSignTransaction(connectId, deviceId, params)
+const response = await HardwareSDK.nemSignTransaction(connectId, deviceId, params)
 ```
 
 ### Params
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
 * `transaction` - _required_ `NEMTransaction` type
 
 #### NEMTransaction Type
@@ -129,7 +129,7 @@ export type NEMTransaction = Transaction | NEMMultisigTransaction;
 #### NEMTransferTransaction
 
 ```typescript
-HardwareSDK.confluxSignMessage(connectId, deviceId, {
+HardwareSDK.nemSignTransaction(connectId, deviceId, {
     path: "m/44'/43'/0'/0'/0",
     transaction: {
         type: 0x0101,
@@ -161,7 +161,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

@@ -6,7 +6,7 @@ Update stm32 firmware / Bluetooth firmware version.\
 \
 Firmware upgrades are supported in two ways:
 
-* Use the firmware upgrade resource on the OneKey server and simply pass in the version number.&#x20;
+* Use the firmware upgrade resource on the OneKey server and simply pass in the version number.
 * Use the user-specified binary data to upgrade the firmware. Use this method with caution; incorrect data can result in hardware data loss.
 
 ```typescript
@@ -48,7 +48,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

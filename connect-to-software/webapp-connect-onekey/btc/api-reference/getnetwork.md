@@ -2,10 +2,10 @@
 
 Get network of current account
 
-### Method
+## Method
 
 ```typescript
-async function getNetwork(): string
+declare function getNetwork(): Promise<string>;
 ```
 
 ### Response
@@ -14,10 +14,11 @@ the network. `livenet` and `testnet`
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>const network = async provider.getNetwork()
-</strong></code></pre>
+const network = await provider.getNetwork()
+```
 
 ### Demo
 

@@ -8,8 +8,6 @@ The `CryptoKeypath` class represents a cryptographic key path.
 * `sourceFingerprint`: `Buffer` The source fingerprint, optional.
 * `depth`: `number` The depth, optional.
 
-
-
 ### `PathComponent`
 
 The `PathComponent` class represents an individual component in a cryptographic key path.
@@ -20,11 +18,6 @@ The `PathComponent` class represents an individual component in a cryptographic 
   * `index`: `number` The component index, optional.
   * `hardened`: `boolean` Indicates whether it is hardened.
 
+## UR type
 
-
-## URL Example
-
-```typescript
-ur:crypto-keypath/xxxxx
-```
-
+The UR type is `crypto-keypath`. Generate the encoded payload with the registry encoder.

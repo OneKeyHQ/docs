@@ -1,14 +1,14 @@
 # cardanoGetPublicKey
 
-## Use requirement
+## Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.1.0
   * Classic/Mini: 3.0.0
 
 ## Cardano: get public key
 
-Retrieves BIP32-Ed25529 extended public derived by given BIP32-Ed25519 path. User is presented with a description of the requested key and asked to confirm the export.
+Returns the extended public key derived from the specified Cardano path.
 
 ```typescript
 const result = await HardwareSDK.cardanoGetPublicKey(connectId, deviceId, params);
@@ -18,22 +18,22 @@ const result = await HardwareSDK.cardanoGetPublicKey(connectId, deviceId, params
 
 [**Optional common params**](../common-params.md)
 
-### Exporting single public key
+### Single public key
 
-* `path` — _required_ `string | Array<number>` minimum length is `1`. read more
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
-* `derivationType` — _optional_ `CardanoDerivationType` enum. determines used derivation type. Default is set to ICARUS=1
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `showOnOneKey` - _optional_ `boolean` Whether to display the public key on the device. Defaults to `false`.
+* `derivationType` - _optional_ `CardanoDerivationType` enum. determines used derivation type. Default is set to ICARUS=1
 
-#### Exporting bundle of public keys
+#### Multiple public keys
 
-* `bundle` - `Array` of Objects with `path`, `showOnOneKey` fields
+* `bundle` - array of objects with `path`, `showOnOneKey` fields
 
 ### Example
 
-Return public key of first cardano account:
+Return the public key for first cardano account:
 
 ```typescript
-HardwareSDK.aptosGetPublicKey(connectId, deviceId, {
+HardwareSDK.cardanoGetPublicKey(connectId, deviceId, {
     path: "m/1852'/1815'/0'/0/0",
     showOnOneKey: true
 });
@@ -53,16 +53,16 @@ HardwareSDK.cardanoGetPublicKey(connectId, deviceId, {
 
 ### Result
 
-Result with only one public key
+Single-public-key response
 
 ```typescript
 {
     success: true,
     payload: {
-        path: Array<number>, // hardended path
+        path: Array<number>, // hardened path
         serializedPath: string,
-        publicKey: string,
-        node: HDPubNode,
+        xpub: string,
+        node: HDNodeType,
     }
 }
 ```
@@ -74,7 +74,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

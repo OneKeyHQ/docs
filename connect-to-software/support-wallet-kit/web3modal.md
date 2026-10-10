@@ -1,12 +1,10 @@
-# Web3Modal
+# Web3Modal (Legacy)
 
-## Doc
+## Documentation
 
 {% embed url="https://docs.walletconnect.com/web3modal/about" %}
 
-Here is the react demo, please refer to the official website for more information.
-
-
+This page preserves a legacy React integration using Wagmi 1 and viem 1. For new integrations, consult [Reown AppKit](https://docs.reown.com/appkit/overview), the successor to Web3Modal. Do not combine this example with current Wagmi configuration without following the migration guide.
 
 ## Install
 
@@ -24,11 +22,9 @@ yarn add @web3modal/wagmi wagmi@1.4.13 viem@1.21.4
 {% endtab %}
 {% endtabs %}
 
+## Configure OneKey
 
-
-## Config OneKey
-
-Add the OneKey Wallet Id when createWeb3Modal.
+Add the OneKey wallet ID when calling `createWeb3Modal`. Initialize `wagmiConfig`, `projectId`, and `chains` using the matching legacy Web3Modal setup first.
 
 ```
 createWeb3Modal({

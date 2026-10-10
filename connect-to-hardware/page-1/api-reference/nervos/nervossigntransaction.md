@@ -2,15 +2,15 @@
 
 ### Nervos: sign transaction
 
-Signs the given Nervos transaction with the private key derived by given BIP32 path. User is asked to confirm the transaction details on OneKey.
+Signs the given Nervos transaction with the private key derived from the specified BIP32 path. User is asked to confirm the transaction details on OneKey.
 
 ```typescript
 const result = await HardwareSDK.nervosSignTransaction(connectId, deviceId, params);
 ```
 
-#### Use requirement
+#### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.9.0
   * mini: 3.7.0
 
@@ -64,8 +64,7 @@ Error response:
     success: false,
     payload: {
         error: string,
-        code: number
+        code?: string | number
     }
 }
 ```
-

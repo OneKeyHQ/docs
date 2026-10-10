@@ -1,6 +1,6 @@
 # signMessage
 
-### Wallet & Address Type Support Matrix
+## Wallet & Address Type Support Matrix
 
 | Signing Method | Wallet Type               | Supported Address Types   |
 | -------------- | ------------------------- | ------------------------- |
@@ -10,10 +10,10 @@
 
 Sign a message using either ECDSA or BIP322-Simple signing method.
 
-#### Method
+### Method
 
 ```typescript
-async function signMessage(
+declare function signMessage(
   message: string,
   type?: "ecdsa" | "bip322-simple"
 ): Promise<string>
@@ -55,3 +55,7 @@ try {
 #### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/OJdojZM" %}
+
+{% hint style="info" %}
+Wallet and address compatibility depends on the wallet and firmware version. Confirm support for the target account before relying on the compatibility table.
+{% endhint %}

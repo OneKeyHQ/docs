@@ -1,13 +1,13 @@
 # scdoSignTransaction
 
-#### Use requirement
+#### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 #### SCDO: sign transaction
 
-Signs transaction using the private key derived by given BIP32 path.
+Signs transaction using the private key derived from the specified BIP32 path.
 
 ```typescript
 const response = await HardwareSDK.scdoSignTransaction(connectId, deviceId, {
@@ -27,7 +27,7 @@ const response = await HardwareSDK.scdoSignTransaction(connectId, deviceId, {
 
 Optional common params
 
-* `path` — _required_ `string | Array<number>` minimum length is 3. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../../../hardware-sdk/api-reference/path.md)
 * `nonce` — _required_ `string` transaction nonce in hex
 * `gasPrice` — _required_ `string` transaction gas price in hex
 * `gasLimit` — _required_ `string` transaction gas limit in hex
@@ -57,8 +57,8 @@ Result
 {
     success: true,
     payload: {
-        signature: string,
-        data_length: number,
+        signature?: string,
+        data_length?: number,
         path: string
     }
 }
@@ -71,7 +71,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number  // error code
+        code?: string | number  // error code
     }
 }
 ```

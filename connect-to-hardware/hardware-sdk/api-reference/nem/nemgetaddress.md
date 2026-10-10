@@ -1,14 +1,14 @@
 # nemGetAddress
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.4.0
   * Classic/Mini: 3.2.0
 
 ## NEM: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const response = await HardwareSDK.nemGetAddress(connectId, deviceId, params)
@@ -18,19 +18,19 @@ const response = await HardwareSDK.nemGetAddress(connectId, deviceId, params)
 
 [Optional common params](../common-params.md)
 
-**Exporting single address**
+**Single address**
 
-* `path` — _required_ `string | Array<number>`  minimum length is 5. [more information](../path.md)
-* `network`— _optional_ `number` Network id. The default value is `MAINNET(104)`
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [more information](../path.md)
+* `network` — _optional_ `number` Network id. The default value is `MAINNET(104)`
+* `showOnOneKey` — _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 
-**Exporting bundle of addresses**
+**Multiple addresses**
 
-* `bundle` - `Array` of Objects with `path` and `showOnOneKey` fields
+* `bundle` - array of objects with `path` and `showOnOneKey` fields
 
 #### Example
 
-Display address of first nem account:
+Display the address for the first nem account:
 
 ```typescript
 HardwareSDK.nemGetAddress(connectId, deviceId, {
@@ -38,7 +38,7 @@ HardwareSDK.nemGetAddress(connectId, deviceId, {
 });
 ```
 
-Return a bundle of aptos addresses without displaying them on device:
+Return a bundle of NEM addresses without displaying them on the device:
 
 ```typescript
 HardwareSDK.nemGetAddress(connectId, deviceId, {
@@ -52,27 +52,27 @@ HardwareSDK.nemGetAddress(connectId, deviceId, {
 
 #### Result
 
-Result with only one address
+Single-address response
 
 ```typescript
 {
     success: true,
     payload: {
         address: string,     // displayed address
-        path: Array<number> // hardended path
+        path: string // serialized BIP32 path
     }
 }
 ```
 
-Result with bundle of addresses sorted by FIFO
+Batch response, in the same order as the request
 
 ```typescript
 {
     success: true,
     payload: [
-        { address: string, path: Array<number> }, // account 1
-        { address: string, path: Array<number> }, // account 2
-        { address: string, path: Array<number> }  // account 3
+        { address: string, path: string }, // account 1
+        { address: string, path: string }, // account 2
+        { address: string, path: string }  // account 3
     ]
 }
 ```
@@ -84,7 +84,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

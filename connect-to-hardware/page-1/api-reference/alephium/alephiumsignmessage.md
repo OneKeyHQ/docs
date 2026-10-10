@@ -1,13 +1,13 @@
 # alephiumSignMessage
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 ### Alephium: sign message
 
-Sign a message using the private key derived by given BIP32 path. User needs to confirm the action on OneKey device.
+Sign a message using the private key derived from the specified BIP32 path. User needs to confirm the action on OneKey device.
 
 ```typescript
 // Original message
@@ -27,9 +27,9 @@ const result = await HardwareSDK.alephiumSignMessage(connectId, deviceId, {
 
 [Optional common params](../../../hardware-sdk/api-reference/common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is 3
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`
 * `messageHex` — _required_ `string` message to sign in hexadecimal format
-* `messageType` — _optional_ `string` type of message signing algorithm (default: "alephium")
+* `messageType` — _required_ `"alephium" | "sha256" | "blake2b" | "identity"`. Message signing mode.
 
 #### Example
 
@@ -66,7 +66,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

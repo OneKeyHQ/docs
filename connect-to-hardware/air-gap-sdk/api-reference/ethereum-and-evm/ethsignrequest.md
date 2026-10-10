@@ -1,217 +1,113 @@
 # EthSignRequest
 
-The `EthSignRequest` class handles Ethereum signing requests.
+`EthSignRequest` encodes Ethereum signing data as a UR for the device to scan. It does not build a transaction or broadcast it.
 
-Used to send a signing request to the device.
+## Data types
 
+| Value | Name                        | Signing data                                                                                  |
+| ----- | --------------------------- | --------------------------------------------------------------------------------------------- |
+| 1     | `DataType.transaction`      | Unsigned legacy transaction encoded for signing, including chain protection where applicable. |
+| 2     | `DataType.typedData`        | UTF-8 bytes of the complete EIP-712 JSON object.                                              |
+| 3     | `DataType.personalMessage`  | Original message bytes for personal message signing.                                          |
+| 4     | `DataType.typedTransaction` | Unsigned typed-transaction bytes, including the transaction type prefix.                      |
 
+## Parameters
 
-```
-enum DataType {
-    transaction = 1, // For the legacy transaction, the rlp encoding of the unsigned data.
-    typedData = 2, // For the EIP-712 typed data. Bytes of the json string.
-    personalMessage = 3, // For the personal message signing. 
-    typedTransaction = 4 // For the typed transaction, like the EIP-1559 transaction.
-}
-```
+The constructor accepts `signData: Buffer`, `dataType: DataType`, and `derivationPath: CryptoKeypath`. Optional fields are `requestId: Buffer`, `chainId: number`, `address: Buffer`, and `origin: string`.
 
-### Parameters
+The `constructETHRequest` helper below instead accepts a path string, a master fingerprint as hex, and a UUID string. Obtain the path and fingerprint from the account exported by the device. Use a fresh UUID for each request and retain it until the response is verified.
 
-* `requestId`: `Buffer` The request ID.  uuid random
-* `signData`: `Buffer` The data to be signed.
-* `dataType`: `DataType` The type of signing data.
-* `chainId`: `number` The chain ID. optional
-* `derivationPath`: [`CryptoKeypath`](../basic-api/cryptokeypath.md) The derivation path.
-* `address`: `Buffer` The address for request this signing. optional
-* `origin`: `string` Source of the request. optional
+## Build requests
 
+```typescript
+import { EthSignRequest, DataType } from '@onekeyfe/hd-air-gap-sdk';
 
-
-### URL Example
-
-{% code overflow="wrap" %}
-```
-UR:ETH-SIGN-REQUEST/ONADTPDAGDSWNNYAHGTOKPFPIAPANNROLNSAVYDTHHAOHDECAOWFLYLDLFAAUELPATAEGWSOLALPBAVYGUYTHNLFGMAYMWSGBYZOIYHTRDCFBANBFPBNDSPRJPNSDLGLBYIMJELTCNLNWZJLSEAEAELARTAXAAAACSLDAHTAADDYOEADLECSDWYKCSFNYKAEYKAEWKADWKAOCYTIZSYLCNSSDKGOCA
-```
-{% endcode %}
-
-### **EIP1559 Transaction**
-
-```javascript
-import { Transaction, FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
-import Common, { Hardfork } from '@ethereumjs/common';
-import { BN } from 'ethereumjs-util';
-import {
-    CryptoHDKey,
-    EthSignRequest,
-    DataType,
-    ETHSignature,
-} from '@onekeyfe/hd-air-gap-sdk';
-
-const common = Common.forCustomChain('mainnet', { chainId: this._networkId }, Hardfork.London);
-const eip1559Tx = FeeMarketEIP1559Transaction.fromTxData(txParams, { common });
-const unsignedBuffer = Buffer.from(eip1559Tx.getMessageToSign(false)); // generate the unsigned transaction bytes
-const requestId = randomUUID();
-const addressPath = "m/44'/60'/0'/0/0"
-
-const ethSignRequest = EthSignRequest.constructETHRequest(
-    unsignedBuffer,
-    DataType.typedTransaction,
+function createRequest(
+  signData: Buffer,
+  dataType: DataType,
+  addressPath: string,
+  masterFingerprintHex: string,
+  chainId?: number,
+) {
+  const requestId = globalThis.crypto.randomUUID();
+  const request = EthSignRequest.constructETHRequest(
+    signData,
+    dataType,
     addressPath,
-    "12345678", // master fingerprint
+    masterFingerprintHex,
     requestId,
-    1, // chainId
-    "from address",
-);
-
-// each chunk Number in single QR Code
-const maxChunkNumber = 200;
-
-// get the ur encoder
-const urEncoder = ethSignRequest.toUREncoder(maxChunkNumber);
-
-while (ture) {
-    delay(200);
-    renderQR(urEncoder.nextPart());
+    chainId,
+    undefined, // Optional signer address, as hex.
+    'your-app',
+  );
+  return { requestId, request };
 }
-
 ```
 
-### **Legacy Transaction**
+### EIP-1559 transaction
 
-```javascript
-import { Transaction } from '@ethereumjs/tx';
-import Common, { Hardfork } from '@ethereumjs/common';
-import { BN } from 'ethereumjs-util';
-import {
-    CryptoHDKey,
-    EthSignRequest,
-    DataType,
-    ETHSignature,
-} from '@onekeyfe/hd-air-gap-sdk';
+Use your Ethereum transaction library to obtain the unsigned, serialized EIP-1559 signing bytes. Include the `0x02` transaction type byte; do not pass a transaction hash or an already signed transaction.
 
-const _txParams = {
-    to: "0x0102030405", 
-    gasLimit: 200000,
-    gasPrice: 120000000000,
-    data: "0x",
-    nonce: 1,
-    value: txParams.value,
-};
-
-const tx = Transaction.fromTxData(_txParams, { common: this._common, freeze: false });
-        
-tx.v = new BN(tx.common.chainId());
-tx.r = new BN(0);
-tx.s = new BN(0);
-
-const unsignedBuffer = tx.serialize(); // generate the unsigned transaction bytes
-const requestId = randomUUID();
-const addressPath = "m/44'/60'/0'/0/0"
-
-const ethSignRequest = EthSignRequest.constructETHRequest(
-    unsignedBuffer,
-    DataType.transaction,
-    addressPath,
-    "12345678", // master fingerprint
-    requestId,
-    1, // chainId
-    "from address",
+```typescript
+const pending = createRequest(
+  unsignedEip1559Bytes,
+  DataType.typedTransaction,
+  addressPath,
+  masterFingerprintHex,
+  chainId,
 );
-
-// each chunk Number in single QR Code
-const maxChunkNumber = 200;
-
-// get the ur encoder
-const urEncoder = ethSignRequest.toUREncoder(maxChunkNumber);
-
-while (ture) {
-    delay(200);
-    renderQR(urEncoder.nextPart());
-}
-
 ```
 
-### **EIP-712 TypedData**
+### Legacy transaction
 
-```javascript
-import {
-    CryptoHDKey,
-    EthSignRequest,
-    DataType,
-    ETHSignature,
-} from '@onekeyfe/hd-air-gap-sdk';
+Pass the unsigned legacy signing payload produced by your transaction library for the intended chain. Do not construct the payload by filling signature fields with arbitrary values.
 
-const typeData = "{}"
-const dataHex = Buffer.from(typedData, 'utf-8');
-const requestId = randomUUID();
-const addressPath = "m/44'/60'/0'/0/0"
-
-const ethSignRequest = EthSignRequest.constructETHRequest(
-    dataHex,
-    DataType.typedData,
-    addressPath,
-    "12345678", // master fingerprint
-    requestId,
-    undefined,
-    "from address",
+```typescript
+const pending = createRequest(
+  unsignedLegacyBytes,
+  DataType.transaction,
+  addressPath,
+  masterFingerprintHex,
+  chainId,
 );
-
-// each chunk Number in single QR Code
-const maxChunkNumber = 200;
-
-// get the ur encoder
-const urEncoder = ethSignRequest.toUREncoder(maxChunkNumber);
-
-while (ture) {
-    delay(200);
-    renderQR(urEncoder.nextPart());
-}
-
 ```
 
-### **Message Sign**
+### EIP-712 typed data
 
-```javascript
-import {
-    CryptoHDKey,
-    EthSignRequest,
-    DataType,
-    ETHSignature,
-} from '@onekeyfe/hd-air-gap-sdk';
+`typedData` must contain the full `types`, `primaryType`, `domain`, and `message` objects. Encode integer values that exceed JavaScript's safe range as strings.
 
-const message = "0102030405"
-const dataHex = Buffer.from(message, 'hex');
-const requestId = randomUUID();
-const addressPath = "m/44'/60'/0'/0/0"
-
-const ethSignRequest = EthSignRequest.constructETHRequest(
-    dataHex,
-    DataType.typedData,
-    addressPath,
-    "12345678", // master fingerprint
-    requestId,
-    undefined,
-    "from address",
+```typescript
+const pending = createRequest(
+  Buffer.from(JSON.stringify(typedData), 'utf8'),
+  DataType.typedData,
+  addressPath,
+  masterFingerprintHex,
+  chainId,
 );
-
-// each chunk Number in single QR Code
-const maxChunkNumber = 200;
-
-// get the ur encoder
-const urEncoder = ethSignRequest.toUREncoder(maxChunkNumber);
-
-while (ture) {
-    delay(200);
-    renderQR(urEncoder.nextPart());
-}
-
 ```
 
+### Personal message
 
+```typescript
+const pending = createRequest(
+  Buffer.from('Hello OneKey', 'utf8'),
+  DataType.personalMessage,
+  addressPath,
+  masterFingerprintHex,
+  chainId,
+);
+```
 
-Obtaining a signature requires viewing.
+## Display animated QR frames
 
-{% content-ref url="ethsignature.md" %}
-[ethsignature.md](ethsignature.md)
-{% endcontent-ref %}
+`200` is the encoder's maximum fragment length, not a count of QR frames. `renderQR` is supplied by your UI. Stop the timer when the dialog closes or the request completes.
+
+```typescript
+const encoder = pending.request.toUREncoder(200);
+renderQR(encoder.nextPart());
+const timer = setInterval(() => renderQR(encoder.nextPart()), 200);
+// On completion or cancellation:
+// clearInterval(timer);
+```
+
+The snippets share the helper above. Transaction bytes, account metadata, `chainId`, and `renderQR` come from your application. Decode the returned [ETHSignature](ethsignature.md) and verify that it belongs to this request before attaching it to the original transaction.

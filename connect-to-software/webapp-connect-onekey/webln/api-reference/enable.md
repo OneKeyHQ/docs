@@ -1,23 +1,20 @@
 # enable
 
-To begin interaction, you first need to obtain the appropriate permissions. Calling webn.enable() will prompt the user to allow the use of the browser's web access feature. After this, you are free to call any other API methods.
+To begin interaction, you first need to obtain the appropriate permissions. Calling `provider.enable()` requests access to the user's Lightning account. Await approval before invoking another method. Later payments and signing requests may require separate approval.
 
-### Method
+## Method
 
 ```typescript
-async function enable(): void
+declare function enable(): Promise<void>;
 ```
-
-
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.webln) || window.webln;
+```typescript
+const provider = (window.$onekey && window.$onekey.webln) || window.webln;
 
-<strong>async provider.enable()
-</strong></code></pre>
-
-
+await provider.enable()
+```
 
 ### Demo
 

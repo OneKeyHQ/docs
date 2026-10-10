@@ -1,23 +1,32 @@
-# Common Params
+# Common Parameters
 
-In the SDK method calls, there are three generic parameters: `connectId` , `deviceId` , `commonParams`.
+Most chain methods accept a connection identifier, a device identifier, and an object containing both method-specific options and common options:
 
 ```typescript
-function call(connectId: string; deviceId: string; commonParams: CommonParams)
+const response = await HardwareSDK.btcGetAddress(connectId, deviceId, {
+  path: "m/84'/0'/0'/0/0",
+  coin: 'btc',
+  showOnOneKey: true,
+  useEmptyPassphrase: true,
+});
 ```
 
-The input parameters are obtained as follows:
+* `connectId` is the transport routing identifier returned by [searchDevices](basic-api/search-devices.md). Rediscover it when reconnecting; do not treat it as a permanent physical-device identity.
+* `deviceId` identifies the initialized device. In the legacy [getFeatures](basic-api/get-features.md) response, read `payload.device_id`. Discovery may return it as `deviceId`; Bluetooth discovery can return `null` until initialization. Resetting or wiping a device may change this identifier.
 
-* `connectId`: Obtained from the `connectId` field of the device returned in the `searchDevice` interface.&#x20;
-  * The connect id of the device is never changed.
-* `deviceId`: The deviceId field returned by the `getFeatures` interface.&#x20;
-  * The device id changes when the hardware is reset. Like wipe the device.
-* `commonParams`: common parameters&#x20;
-  * `retryCount`: optional `number` type. The number of retries when the device is connected, default is 6.&#x20;
-  * `pollIntervalTime`: optional `number` type. The interval time for polling when the device is connected, default is 1000 ms, each polling will increase the time by 1.5 times.&#x20;
-  * `timeout`: optional `number` type. The timeout of the connection polling.
-  * `keepSession`: optional `boolean` type. The Session persists after executing the API method.
-  * `passphraseState`: optional `string` type. If you want to use a passphrase wallet, please pass that parameter. We will validate and cache the passphrase to optimize the user experience of entering the passphrase and reduce the number of input attempts. To retrieve that parameter, please call the `getPassphraseState` method.
-  * `useEmptyPassphrase`: optional `boolean` type. Allow the creation of a passphrase wallet with an empty value.
-  * `initSession` : optional `boolean` type. Cache the passphraseState parameter.
-  * `deriveCardano`: optional `boolean` type. default is set to `true` for all cardano related methods, otherwise it is set to `false`. This parameter determines whether device should derive cardano seed for current session. Derivation of cardano seed takes longer then it does for other coins.
+Device-management and basic methods have their own signatures. Check each method's reference before passing these arguments.
+
+## Common options
+
+| Option               | Type      | Purpose                                                                                               |
+| -------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `retryCount`         | `number`  | Maximum number of connection-polling retries.                                                         |
+| `pollIntervalTime`   | `number`  | Connection-polling interval in milliseconds.                                                          |
+| `timeout`            | `number`  | Timeout for an individual polling attempt.                                                            |
+| `keepSession`        | `boolean` | Keeps the transport session after the call. This does not select a wallet.                            |
+| `passphraseState`    | `string`  | Opaque state identifying the intended passphrase wallet. See [Passphrase](../advanced/passphrase.md). |
+| `useEmptyPassphrase` | `boolean` | Set to `true` to select the standard wallet, which uses an empty passphrase.                          |
+| `initSession`        | `boolean` | Requests session initialization. Do not use it as a substitute for selecting the intended wallet.     |
+| `deriveCardano`      | `boolean` | Requests Cardano seed derivation for the session; Cardano methods set this as needed.                 |
+
+Do not log PINs, passphrases, wallet session identifiers, or raw signing payloads. Handle `success: false` before accessing a method's success payload.

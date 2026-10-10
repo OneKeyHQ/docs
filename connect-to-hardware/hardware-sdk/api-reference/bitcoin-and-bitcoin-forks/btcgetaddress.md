@@ -2,7 +2,7 @@
 
 ## Bitcoin: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const result = await HardwareSDK.btcGetAddress(connectId, deviceId, params);
@@ -12,28 +12,28 @@ const result = await HardwareSDK.btcGetAddress(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-#### Exporting single address
+#### Single address
 
-* `path` — _required_ `string | Array<number>` minimum length is 3. [read more](../path.md)
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `1`. [read more](../path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 * `coin` - _optional_ `string` determines network definition specified in [coins.json](https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/core/src/data/coins/bitcoin.json) file. Coin `shortcut`, `name` or `label` can be used. If `coin` is not set API will try to get network definition from `path`.
 * `multisig` - _optional_ MultisigRedeemScriptType, redeem script information (multisig addresses only)
 * `scriptType` - _optional_ InputScriptType, address script type
 
-#### Exporting bundle of addresses
+#### Multiple addresses
 
-* `bundle` - `Array` of Objects with `path`, `showOnOneKey`, `coin` fields
+* `bundle` - array of objects with `path`, `showOnOneKey`, `coin` fields
 
 ### Get different types of addresses
 
-获取不同类型的 BTC 地址需要不同的 Path 参数。
+Use the derivation path for the address type your wallet supports.
 
-| Type                | Path            | Eg.                                                          |
-| ------------------- | --------------- | ------------------------------------------------------------ |
-| Legacy BIP44        | m/44'/0'/x'/x/x | It starts with a "1" and consists of 26 to 35 characters     |
-| Nested SegWit BIP49 | m/49'/0'/x'/x/x | It starts with a "3" and consists of 26 to 35 characters     |
-| Native SegWit BIP84 | m/84'/0'/x'/x/x | Start with "bc1" or "tb1" and consist of 41 to 62 characters |
-| Taproot BIP86       | m/86'/0'/x'/x/x | It starts with "bc1" and consists of 41 to 62 characters     |
+| Type                | Path            | Eg.                                                      |
+| ------------------- | --------------- | -------------------------------------------------------- |
+| Legacy BIP44        | m/44'/0'/x'/x/x | It starts with a "1" and consists of 26 to 35 characters |
+| Nested SegWit BIP49 | m/49'/0'/x'/x/x | It starts with a "3" and consists of 26 to 35 characters |
+| Native SegWit BIP84 | m/84'/0'/x'/x/x | Mainnet starts with `bc1q`; testnet starts with `tb1q`   |
+| Taproot BIP86       | m/86'/0'/x'/x/x | Mainnet starts with `bc1p`; testnet starts with `tb1p`   |
 
 ## Example
 
@@ -46,7 +46,7 @@ HardwareSDK.btcGetAddress(connectId, deviceId, {
 });
 ```
 
-Return a bundle of addresses from first bitcoin account without displaying them on device:
+Return a bundle of addresses from first bitcoin account without displaying them on the device:
 
 ```typescript
 HardwareSDK.btcGetAddress(connectId, deviceId, {
@@ -60,27 +60,27 @@ HardwareSDK.btcGetAddress(connectId, deviceId, {
 
 #### Result
 
-Result with only one address
+Single-address response
 
 ```typescript
 {
     success: true,
     payload: {
         address: string,     // displayed address
-        path: Array<number> // hardended path
+        path: string // serialized BIP32 path
     }
 }
 ```
 
-Result with bundle of addresses
+Batch address response
 
 ```typescript
 {
     success: true,
     payload: [
-        { address: string, path: Array<number> }, // address 1
-        { address: string, path: Array<number> }, // address 2
-        { address: string, path: Array<number> }, // address 3
+        { address: string, path: string }, // address 1
+        { address: string, path: string }, // address 2
+        { address: string, path: string }, // address 3
     ]
 }
 ```
@@ -92,7 +92,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

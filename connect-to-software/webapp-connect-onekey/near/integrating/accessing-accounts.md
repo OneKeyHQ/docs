@@ -1,6 +1,6 @@
 # Accessing Accounts
 
-After wallet connection established, you can access the accounts connected with the OneKey wallet.&#x20;
+After the wallet connection is established, you can access the accounts connected with the OneKey wallet.
 
 User accounts are used in a variety of contexts in OneKey, including as identifiers and for signing transactions.
 
@@ -11,6 +11,6 @@ const res = await provider.request({
 const accountId = res?.accounts?.[0]?.accountId || '';
 const publicKey = res?.accounts?.[0]?.publicKey || '';
 
-// if use reject wallet connection, res?.accounts should be []
+// An empty accounts array means no account is exposed to this site
 console.log('near_accounts', res?.accounts, accountId, publicKey);
 ```

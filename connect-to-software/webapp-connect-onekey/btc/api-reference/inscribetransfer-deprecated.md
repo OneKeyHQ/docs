@@ -1,20 +1,20 @@
 # inscribeTransfer (Deprecated)
 
-Inscribe Transfer
+Legacy method for creating a token transfer inscription. This page is retained for existing integrations; do not treat it as a recommendation for new integrations.
 
-### Method
+## Method
 
 ```typescript
-async function inscribeTransfer(
-    ticker: string, 
+declare function inscribeTransfer(
+    ticker: string,
     amount: string,
-): string
+): Promise<string>;
 ```
 
 ### Params
 
-* `ticker` — _required_ `string`  the hex string of psbt to sign
-* `amount` — _required_ `string`&#x20;
+* `ticker` — _required_ `string` the token ticker
+* `amount` — _required_ `string`
 
 ### Response
 
@@ -22,10 +22,10 @@ async function inscribeTransfer(
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>const ticker = "010203"
-</strong>const amount = "100"
-<strong>const txid = async provider.signPsbt(psbtHex);
-</strong></code></pre>
-
+const ticker = "<TOKEN_TICKER>";
+const amount = "100"
+const txid = await provider.inscribeTransfer(ticker, amount);
+```

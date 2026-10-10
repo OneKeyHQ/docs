@@ -1,2 +1,18 @@
-# API Reference
+# NEAR API Reference
 
+Create a `OneKeyNearProvider` instance as shown in [Install the SDK](../integrating/install-the-provider-sdk.md). The provider exposes convenience methods and `request({ method, params })`.
+
+| Operation              | Method                                                                | Result                                           |
+| ---------------------- | --------------------------------------------------------------------- | ------------------------------------------------ |
+| Detect the extension   | `detectWalletInstalled()`                                             | `Promise<boolean>`                               |
+| Request account access | `requestSignIn()` / `near_requestAccounts`                            | `{ accounts: NearAccountInfo[] }`                |
+| Read exposed accounts  | `near_accounts`                                                       | `{ accounts: NearAccountInfo[] }`                |
+| Read selected network  | `near_networkInfo`                                                    | `{ networkId: string, nodeUrls?: string[] }`     |
+| Disconnect             | `signOut()` / `near_signOut`                                          | Await completion before updating connected state |
+| Build a transaction    | `createTransaction({ receiverId, actions, nonceOffset })`             | An unsigned transaction                          |
+| Sign and send          | `requestSignTransactions({ transactions })` / `near_sendTransactions` | `{ transactionHashes: string[] }`                |
+| Sign messages          | `near_signMessages`                                                   | `{ signatures: string[] }`                       |
+
+`NearAccountInfo` contains `accountId` and `publicKey`, with optional `allKeys`. Array results can be empty when no account is exposed.
+
+See [Signing transactions](../integrating/sending-transactions/signing-transaction.md) for the signing-only request, [Events](../integrating/watch-accounts-and-network-status.md) for state changes, and [Troubleshooting](trouble-shooting.md) for errors. The RPC endpoint and wallet version determine which additional methods are available.

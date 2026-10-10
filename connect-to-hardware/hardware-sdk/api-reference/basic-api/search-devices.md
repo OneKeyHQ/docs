@@ -2,11 +2,7 @@
 
 ## Search device
 
-Searches for connected devices and returns the search results to the developer as an array. \
-\
-In the case of USB connections, the returned data already contains device details. \
-\
-In the case of Bluetooth device search, the data returned contains only the device name and device connectId, and the developer selects the device that needs to be paired before getting the device information.
+Returns the devices discovered by the selected transport. Let the user choose which device to connect to. USB discovery may include initialized device details; Bluetooth discovery can return only routing and advertisement information until the device is connected.
 
 ```typescript
 const response = await HardwareSDK.searchDevices();
@@ -14,13 +10,18 @@ const response = await HardwareSDK.searchDevices();
 
 ### Params
 
-* empty
+No parameters.
 
 ### Example
 
 ```typescript
 HardwareSDK.searchDevices().then(result => {
-    console.log(`device list: ${result}`)
+    if (result.success === true) {
+        const devices = result.payload;
+        // Display device names for selection. Avoid logging full device objects.
+    } else {
+        throw new Error(result.payload.error);
+    }
 });
 ```
 
@@ -31,12 +32,11 @@ Result
     success: true,
     payload: [
         {
-            "connectId": string, // device connection id
-            "uuid": string, // device unique id 
-            "deviceType": string, // device id, this id may change with device erasure, only returned when using the @onekeyfe/hd-web-sdk library.
-            "deviceId": string, // device type, 'classic' | 'mini' | 'touch' | 'pro'
-            "path": string, // path of bridge when usb is connected
-            "name": string, // bluetooth name for the device
+            "connectId": string | null, // transport routing identifier
+            "uuid": string, // may be empty before device initialization
+            "deviceType": string, // device family; may be unknown during discovery
+            "deviceId": string | null, // initialized device identity, not the connection ID
+            "name": string, // display name or Bluetooth advertisement name
         },
     ]
 }
@@ -49,8 +49,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
-

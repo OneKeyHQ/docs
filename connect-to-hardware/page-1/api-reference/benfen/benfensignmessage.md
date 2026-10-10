@@ -1,15 +1,13 @@
 # benfenSignMessage
 
-**Use requirement**
+**Requirements**
 
-* Firmware version required
-  * pro: 4.12.0
+* Minimum firmware versions
+  * Pro: 4.12.0
 
 ### Benfen: sign message
 
-Sign a message using the private key derived by given BIP32 path. User needs to confirm the action on OneKey device.
-
-
+Sign a message using the private key derived from the specified BIP32 path. User needs to confirm the action on OneKey device.
 
 ```typescript
 const result = await HardwareSDK.benfenSignMessage(connectId, deviceId,{
@@ -22,7 +20,7 @@ const result = await HardwareSDK.benfenSignMessage(connectId, deviceId,{
 
 **Optional common params**
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../../../hardware-sdk/api-reference/path.md)
 * `messageHex` - _required_ `string` Message to sign in hex format
 
 #### Returns
@@ -50,7 +48,7 @@ Result
   success: true,
   payload: {
     signature: string,
-    address: string.
+    address: string,
   }
 }
 ```
@@ -62,7 +60,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

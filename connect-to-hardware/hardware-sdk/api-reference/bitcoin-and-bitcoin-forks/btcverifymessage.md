@@ -2,7 +2,7 @@
 
 ## Bitcoin: verify message
 
-Asks device to verify a message using the signer address and signature.
+Verifies a message using the signer address and signature.
 
 ```typescript
 const result = await HardwareSDK.btcVerifyMessage(connectId, deviceId, params);
@@ -22,7 +22,7 @@ const result = await HardwareSDK.btcVerifyMessage(connectId, deviceId, params);
 ```typescript
 HardwareSDK.btcVerifyMessage(connectId, deviceId, {
     address: "3BD8TL6iShVzizQzvo789SuynEKGpLTms9",
-    messageHex: "6578616d706c65206d657373616765"
+    messageHex: "6578616d706c65206d657373616765",
     signature: "JO7vL3tOB1qQyfSeIVLvdEw9G1tCvL+lNj78XDAVM4t6UptADs3kXDTO2+2ZeEOLFL4/+wm+BBdSpo3kb3Cnsas=",
     coin: "btc"
 });
@@ -46,7 +46,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

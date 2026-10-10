@@ -1,261 +1,61 @@
 # Tutorial: Wallet Integration
 
-## Integration
+An air-gap integration exchanges account information, signing requests, and signatures through QR codes. Your application builds transactions and communicates with the network; the hardware device reviews and signs the request.
 
-If using the OneKey device via air gap mode, the main steps are as follows:
+## Install the SDK
 
-* OneKey hardware provides the extened public key to the wallet via a QR code, then the wallet generates an address to query balance and other information.
-* The wallet creates unsigned transaction data or a message that needs to be signed, then generates a QR code. The OneKey device scans the QR code to receive the content that needs to be signed.
-* The OneKey device will parse and sign the data, then display the result through a QR code.
-* The wallet obtains the signed result by scanning the QR code from the OneKey device.
+```bash
+npm install @onekeyfe/hd-air-gap-sdk
+```
 
-## &#x20;Install SDK
+The examples use `Buffer`; browser projects need a compatible Buffer implementation. Camera access, QR rendering, transaction construction, and broadcasting belong to your application.
 
-First, we need to install the SDK for air gap.
+## Add a hardware account
 
-<pre class="language-shell"><code class="lang-shell"><strong># Install via NPM
-</strong>npm install --save @onekeyfe/hd-air-gap-sdk
-
-# Install via YARN
-yarn add @onekeyfe/hd-air-gap-sdk
-</code></pre>
-
-
-
-## Add Hardware Account To Wallet
-
-Then, we need to add the hardware account to the software.
+Export the account QR code from the device and scan it in your wallet:
 
 <table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (3) (1).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (4) (1).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/image (7) (1).png" alt=""></td></tr></tbody></table>
 
+Decode the `crypto-hdkey` registry object to obtain its extended public key, origin path, master fingerprint, and optional children path. Use the [CryptoHDKey decoder example](api-reference/basic-api/cryptohdkey.md).
 
+Public derivation is appropriate only for non-hardened children supported by the exported key. Preserve the actual account layout instead of assuming that every export uses `0/*`. Your address library should derive the chosen child key and format the address for the target chain.
 
-Through the steps above, you will obtain a QR code. Parsing this QR code with software will give you an extended public key, which can then be used to derive the respective addresses.
+## Scan QR codes
 
-
-
-### Scan QR Code
-
-* First, your software needs to be capable of scanning QR codes to retrieve the information they contain.
-* Sometimes, the data to be transferred can be very large, and a single QR code may not be able to display all the required data at once. Therefore, it may need to continuously switch between different QR codes dynamically to transfer all the data.
+Animated QR transfers contain multiple fragments. Feed each camera result to one decoder until it succeeds. Start a new decoder for the next account or signature transfer.
 
 ```typescript
 import { URDecoder } from '@onekeyfe/hd-air-gap-sdk';
 
-// A new urDecoder object is needed for each QR code parsing session.
-const urDecoder = new URDecoder();
-
-const onQrcodeScan = (data: string) => {
-  try {
-    if (!data) {
-      return;
-    }
-    // Each piece of scanned data is parsed using urDecoder.
-    urDecoder.receivePart(data);
-    
-    // Obtain the data reception progress.
-    urDecoder.estimatedPercentComplete();
-    
-    // Check whether all data has been completely received.
-    if (urDecoder.isComplete()) {
-      const result = urDecoder.resultUR();
-      // At this point, result contains the data received, including the data type and the specific data.
-    }
-  } catch (e) {
-    console.log(e);
-  }
+const decoder = new URDecoder();
+function onQrFrame(frame: string) {
+  if (!frame || decoder.isComplete()) return;
+  decoder.receivePart(frame);
+  if (decoder.isError()) throw new Error('Could not decode the QR transfer');
+  if (!decoder.isSuccess()) return;
+  const ur = decoder.resultUR();
+  // Check ur.type before passing ur.cbor to a registry decoder.
+  return ur;
 }
-
-<CameraView onBarcodeScanned={({ data }) => onQrcodeScan(data)} />
 ```
 
+## Request a signature
 
+1. Build the unsigned transaction using the network's current nonce, fee, and chain information.
+2. Encode the unsigned signing bytes using [EthSignRequest](api-reference/ethereum-and-evm/ethsignrequest.md). Select the data type for a legacy transaction, EIP-1559 transaction, EIP-712 object, or personal message.
+3. Include the account's actual derivation path and master fingerprint, and retain a fresh request UUID with the original unsigned payload.
+4. Display the UR encoder's fragments as animated QR codes. Stop the animation on completion or cancellation.
 
-### Parse Account Data
+## Confirm on the hardware device
 
-Through the steps above, we have obtained the account information. Next, we can parse the data and derive the account.
-
-```typescript
-import { CryptoHDKey, RegistryTypes } from '@onekeyfe/hd-air-gap-sdk';
-
-import HDKey from "hdkey";
-import {
-  toChecksumAddress,
-  publicToAddress,
-  stripHexPrefix,
-} from "@ethereumjs/util";
-const DEFAULT_CHILDREN_PATH = "0/*";
-
-// pseudo-code
-const result = urDecoder.resultUR();
-
-if (result.type !== RegistryTypes.CRYPTO_HDKEY.getType()) {
-    // error qr code
-}
-
-const cryptoHDKey = CryptoHDKey.fromCBOR(result.cbor);
-
-const name = cryptoHDKey.getName();
-const note = cryptoHDKey.getNote();
-
-const extendPubKey = hdKey.getKey();
-const chainCode = hdKey.getChainCode();
-
-const xpub = hdKey.getBip32Key();
-const childrenPath = hdKey.getChildren()?.getPath() ?? DEFAULT_CHILDREN_PATH;
-const hdPath = `m/${cryptoHDKey.getOrigin().getPath()}`;
-// This parameter is required for subsequent eth sign request assembly.
-const xfp = cryptoHDKey.getOrigin().getSourceFingerprint()?.toString("hex");
-
-// derive child
-const accountIndex = 0
-const derivePath = childrenPath
-        .replace("*", String(accountIndex))
-        .replace(/\*/g, "0");
-
-const hdk = HDKey.fromExtendedKey(xpub);
-const dkey = hdk.derive(`m/${derivePath}`);
-const address =
-        "0x" + publicToAddress(dkey.publicKey, true).toString("hex");
-const addressWithChecksum = toChecksumAddress(address);
-
-console.log("address:", addressWithChecksum);
-```
-
-
-
-For more details, you can refer to the documentation below.
-
-{% content-ref url="api-reference/basic-api/cryptohdkey.md" %}
-[cryptohdkey.md](api-reference/basic-api/cryptohdkey.md)
-{% endcontent-ref %}
-
-
-
-## Reqeust Sign
-
-> For example, with ETH.
-
-* The first step requires the wallet to generate the transaction that needs to be signed.
-* The unsigned transaction needs to be converted into a QR code for the OneKey device to scan.
-* After signing, the OneKey device displays a QR code. The wallet scans the QR code on the device to obtain the signed result.
-
-
-
-### Generate transaction
-
-```typescript
-import { Transaction, FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
-import Common, { Hardfork } from '@ethereumjs/common';
-import { BN } from 'ethereumjs-util';
-import * as uuid from "uuid";
-
-import {
-    CryptoHDKey,
-    EthSignRequest,
-    DataType,
-    ETHSignature,
-} from '@onekeyfe/hd-air-gap-sdk';
-
-const common = Common.forCustomChain('mainnet', { chainId: this._networkId }, Hardfork.London);
-const eip1559Tx = FeeMarketEIP1559Transaction.fromTxData(txParams, { common });
-// generate the unsigned transaction bytes
-const unsignedBuffer = Buffer.from(eip1559Tx.getMessageToSign(false));
-const requestId = uuid.v4();
-
-const addressPath = "m/44'/60'/0'/0/0"
-
-const ethSignRequest = EthSignRequest.constructETHRequest(
-    unsignedBuffer,
-    DataType.typedTransaction, // legacy transaction use DataType.transaction
-    addressPath,
-    xfp, // See Previous Step How do I get this parameter
-    requestId,
-    1, // chainId
-    "from address",
-);
-
-// each chunk Number in single QR Code
-const maxChunkNumber = 200;
-
-// get the ur encoder
-const urEncoder = ethSignRequest.toUREncoder(maxChunkNumber);
-
-while (ture) {
-    delay(200);
-    renderQR(urEncoder.nextPart());
-}
-
-```
-
-For more details, you can refer to the documentation below.
-
-{% content-ref url="api-reference/ethereum-and-evm/ethsignrequest.md" %}
-[ethsignrequest.md](api-reference/ethereum-and-evm/ethsignrequest.md)
-{% endcontent-ref %}
-
-
-
-### Hardware processing signature
+The user scans the request and reviews the details on the device. After confirmation, the device displays the signature QR code.
 
 <table data-view="cards"><thead><tr><th></th></tr></thead><tbody><tr><td><img src="../../.gitbook/assets/image (6) (1).png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Scan.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Tx-Sign.png" alt="" data-size="original"></td></tr><tr><td><img src="../../.gitbook/assets/Export Signed Transaction.png" alt="" data-size="original"></td></tr></tbody></table>
 
+## Decode and use the signature
 
+Scan the signature into a new decoder and follow [ETHSignature](api-reference/ethereum-and-evm/ethsignature.md). Check the UR type, signature length, and request ID, then verify that the signature corresponds to the intended signer and original payload.
 
-### Parse Signature result
+For a transaction, use your Ethereum library to attach the signature to the **same transaction type and fields** that were sent for signing. A legacy transaction serializer cannot be substituted for an EIP-1559 serializer. Once validation succeeds, your application can broadcast the signed transaction.
 
-Decode QR Code See [#scan-qr-code](tutorial-wallet-integration.md#scan-qr-code "mention")
-
-```typescript
-import { CryptoHDKey, RegistryTypes } from '@onekeyfe/hd-air-gap-sdk';
-import { Transaction } from '@ethereumjs/tx';
-
-// pseudo-code
-const result = urDecoder.resultUR();
-
-if (result.type !== RegistryTypes.ETH_SIGNATURE.getType()) {
-    // Invalid QR code type
-}
-
-const ethSignature = ETHSignature.fromCBOR(result.cbor);
-
-// Extract the request ID, signature
-const requestIdBuffer = ethSignature.getRequestId();
-const signature = ethSignature.getSignature();
-
-// its components (r, s, v) from the decoded signature
-const r = signature.slice(0, 32);
-const s = signature.slice(32, 64);
-const v = signature.slice(64);
-
-
-// Assuming you have the transaction details and the signature components
-const txData = {
-    nonce: '0x00',
-    gasPrice: '0x09184e72a000',
-    gasLimit: '0x2710',
-    to: '0x0000000000000000000000000000000000000000',
-    value: '0x00',
-    data: '0x00',
-    // Add the signature components to the transaction data
-    v: v,
-    r: r,
-    s: s
-};
-
-// Create a new transaction object with the provided data
-const transaction = Transaction.fromTxData(txData);
-
-// Serialize the transaction to get the raw transaction
-const rawTx = transaction.serialize();
-
-// The raw transaction can now be submitted to the blockchain network
-console.log("Raw transaction:", rawTx.toString('hex'));
-```
-
-For more details, you can refer to the documentation below.
-
-{% content-ref url="api-reference/ethereum-and-evm/ethsignature.md" %}
-[ethsignature.md](api-reference/ethereum-and-evm/ethsignature.md)
-{% endcontent-ref %}
-
+For a personal message or typed-data signature, return it to the requesting application rather than broadcasting it as a transaction.

@@ -1,20 +1,20 @@
 # polkadotGetAddress
 
-## Use requirement
+## Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.3.0
   * Classic/Mini: 3.0.0
-* Joystream Chain Firmware version required
+* Joystream Chain Minimum firmware versions
   * Touch: 4.7.0
   * Classic/Mini: 3.6.0
-* Manta Chain Firmware version required
+* Manta Chain Minimum firmware versions
   * Touch: 4.9.0
   * Classic/Mini: 3.7.0
 
 ## Polkadot: get address
 
-Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
+Derives and returns the address at the specified path. Use `showOnOneKey` to request confirmation on the device.
 
 ```typescript
 const result = await HardwareSDK.polkadotGetAddress(connectId, deviceId, params);
@@ -24,59 +24,58 @@ const result = await HardwareSDK.polkadotGetAddress(connectId, deviceId, params)
 
 [**Optional common params**](../common-params.md)
 
-### Exporting single public key
+### Single address
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `prefix` - _required_ `string` Address prefix. Default is set to `nexatest`
-* `network` - _required_ `string` Network name, Default is set to `polkadot`
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [read more](../path.md)
+* `prefix` - _required_ `number`. SS58 address prefix; use `0` for Polkadot.
+* `network` - _required_ `string` Network name, such as `polkadot`.
+* `showOnOneKey` — _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 
+#### Multiple addresses
 
-
-#### Exporting bundle of public keys
-
-* `bundle` - `Array` of Objects with `path`, `coin` fields
+* `bundle` - array of objects with `path`, `showOnOneKey`, `prefix`, and `network` fields
 
 ### Example
 
-Return public key of first ethereum account:
+Return address of first Polkadot account:
 
 ```typescript
 HardwareSDK.polkadotGetAddress(connectId, deviceId, {
     path: "m/44'/354'/0'/0'/0'",
     showOnOneKey: true,
-    isTestnet: false
+    prefix: 0,
+    network: "polkadot"
 });
 ```
 
-Return a bundle of public keys for multiple ethereum accounts:
+Return a bundle of addresses for multiple Polkadot accounts:
 
 ```typescript
 HardwareSDK.polkadotGetAddress(connectId, deviceId, {
     bundle: [
-        { path: "m/44'/354'/0'/0'/1'" }, // account 1
-        { path: "m/44'/354'/0'/0'/2'" }, // account 2
-        { path: "m/44'/354'/0'/0'/3'" }  // account 3
+        { path: "m/44'/354'/0'/0'/1'", prefix: 0, network: "polkadot" }, // account 1
+        { path: "m/44'/354'/0'/0'/2'", prefix: 0, network: "polkadot" }, // account 2
+        { path: "m/44'/354'/0'/0'/3'", prefix: 0, network: "polkadot" }  // account 3
     ]
 });
 ```
 
 ### Result
 
-Result with only one public key
+Single-address response
 
 ```typescript
 {
     success: true,
     payload: {
-        path: Array<number>, // hardended path
+        path: string, // serialized BIP32 path
         address: string,   // address
         publicKey: string, // publicKey
     }
 }
 ```
 
-Result with bundle of public keys
+Batch address response
 
 ```typescript
 {
@@ -96,7 +95,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

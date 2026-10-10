@@ -2,7 +2,7 @@
 
 ## starcoin: sign message <a href="#ethereum-sign-message" id="ethereum-sign-message"></a>
 
-Asks device to sign a message using the private key derived by given BIP32 path.
+Requests a message signature using the key derived from the specified path.
 
 ```typescript
 const result = await HardwareSDK.starcoinSignMessage(connectId, deviceId, params);
@@ -12,8 +12,8 @@ const result = await HardwareSDK.starcoinSignMessage(connectId, deviceId, params
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `messageHex` - _required_ `string` message to sign in hex text
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `messageHex` - _required_ `string` Message to sign, encoded as a hexadecimal string.
 
 ### Example
 
@@ -25,8 +25,8 @@ const message = "Hello World";
 const messageHex = Buffer.from(message).toString('hex');
 
 HardwareSDK.starcoinSignMessage(connectId, deviceId, {
-    path: "m/44'/101010'/0'/0/0",
-    message: messageHex
+    path: "m/44'/101010'/0'/0'/0'",
+    messageHex
 });
 ```
 
@@ -37,7 +37,7 @@ Result
     success: true,
     payload: {
         signature: string;
-        address: string;
+        public_key: string;
     }
 }
 ```
@@ -49,7 +49,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

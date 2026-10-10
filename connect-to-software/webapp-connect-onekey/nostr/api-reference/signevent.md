@@ -1,9 +1,9 @@
 # signEvent
 
-### Method
+## Method
 
 ```
-async function signEvent(event: UnsignedEvent): Event 
+declare function signEvent(event: UnsignedEvent): Promise<Event>;
 ```
 
 ### Params
@@ -12,7 +12,7 @@ async function signEvent(event: UnsignedEvent): Event
   * `kind` — _required_ `number`
   * `content`— _required_ `string`
   * `tags` — _required_ `Array<Array<string>>`
-  * `created_at` — _required_ `number`
+  * `created_at` — _required_ `number` Unix timestamp in seconds
 
 ```typescript
 export type UnsignedEvent = {
@@ -54,7 +54,7 @@ export type Event = {
 
 ```typescript
 const event = {
-  created_at: 1700000000,
+  created_at: Math.floor(Date.now() / 1000),
   kind: 1,
   content: "OneKey 🚀",
   tags: [],

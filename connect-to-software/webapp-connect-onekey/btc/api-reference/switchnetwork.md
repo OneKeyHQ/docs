@@ -1,23 +1,24 @@
 # switchNetwork
 
-Get network of current account
+Request a switch to the specified Bitcoin network.
 
-### Method
+## Method
 
 ```typescript
-async function switchNetwork(network: string): void
+declare function switchNetwork(network: 'livenet' | 'testnet'): Promise<void>;
 ```
 
 ### Params
 
-the network. `livenet` and `testnet`
+`network` — the target network: `livenet` or `testnet`. The promise resolves without a value.
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>async provider.switchNetwork("livenet");
-</strong></code></pre>
+await provider.switchNetwork("livenet");
+```
 
 ### Demo
 

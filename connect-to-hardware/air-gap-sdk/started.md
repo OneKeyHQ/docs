@@ -1,23 +1,17 @@
-# Started
+# Getting Started
 
-\
-Air Gap is a communication model based on QR codes that ensures an air-gapped transaction. OneKey acts as a pure signer for your crypto transactions, with Air Gap disabling external connections such as Bluetooth and USB. Its sole method of data transfer is through QR codes. This guide is intended for developers who want to integrate their services with OneKey.&#x20;
+Air-gap signing exchanges data through QR codes. The wallet application prepares signing requests and broadcasts signed transactions; the hardware device reviews and signs them while using its air-gap mode.
 
-> Currently, Air Gap only supports the OneKey Pro model.
-
-
+This guide covers the EVM QR integration originally documented for OneKey Pro. Check the device and firmware capabilities required by your integration; the SDK's ability to encode a UR type alone does not establish hardware support.
 
 ## Example
 
-The specific integration steps can be referenced; here is an example for ETH.
+Follow the Ethereum wallet integration tutorial:
 
 {% content-ref url="tutorial-wallet-integration.md" %}
 [tutorial-wallet-integration.md](tutorial-wallet-integration.md)
 {% endcontent-ref %}
 
-
-
 ## Supported Chains
 
 * [EVM (Ethereum)](api-reference/ethereum-and-evm/)
-

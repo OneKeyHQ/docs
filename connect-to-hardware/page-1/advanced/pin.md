@@ -1,4 +1,4 @@
-# Pin
+# PIN
 
 This document provides a comprehensive guide to the PIN feature for all users and developers, explaining its security model and technical integration.
 
@@ -6,7 +6,7 @@ This document provides a comprehensive guide to the PIN feature for all users an
 
 #### 1. What is a PIN? A Lock for Your Device <a href="#id-1-what-is-a-pin-a-lock-for-your-device" id="id-1-what-is-a-pin-a-lock-for-your-device"></a>
 
-A PIN (Personal Identification Number) is a numeric password that acts as a physical lock for your hardware wallet. It is the first line of defense against unauthorized access. Before any sensitive operation—such as signing a transaction, exporting a public key, or accessing settings—can be performed, the device must first be unlocked with the correct PIN.
+A PIN (Personal Identification Number) is a numeric password that acts as a physical lock for your hardware wallet. It is the first line of defense against unauthorized access. Protected operations may require the device to be unlocked. The exact requirement depends on the device, firmware, and operation.
 
 A PIN is fundamentally different from a Passphrase:
 
@@ -27,7 +27,7 @@ Here's the workflow:
 4. **Software Sends a "Transformed" PIN**: The software sends the PIN generated from its own fixed layout to the hardware. For example, if the user's PIN is `39`, the software might send `73` based on the positions clicked.
 5. **Hardware Verifies**: The hardware receives the transformed PIN (`73`), internally translates it back to the real PIN (`39`) based on the layout it showed, and verifies it.
 
-This ensures that even if an attacker compromises the host computer, they cannot steal the user's actual PIN.
+This avoids sending the literal PIN to the host during matrix entry. It does not make a compromised host safe for other operations; users still need to verify requests on the device.
 
 ***
 
@@ -37,13 +37,13 @@ This section provides a detailed walkthrough for developers integrating the OneK
 
 #### 1. The PIN Request Lifecycle (A Reactive Model) <a href="#id-1-the-pin-request-lifecycle-a-reactive-model" id="id-1-the-pin-request-lifecycle-a-reactive-model"></a>
 
-Unlike Passphrase, which allows for proactively declaring an empty passphrase, PIN interaction is **always reactive**. This is because the PIN is a device-level lock. If the device is locked, no operation can proceed until it's unlocked. The lifecycle is straightforward:
+Unlike Passphrase, which allows for proactively declaring an empty passphrase, PIN interaction is **always reactive**. This is because the PIN is a device-level lock. Protected operations may require unlocking; discovery and some device information requests have different rules. The lifecycle is straightforward:
 
 1. **API Call**: Your application calls a protected SDK method (e.g., `HardwareSDK.btcGetAddress`).
 2. **Hardware Check**: The SDK communicates with the hardware and finds it's in a locked state.
 3. **Event Fired**: The SDK automatically pauses the execution of the original API call and emits a `UI_REQUEST.REQUEST_PIN` event.
 4. **Application Responds**: Your application's global listener catches this event and displays a PIN entry UI. Based on the user's action, it sends a response back via `HardwareSDK.uiResponse`.
-5. **Execution Resumes**: The SDK receives the response. If the PIN is correct (or on-device entry is chosen), the device unlocks, and the original, paused API call (`btcGetAddress`) automatically resumes and completes. If the response is `null`, the original call is aborted.
+5. **Execution Resumes**: The SDK receives the response. If the PIN is correct (or on-device entry is chosen), the device unlocks, and the original, paused API call (`btcGetAddress`) automatically resumes and completes. Use `HardwareSDK.cancel(connectId)` to cancel the pending operation.
 
 #### 2. Implementing the Event Listener <a href="#id-2-implementing-the-event-listener" id="id-2-implementing-the-event-listener"></a>
 
@@ -80,10 +80,7 @@ HardwareSDK.on(UI_EVENT, (message) => {
       },
       // Callback for when the user cancels the dialog
       onCancel: () => {
-         HardwareSDK.uiResponse({
-          type: UI_RESPONSE.RECEIVE_PIN,
-          payload: null,
-        });
+         HardwareSDK.cancel(connectId);
       }
     });
   }
@@ -121,15 +118,12 @@ HardwareSDK.uiResponse({
 });
 ```
 
-**Scenario 3: Canceling a PIN Request** If the user decides to cancel the operation (e.g., by closing the PIN dialog), you must notify the SDK by sending `null` as the payload. This will abort the pending hardware operation.
+**Scenario 3: Canceling a PIN Request** If the user decides to cancel the operation (e.g., by closing the PIN dialog), cancel the pending request using its `connectId`. This will abort the pending hardware operation.
 
 **Implementation:**
 
 ```javascript
-HardwareSDK.uiResponse({
-  type: UI_RESPONSE.RECEIVE_PIN,
-  payload: null,
-});
+HardwareSDK.cancel(connectId);
 ```
 
 #### 4. Understanding Device State: Unlocked vs. Locked <a href="#id-4-understanding-device-state-unlocked-vs-locked" id="id-4-understanding-device-state-unlocked-vs-locked"></a>
@@ -139,4 +133,4 @@ It's crucial to understand that PIN management is about device state, not sessio
 * **No `pinState`**: There is no concept of a `pinState` to be passed in subsequent API calls.
 * **Unlocked State**: Once a device is successfully unlocked with a PIN, it remains in an "unlocked" state.
 * **Automatic Lock**: The device will automatically re-lock after a pre-configured period of inactivity or when it is disconnected/powered off.
-* **Seamless Operations**: While the device is in the unlocked state, all subsequent protected API calls will execute immediately without firing a `REQUEST_PIN` event. Your application does not need to do anything extra. The event listener will simply not be triggered again until the device re-locks.
+* **Seamless Operations**: While the device is in the unlocked state, subsequent protected calls may reuse the unlocked state; device policy can still require interaction. Your application does not need to do anything extra. The event listener will simply not be triggered again until the device re-locks.

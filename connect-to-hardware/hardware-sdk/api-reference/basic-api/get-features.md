@@ -2,13 +2,13 @@
 
 ## Get device features
 
-Get all attributes of the device.
+Returns device firmware, identity, and configuration information. Fields vary by model, firmware, and protocol.
 
 ```typescript
 const response = await HardwareSDK.getFeatures(connectId);
 ```
 
-> If the screen is displaying other content, you can also call this method to return to the home page.
+> This is a legacy API. Current SDK versions recommend [getDeviceState](https://developer.onekey.so/en/hardware-sdk/basic-api/get-device-state), whose device identifier is `payload.identity.deviceId`. Do not use an information request as a general-purpose command to navigate the device screen.
 
 ### Params
 
@@ -27,7 +27,7 @@ Result
     success: true,
     payload: {
         major_version: number, // major version number
-        minor_version: number, // middle version number
+        minor_version: number, // minor version number
         patch_version: number, // patch version number
         bootloader_mode: null,
         device_id: string,
@@ -40,7 +40,7 @@ Result
         safety_checks: string,
         ble_name: string, // bluetooth name
         ble_ver: string, // bluetooth firmware version
-        ble_enable: string,
+        ble_enable: boolean,
         se_enable: boolean,
         se_ver: string,
         backup_only: boolean,
@@ -58,8 +58,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
-

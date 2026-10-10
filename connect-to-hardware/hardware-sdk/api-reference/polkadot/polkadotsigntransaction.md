@@ -1,14 +1,14 @@
 # polkadotSignTransaction
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.3.0
   * Classic/Mini: 3.0.0
 
 ## Polkadot: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature using the key derived from the specified path. The user reviews and confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.polkadotSignTransaction(connectId, deviceId, params);
@@ -18,9 +18,10 @@ const result = await HardwareSDK.polkadotSignTransaction(connectId, deviceId, pa
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `network` - _required_ `string` Network name, Default is set to `polkadot`
-* `rawTx` - _required_ `string` type of serialized transaction string.
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `network` - _required_ `string` Network name, for example `polkadot`
+* `prefix` - _required_ `number` SS58 address prefix; use `0` for Polkadot
+* `rawTx` - _required_ `string` Serialized transaction encoded as a hexadecimal string.
 
 ### Examples
 
@@ -30,6 +31,8 @@ const response = await HardwareSDK.polkadotSignTransaction(
   deviceId,
   {
     path: "m/44'/354'/0'/0'/0'",
+    network: "polkadot",
+    prefix: 0,
     rawTx: "040300388671dd546ba19495211c8cdc200600f9798cf078fca0fb4749ebbc0579c12a0700e40b5402350128009a24000012000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee356a704dbe75762aaae87b0f4702aafd09e67eed5d09a3a4b0e7da6c37b6f54"
   }
 );
@@ -54,7 +57,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

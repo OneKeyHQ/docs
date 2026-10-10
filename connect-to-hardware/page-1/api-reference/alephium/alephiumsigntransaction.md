@@ -1,13 +1,13 @@
 # alephiumSignTransaction
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 ### Alephium: sign transaction
 
-Sign Alephium transaction using the private key derived by given BIP32 path. User needs to confirm the action on OneKey device.
+Sign Alephium transaction using the private key derived from the specified BIP32 path. User needs to confirm the action on OneKey device.
 
 ```typescript
 const result = await HardwareSDK.alephiumSignTransaction(connectId, deviceId, {
@@ -20,10 +20,8 @@ const result = await HardwareSDK.alephiumSignTransaction(connectId, deviceId, {
 
 [Optional common params](../../../hardware-sdk/api-reference/common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is 3
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`
 * `rawTx` — _required_ `string` raw transaction in hex format
-
-
 
 #### Example
 
@@ -42,7 +40,7 @@ Result
   success: true,
   payload: {
     signature: string,
-    address: string.
+    address: string,
   }
 }
 ```
@@ -54,7 +52,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

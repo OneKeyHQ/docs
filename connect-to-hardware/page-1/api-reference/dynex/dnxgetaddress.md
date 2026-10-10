@@ -2,15 +2,15 @@
 
 ### Dynex: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const result = await HardwareSDK.dnxGetAddress(connectId, deviceId, params);
 ```
 
-#### Use requirement
+#### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * classic: 3.8.0
 
 #### Parameters
@@ -83,7 +83,7 @@ Error response:
     success: false,
     payload: {
         error: string,
-        code: number
+        code?: string | number
     }
 }
 ```

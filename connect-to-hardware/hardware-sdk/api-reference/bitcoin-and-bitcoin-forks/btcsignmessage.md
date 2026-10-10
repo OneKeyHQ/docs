@@ -2,7 +2,7 @@
 
 ## Bitcoin: sign message
 
-Asks device to sign a message using the private key derived by given BIP32 path.
+Requests a message signature using the key derived from the specified path.
 
 ```typescript
 const result = await HardwareSDK.btcSignMessage(connectId, deviceId, params);
@@ -45,7 +45,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

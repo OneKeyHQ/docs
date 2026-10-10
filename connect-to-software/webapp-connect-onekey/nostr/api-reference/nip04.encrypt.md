@@ -1,9 +1,11 @@
 # nip04.encrypt
 
-### Method
+## Method
 
-<pre><code><strong>async function nip04.encrypt(pubkey, plaintext): string 
-</strong></code></pre>
+```typescript
+// provider.nip04.encrypt
+(pubkey: string, plaintext: string) => Promise<string>
+```
 
 ### Response
 
@@ -11,17 +13,19 @@ returns ciphertext and iv as specified in nip-04
 
 ### Params
 
-* `pubkey` — _required_ `string`  the publick key
-* `message` — _required_ `string` a string to sign
+* `pubkey` — _required_ `string` the recipient public key
+* `plaintext` — _required_ `string` the plaintext to encrypt
 
 ### Example
 
 ```javascript
 const provider = (window.$onekey && window.$onekey.nostr) || window.nostr;
 
-const encrypted = async provider.nip04.encrypt(pubkey, "Data to be encrypted")
+const encrypted = await provider.nip04.encrypt(pubkey, "Data to be encrypted")
 ```
 
 ### Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/rNPZwaa" %}
+
+[NIP-04](https://github.com/nostr-protocol/nips/blob/master/04.md) is deprecated by the Nostr specification. These methods remain documented for existing integrations; their presence does not establish support for newer NIPs.

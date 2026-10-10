@@ -36,6 +36,7 @@ Result
           url: string,
           webUpdate: string,
           changelog: Record<string, string>
+        }
     }
 }
 ```
@@ -47,7 +48,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

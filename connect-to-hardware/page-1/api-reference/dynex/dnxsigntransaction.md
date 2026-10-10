@@ -2,15 +2,15 @@
 
 ### Dynex: sign transaction
 
-Signs the given Dynex transaction with the private key derived by given BIP32 path. User is asked to confirm the transaction details on OneKey.
+Signs the given Dynex transaction with the private key derived from the specified BIP32 path. User is asked to confirm the transaction details on OneKey.
 
 ```typescript
 const result = await HardwareSDK.dnxSignTransaction(connectId, deviceId, params);
 ```
 
-#### Use requirement
+#### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * classic: 3.8.0
 
 #### Parameters
@@ -82,7 +82,7 @@ Error response:
     success: false,
     payload: {
         error: string,
-        code: number
+        code?: string | number
     }
 }
 ```

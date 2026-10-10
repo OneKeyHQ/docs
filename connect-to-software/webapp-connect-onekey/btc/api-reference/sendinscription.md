@@ -2,22 +2,22 @@
 
 Send Inscription
 
-### Method
+## Method
 
 ```typescript
-async function sendInscription(
-    toAddress: string, 
-    inscriptionId: string, 
+declare function sendInscription(
+    toAddress: string,
+    inscriptionId: string,
     options?: { feeRate: number }
-): string
+): Promise<string>;
 ```
 
 ### Params
 
-* `toAddress` — _required_ `string`  the address to send
+* `toAddress` — _required_ `string` the address to send
 * `inscriptionId` — _required_ `string` the id of Inscription
-* `options` — _optional_&#x20;
-  * `feeRate`  — _required_ `number` the network fee rate
+* `options` — _optional_
+  * `feeRate` — _required_ `number` the network fee rate
 
 ### Response
 
@@ -25,12 +25,13 @@ async function sendInscription(
 
 ### Example
 
-<pre class="language-typescript"><code class="lang-typescript">const provider = (window.$onekey &#x26;&#x26; window.$onekey.btc) || window.unisat;
+```typescript
+const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
 
-<strong>const address = "010203"
-</strong>const inscription = "010203"
-<strong>const txid = async provider.sendInscription(address, inscription);
-</strong></code></pre>
+const address = "<RECIPIENT_BITCOIN_ADDRESS>";
+const inscription = "<INSCRIPTION_ID>";
+const txid = await provider.sendInscription(address, inscription);
+```
 
 ### Demo
 

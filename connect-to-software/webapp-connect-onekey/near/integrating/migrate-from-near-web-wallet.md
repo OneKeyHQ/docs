@@ -1,9 +1,10 @@
 # Migrate from Near Web Wallet
 
-Although, we strongly recommend using formal API to interact your applicactions with OneKey Wallet, we still provide some legacy API that is very similar to [Near Web Wallet](https://wallet.near.org/), make it easier for you migrating existing codes from Near Web Wallet.
+Use the provider methods in this integration guide for new applications. The compatibility methods below can help migrate an existing NEAR Web Wallet integration. They use the legacy near-api-js API described in [Install the Provider SDK](install-the-provider-sdk.md).
 
 ```javascript
 import * as nearAPI from "near-api-js";
+import { OneKeyNearProvider } from "@onekeyfe/onekey-near-provider";
 
 const config = {
   networkId: 'mainnet',
@@ -20,13 +21,13 @@ const provider = new OneKeyNearProvider({
   connection,
   networkId: 'mainnet', // `mainnet` or `testnet`
   // reloading page after signIn or signTransaction that likes web wallet callback url working
-  enablePageReload: true, 
+  enablePageReload: true,
 });
 
 provider.requestSignIn({
   successUrl,
   failureUrl,
-  contractId?,
+  // contractId: optionalContractId,
 });
 
 provider.getAccountId();
@@ -38,18 +39,18 @@ provider.signOut();
 provider.requestSignTransactions({
   transactions: [],
   callbackUrl,
-  meta?,
+  // meta: optionalMetadata,
 });
 
 provider.account().signAndSendTransaction({
   receiverId,
   actions: [],
   walletCallbackUrl,
-  walletMeta?,
+  // walletMeta: optionalMetadata,
 });
 
 ```
 
 {% hint style="info" %}
-Legacy API is not well tested and full case coveraged.  Try to use formal API as possible as you can.&#x20;
+Legacy compatibility methods have limited test coverage. Prefer the provider methods documented in the integration guide, and verify your existing callback and redirect behavior when migrating.
 {% endhint %}

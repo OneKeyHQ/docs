@@ -4,20 +4,20 @@ Request that the user creates an invoice to be used by the web app. This will re
 
 * By specifying an explicit `amount`, the user's provider should enforce that the user generate an invoice with a specific amount
 * By specifying a `minimumAmount` and / or `maximumAmount`, the user's provider should enforce that the user generate an invoice with an amount field constrained by that amount
-* When an explicit `amount` is _not_ set, the us
+* When no explicit `amount` is set, the user can choose an amount within any requested bounds.
 
-Amounts are denominated in satoshis. For large amounts, it's recommended you use a big number library such as [bn.js](https://www.npmjs.com/package/bn.js) or [big.js](https://www.npmjs.com/package/big.js) as Javascript only supports 32 bit integers.
+Amounts are denominated in satoshis. JavaScript numbers represent integers exactly only up to `Number.MAX_SAFE_INTEGER` (`2^53 - 1`). Use a decimal string for values that exceed this range; the API accepts both strings and numbers.
 
-### Method
+## Method
 
 ```typescript
-async function makeInvoice(args: RequestInvoiceArgs): RequestInvoiceResponse
+declare function makeInvoice(args: RequestInvoiceArgs): Promise<RequestInvoiceResponse>;
 ```
 
 ### Params
 
-* `event` — _required_ `object`
-  * `amount` — _optional_ `string|number`  the satoshis to send
+* `args` — _required_ `object`
+  * `amount` — _optional_ `string|number` the satoshis to send
   * `defaultAmount` — _optional_ `string|number`
   * `minimumAmount` — _optional_ `string|number`
   * `maximumAmount` — _optional_ `string|number`

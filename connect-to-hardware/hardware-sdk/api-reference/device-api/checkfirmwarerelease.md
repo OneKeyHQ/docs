@@ -2,10 +2,10 @@
 
 ## Check firmware release
 
-Check the current Bluetooth firmware version status of the device.
+Check the current device firmware version status of the device.
 
 ```typescript
-const response = await HardwareSDK.checkBLEFirmwareRelease(connectId);
+const response = await HardwareSDK.checkFirmwareRelease(connectId);
 ```
 
 ### Params
@@ -34,8 +34,8 @@ Result
           required: boolean,
           version: Array<number>,
           url: string,
-          webUpdate: string,
           changelog: Record<string, string>
+        }
     }
 }
 ```
@@ -47,7 +47,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

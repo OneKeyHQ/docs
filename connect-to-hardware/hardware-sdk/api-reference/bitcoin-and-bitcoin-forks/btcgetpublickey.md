@@ -2,7 +2,7 @@
 
 ## Bitcoin: get public key
 
-Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
+Returns the public key derived from the specified path. Use `showOnOneKey` to request confirmation on the device.
 
 ```typescript
 const result = await HardwareSDK.btcGetPublicKey(connectId, deviceId, params);
@@ -12,20 +12,20 @@ const result = await HardwareSDK.btcGetPublicKey(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-### Exporting single public key
+### Single public key
 
-* `path` — _required_ `string | Array<number>` minimum length is `1`. [read more](../path.md)
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `1`. [read more](../path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the public key on the device. Defaults to `true`.
 * `coin` - _optional_ `string` determines network definition specified in coins.json file. Coin `shortcut`, `name` or `label` can be used. If `coin` is not set API will try to get network definition from `path`.
 * `scriptType` - _optional_ InputScriptType, address script type
 
-#### Exporting bundle of public keys
+#### Multiple public keys
 
-* `bundle` - `Array` of Objects with `path`, `coin` fields
+* `bundle` - array of objects with `path`, `coin` fields
 
 ### Example
 
-Return public key of fifth bitcoin account:
+Return the public key for fifth bitcoin account:
 
 ```typescript
 HardwareSDK.btcGetPublicKey(connectId, deviceId, {
@@ -48,35 +48,38 @@ HardwareSDK.btcGetPublicKey(connectId, deviceId, {
 
 ### Result
 
-Result with only one public key
+Single-public-key response
 
 ```typescript
 {
     success: true,
     payload: {
-        path: Array<number>, // hardended path
+        path: string, // serialized BIP32 path
         xpub: string,        // xpub in legacy format
         xpubSegwit?: string, // optional for segwit accounts: xpub in segwit format
-        chainCode: string,   // BIP32 serialization format
-        childNum: number,    // BIP32 serialization format
-        publicKey: string,   // BIP32 serialization format
-        fingerprint: number, // BIP32 serialization format
-        depth: number,       // BIP32 serialization format
+        root_fingerprint?: number,
+        node: {
+            depth: number,
+            fingerprint: number,
+            child_num: number,
+            chain_code: string,
+            public_key: string,
+        },
     }
 }
 ```
 
-[Read more about BIP32 serialization format](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization\_format)
+[Read more about BIP32 serialization format](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization_format)
 
-Result with bundle of public keys
+Batch public-key response
 
 ```typescript
 {
     success: true,
     payload: [
-        { path, serializedPath, xpub, xpubSegwit?, chainCode, childNum, publicKey, fingerprint, depth }, // account 1
-        { path, serializedPath, xpub, xpubSegwit?, chainCode, childNum, publicKey, fingerprint, depth }, // account 2
-        { path, serializedPath, xpub, xpubSegwit?, chainCode, childNum, publicKey, fingerprint, depth }  // account 3
+        { path, xpub, xpubSegwit, root_fingerprint, node }, // account 1
+        { path, xpub, xpubSegwit, root_fingerprint, node }, // account 2
+        { path, xpub, xpubSegwit, root_fingerprint, node }  // account 3
     ]
 }
 ```
@@ -88,7 +91,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

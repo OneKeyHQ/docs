@@ -2,7 +2,7 @@
 
 ## Starcoin: get public key
 
-Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
+Returns the public key derived from the specified path. Use `showOnOneKey` to request confirmation on the device.
 
 ```typescript
 const result = await HardwareSDK.starcoinGetPublicKey(connectId, deviceId, params);
@@ -12,22 +12,22 @@ const result = await HardwareSDK.starcoinGetPublicKey(connectId, deviceId, param
 
 [**Optional common params**](../common-params.md)
 
-### Exporting single public key
+### Single public key
 
-* `path` — _required_ `string | Array<number>` minimum length is `1`. read more
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the public key on the device. Defaults to `true`.
 
-#### Exporting bundle of public keys
+#### Multiple public keys
 
-* `bundle` - `Array` of Objects with `path`, `showOnOneKey` fields
+* `bundle` - array of objects with `path`, `showOnOneKey` fields
 
 ### Example
 
-Return public key of fifth starcoin account:
+Return the public key for first Starcoin account:
 
 ```typescript
 HardwareSDK.starcoinGetPublicKey(connectId, deviceId, {
-    path: "m/101010'/0'/0'",
+    path: "m/44'/101010'/0'/0'/0'",
     showOnOneKey: true
 });
 ```
@@ -37,38 +37,38 @@ Return a bundle of public keys for multiple starcoin accounts:
 ```typescript
 HardwareSDK.starcoinGetPublicKey(connectId, deviceId, {
     bundle: [
-        { path: "m/101010'/0'/0'" }, // account 1
-        { path: "m/101010'/0'/1'" }, // account 2
-        { path: "m/101010'/0'/2'" }  // account 3
+        { path: "m/44'/101010'/0'/0'/0'" }, // account 1
+        { path: "m/44'/101010'/1'/0'/0'" }, // account 2
+        { path: "m/44'/101010'/2'/0'/0'" }  // account 3
     ]
 });
 ```
 
 ### Result
 
-Result with only one public key
+Single-public-key response
 
 ```typescript
 {
     success: true,
     payload: {
-        path: string, // hardended path
-        publicKey: string
+        path: string, // serialized BIP32 path
+        public_key: string
     }
 }
 ```
 
-[Read more about BIP32 serialization format](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization\_format)
+[Read more about BIP32 serialization format](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization_format)
 
-Result with bundle of public keys
+Batch public-key response
 
 ```typescript
 {
     success: true,
     payload: [
-        { path: serializedPath, publicKey }, // account 1
-        { path: serializedPath, publicKey }, // account 2
-        { path: serializedPath, publicKey }, // account 3
+        { path: serializedPath, public_key }, // account 1
+        { path: serializedPath, public_key }, // account 2
+        { path: serializedPath, public_key }, // account 3
     ]
 }
 ```
@@ -80,7 +80,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

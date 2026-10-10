@@ -2,10 +2,10 @@
 
 ## Reset device
 
-Perform device setup and generate new seed.
+Perform device setup and generate a new recovery phrase.
 
 ```typescript
-const result = await HardwareSDK.resetDevice(connectId, params);
+const result = await HardwareSDK.deviceReset(connectId, params);
 ```
 
 ## Params
@@ -19,12 +19,12 @@ const result = await HardwareSDK.resetDevice(connectId, params);
 * `pinProtection` — _optional_ `boolean`
 * `passphraseProtection` — _optional_ `boolean`
 * `skipBackup` — _optional_ `boolean`
-* `noBackup` — _optional_ `boolean` create a seedless device
+* `noBackup` — _optional_ `boolean` Skip recovery-phrase backup; this does not mean the device has no seed.
 
 ## Example
 
 ```typescript
-HardwareSDK.resetDevice(connectId, {
+HardwareSDK.deviceReset(connectId, {
     label: 'OneKey Classic',
 });
 ```
@@ -47,7 +47,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

@@ -2,7 +2,7 @@
 
 ## TRON: sign message <a href="#ethereum-sign-message" id="ethereum-sign-message"></a>
 
-Asks device to sign a message using the private key derived by given BIP32 path.
+Requests a message signature using the key derived from the specified path.
 
 ```typescript
 const result = await HardwareSDK.tronSignMessage(connectId, deviceId, params);
@@ -12,8 +12,9 @@ const result = await HardwareSDK.tronSignMessage(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `messageHex` - _required_ `string` message to sign in hex text
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `messageHex` - _required_ `string` Message to sign, encoded as a hexadecimal string.
+* `messageType` - `"V2"`. Pass this explicitly: the current runtime rejects omitted values and legacy `"V1"` requests. The public type still includes both values.
 
 ### Example
 
@@ -26,7 +27,8 @@ const messageHex = Buffer.from(message).toString('hex');
 
 HardwareSDK.tronSignMessage(connectId, deviceId, {
     path: "m/44'/195'/0'/0/0",
-    message: messageHex
+    messageHex,
+    messageType: 'V2'
 });
 ```
 
@@ -49,7 +51,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

@@ -16,14 +16,9 @@ export enum Network {
 
 ### Parameters
 
-* `Type`: Defines the type of currency, such as `bitcoin = 0`.&#x20;
+* `Type`: Defines the type of currency, such as `bitcoin = 0`.
 * `Network`: Defines the type of network, such as `mainnet` and `testnet`.
 
+## UR type
 
-
-## URL Example
-
-```typescript
-ur:crypto-coin-info/xxxxx
-```
-
+The UR type is `crypto-coin-info`. Generate the encoded payload with the registry encoder.

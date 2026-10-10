@@ -1,11 +1,12 @@
-# Defining Your App's Icon
+# Define Your App's Icon
 
-When your site makes a login request to a OneKey Browser Extension user, OneKey Browser Extension may render a modal that display's your site icon.
+Provide a favicon so wallets and browsers can identify your site. Put an icon link in the document's `<head>` and use a publicly accessible image URL:
 
-We retrieve this icon using the HTML selector `<head> link[rel="shortcut icon"]`, so to customize this icon for your site, just make sure to follow the [favicon standard](https://en.wikipedia.org/wiki/Favicon), and make sure to have a `link` tag within your site's `head` with `rel = "shortcut icon"`, like this.
-
-```javascript
-<head>  <link rel="shortcut icon" href="https://your-site.com/your-icon.png" /></head>
+```html
+<head>
+  <link rel="icon" href="https://example.com/icon.png" type="image/png" />
+  <link rel="shortcut icon" href="https://example.com/icon.png" />
+</head>
 ```
 
-The tag's `href` attribute will be used for assigning the site icon.
+Wallet versions may retrieve or cache site metadata differently. Check the icon in the actual connection prompt after deployment; do not assume that changing the favicon immediately updates an existing wallet session.

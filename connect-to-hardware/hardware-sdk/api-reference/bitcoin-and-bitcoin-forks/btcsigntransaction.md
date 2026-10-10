@@ -2,7 +2,7 @@
 
 ## Bitcoin: sign transaction
 
-Asks device to sign given inputs and outputs of pre-composed transaction. User is asked to confirm all transaction details on OneKey.
+Requests signatures for the inputs and outputs of a prepared transaction. The user reviews and confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params);
@@ -15,7 +15,7 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 * `coin` - _required_ `string` Determines network definition specified in [bitcoin.json](https://github.com/OneKeyHQ/hardware-js-sdk/blob/onekey/packages/core/src/data/coins/bitcoin.json) file. Coin `shortcut`, `name` or `label` can be used.
 * `inputs` - _required_ `Array` of [TxInputType](https://github.com/OneKeyHQ/hardware-js-sdk/blob/728279dc70c5bde56c5d72d86598815f977b0c7f/packages/hd-transport/src/types/messages.ts#L363),
 * `outputs` - _required_ `Array` of [TxOutputType](https://github.com/OneKeyHQ/hardware-js-sdk/blob/728279dc70c5bde56c5d72d86598815f977b0c7f/packages/hd-transport/src/types/messages.ts#L390),
-* `refTxs` - _required_ `Array` of [RefTransaction](https://github.com/OneKeyHQ/hardware-js-sdk/blob/728279dc70c5bde56c5d72d86598815f977b0c7f/packages/core/src/types/api/btcSignTransaction.ts#L26). Zcash and Komodo refTxs should also contains `expiry`, `version_group_id` and `extra_data` fields.
+* `refTxs` - _required_ `Array` of [RefTransaction](https://github.com/OneKeyHQ/hardware-js-sdk/blob/728279dc70c5bde56c5d72d86598815f977b0c7f/packages/core/src/types/api/btcSignTransaction.ts#L26). Zcash and Komodo refTxs must also contain `expiry`, `version_group_id` and `extra_data` fields.
 * `locktime` - _optional_ `number`,
 * `version` - _optional_ `number` transaction version,
 * `expiry` - _optional_ `number`, only for Decred and Zcash,
@@ -24,12 +24,12 @@ const result = await HardwareSDK.btcSignTransaction(connectId, deviceId, params)
 * `timestamp` - _optional_ `number` only for Capricoin, transaction timestamp,
 * `branchId` - _optional_ `number`, only for Zcash, BRANCH\_ID when overwintered is set
 
-## Help tool
+## Build transaction parameters
 
-### build input
+### Build an input
 
 ```
-private buildHardwareInput = async (
+const buildHardwareInput = async (
   input: TxInput,
   path: string,
 ): Promise<Messages.TxInputType> => {
@@ -38,8 +38,7 @@ private buildHardwareInput = async (
   const scriptType = getScriptType(addressN);
   const utxo = input.utxo as UTXO;
 
-  // @ts-expect-error
-  return {
+    return {
     prev_index: utxo.vout,
     prev_hash: utxo.txid,
     amount: utxo.value.integerValue().toString(),
@@ -49,10 +48,10 @@ private buildHardwareInput = async (
 };
 ```
 
-### build Output
+### Build an output
 
 ```
-private buildHardwareOutput = async (
+const buildHardwareOutput = async (
   output: TxOutput,
 ): Promise<Messages.TxOutputType> => {
   const { isCharge, bip44Path } = output.payload || {};
@@ -76,25 +75,25 @@ private buildHardwareOutput = async (
 };
 ```
 
-### buildPrevTx
+### Build a previous transaction
 
 ```
 import * as BitcoinJS from 'bitcoinjs-lib';
-private buildPrevTx = (rawTx: string): RefTransaction => {
+const buildPrevTx = (rawTx: string): RefTransaction => {
     const tx = BitcoinJS.Transaction.fromHex(rawTx);
 
     return {
       hash: tx.getId(),
       version: tx.version,
       inputs: tx.ins.map((i) => ({
-        prev_hash: i.hash.reverse().toString('hex'),
+        prev_hash: Buffer.from(i.hash).reverse().toString('hex'),
         prev_index: i.index,
-        script_sig: i.script.toString('hex'),
+        script_sig: Buffer.from(i.script).toString('hex'),
         sequence: i.sequence,
       })),
       bin_outputs: tx.outs.map((o) => ({
-        amount: o.value,
-        script_pubkey: o.script.toString('hex'),
+        amount: o.value.toString(),
+        script_pubkey: Buffer.from(o.script).toString('hex'),
       })),
       lock_time: tx.locktime,
     };
@@ -103,15 +102,24 @@ private buildPrevTx = (rawTx: string): RefTransaction => {
 
 ## Example
 
+The snippets below illustrate parameter shapes. Use actual spendable UTXOs, matching amounts and complete previous transactions; the static data is not a ready-to-broadcast transaction.
+
 ### PAYTOADDRESS
 
 ```typescript
+import type { BTCSignTransactionParams } from "@onekeyfe/hd-core";
+
+// Load the actual previous transactions for the UTXOs below.
+declare const refTxs: BTCSignTransactionParams["refTxs"];
+declare const previousOutputAmount: string;
+
 HardwareSDK.btcSignTransaction(connectId, deviceId, {
     inputs: [
         {
             address_n: [(44 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
             prev_index: 0,
             prev_hash: 'b035d89d4543ce5713c553d69431698116a822c57c03ddacf3f04b763d1999ac',
+            amount: previousOutputAmount,
         }
     ],
     outputs: [
@@ -125,6 +133,7 @@ HardwareSDK.btcSignTransaction(connectId, deviceId, {
             script_type: 'PAYTOADDRESS',
         }
     ],
+    refTxs,
     coin: 'btc'
 });
 ```
@@ -132,7 +141,13 @@ HardwareSDK.btcSignTransaction(connectId, deviceId, {
 ### SPENDP2SHWITNESS
 
 ```typescript
-HardwareSDK.btcSignTransaction({
+import type { BTCSignTransactionParams } from "@onekeyfe/hd-core";
+
+// Load the actual previous transactions for the UTXOs below.
+declare const refTxs: BTCSignTransactionParams["refTxs"];
+declare const previousOutputAmount: string;
+
+HardwareSDK.btcSignTransaction(connectId, deviceId, {
     inputs: [
         {
             address_n: [(49 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
@@ -153,6 +168,7 @@ HardwareSDK.btcSignTransaction({
             script_type: 'PAYTOADDRESS',
         }
     ],
+    refTxs,
     coin: 'btc'
 });
 ```
@@ -160,12 +176,13 @@ HardwareSDK.btcSignTransaction({
 ### PAYTOADDRESS with refTxs (transaction data provided from custom backend)
 
 ```typescript
-HardwareSDK.btcSignTransaction({
+HardwareSDK.btcSignTransaction(connectId, deviceId, {
     inputs: [
         {
             address_n: [(44 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
             prev_index: 0,
             prev_hash: 'b035d89d4543ce5713c553d69431698116a822c57c03ddacf3f04b763d1999ac',
+            amount: '3431747',
         }
     ],
     outputs: [
@@ -216,7 +233,7 @@ HardwareSDK.btcSignTransaction({
     payload: {
         signatures: Array<string>, // Array of signer signatures
         serializedTx: string,        // serialized transaction
-        txid?: string,             // broadcasted transaction id
+        txid?: string,             // transaction ID, if returned; signing does not broadcast
     }
 }
 ```
@@ -228,7 +245,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

@@ -1,21 +1,21 @@
 # tonSignProof
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
 
 ### TON: sign proof
 
-Sign a proof message for dApp authentication using the private key derived by given BIP32 path. User needs to confirm the action on OneKey device.
+Sign a proof message for dApp authentication using the private key derived from the specified BIP32 path. User needs to confirm the action on OneKey device.
 
 ```typescript
 const result = await HardwareSDK.tonSignProof(connectId, deviceId, {
     path: "m/44'/607'/0'",
     appdomain: "onekey.so",
     comment: "48656c6c6f204f6e654b6579",
-    expireAt: Date.now() + 1000 * 60 * 60 * 24,
-    walletVersion: "V4R2",
+    expireAt: Math.floor(Date.now() / 1000),
+    walletVersion: 3,
     isBounceable: false,
     isTestnetOnly: false
 });
@@ -25,15 +25,15 @@ const result = await HardwareSDK.tonSignProof(connectId, deviceId, {
 
 [Optional common params](../../../hardware-sdk/api-reference/common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is 3
-* `appdomain` — _required_ `string` domain of the dApp requesting the proof
-* `comment` — _optional_ `string` message comment in hex format
-* `expireAt` — _required_ `number` proof expiration timestamp
-* `walletVersion` — _optional_ `TonWalletVersion` TON wallet version (default: 3)
-* `walletId` — _optional_ `number` wallet ID (default: 698983191)
-* `workchain` — _optional_ `TonWorkChain` TON workchain (0: BaseChain, 1: MasterChain)
-* `isBounceable` — _optional_ `boolean` whether message is bounceable (default: false)
-* `isTestnetOnly` — _optional_ `boolean` whether to use testnet (default: false)
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`
+* `appdomain` - _required_ `string` domain of the dApp requesting the proof
+* `comment` - _optional_ `string` message comment in hex format
+* `expireAt` - _required_ `number` signing timestamp in Unix seconds; despite the field name, firmware uses it as the TON proof timestamp
+* `walletVersion` - _optional_ `TonWalletVersion` TON wallet version (default: 3)
+* `walletId` - _optional_ `number` wallet ID (default: 698983191)
+* `workchain` - _optional_ `TonWorkChain` TON workchain (0: BaseChain, 1: MasterChain)
+* `isBounceable` - _optional_ `boolean` whether message is bounceable (default: false)
+* `isTestnetOnly` - _optional_ `boolean` whether to use testnet (default: false)
 
 #### Returns
 
@@ -48,7 +48,7 @@ const response = await HardwareSDK.tonSignProof(connectId, deviceId, {
     path: "m/44'/607'/0'",
     appdomain: "onekey.so",
     comment: "48656c6c6f204f6e654b6579",
-    expireAt: Date.now() + 1000 * 60 * 60 * 24,
+    expireAt: Math.floor(Date.now() / 1000),
     walletVersion: 3,
     isBounceable: false,
     isTestnetOnly: false
@@ -73,7 +73,9 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
+
+The `expireAt` value becomes the signed `timestamp`, with no SDK unit conversion. See the [TON Connect proof format](https://github.com/ton-blockchain/ton-connect/blob/main/spec/connect.md#address-proof-signature-ton_proof).

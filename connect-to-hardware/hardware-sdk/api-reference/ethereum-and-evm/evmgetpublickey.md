@@ -2,7 +2,7 @@
 
 ## Ethereum: get public key
 
-Retrieves BIP32 extended public derived by given BIP32 path. User is presented with a description of the requested key and asked to confirm the export.
+Returns the public key derived from the specified path. Use `showOnOneKey` to request confirmation on the device.
 
 ```typescript
 const result = await HardwareSDK.evmGetPublicKey(connectId, deviceId, params);
@@ -12,19 +12,19 @@ const result = await HardwareSDK.evmGetPublicKey(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-### Exporting single public key
+### Single public key
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
-* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/\_data/chains).&#x20;
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`. [read more](../path.md)
+* `showOnOneKey` - _optional_ `boolean` Whether to display the public key on the device. Defaults to `true`.
+* `chainId` - _optional_ `number` The ChainId in ETH is a unique identifier for a specific Ethereum network, used to distinguish different versions of the blockchain. [Reference](https://github.com/ethereum-lists/chains/tree/master/_data/chains).
 
-#### Exporting bundle of public keys
+#### Multiple public keys
 
-* `bundle` - `Array` of Objects with `path`, `coin` fields
+* `bundle` - array of objects with `path`, `chainId`, `showOnOneKey` fields
 
 ### Example
 
-Return public key of first ethereum account:
+Return the public key for first ethereum account:
 
 ```typescript
 HardwareSDK.evmGetPublicKey(connectId, deviceId, {
@@ -40,38 +40,39 @@ Return a bundle of public keys for multiple ethereum accounts:
 HardwareSDK.evmGetPublicKey(connectId, deviceId, {
     bundle: [
         { path: "m/44'/60'/0'/0/0", chainId: 1 }, // account 1
-        { path: "m/44'/60'/0'", chainId: 1 }, // account 2
-        { path: "m/44'/60'/0'/0/1", chainId: 1 }  // account 3
+        { path: "m/44'/60'/1'/0/0", chainId: 1 }, // account 2
+        { path: "m/44'/60'/2'/0/0", chainId: 1 }  // account 3
     ]
 });
 ```
 
 ### Result
 
-Result with only one public key
+Single-public-key response
 
 ```typescript
 {
     success: true,
     payload: {
-        path: Array<number>, // hardended path
-        xpub: string,        // xpub in legacy format
-        publicKey: string,   // BIP32 serialization format
+        path: string, // serialized BIP32 path
+        xpub?: string,        // xpub in legacy format
+        pub: string, // hexadecimal public key
+        publicKey: string, // alias of pub
     }
 }
 ```
 
-[Read more about BIP32 serialization format](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization\_format)
+[Read more about BIP32 serialization format](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization_format)
 
-Result with bundle of public keys
+Batch public-key response
 
 ```typescript
 {
     success: true,
     payload: [
-        { path, xpub, publicKey }, // account 1
-        { path, xpub, publicKey }, // account 2
-        { path, xpub, publicKey }, // account 3
+        { path, xpub, pub }, // account 1
+        { path, xpub, pub }, // account 2
+        { path, xpub, pub }, // account 3
     ]
 }
 ```
@@ -83,7 +84,9 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
+
+For `bundle` requests with `useBatch: true`, a supported batch route returns `{ path, pub, publicKey }` without `xpub` or `node`. The ordinary route returns the extended public key and node; do not require these fields in a batch response.

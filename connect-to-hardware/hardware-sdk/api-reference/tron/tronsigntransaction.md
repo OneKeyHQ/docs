@@ -2,7 +2,7 @@
 
 ### TRON: Sign transaction <a href="#cardano-sign-transaction" id="cardano-sign-transaction"></a>
 
-Asks device to sign given transaction. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature. The user reviews and confirms the request on the device.
 
 ```typescript
 const response = await HardwareSDK.tronSignTransaction(connectId, deviceId, params)
@@ -12,7 +12,7 @@ const response = await HardwareSDK.tronSignTransaction(connectId, deviceId, para
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
 * `transaction` - _required_ `TronTransaction` type
 
 #### TronTransaction Type
@@ -52,7 +52,7 @@ type TronTriggerSmartContract = {
 
 ```typescript
 HardwareSDK.tronSignTransaction(connectId, deviceId, {
-    path: "m/44'/195'/0'/0'/0",
+    path: "m/44'/195'/0'/0/0",
     transaction: {
         refBlockBytes: 'ddf1',
         refBlockHash: 'd04764f22469a0b8',
@@ -87,12 +87,10 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
-
-
 
 ### Transaction Signing and Broadcasting
 
@@ -128,7 +126,11 @@ const result = await HardwareSDK.tronSignTransaction(connectId, deviceId, {
     }
 });
 
-// rawTx
+if (result.success === false) {
+    throw new Error(result.payload.error);
+}
+
+// Build the signed transaction JSON.
 const rawTx = JSON.stringify({
     txID: txid,
     raw_data: encodedTx.raw_data,
@@ -136,4 +138,3 @@ const rawTx = JSON.stringify({
     signature: [result.payload.signature]
 });
 ```
-

@@ -1,3 +1,5 @@
-# ❤ Contribute
+# ❤️ Contribute to OneKey
 
-We've been running this project in a completely open source manner, and you can visit [our official Github repository](https://github.com/OneKeyHQ/app-monorepo) to star, discuss, and even contribute your own code.
+OneKey develops its apps, providers, SDKs, and firmware in public repositories. Use the [contribution guide](guide/external-contribution-guide.md) to find the right repository and prepare a focused change.
+
+To report a documentation error, include the page URL, the expected behavior, and the example or statement that needs correction. For an integration failure, follow the [issue-reporting checklist](trouble-shooting.md#report-an-issue).

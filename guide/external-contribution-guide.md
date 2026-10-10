@@ -1,29 +1,26 @@
-# External Contribution Guide
+# Contributing
 
-If you wish to integrate your chain with OneKey, please choose one of the following methods:
+Choose the repository that owns the feature you want to change. Read its README, contribution instructions, and security policy before starting.
 
-* Write code for OneKey software and hardware.
+| Area                              | Repository                                                                 |
+| --------------------------------- | -------------------------------------------------------------------------- |
+| OneKey apps and browser extension | [app-monorepo](https://github.com/OneKeyHQ/app-monorepo)                   |
+| Hardware SDK and developer portal | [hardware-js-sdk](https://github.com/OneKeyHQ/hardware-js-sdk)             |
+| Injected wallet providers         | [cross-inpage-provider](https://github.com/OneKeyHQ/cross-inpage-provider) |
+| Firmware                          | [firmware](https://github.com/OneKeyHQ/firmware)                           |
+| This GitBook collection           | [docs](https://github.com/OneKeyHQ/docs)                                   |
 
-## How to Develop and Submit Application Code
+## Propose a change
 
-As a developer, you can contribute code to OneKey.&#x20;
+For a new chain or a change to an existing integration, describe the runtime, signing methods, serialization format, and required device or firmware support. A software-wallet integration and a hardware-signing integration may require changes in different repositories.
 
+Check existing issues and pull requests before opening a new proposal. Keep the scope small enough to review and include reproduction steps or test evidence where relevant.
 
+## Submit a fix
 
-For OneKey software development, please look here.
+1. Follow the selected repository's development instructions.
+2. Make the change and update the affected examples or documentation.
+3. Run the checks required by that repository.
+4. Open a pull request explaining the problem, the resulting behavior, and what you verified.
 
-> development guides are coming soon.
-
-{% embed url="https://github.com/OneKeyHQ/app-monorepo" %}
-
-For OneKey hardware development, please look here.
-
-> development guides are coming soon.
-
-{% embed url="https://github.com/OneKeyHQ/firmware" %}
-
-For OneKey hardware SDK development, please look here.
-
-> development guides are coming soon.
-
-{% embed url="https://github.com/OneKeyHQ/hardware-js-sdk" %}
+For documentation reports, include the page URL and the incorrect statement or example. For security vulnerabilities, follow the affected repository's security policy instead of publishing exploit details in an issue.

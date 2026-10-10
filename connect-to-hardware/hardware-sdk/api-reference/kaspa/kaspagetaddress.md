@@ -1,14 +1,14 @@
 # kaspaGetAddress
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.3.0
   * Classic/Mini: 3.0.0
 
 ## Kaspa: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is presented with a description of the requested key and asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const result = await HardwareSDK.kaspaGetAddress(connectId, deviceId, params);
@@ -18,33 +18,31 @@ const result = await HardwareSDK.kaspaGetAddress(connectId, deviceId, params);
 
 [**Optional common params**](../common-params.md)
 
-### Exporting single public key
+### Single address
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. [read more](../path.md)
-* `showOnOneKey` — _optional_ `boolean` determines if address will be displayed on device. Default is set to `true`
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [read more](../path.md)
+* `showOnOneKey` — _optional_ `boolean` Whether to display the address on the device. Defaults to `true`.
 * `prefix` - _optional_ `string` Address prefix. Default is set to `kaspa`
 * `scheme` - _optional_ `string` Encryption algorithm mode. Default is set to `schnorr`
 
+#### Multiple addresses
 
-
-#### Exporting bundle of public keys
-
-* `bundle` - `Array` of Objects with `path`, `coin` fields
+* `bundle` - array of objects with `path`, `showOnOneKey`, `prefix`, and `scheme` fields
 
 ### Example
 
-Return public key of first ethereum account:
+Return address of first Kaspa account:
 
 ```typescript
 HardwareSDK.kaspaGetAddress(connectId, deviceId, {
     path: "m/44'/111111'/0'/0/0",
     showOnOneKey: true,
-    prefix: "prefix",
+    prefix: "kaspa",
     scheme: "schnorr",
 });
 ```
 
-Return a bundle of public keys for multiple ethereum accounts:
+Return a bundle of addresses for multiple Kaspa accounts:
 
 ```typescript
 HardwareSDK.kaspaGetAddress(connectId, deviceId, {
@@ -58,19 +56,19 @@ HardwareSDK.kaspaGetAddress(connectId, deviceId, {
 
 ### Result
 
-Result with only one public key
+Single-address response
 
 ```typescript
 {
     success: true,
     payload: {
-        path: Array<number>, // hardended path
+        path: string, // serialized BIP32 path
         address: string,   // address
     }
 }
 ```
 
-Result with bundle of public keys
+Batch address response
 
 ```typescript
 {
@@ -90,7 +88,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

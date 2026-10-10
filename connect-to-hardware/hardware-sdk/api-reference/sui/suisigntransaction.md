@@ -2,7 +2,7 @@
 
 ## Sui: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature using the key derived from the specified path. The user reviews and confirms the request on the device.
 
 ```typescript
 const result = await HardwareSDK.suiSignTransaction(connectId, deviceId, params);
@@ -12,17 +12,12 @@ const result = await HardwareSDK.suiSignTransaction(connectId, deviceId, params)
 
 [**Optional common params**](../common-params.md)
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `rawTx` - _required_ `string` type of serialized transaction string.
+* `path` — _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../path.md)
+* `rawTx` - _required_ `string` Serialized transaction encoded as a hexadecimal string.
 
+#### Transaction size and firmware
 
-
-#### rawTx Size limit
-
-* Classic、Mini Firmware version is less than 3.6.0, and the data size is greater than 4KB.
-* Classic、Mini Firmware version is greater than or equal to 3.6.0 and the data size is greater than 6KB.
-
-
+The SDK can stream transaction data on supported firmware. Older firmware receives a single payload and may impose smaller limits. Handle the SDK's firmware and data-size errors, and validate the transaction sizes required by your integration on its target devices.
 
 ### Examples
 
@@ -43,9 +38,8 @@ Result
 {
   success: true,
   payload: {
-    path: "m/44'/784'/0'/0'/0'",
     public_key: string,
-    signature: string.
+    signature: string,
   }
 }
 ```
@@ -57,7 +51,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

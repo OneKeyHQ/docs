@@ -1,20 +1,18 @@
 # signPsbts
 
-## signPsbts
-
 Sign multiple PSBTs at once. This method will traverse all inputs that match the current address to sign.
 
-#### Wallet & Address Type Compatibility
+## Wallet & Address Type Compatibility
 
 | Wallet Type     | Model          | Address Types Supported                |
 | --------------- | -------------- | -------------------------------------- |
 | Software Wallet | All            | p2wpkh (Native Segwit), p2tr (Taproot) |
 | Hardware Wallet | Pro, Classic1S | p2tr (Taproot)                         |
 
-#### Method
+## Method
 
 ```typescript
-async function signPsbts(
+declare function signPsbts(
     psbtHexs: string[],
     options?: {
         autoFinalized?: boolean;
@@ -29,7 +27,7 @@ async function signPsbts(
 ): Promise<string[]>
 ```
 
-#### Parameters
+## Parameters
 
 * `psbtHexs` — _required_ `string[]` Array of hex strings of PSBTs to sign
 * `options` — _optional_ `object`
@@ -41,11 +39,11 @@ async function signPsbts(
     * `sighashTypes` — _optional_ `number[]` Optional sighash types
     * `useTweakedSigner` — _optional_ `boolean` Force whether to use tweaked signer, has higher priority than disableTweakSigner
 
-#### Returns
+## Returns
 
 * `Promise<string[]>` Array of hex strings of signed PSBTs
 
-#### Example
+## Example
 
 ```typescript
 const provider = (window.$onekey && window.$onekey.btc) || window.unisat;
@@ -71,6 +69,12 @@ try {
 }
 ```
 
-#### Demo
+## Demo
 
 {% embed url="https://codepen.io/OneKeyHQ/pen/XWOPaPY" %}
+
+{% hint style="info" %}
+Wallet and address compatibility depends on the wallet and firmware version. Confirm support for the target account before relying on the compatibility table.
+{% endhint %}
+
+The abbreviated PSBTs, addresses, and public keys above are placeholders. Replace them with complete values. The published provider interface exposes `autoFinalized`; additional `toSignInputs` options depend on the wallet implementation and should be verified with your target version. Signing does not broadcast a transaction.

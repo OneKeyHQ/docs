@@ -1,10 +1,14 @@
 # benfenSignTransaction
 
-
-
 ### Benfen: Sign transaction
 
-Asks device to sign given transaction using the private key derived by given BIP32 path. User is asked to confirm all transaction details on OneKey.
+Requests a transaction signature using the key derived from the specified path. The user reviews and confirms the request on the device.
+
+**Requirements**
+
+* Minimum firmware versions
+  * Pro: 4.12.0
+  * Classic 1S / Classic 1S Pure: 3.11.0
 
 ```typescript
 const result = await HardwareSDK.benfenSignTransaction(connectId, deviceId, {
@@ -18,8 +22,8 @@ const result = await HardwareSDK.benfenSignTransaction(connectId, deviceId, {
 
 **Optional common params**
 
-* `path` — _required_ `string | Array<number>` minimum length is `3`. read more
-* `rawTx` - _required_ `string` type of serialized transaction string in hex format
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`. [Path format](../../../hardware-sdk/api-reference/path.md)
+* `rawTx` - _required_ `string` Serialized transaction encoded as a hexadecimal string.
 * `coinType` - _optional_ `string` coin type identifier
 
 #### Returns
@@ -27,8 +31,7 @@ const result = await HardwareSDK.benfenSignTransaction(connectId, deviceId, {
 * success: boolean - True if successful
 * payload:
   * signature: string - Transaction signature in hex format
-  * path: string - BIP32 path used
-  * coinType?: string - Coin type if provided,(e.g. 0x2::bfc::BFC,  0xc8::busd::BUSD)
+  * public\_key: string - Signing public key in hex format
 
 #### Example
 
@@ -50,7 +53,7 @@ Result
   success: true,
   payload: {
     signature: string,
-    address: string.
+    public_key: string,
   }
 }
 ```
@@ -62,7 +65,9 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
+
+The runtime returns `public_key` and `signature`. Although the current SDK declaration also lists `path` and `coinType`, they are not included in this response; retain them from the request if needed.

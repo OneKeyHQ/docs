@@ -2,13 +2,13 @@
 
 Request that the user sends a payment for an invoice. The application needs to provide a BOLT-11 invoice
 
-### Method
+## Method
 
 ```typescript
-async function sendPayment(paymentRequest: string): SendPaymentResponse
+declare function sendPayment(paymentRequest: string): Promise<SendPaymentResponse>;
 ```
 
-* `paymentRequest`:  The invoice you'd like the user to pay (lnbc...)
+* `paymentRequest`: The invoice you'd like the user to pay (lnbc...)
 
 ### Response
 
@@ -23,7 +23,7 @@ interface SendPaymentResponse {
 ```typescript
 const provider = (window.$onekey && window.$onekey.webln) || window.webln;
 
-const invoice = "lnbc100xxxx";
+const invoice = "<BOLT11_INVOICE>"; // Replace with a complete invoice.
 await provider.enable();
 const info = await provider.sendPayment(invoice);
 ```

@@ -1,18 +1,16 @@
 # nervosGetAddress
 
-
-
 ### Nervos: get address
 
-Display requested address derived by given BIP32 path on device and returns it to caller. User is asked to confirm the export on OneKey.
+Derives and returns the address at the specified path. When `showOnOneKey` is `true`, the user must confirm the address on the device.
 
 ```typescript
 const result = await HardwareSDK.nervosGetAddress(connectId, deviceId, params);
 ```
 
-#### Use requirement
+#### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.9.0
   * mini: 3.7.0
 
@@ -30,7 +28,7 @@ params: `object`
 
 * path: _required_ `string` - BIP32 path of requested address (e.g. "m/44'/309'/0'/0/0")
 * network: _required_`string` - Network name (e.g. "ckb")
-* showOnOneKey: _optional_ `boolean` - Whether to display address on device&#x20;
+* showOnOneKey: _optional_ `boolean` - Whether to display address on device
 
 #### Example
 
@@ -41,7 +39,10 @@ const response = await HardwareSDK.nervosGetAddress('connect1', 'device1', {
     network: "ckb"
 });
 
-console.log(response.address);
+if (response.success === false) {
+    throw new Error(response.payload.error);
+}
+console.log(response.payload.address);
 ```
 
 #### Returns
@@ -65,8 +66,7 @@ Error response:
     success: false,
     payload: {
         error: string,  // Error message
-        code: number    // Error code
+        code?: string | number    // Error code
     }
 }
 ```
-

@@ -2,7 +2,9 @@
 
 ## Get the passphraseState of the device
 
-Requesting the API will prompt the user to enter a passphrase. This method will return a string result, which can be used as a `passphraseState` request parameter for subsequent APIs. The SDK will compare this parameter with the user's input. If the results match, the parameter will be cached to reduce user input and improve the user experience.
+Requests the selected passphrase-wallet state. The device may ask the user to enter a passphrase. Pass the successful string result as `passphraseState` on later calls to select the same wallet. A result may be undefined when no passphrase-wallet state is available.
+
+Current SDK versions deprecate this API in favor of [openWalletSession](https://developer.onekey.so/en/hardware-sdk/basic-api/open-wallet-session). See the [Passphrase guide](../../advanced/passphrase.md) before continuing a hidden-wallet operation.
 
 ```typescript
 const response = await HardwareSDK.getPassphraseState(connectId);
@@ -23,7 +25,7 @@ Result
 ```
 {
     success: true,
-    payload: string
+    payload: string | undefined
 }
 ```
 
@@ -34,7 +36,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```

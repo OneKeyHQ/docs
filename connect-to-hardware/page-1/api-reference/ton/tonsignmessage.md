@@ -1,13 +1,14 @@
 # tonSignMessage
 
-### Use requirement
+### Requirements
 
-* Firmware version required
+* Minimum firmware versions
   * Touch: 4.10.0
+  * Pro 2 / Neo: Protocol V2 (same public method; SDK maps fields)
 
 ### TON: sign message
 
-Sign a message or transaction using the private key derived by given BIP32 path. User needs to confirm the action on OneKey device.
+Sign a message or transaction using the private key derived from the specified BIP32 path. User needs to confirm the action on OneKey device.
 
 ```typescript
 const response = await HardwareSDK.tonSignMessage(connectId, deviceId, {
@@ -15,7 +16,7 @@ const response = await HardwareSDK.tonSignMessage(connectId, deviceId, {
     destination: "UQBYkuShkZzRYAWX_HrK3kFpeAixiRKd-K7QBXYxl9OBXM0_",
     tonAmount: 100,
     seqno: 0,
-    expireAt: Date.now() + 1000 * 60 * 60 * 24,
+    expireAt: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
     walletVersion: 3,
     isBounceable: false,
     isTestnetOnly: false
@@ -28,46 +29,47 @@ const response = await HardwareSDK.tonSignMessage(connectId, deviceId, {
 
 **Required Parameters**
 
-* `path` — _required_ `string | Array<number>` minimum length is 3
-* `destination` — _required_ `string` destination address
-* `tonAmount` — _required_ `number` amount of TON to transfer
-* `seqno` — _required_ `number` sequence number
-* `expireAt` — _required_ `number` message expiration timestamp
+* `path` - _required_ `string | Array<number>` SDK minimum length is `3`
+* `destination` - _required_ `string` destination address
+* `tonAmount` - _required_ `number | string` amount to transfer, in nanotons
+* `seqno` - _required_ `number` sequence number
+* `expireAt` - _required_ `number | string` message expiration time, in Unix seconds
 
 **Optional Parameters**
 
-* `walletVersion` — _optional_ `TonWalletVersion` TON wallet version (default: 3)
-* `isBounceable` — _optional_ `boolean` whether message is bounceable (default: false)
-* `isTestnetOnly` — _optional_ `boolean` whether to use testnet (default: false)
-* `jettonMasterAddress` — _optional_ `string` Jetton master contract address
-* `jettonAmount` — _optional_ `number` amount of jettons to transfer
-* `fwdFee` — _optional_ `number` forward fee for jetton transfer
-* `comment` — _optional_ `string` message comment
-* `mode` — _optional_ `number` message mode
-* `workchain` — _optional_ `TonWorkChain` TON workchain
-* `walletId` — _optional_ `number` wallet ID
+* `walletVersion` - _optional_ `TonWalletVersion` TON wallet version (default: 3)
+* `isBounceable` - _optional_ `boolean` whether message is bounceable (default: false)
+* `isTestnetOnly` - _optional_ `boolean` whether to use testnet (default: false)
+* `jettonMasterAddress` - _optional_ `string` Jetton master contract address
+* `jettonAmount` - _optional_ `number | string` amount of jettons in the token's smallest unit
+* `fwdFee` - _optional_ `number | string` forward fee for a jetton transfer, in nanotons
+* `comment` - _optional_ `string` message comment
+* `mode` - _optional_ `number` message mode
+* `workchain` - _optional_ `TonWorkChain` TON workchain
+* `walletId` - _optional_ `number` wallet ID
 
 #### Example
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>// Simple TON transfer
-</strong>const response = await HardwareSDK.tonSignMessage(connectId, deviceId, {
+```typescript
+// Simple TON transfer
+const response = await HardwareSDK.tonSignMessage(connectId, deviceId, {
     path: "m/44'/607'/0'",
     destination: "UQBYkuShkZzRYAWX_HrK3kFpeAixiRKd-K7QBXYxl9OBXM0_",
     tonAmount: 100,
     seqno: 0,
-    expireAt: Date.now() + 1000 * 60 * 60 * 24,
+    expireAt: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
     walletVersion: 3,
     isBounceable: false,
     isTestnetOnly: false
 });
 
-// Multiple Native
+// Multiple native TON transfers
 const jettonResponse = await HardwareSDK.tonSignMessage(connectId, deviceId, {
     path: "m/44'/607'/0'",
     destination: 'UQBYkuShkZzRYAWX_HrK3kFpeAixiRKd-K7QBXYxl9OBXM0_',
     tonAmount: 100,
     seqno: 0,
-    expireAt: Date.now() + 1000 * 60 * 60 * 24,
+    expireAt: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
     walletVersion: 3,
     isBounceable: false,
     isTestnetOnly: false,
@@ -75,7 +77,8 @@ const jettonResponse = await HardwareSDK.tonSignMessage(connectId, deviceId, {
     extTonAmount: [100],
     extPayload: ['48656c6c6f204f6e654b6579'],
 });
-</code></pre>
+
+```
 
 Result
 
@@ -85,7 +88,8 @@ Result
     payload: {
         skip_validate: boolean; // Used to skip validation in classic 1s.
         signature: string;
-        signning_message: string;
+        signing_message?: string; // Canonical field. Pro2/Neo return this; the SDK also copies it from the legacy V1 typo.
+        signning_message?: string; // Deprecated Protocol V1 typo. Do not read this in new code.
     }
 }
 ```
@@ -97,7 +101,7 @@ Error
     success: false,
     payload: {
         error: string, // error message
-        code: number // error code
+        code?: string | number // error code
     }
 }
 ```
